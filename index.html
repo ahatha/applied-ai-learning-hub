@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Applied AI Learning Hub | From Solution Architecture to Applied AI</title>
-  <meta name="description" content="A public learning hub documenting a journey through machine learning, deep learning, data science, and responsible AI at Luleå University of Technology (2026–2028).">
+  <title>Applied AI Learning Hub | Master Programme in Applied AI</title>
+  <meta name="description" content="Programme explorer and course hubs for the Master Programme in Applied Artificial Intelligence at Luleå University of Technology (2026–2028).">
   <link rel="canonical" href="https://ahatha.github.io/applied-ai-learning-hub/">
   <meta name="theme-color" content="#0f6b63">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Applied AI Learning Hub">
-  <meta property="og:description" content="Public learning portfolio for the Master Programme in Applied Artificial Intelligence.">
+  <meta property="og:description" content="JSON-driven programme explorer for the LTU Master Programme in Applied AI.">
   <meta property="og:url" content="https://ahatha.github.io/applied-ai-learning-hub/">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Applied AI Learning Hub">
-  <meta name="twitter:description" content="From solution architecture to applied artificial intelligence.">
+  <meta name="twitter:description" content="Programme explorer and course-specific learning material for Applied AI at LTU.">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +42,7 @@
         "@type": "WebSite",
         "name": "Applied AI Learning Hub",
         "url": "https://ahatha.github.io/applied-ai-learning-hub/",
-        "description": "Public learning portfolio for applied AI studies and projects."
+        "description": "Personal programme explorer and course hubs for the LTU Master Programme in Applied AI."
       },
       {
         "@type": "Person",
@@ -58,13 +58,13 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <noscript>
-    <div class="noscript-banner">JavaScript is disabled. Core content remains readable; dynamic project and course lists need JavaScript.</div>
+    <div class="noscript-banner">JavaScript is disabled. Static programme facts remain readable; the interactive explorer needs JavaScript.</div>
   </noscript>
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="brand" href="index.html">
         <span class="brand__mark" aria-hidden="true">AI</span>
-        <span class="brand__text">Applied AI Learning Hub<small>Personal learning portfolio</small></span>
+        <span class="brand__text">Applied AI Learning Hub<small>Programme explorer</small></span>
       </a>
       <div class="header-actions">
         <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">◐</button>
@@ -73,113 +73,117 @@
       <nav class="site-nav" id="site-nav" aria-label="Primary">
         <ul class="site-nav__list">
           <li><a href="index.html" data-nav="index.html" aria-current="page">Home</a></li>
-          <li><a href="about.html" data-nav="about.html">About</a></li>
-          <li><a href="programme.html" data-nav="programme.html">Programme</a></li>
-          <li><a href="courses.html" data-nav="courses.html">Courses</a></li>
-          <li><a href="roadmap.html" data-nav="roadmap.html">Learning Roadmap</a></li>
-          <li><a href="projects.html" data-nav="projects.html">Projects</a></li>
-          <li><a href="blog.html" data-nav="blog.html">Blog</a></li>
-          <li><a href="resources.html" data-nav="resources.html">Resources</a></li>
-          <li><a href="contact.html" data-nav="contact.html">Contact</a></li>
-          <li><a href="search.html" data-nav="search.html">Search</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="section programme-header" aria-labelledby="programme-title">
       <div class="container">
-        <p class="eyebrow">Applied AI Learning Hub</p>
-        <h1 id="hero-title">From Solution Architecture to Applied Artificial Intelligence</h1>
-        <p class="lead">A personal course-support hub for the Master Programme in Applied Artificial Intelligence at Luleå University of Technology. Programme start: 31 August 2026.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="courses.html">Open course catalogue</a>
-          <a class="btn btn--secondary" href="courses/course.html?code=D0036E">D0036E hub</a>
-          <a class="btn btn--ghost" href="programme.html">Programme totals</a>
-        </div>
-        <div id="home-semester"><div class="empty-state"><p>Loading upcoming semester…</p></div></div>
+        <p class="eyebrow">Luleå University of Technology</p>
+        <h1 id="programme-title">Master Programme in Applied Artificial Intelligence</h1>
+        <p class="lead" id="programme-dates">31 August 2026 – 6 June 2028 · 120 ECTS · Distance, full-time, daytime · English</p>
+        <div id="programme-facts" class="fact-strip" aria-live="polite"></div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="focus-title">
+    <section class="section section--muted" aria-labelledby="upcoming-title">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <h2 id="focus-title" class="section-title">Study period 1 · upcoming courses</h2>
-            <p>Confirmed Autumn 2026 cohort schedule. Status remains Upcoming until the courses begin.</p>
-          </div>
-          <a class="btn btn--secondary" href="courses.html">All courses</a>
-        </div>
-        <div id="home-focus-courses">
+        <h2 id="upcoming-title" class="section-title">Upcoming semester</h2>
+        <div id="upcoming-semester" class="semester-panel">
           <noscript>
-            <div class="card-grid">
-              <article class="card"><h3>Programming for Machine Learning</h3><p>D0036E · Upcoming</p><a href="courses/course.html?code=D0036E">Open course hub</a></article>
-              <article class="card"><h3>Artificial Intelligence and Pattern Recognition</h3><p>D7062E · Upcoming</p><a href="courses/course.html?code=D7062E">Open course hub</a></article>
-            </div>
+            <p><strong>Autumn 2026</strong> · Status: Upcoming · Year 1 schedule confidence: Confirmed</p>
+            <ul>
+              <li><a href="courses/course.html?code=D0036E">D0036E — Programming for Machine Learning</a></li>
+              <li><a href="courses/course.html?code=D7062E">D7062E — Artificial Intelligence and Pattern Recognition</a></li>
+            </ul>
           </noscript>
-          <div class="empty-state"><p>Loading focus courses…</p></div>
+          <div class="empty-state"><p>Loading upcoming semester…</p></div>
         </div>
       </div>
     </section>
 
-    <section class="section section--muted" aria-labelledby="intro-title">
+    <section class="section" aria-labelledby="composition-title">
+      <div class="container">
+        <h2 id="composition-title" class="section-title">Programme composition</h2>
+        <div id="programme-composition" class="fact-strip">
+          <div class="fact-strip__item"><strong>75</strong><span>ECTS compulsory</span></div>
+          <div class="fact-strip__item"><strong>15</strong><span>ECTS electives</span></div>
+          <div class="fact-strip__item"><strong>30</strong><span>ECTS thesis</span></div>
+          <div class="fact-strip__item"><strong>120</strong><span>ECTS total</span></div>
+        </div>
+        <p class="muted">Swedish course S0046P is optional and excluded from the degree total.</p>
+      </div>
+    </section>
+
+    <section class="section section--muted" aria-labelledby="explorer-title">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 id="explorer-title" class="section-title">Programme explorer</h2>
+            <p id="explorer-meta">Built from programme, semester, and course JSON.</p>
+          </div>
+        </div>
+        <div id="explorer-breadcrumbs"></div>
+        <div id="programme-explorer" class="programme-explorer">
+          <div class="explorer-desktop">
+            <div class="explorer-panel explorer-panel--tree" id="explorer-tree" tabindex="-1">
+              <div class="empty-state"><p>Loading explorer…</p></div>
+            </div>
+            <div class="explorer-panel explorer-panel--details" id="explorer-details" tabindex="-1">
+              <div class="empty-state"><p>Select an item in the hierarchy.</p></div>
+            </div>
+          </div>
+          <div class="explorer-mobile">
+            <div id="explorer-accordion">
+              <div class="empty-state"><p>Loading accordion explorer…</p></div>
+            </div>
+            <div id="explorer-details-mobile" class="explorer-panel explorer-panel--details"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="distance-title">
+      <div class="container prose" id="distance-study">
+        <h2 id="distance-title" class="section-title">Distance study</h2>
+        <p>This is not an on-demand or self-paced programme. Study normally takes place during daytime working hours, and scheduled activities may occur approximately between 08:00 and 17:00. Active participation is expected. Most lectures are delivered live, and recordings may be available only in limited cases.</p>
+        <p><em>Arrangements can vary by course. Always verify current expectations through official LTU course information.</em></p>
+      </div>
+    </section>
+
+    <section class="section section--muted" aria-labelledby="links-title">
+      <div class="container">
+        <h2 id="links-title" class="section-title">Official LTU links</h2>
+        <ul id="official-links" class="link-list">
+          <li><a href="https://www.ltu.se/en/education/programme/tmdia-master-programme-in-applied-ai" rel="noopener noreferrer" target="_blank">Official programme page</a></li>
+          <li><a href="https://www.ltu.se/en/education/degree/exa2240-degree-of-master-of-science-120-credits---major-computer-science-and-engineering" rel="noopener noreferrer" target="_blank">Degree information</a></li>
+          <li><a href="https://www.ltu.se/en/student-web/new-student" rel="noopener noreferrer" target="_blank">New-student information</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="about-learner-title">
       <div class="container prose">
-        <h2 id="intro-title" class="section-title">How this hub is organised</h2>
-        <p>Official LTU facts stay separate from my preparation plans, notes, projects, and reflections. Elective options are shown as alternatives, not as six courses I will complete.</p>
-        <p>This is a personal learning portfolio and not an official website of Luleå University of Technology.</p>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="projects-title">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2 id="projects-title" class="section-title">Evidence and projects</h2>
-            <p>Public-safe project work linked to the learning journey.</p>
-          </div>
-          <a class="btn btn--secondary" href="projects.html">All projects</a>
-        </div>
-        <div id="featured-projects"><div class="empty-state"><p>Loading projects…</p></div></div>
-      </div>
-    </section>
-
-    <section class="section section--muted" aria-labelledby="notes-title">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2 id="notes-title" class="section-title">Latest learning notes</h2>
-            <p>Reflections published when ready — no fabricated dates.</p>
-          </div>
-          <a class="btn btn--secondary" href="blog.html">All notes</a>
-        </div>
-        <div id="latest-posts"><div class="empty-state"><p>Loading notes…</p></div></div>
+        <h2 id="about-learner-title" class="section-title">About this learner</h2>
+        <p>Around 17 years in IT, including more than 10 years in solution architecture. This hub documents a transition into applied AI through the LTU master’s programme — confident and honest, without claiming unfinished skills as complete.</p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container site-footer__grid">
+    <div class="container site-footer__grid site-footer__grid--compact">
       <div>
         <h2>Applied AI Learning Hub</h2>
-        <p>A personal learning portfolio documenting a transition from solution architecture into applied artificial intelligence.</p>
+        <p>Personal learning portfolio for the Master Programme in Applied AI. Not an official website of Luleå University of Technology.</p>
       </div>
       <div>
-        <h2>Explore</h2>
-        <ul>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="roadmap.html">Learning roadmap</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Notes</h2>
+        <h2>Repository</h2>
         <ul>
           <li><a href="https://github.com/ahatha/applied-ai-learning-hub" rel="noopener noreferrer" target="_blank">GitHub repository</a></li>
           <li><a href="ACADEMIC_INTEGRITY.md">Academic integrity</a></li>
           <li><a href="PRIVACY_CHECKLIST.md">Privacy checklist</a></li>
-          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -191,7 +195,7 @@
   <script src="assets/js/theme.js" defer></script>
   <script src="assets/js/navigation.js" defer></script>
   <script src="assets/js/data-loader.js" defer></script>
-  <script src="assets/js/filters.js" defer></script>
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/explorer.js" defer></script>
 </body>
 </html>

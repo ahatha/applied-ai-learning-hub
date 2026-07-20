@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://ahatha.github.io/applied-ai-learning-hub/</loc></url>
-  <url><loc>https://ahatha.github.io/applied-ai-learning-hub/about.html</loc></url>
-  <url><loc>https://ahatha.github.io/applied-ai-learning-hub/programme.html</loc></url>
-  <url><loc>https://ahatha.github.io/applied-ai-learning-hub/courses.html</loc></url>
-  <url><loc>https://ahatha.github.io/applied-ai-learning-hub/roadmap.html</loc></url>
-  <url><loc>https://ahatha.github.io/applied-ai-learning-hub/projects.html</loc></url>
-  <url><loc>https://ahatha.github.io/applied-ai-learning-hub/blog.html</loc></url>
-  <url><loc>https://ahatha.github.io/applied-ai-learning-hub/resources.html</loc></url>
-  <url><loc>https://ahatha.github.io/applied-ai-learning-hub/contact.html</loc></url>
-  <url><loc>https://ahatha.github.io/applied-ai-learning-hub/search.html</loc></url>
+  <url><loc>https://ahatha.github.io/applied-ai-learning-hub/404.html</loc></url>
   <url><loc>https://ahatha.github.io/applied-ai-learning-hub/courses/course.html</loc></url>
   <url><loc>https://ahatha.github.io/applied-ai-learning-hub/courses/course.html?code=D0036E</loc></url>
   <url><loc>https://ahatha.github.io/applied-ai-learning-hub/courses/course.html?code=D7062E</loc></url>
   <url><loc>https://ahatha.github.io/applied-ai-learning-hub/projects/applied-ai-learning-hub.html</loc></url>
-  <url><loc>https://ahatha.github.io/applied-ai-learning-hub/blog/why-i-am-building-an-applied-ai-learning-hub.html</loc></url>
 </urlset>

@@ -4,9 +4,6 @@
 (function () {
   "use strict";
 
-  /**
-   * Highlight the current page in the primary navigation.
-   */
   function markCurrentNav() {
     var path = window.location.pathname.replace(/\\/g, "/");
     var file = path.split("/").pop() || "index.html";
@@ -16,25 +13,19 @@
 
     document.querySelectorAll("[data-nav]").forEach(function (link) {
       var target = link.getAttribute("data-nav");
-      if (!target) {
-        return;
-      }
-      var isCurrent =
-        file === target ||
-        (target === "index.html" && (file === "" || file === "index.html")) ||
-        (target.indexOf("/") === -1 && path.indexOf("/" + target.replace(".html", "")) !== -1 && file.indexOf(target) !== -1);
-
-      /* Simpler exact match by data-nav filename or section folder */
       var href = link.getAttribute("href") || "";
-      var hrefFile = href.split("/").pop();
+      var hrefFile = href.split("?")[0].split("/").pop();
       var match =
-        hrefFile === file ||
-        (file === "index.html" && (hrefFile === "index.html" || href === "./" || href === ".")) ||
-        (path.indexOf("/courses/") !== -1 && target === "courses.html") ||
-        (path.indexOf("/projects/") !== -1 && target === "projects.html") ||
-        (path.indexOf("/blog/") !== -1 && target === "blog.html");
+        target === "index.html" &&
+        (file === "index.html" || file === "" || path.indexOf("/courses/") === -1);
 
-      if (match || target === file) {
+      if (file === "index.html" && (hrefFile === "index.html" || target === "index.html")) {
+        match = true;
+      } else if (path.indexOf("/courses/") !== -1 || path.indexOf("/projects/") !== -1) {
+        match = false;
+      }
+
+      if (match) {
         link.setAttribute("aria-current", "page");
       } else {
         link.removeAttribute("aria-current");

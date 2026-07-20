@@ -48,7 +48,7 @@
     if (!code) {
       setHtml(
         host,
-        '<div class="empty-state"><p>Select a course from the <a href="../courses.html">Courses</a> page. Example: <code>course.html?code=D0036E</code>.</p></div>'
+        '<div class="empty-state"><p>Select a course from the <a href="../index.html">programme explorer</a>. Example: <code>course.html?code=D0036E</code>.</p></div>'
       );
       return;
     }
@@ -64,7 +64,7 @@
         host,
         '<div class="empty-state"><p>Course “' +
           D().escapeHtml(code) +
-          '” was not found. Return to <a href="../courses.html">Courses</a>.</p></div>'
+          '” was not found. Return to the <a href="../index.html">programme explorer</a>.</p></div>'
       );
       return;
     }
@@ -96,21 +96,21 @@
         : null;
 
     var periodLabel =
-      course.studyPeriod == null
-        ? "—"
-        : "Study period " + course.studyPeriod;
+      course.studyPeriod == null ? "—" : "Study period " + course.studyPeriod;
 
     var courseUrl = course.officialCourseUrl || "";
-    var officialLinksHtml = courseUrl
-      ? '<div class="card__actions">' +
-        '<a href="' +
+    var officialCourseLink = courseUrl
+      ? '<p><a class="btn btn--secondary" href="' +
         D().escapeHtml(courseUrl) +
-        '" rel="noopener noreferrer" target="_blank">Official LTU course page</a>' +
-        '<a href="' +
-        D().escapeHtml(courseUrl) +
-        '" rel="noopener noreferrer" target="_blank">Verify on LTU</a>' +
-        "</div>"
+        '" rel="noopener noreferrer" target="_blank">View official LTU course page</a></p>'
       : "<p>Official LTU course page: to be added after verification.</p>";
+
+    var syllabusLink =
+      course.officialSyllabusUrl
+        ? '<p><a class="btn btn--ghost" href="' +
+          D().escapeHtml(course.officialSyllabusUrl) +
+          '" rel="noopener noreferrer" target="_blank">View official syllabus</a></p>'
+        : "";
 
     var offering = course.offeringDetails || null;
     var offeringHtml = "";
@@ -129,21 +129,14 @@
         (offering.studyPace
           ? "<div><dt>Study pace</dt><dd>" + D().escapeHtml(offering.studyPace) + "</dd></div>"
           : "") +
-        (offering.applicationPeriodStart
-          ? "<div><dt>Application period starts</dt><dd>" +
-            D().escapeHtml(offering.applicationPeriodStart) +
-            "</dd></div>"
-          : "") +
         "</dl>" +
         (offering.notes ? "<p>" + D().escapeHtml(offering.notes) + "</p>" : "") +
         "<p><em>Offering-instance information for a specific period, not a permanent course property.</em></p>";
     }
 
     var contacts = Array.isArray(course.publicContacts) ? course.publicContacts : [];
-    var contactsHtml = "";
-    if (contacts.length) {
-      contactsHtml =
-        "<h3>Listed course contacts</h3>" +
+    var contactsHtml = contacts.length
+      ? "<h3>Listed course contacts</h3>" +
         '<p class="callout">Course contacts may change. Verify through the current official LTU course page.</p>' +
         "<ul>" +
         contacts
@@ -155,19 +148,20 @@
               D().escapeHtml(contact.name) +
               "</a> · " +
               D().escapeHtml(contact.role || "Listed course contact") +
-              " · Verified " +
-              D().escapeHtml(contact.lastVerified || "—") +
               "</li>"
             );
           })
           .join("") +
-        "</ul>";
-    }
+        "</ul>"
+      : "<p>No public profile contacts listed for this course yet.</p>";
 
     var officialFacts =
       '<dl class="meta-list">' +
       "<div><dt>Course code</dt><dd>" +
       D().escapeHtml(course.code) +
+      "</dd></div>" +
+      "<div><dt>Title</dt><dd>" +
+      D().escapeHtml(course.title) +
       "</dd></div>" +
       "<div><dt>ECTS</dt><dd>" +
       D().escapeHtml(String(course.ects)) +
@@ -178,31 +172,38 @@
       "<div><dt>Role</dt><dd>" +
       D().escapeHtml(D().formatStatus(course.role)) +
       "</dd></div>" +
+      (course.role === "elective-option"
+        ? "<div><dt>Selection</dt><dd>" +
+          D().escapeHtml(D().formatStatus(course.selectionStatus || "not-selected")) +
+          "</dd></div>"
+        : "") +
+      (course.role === "optional-non-degree"
+        ? "<div><dt>Degree</dt><dd>Outside the 120 ECTS total</dd></div>"
+        : "") +
+      "</dl>" +
+      "<p>" +
+      D().escapeHtml(course.summary || "") +
+      "</p>" +
+      offeringHtml;
+
+    var scheduleHtml =
+      '<dl class="meta-list">' +
       "<div><dt>Academic year</dt><dd>" +
       D().escapeHtml(course.academicYear || "—") +
       "</dd></div>" +
       "<div><dt>Period</dt><dd>" +
       D().escapeHtml(periodLabel) +
       "</dd></div>" +
-      "<div><dt>Schedule</dt><dd>" +
+      "<div><dt>My status</dt><dd>" +
+      D().statusBadge(course.myStatus) +
+      "</dd></div>" +
+      "<div><dt>Schedule confidence</dt><dd>" +
       D().statusBadge(course.scheduleConfidence) +
       "</dd></div>" +
       "<div><dt>Source status</dt><dd>" +
       D().escapeHtml(D().formatStatus(course.verificationStatus)) +
       "</dd></div>" +
-      "<div><dt>Syllabus URL</dt><dd>" +
-      D().escapeHtml(D().formatStatus(course.syllabusVerificationStatus || "not-yet-verified")) +
-      "</dd></div>" +
-      "<div><dt>Course page verified</dt><dd>" +
-      D().escapeHtml(course.officialCourseUrlVerifiedDate || "—") +
-      "</dd></div>" +
-      "</dl>" +
-      "<p>" +
-      D().escapeHtml(course.summary || "") +
-      "</p>" +
-      officialLinksHtml +
-      offeringHtml +
-      contactsHtml;
+      "</dl>";
 
     var prepHtml;
     if (prepItems.length === 0) {
@@ -210,7 +211,10 @@
     } else {
       prepHtml =
         '<p class="callout">' +
-        D().escapeHtml((prepData && prepData.disclaimer) || "My preparation topics — not an official LTU prerequisite list.") +
+        D().escapeHtml(
+          (prepData && prepData.disclaimer) ||
+            "My preparation topics — not an official LTU prerequisite list."
+        ) +
         '</p><ul class="roadmap-items">' +
         prepItems
           .sort(function (a, b) {
@@ -264,7 +268,9 @@
 
     var projectsHtml;
     if (projects.length === 0) {
-      projectsHtml = emptyPersonal("No linked public projects yet. Evidence will appear here when available.");
+      projectsHtml = emptyPersonal(
+        "No linked public projects yet. Evidence will appear here when available."
+      );
     } else {
       projectsHtml =
         '<div class="card-grid">' +
@@ -272,7 +278,7 @@
           .map(function (project) {
             var href = project.caseStudyUrl
               ? D().resolvePageLink(project.caseStudyUrl)
-              : D().resolvePageLink("projects.html");
+              : D().resolvePageLink("index.html");
             return (
               '<article class="card"><div class="card__meta">' +
               D().statusBadge(project.status) +
@@ -305,7 +311,6 @@
       host,
       '<nav aria-label="Breadcrumb"><ol class="breadcrumb">' +
         '<li><a href="../index.html">Home</a></li>' +
-        '<li><a href="../courses.html">Courses</a></li>' +
         '<li aria-current="page">' +
         D().escapeHtml(course.code) +
         "</li></ol></nav>" +
@@ -315,46 +320,53 @@
         D().escapeHtml(course.code) +
         " · " +
         D().escapeHtml(String(course.ects)) +
-        " ECTS</p><div class=\"card__meta\">" +
+        ' ECTS</p><div class="card__meta">' +
         D().statusBadge(course.myStatus) +
         D().statusBadge(course.scheduleConfidence) +
         '<span class="badge">' +
         D().escapeHtml(D().formatStatus(course.role)) +
         "</span></div></header>" +
-        zone("Official LTU information", "content-zone--official", "<h2>Official facts</h2>" + officialFacts) +
-        zone(
-          "My preparation plan",
-          "content-zone--prep",
-          "<h2>Before the course · preparation checklist</h2>" + prepHtml
-        ) +
+        zone("Official LTU information", "content-zone--official", "<h2>Official LTU facts</h2>" + officialFacts) +
+        zone("Official LTU information", "content-zone--official", "<h2>Schedule and status</h2>" + scheduleHtml) +
+        zone("My preparation plan", "content-zone--prep", "<h2>My preparation</h2>" + prepHtml) +
         zone(
           "Public external resource",
           "content-zone--resources",
-          "<h2>Materials and support</h2>" + resourcesHtml
-        ) +
-        zone(
-          "Project evidence",
-          "content-zone--projects",
-          "<h2>Related projects and evidence</h2>" + projectsHtml
+          "<h2>Course-specific materials and support</h2>" + resourcesHtml
         ) +
         zone(
           "My personal note",
           "content-zone--notes",
-          "<h2>My notes</h2>" + emptyPersonal("No public learning notes published for this course yet.")
+          "<h2>My learning notes</h2>" +
+            emptyPersonal("No public learning notes published for this course yet.")
+        ) +
+        zone(
+          "My personal note",
+          "content-zone--notes",
+          "<h2>Public-safe exercises</h2>" +
+            emptyPersonal("No public-safe exercises published for this course yet.")
+        ) +
+        zone(
+          "Project evidence",
+          "content-zone--projects",
+          "<h2>Projects and evidence</h2>" + projectsHtml
         ) +
         zone(
           "My reflection",
           "content-zone--reflections",
-          "<h2>Course reflections</h2>" + emptyPersonal("No reflections published yet.")
+          "<h2>Reflections</h2>" + emptyPersonal("No reflections published yet.")
         ) +
         zone(
           "Official LTU information",
           "content-zone--official",
-          "<h2>Official sources</h2>" +
+          "<h2>Official links and public profiles</h2>" +
+            officialCourseLink +
+            syllabusLink +
+            contactsHtml +
             sourceHtml +
             '<div class="callout callout--warning"><p>This page contains personal learning organisation and does not reproduce restricted course materials. Official details should be verified through university sources.</p></div>'
         ) +
-        '<p><em>Last updated: ' +
+        "<p><em>Last updated: " +
         D().escapeHtml(course.lastUpdated || "—") +
         "</em></p>"
     );

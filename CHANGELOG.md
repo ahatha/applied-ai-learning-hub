@@ -2,6 +2,23 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.0] — 2026-07-20
+
+### Added
+- JSON-driven programme explorer on `index.html` (`assets/js/explorer.js`)
+- Desktop hierarchy + details panel and mobile accordion explorer
+- Consolidated public surface: home, shared course hubs, 404, and repository docs
+
+### Changed
+- Navigation simplified to Home + theme toggle
+- Course hub sections reorganised with honest empty states
+- Official course CTA label: “View official LTU course page”
+- Sitemap and README updated for the consolidated site
+
+### Removed
+- Standalone portfolio pages (about, blog, contact, search, roadmap, projects catalogue, resources, programme, courses catalogue, templates, and legacy course HTML)
+- Unused catalogue JSON and unused `filters.js` / `search.js`
+
 ## [0.2.1] — 2026-07-20
 
 ### Added
@@ -38,5 +55,6 @@ All notable changes to this project are documented in this file.
 - Course detail page for Programming for Machine Learning
 - Project case study for the learning hub website
 - Introductory blog post: “Why I Am Building an Applied AI Learning Hub”
+
 - Privacy checklist, academic integrity notice, and deployment documentation
 - GitHub Pages path strategy using relative assets

@@ -551,3 +551,236 @@
   background: color-mix(in srgb, var(--focus) 14%, transparent);
   color: var(--focus);
 }
+
+/* Programme explorer */
+.programme-header {
+  padding-top: var(--space-7);
+}
+
+.programme-explorer {
+  margin-top: var(--space-4);
+}
+
+.explorer-desktop {
+  display: grid;
+  grid-template-columns: minmax(16rem, 1.1fr) minmax(18rem, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.explorer-mobile {
+  display: none;
+}
+
+.explorer-panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  padding: var(--space-4);
+  min-height: 12rem;
+}
+
+.explorer-panel--tree {
+  max-height: min(70vh, 40rem);
+  overflow: auto;
+}
+
+.explorer-tree,
+.explorer-node__children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.explorer-node {
+  margin: 0;
+}
+
+.explorer-node__children {
+  margin-left: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--border);
+}
+
+.explorer-node__btn {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  margin: 0.15rem 0;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.explorer-node__btn:hover,
+.explorer-node__btn:focus-visible {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.explorer-node.is-selected > .explorer-node__btn {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.explorer-node.role-compulsory > .explorer-node__btn,
+.explorer-node__btn.role-compulsory {
+  border-left: 3px solid var(--accent);
+}
+
+.explorer-node.role-elective > .explorer-node__btn,
+.explorer-node__btn.role-elective {
+  border-left: 3px solid var(--warm);
+}
+
+.explorer-node.role-optional > .explorer-node__btn,
+.explorer-node__btn.role-optional {
+  border-left: 3px solid var(--text-muted);
+}
+
+.explorer-node.role-thesis > .explorer-node__btn,
+.explorer-node__btn.role-thesis {
+  border-left: 3px solid var(--focus);
+}
+
+.explorer-legend {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.explorer-legend__list {
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-right: 0.4rem;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+.legend-swatch.role-compulsory {
+  background: var(--accent);
+}
+
+.legend-swatch.role-elective {
+  background: var(--warm);
+}
+
+.legend-swatch.role-optional {
+  background: var(--text-muted);
+}
+
+.legend-swatch.role-thesis {
+  background: var(--focus);
+}
+
+.explorer-breadcrumb {
+  margin-bottom: var(--space-3);
+}
+
+.breadcrumb-btn {
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.breadcrumb-btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.details-card h2 {
+  margin-top: 0;
+  font-family: var(--font-serif);
+}
+
+.details-card.role-elective {
+  border-left: 4px solid var(--warm);
+  padding-left: var(--space-4);
+}
+
+.details-card.role-optional {
+  border-left: 4px solid var(--text-muted);
+  padding-left: var(--space-4);
+}
+
+.details-card.role-thesis {
+  border-left: 4px solid var(--focus);
+  padding-left: var(--space-4);
+}
+
+.details-card.role-compulsory {
+  border-left: 4px solid var(--accent);
+  padding-left: var(--space-4);
+}
+
+.explorer-acc {
+  margin: 0 0 var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.75rem;
+  background: var(--bg-elevated);
+}
+
+.explorer-acc--nested {
+  margin: var(--space-2) 0;
+}
+
+.explorer-acc summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.35rem 0;
+}
+
+.explorer-acc summary:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.explorer-acc-period {
+  margin: var(--space-2) 0;
+}
+
+.explorer-acc-period ul {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+}
+
+.link-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.site-footer__grid--compact {
+  grid-template-columns: 2fr 1fr;
+}

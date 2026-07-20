@@ -65,6 +65,7 @@
   .fact-strip,
   .filters,
   .site-footer__grid,
+  .site-footer__grid--compact,
   .search-box {
     grid-template-columns: 1fr;
   }
@@ -80,6 +81,26 @@
 
   .brand__text span {
     max-width: 12rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .explorer-desktop {
+    display: none;
+  }
+
+  .explorer-mobile {
+    display: block;
+  }
+
+  .programme-explorer {
+    overflow-x: hidden;
+  }
+
+  .explorer-panel--tree,
+  .explorer-acc,
+  .explorer-node__btn {
+    max-width: 100%;
   }
 }
 

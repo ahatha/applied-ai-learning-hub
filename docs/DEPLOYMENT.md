@@ -48,10 +48,13 @@ python -m http.server 8080
 
 Check:
 
-- Home, Courses, Projects, Roadmap, Blog, Search
-- Mobile menu (Escape + outside click)
+- Home programme explorer (`/`)
+- Course hubs (`/courses/course.html?code=D0036E`, `D7062E`)
+- 404 page
 - Theme toggle persistence
-- Relative links from nested course/project/blog pages
+- Relative links from nested course/evidence pages
+- Mobile accordion explorer (no horizontal scrolling)
+- Keyboard selection in the explorer (Tab, Enter/Space, Escape)
 
 ## Custom domain readiness
 
