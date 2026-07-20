@@ -1,0 +1,41 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+.idea/
+.vscode/
+*.code-workspace
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+creds.txt
+Creds.txt
+**/secrets/
+**/credentials/
+
+# Local notes that should stay private
+private/
+notes-private/
+*.local.md
+
+# Dependencies / build (future-proofing)
+node_modules/
+dist/
+.cache/
+.vercel/
+.netlify/
+
+# Python local environments (if notebooks are added later)
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Logs
+*.log

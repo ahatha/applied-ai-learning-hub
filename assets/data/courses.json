@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "description": "Public course catalogue for the Applied AI Learning Hub. Add a new course object and optionally create courses/<id>.html.",
+    "lastUpdated": "2026-07-20"
+  },
+  "courses": [
+    {
+      "id": "programming-for-machine-learning",
+      "title": "Programming for Machine Learning",
+      "code": "D0036E",
+      "ects": null,
+      "academicYear": "2026–2027",
+      "semester": "Autumn 2026",
+      "status": "upcoming",
+      "category": "Programming",
+      "order": 1,
+      "summary": "Developing Python programming and computational foundations for machine learning.",
+      "objectives": [
+        "Strengthen Python programming for data and ML workflows",
+        "Practise computational problem-solving relevant to machine learning"
+      ],
+      "skills": ["Python", "NumPy", "pandas", "Algorithms", "Data processing"],
+      "relatedProjects": ["exploratory-data-analysis-python", "applied-ai-learning-hub"],
+      "officialUrl": "",
+      "publicNotesUrl": "courses/programming-for-machine-learning.html",
+      "lastUpdated": "2026-07-20"
+    },
+    {
+      "id": "ai-pattern-recognition",
+      "title": "Artificial Intelligence and Pattern Recognition",
+      "code": "D7062E",
+      "ects": null,
+      "academicYear": "2026–2027",
+      "semester": "Autumn 2026",
+      "status": "upcoming",
+      "category": "Artificial Intelligence",
+      "order": 2,
+      "summary": "Foundations of artificial intelligence and pattern recognition methods.",
+      "objectives": [
+        "Build conceptual foundations in AI and pattern recognition",
+        "Connect classical methods to practical learning problems"
+      ],
+      "skills": ["Pattern recognition", "AI foundations", "Classification concepts"],
+      "relatedProjects": ["tips-dataset-clustering-pca"],
+      "officialUrl": "",
+      "publicNotesUrl": "",
+      "lastUpdated": "2026-07-20"
+    },
+    {
+      "id": "neural-networks",
+      "title": "Neural Networks and Learning Machines",
+      "code": "D7046E",
+      "ects": null,
+      "academicYear": "2026–2027",
+      "semester": "Spring 2027",
+      "status": "planned",
+      "category": "Deep Learning",
+      "order": 3,
+      "summary": "Planned study of neural networks and learning machines within the programme sequence.",
+      "objectives": [
+        "Understand core neural network concepts",
+        "Connect theory to practical deep learning workflows"
+      ],
+      "skills": ["Neural networks", "Deep learning foundations"],
+      "relatedProjects": [],
+      "officialUrl": "",
+      "publicNotesUrl": "",
+      "lastUpdated": "2026-07-20"
+    }
+  ]
+}

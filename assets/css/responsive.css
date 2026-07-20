@@ -1,0 +1,90 @@
+/* Responsive layout adjustments */
+
+@media (max-width: 1100px) {
+  .fact-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .card-grid,
+  .skill-list,
+  .roadmap-items,
+  .contact-grid,
+  .meta-list {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: calc(var(--header-h) + 0.5rem);
+    right: 1rem;
+    left: 1rem;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-4);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .site-nav__list {
+    flex-direction: column;
+  }
+
+  .site-nav__list a {
+    border-radius: var(--radius-sm);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+}
+
+@media (max-width: 700px) {
+  .fact-strip,
+  .filters,
+  .site-footer__grid,
+  .search-box {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: var(--space-7);
+  }
+
+  .section,
+  .site-main {
+    padding-block: var(--space-6);
+  }
+
+  .brand__text span {
+    max-width: 12rem;
+  }
+}
+
+@media (min-width: 901px) {
+  .header-actions {
+    display: contents;
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "description": "High-level programme and learning milestones. Add entries as real events occur. Do not invent completion dates.",
+    "lastUpdated": "2026-07-20"
+  },
+  "milestones": [
+    {
+      "id": "programme-start-window",
+      "date": "2026",
+      "title": "Master programme period begins",
+      "description": "Master Programme in Applied Artificial Intelligence at Luleå University of Technology (2026–2028, distance learning).",
+      "status": "upcoming",
+      "category": "programme"
+    },
+    {
+      "id": "learning-hub-launch",
+      "date": "2026-07",
+      "title": "Applied AI Learning Hub launched",
+      "description": "Public site structure established for courses, projects, roadmap, and learning notes.",
+      "status": "in-progress",
+      "category": "portfolio"
+    },
+    {
+      "id": "autumn-2026-courses",
+      "date": "2026-08",
+      "title": "Autumn 2026 coursework window",
+      "description": "Upcoming focus includes Programming for Machine Learning and Artificial Intelligence and Pattern Recognition.",
+      "status": "upcoming",
+      "category": "courses"
+    },
+    {
+      "id": "spring-2027-neural-networks",
+      "date": "2027",
+      "title": "Neural networks coursework (planned)",
+      "description": "Neural Networks and Learning Machines planned for Spring 2027.",
+      "status": "planned",
+      "category": "courses"
+    },
+    {
+      "id": "thesis-stage",
+      "date": "2028",
+      "title": "Research and thesis stage",
+      "description": "Later-programme focus on research design, evaluation, academic writing, and thesis work.",
+      "status": "planned",
+      "category": "research"
+    }
+  ]
+}

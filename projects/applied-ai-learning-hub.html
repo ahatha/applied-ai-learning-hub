@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" data-asset-base="../assets/" data-path-depth="1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Applied AI Learning Hub Website | Project case study</title>
+  <meta name="description" content="Case study for building a public static learning portfolio for applied AI studies.">
+  <link rel="canonical" href="https://ahatha.github.io/applied-ai-learning-hub/projects/applied-ai-learning-hub.html">
+  <meta name="theme-color" content="#0f6b63">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Applied AI Learning Hub Website | Project case study">
+  <meta property="og:description" content="Case study for building a public static learning portfolio for applied AI studies.">
+  <meta property="og:url" content="https://ahatha.github.io/applied-ai-learning-hub/projects/applied-ai-learning-hub.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Applied AI Learning Hub Website | Project case study">
+  <meta name="twitter:description" content="Case study for building a public static learning portfolio for applied AI studies.">
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("aailh-theme");
+        var theme = stored === "light" || stored === "dark"
+          ? stored
+          : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <noscript><div class="noscript-banner">JavaScript is disabled. Core pages remain readable; filters and dynamic lists need JavaScript.</div></noscript>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="../index.html">
+        <span class="brand__mark" aria-hidden="true">AI</span>
+        <span class="brand__text">Applied AI Learning Hub<small>Personal learning portfolio</small></span>
+      </a>
+      <div class="header-actions">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">◐</button>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">☰</button>
+      </div>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a href="../index.html" data-nav="index.html">Home</a></li>
+          <li><a href="../about.html" data-nav="about.html">About</a></li>
+          <li><a href="../programme.html" data-nav="programme.html">Programme</a></li>
+          <li><a href="../courses.html" data-nav="courses.html">Courses</a></li>
+          <li><a href="../roadmap.html" data-nav="roadmap.html">Learning Roadmap</a></li>
+          <li><a href="../projects.html" data-nav="projects.html" aria-current="page">Projects</a></li>
+          <li><a href="../blog.html" data-nav="blog.html">Blog</a></li>
+          <li><a href="../resources.html" data-nav="resources.html">Resources</a></li>
+          <li><a href="../contact.html" data-nav="contact.html">Contact</a></li>
+          <li><a href="../search.html" data-nav="search.html">Search</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="site-main">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li aria-current="page">Applied AI Learning Hub</li>
+        </ol>
+      </nav>
+      <header class="page-header">
+        <p class="eyebrow">Case study</p>
+        <h1>Applied AI Learning Hub Website</h1>
+        <p class="lead">A maintainable public portfolio for courses, projects, roadmap progress, and reflective writing across the 2026–2028 master’s programme.</p>
+      </header>
+      <dl class="meta-list">
+        <div><dt>Status</dt><dd><span class="badge badge--in-progress">In progress</span></dd></div>
+        <div><dt>Category</dt><dd>System Design for AI</dd></div>
+        <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, JSON, GitHub Pages</dd></div>
+        <div><dt>Privacy</dt><dd><span class="badge badge--completed">Privacy-safe</span></dd></div>
+      </dl>
+      <article class="prose">
+        <h2>1. Project overview</h2>
+        <p>This website is both a communication tool and a systems project: information architecture, accessible UI, content governance, and long-term maintainability.</p>
+        <h2>2. Problem</h2>
+        <p>A two-year learning journey produces fragmented notes and projects. Without a public structure, progress is hard to demonstrate and easy to lose.</p>
+        <h2>3. Why the problem matters</h2>
+        <p>Employers, mentors, and future collaborators benefit from clear evidence of learning. Writing also improves understanding.</p>
+        <h2>4. Dataset</h2>
+        <p>Not applicable. Content is authored documentation and metadata, not a modelling dataset.</p>
+        <h2>5–6. Preparation and exploration</h2>
+        <p>Content types were separated into JSON data files (courses, projects, skills, roadmap, resources, blog) and HTML templates for richer pages.</p>
+        <h2>7. Methods</h2>
+        <ul>
+          <li>Static site architecture suitable for GitHub Pages</li>
+          <li>Progressive enhancement with vanilla JavaScript</li>
+          <li>Relative asset paths for project-site and user-site deployment</li>
+          <li>Explicit privacy and academic-integrity rules</li>
+        </ul>
+        <h2>8–10. Selection, metrics, and results</h2>
+        <p>Success is measured by clarity, maintainability, accessibility, and honesty of status labels — not vanity metrics. The first milestone delivers a usable multi-page hub with data-driven catalogues.</p>
+        <h2>11. Visualisations</h2>
+        <p>No model charts yet. UI relies on typography, status badges, and structured cards rather than decorative AI imagery.</p>
+        <h2>12–14. Errors, limitations, and ethics</h2>
+        <p>Risks include accidental publication of private material and overclaiming skills. Mitigations include checklists, placeholders for unverified links, and careful status vocabulary.</p>
+        <h2>15. Lessons learned</h2>
+        <p>Central JSON files reduce duplication. Honest “upcoming/planned” labels build more trust than empty completion claims.</p>
+        <h2>16. Future improvements</h2>
+        <ul>
+          <li>Additional course and project case studies</li>
+          <li>More learning notes</li>
+          <li>Optional migration to Astro/Next later if needed</li>
+          <li>Custom domain when chosen</li>
+        </ul>
+        <h2>17. Reproducibility</h2>
+        <pre><code>git clone https://github.com/ahatha/applied-ai-learning-hub.git
+cd applied-ai-learning-hub
+# Open index.html locally, or serve the folder with any static file server.</code></pre>
+        <h2>18. Repository and demo</h2>
+        <ul>
+          <li><a href="https://github.com/ahatha/applied-ai-learning-hub" rel="noopener noreferrer" target="_blank">GitHub repository</a></li>
+          <li>Live demo: to be added after GitHub Pages is enabled</li>
+        </ul>
+        <p><em>Last updated: 2026-07-20</em></p>
+      </article>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div>
+        <h2>Applied AI Learning Hub</h2>
+        <p>A personal learning portfolio documenting a transition from solution architecture into applied artificial intelligence.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="../courses.html">Courses</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../roadmap.html">Learning roadmap</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Notes</h2>
+        <ul>
+          <li><a href="https://github.com/ahatha/applied-ai-learning-hub" rel="noopener noreferrer" target="_blank">GitHub repository</a></li>
+          <li><a href="../ACADEMIC_INTEGRITY.md">Academic integrity</a></li>
+          <li><a href="../PRIVACY_CHECKLIST.md">Privacy checklist</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container disclaimer">
+      <p>&copy; <span id="footer-year">2026</span> Applied AI Learning Hub. Personal learning portfolio — not an official website of Luleå University of Technology.</p>
+    </div>
+  </footer>
+  <script src="../assets/js/theme.js" defer></script>
+  <script src="../assets/js/navigation.js" defer></script>
+  <script src="../assets/js/data-loader.js" defer></script>
+  <script src="../assets/js/filters.js" defer></script>
+  <script src="../assets/js/main.js" defer></script>
+
+</body>
+</html>
