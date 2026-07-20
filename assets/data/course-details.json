@@ -1,0 +1,1064 @@
+{
+  "meta": {
+    "lastUpdated": "2026-07-20",
+    "description": "Enriched course details for all 18 programme items. Arrays: syllabus.contents, examination.modules, literature. Contacts may include public email/phone when available from official sources.",
+    "schema": "meta + syllabus + examination + literature + contact + fillNotes"
+  },
+  "courses": {
+    "D0036E": {
+      "meta": {
+        "id": "D0036E",
+        "title": "Programming for Machine Learning",
+        "subject": "Computer Science and Engineering",
+        "subjectGroup": "Computer Technology",
+        "mainFieldOfStudy": "Computer Science and Engineering",
+        "gradeScale": "G U 3 4 5",
+        "selection": "The selection is based on 1-165 credits.",
+        "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/syllabuses/course-syllabus?id=D0036E",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D0036E&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D0036E&lasPeriod=224&locale=en",
+        "verificationStatus": "filled-from-public-syllabus-autumn-2026"
+      },
+      "syllabus": {
+        "aim": "After completion of the course, the student should be able to: demonstrate knowledge in designing object-oriented programs and capacity to plan and carry out advanced tasks in the form of implementation of programs designed to solve specific machine learning problems; demonstrate the ability to use data structures, algorithms and tools available in state-of-the-art machine learning libraries to solve problems in a modern object-oriented language; demonstrate the ability to critically analyze and evaluate technical solutions in the form of existing programs for machine learning, as well as predict and evaluate sequences of events in these.",
+        "contents": [
+          "Variables and program states, choice, iteration, recursion.",
+          "Arithmetic and logic expressions, strings and text processing.",
+          "Generalisation, parametrisation and function abstraction.",
+          "Dynamic data structures, the file concept, error handling, and standard libraries for machine learning.",
+          "Introduction to object-oriented program development and development environments.",
+          "Problem solving, program structure and documentation."
+        ],
+        "realization": "Each course occasion's language and form is stated and appear on the course page on Luleå University of Technology's website. Lectures, read and view self-study material, mandatory quizzes, laboratory work in the form of computer programming exercises.",
+        "entryRequirements": [
+          "Successfully completed upper secondary education and documented skills in English language.",
+          "Completed courses of 60 credits, of which at least 7.5 credits programming and 22.5 credits mathematics.",
+          "Mathematical knowledge must include Calculus, Linear Algebra and Logic or Statistics.",
+          "Good knowledge in English, equivalent to English 6."
+        ]
+      },
+      "examination": {
+        "description": "If there is a decision on special educational support, in accordance with the Guideline Student's rights and obligations at Luleå University of Technology, an adapted or alternative form of examination can be provided. Written examination with differentiated numerical grades, as well as oral and written presentation of programming exercises. Passing the programming exercises part of the course requires approval of all individual exercises. Unauthorized aids during exams and assessments: if a student, by using unauthorized aids, tries to mislead during an exam or when a study performance is to be assessed, disciplinary measures may be taken. The term “unauthorized aids” refers to aids that the teacher has not previously specified as permissible aids and that may assist in solving the examination task. This means that all aids not specified as permissible are prohibited. The Swedish version has interpretative precedence in the event of a conflict.",
+        "modules": [
+          {
+            "code": "0001",
+            "name": "Written exam",
+            "credits": 4.5,
+            "gradeScale": "G U 3 4 5",
+            "type": "Mandatory",
+            "fromPeriod": "H22"
+          },
+          {
+            "code": "0002",
+            "name": "Programming exercises",
+            "credits": 3.0,
+            "gradeScale": "U G#",
+            "type": "Mandatory",
+            "fromPeriod": "H22"
+          }
+        ]
+      },
+      "literature": [
+        {
+          "category": "Programming (book)",
+          "title": "Think Python: How to Think Like a Computer Scientist",
+          "author": "Allen B. Downey",
+          "publisher": "O'Reilly Media",
+          "isbn": "9781491939369",
+          "url": "",
+          "notes": ""
+        },
+        {
+          "category": "Programming (online alternative)",
+          "title": "Think Python: How to Think Like a Computer Scientist",
+          "author": "Allen B. Downey",
+          "publisher": "Green Tea Press",
+          "isbn": "",
+          "url": "http://greenteapress.com/wp/think-python-2e/",
+          "notes": "Link for download"
+        },
+        {
+          "category": "Machine learning (book)",
+          "title": "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 2nd or later edition",
+          "author": "Aurélien Géron",
+          "publisher": "O'Reilly Media, Inc.",
+          "isbn": "9781492032649",
+          "url": "",
+          "notes": ""
+        }
+      ],
+      "contact": {
+        "name": "András Bota",
+        "role": "Senior Lecturer / Examiner",
+        "phone": "0920-49",
+        "email": "andras.bota@ltu.se",
+        "profileUrl": ""
+      },
+      "fillNotes": "Filled from official Autumn 2026 course syllabus text (source page updated 19 December 2023). Syllabus last revised / established: Jonny Johansson, HUL SRT 2022-02-11. Examiner phone appears truncated on the source page as 0920-49."
+    },
+    "D7062E": {
+      "meta": {
+        "id": "D7062E",
+        "title": "Artificial Intelligence and Pattern Recognition",
+        "subject": "Computer Science and Engineering",
+        "subjectGroup": "Computer Technology",
+        "mainFieldOfStudy": "Computer Science and Engineering",
+        "gradeScale": "G U 3 4 5",
+        "selection": "The selection is based on 30-285 credits",
+        "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/d70/d7062e-artificial-intelligence-and-pattern-recognition",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7062E&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7062E&lasPeriod=224&locale=en",
+        "verificationStatus": "filled-from-public-syllabus-autumn-2026"
+      },
+      "syllabus": {
+        "aim": "After completion of the course, the student should be able to: define the area of Artificial Intelligence (in particular, with relation to control theory and computer science), and shortly describe its major fields; list a minimum of three existing tools implementing AI methods, and describe their basic characteristics; given two existing tools implementing AI methods, compare them with respect to their basic characteristics. In-depth understanding of the basic methods and theories used in AI and pattern recognition. Given a real-life applied AI problem that the student has encountered during the course, or that is analogue to those the student encountered during the course: categorize the problem using standard concepts; list a minimum of three appropriate AI methods to tackle the problem; describe in their own words at minimum two appropriate AI methods to tackle the problem; apply one appropriate AI method to tackle the problem, given access to the necessary tool implementing AI methods, and data relevant to the problem. Understanding of appearance-based recognition approaches for robotic applications (e.g. navigation, detection).",
+        "contents": [
+          "Artificial Intelligence as a subject area, its history and its precursors, a basic introduction into robotics, reasoning and retrieval systems, machine learning, and ethical aspects of AI.",
+          "Theory and mathematical methodology of sub-symbolic AI methods.",
+          "Probability theory as applied in pattern recognition contexts.",
+          "Machine Learning and pattern recognition methods like K-NN and variants, Support Vector Machines, Naïve Bayes and Bayesian Networks, Expectation Maximization, and others.",
+          "Methods for improving AI and pattern recognition methods, such as multiple classifier combination, ensemble methods, bagging, boosting, and extended methods.",
+          "Unsupervised learning techniques, such as clustering (k-means, hierarchical, DBSCAN), PCA, LDA, and other pattern analysis techniques.",
+          "Bag of Visual Words technique for appearance based recognition."
+        ],
+        "realization": "Each course occasion's language and form is stated and appear on the course page on Luleå University of Technology's website. Lectures will be given in the form of short videos 6-10 minutes covering a specific concept related to the module; a short reflection question will be asked after the video to confirm the success of delivering the knowledge. Weekly live sessions will be conducted where students can ask the instructors and sort out their concerns if they exist. A project related to the covered topics should be delivered at the end of the module as the major contribution from the students; the project will be split into different tasks, and each task will be assigned to the students at the end of the relevant module.",
+        "entryRequirements": [
+          "Successfully completed the first cycle (general entry requirements for second cycle studies).",
+          "Good understanding of mathematical analysis and linear algebra.",
+          "Ability to develop and apply computer programs to solve mathematically formulated problems.",
+          "Understanding of basic mathematical statistics including probability distributions, expectation and variance.",
+          "Understanding of basic signal processing including sampling, time-discrete processing of time-continuous signals, linear and time-invariant systems."
+        ]
+      },
+      "examination": {
+        "description": "If there is a decision on special educational support, in accordance with the Guideline Student's rights and obligations at Luleå University of Technology, an adapted or alternative form of examination can be provided. Oral examination with differentiated numerical grades, as well as different quizzes and project divided into different tasks. Eligibility to attend the oral exam requires approval of all individual quizzes and project's tasks. Unauthorized aids during exams and assessments: if a student, by using unauthorized aids, tries to mislead during an exam or when a study performance is to be assessed, disciplinary measures may be taken. The term “unauthorized aids” refers to aids that the teacher has not previously specified as permissible aids and that may assist in solving the examination task. This means that all aids not specified as permissible are prohibited. The Swedish version has interpretative precedence in the event of a conflict.",
+        "modules": [
+          {
+            "code": "0001",
+            "name": "Oral exam",
+            "credits": 4.5,
+            "gradeScale": "G U 3 4 5",
+            "type": "Mandatory",
+            "fromPeriod": "H22"
+          },
+          {
+            "code": "0002",
+            "name": "Reflective quizzes and project tasks",
+            "credits": 3.0,
+            "gradeScale": "U G#",
+            "type": "Mandatory",
+            "fromPeriod": "H22"
+          }
+        ]
+      },
+      "literature": [
+        {
+          "category": "One of the following books",
+          "title": "Pattern Classification",
+          "author": "Duda, Hart & Stork",
+          "publisher": "John Wiley & Sons",
+          "isbn": "",
+          "url": "",
+          "notes": "2001"
+        },
+        {
+          "category": "One of the following books",
+          "title": "Pattern Recognition and Machine Learning",
+          "author": "Christopher M. Bishop",
+          "publisher": "",
+          "isbn": "",
+          "url": "",
+          "notes": "2006"
+        },
+        {
+          "category": "One of the following books",
+          "title": "Introduction to Machine Learning (fourth edition)",
+          "author": "Ethem Alpaydin",
+          "publisher": "",
+          "isbn": "",
+          "url": "",
+          "notes": "2020"
+        }
+      ],
+      "contact": {
+        "name": "Hamam Mokayed",
+        "role": "Associate Professor / Examiner",
+        "phone": "0920-492075",
+        "email": "hamam.mokayed@ltu.se",
+        "profileUrl": "https://www.ltu.se/en/staff/m/hamam-mokayed"
+      },
+      "fillNotes": "Filled from official Autumn 2026 course syllabus text. Syllabus last revised / established: Jonny Johansson, HUL SRT 2022-02-14."
+    },
+    "S0046P": {
+      "meta": {
+        "id": "S0046P",
+        "title": "Swedish for International Students 1",
+        "subject": "Swedish",
+        "subjectGroup": "Swedish/Scandinavian Languages",
+        "mainFieldOfStudy": "",
+        "gradeScale": "G U 3 4 5",
+        "selection": "The selection is based on final school grades or Swedish Scholastic Aptitude Test.",
+        "offeredBy": "Department of Health, Education and Technology",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/s00/s0046p-swedish-for-international-students-1",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=S0046P&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=S0046P&lasPeriod=224&locale=en",
+        "verificationStatus": "filled-from-public-syllabus"
+      },
+      "syllabus": {
+        "aim": "After finished course, the student is to have gained basic language skills. The student must: handle everyday language situations so that the student can present themselves and their background in Swedish; be able to read and understand simple Swedish texts; be able to make use of basic knowledge about the structure of the Swedish language.",
+        "contents": [
+          "Basic vocabulary, phrases and grammar such as word order of principal clauses, the present tense and pronouns.",
+          "Basic vocabulary.",
+          "Time expressions.",
+          "Pronunciation training.",
+          "Listening comprehension.",
+          "Basic everyday phrases."
+        ],
+        "realization": "Each course occasion's language and form are stated and appear on the course page on Luleå University of Technology's website. Teaching and learning is done by short walkthroughs and practical exercises designed to make the student try and develop their abilities in Swedish. The student must: be able to recount everyday events both in speech and in writing; perform oral and written assignments both individually and in groups; perform listening comprehension exercises; acquire knowledge of basic grammar; perform reading comprehension exercises. Active participation during lessons as well as home studies are a requirement for the student to attain the knowledge required for a passing grade.",
+        "entryRequirements": [
+          "Successfully completed upper secondary education and documented skills in English language.",
+          "Exemption of the requirement in Swedish is granted for those with foreign grades.",
+          "Swedish upper secondary school course English 6, or English level 2."
+        ]
+      },
+      "examination": {
+        "description": "If there is a decision on special educational support, in accordance with the Guideline Student's rights and obligations at Luleå University of Technology, an adapted or alternative form of examination can be provided. Written examination. Unauthorized aids during exams and assessments: if a student, by using unauthorized aids, tries to mislead during an exam or when a study performance is to be assessed, disciplinary measures may be taken. The term “unauthorized aids” refers to aids that the teacher has not previously specified as permissible aids and that may assist in solving the examination task. This means that all aids not specified as permissible are prohibited. The Swedish version has interpretative precedence in the event of a conflict.",
+        "modules": [
+          {
+            "code": "0001",
+            "name": "Written exam",
+            "credits": 3.0,
+            "gradeScale": "G U 3 4 5",
+            "type": "Mandatory",
+            "fromPeriod": "H14"
+          }
+        ]
+      },
+      "literature": [
+        {
+          "category": "Course book",
+          "title": "Rivstart A1/A2. Textbok, tredje upplagan",
+          "author": "Paula Levy Scherrer & Karl Lindemalm",
+          "publisher": "Natur och kultur: Stockholm",
+          "isbn": "9789127462342",
+          "url": "",
+          "notes": "2023. Kapitel 1–3."
+        }
+      ],
+      "contact": {
+        "name": "Katja Merkle Söderholm",
+        "role": "Lecturer / Examiner",
+        "phone": "0920-492288",
+        "email": "katja.merkle-soderholm@ltu.se",
+        "profileUrl": ""
+      },
+      "fillNotes": "Filled from official course syllabus text. Syllabus last revised: Anna Öqvist, 2022-02-11. Syllabus established: Monica Johansson, 2014-02-14. Main field of study not listed on the source page."
+    },
+    "D0034E": {
+      "meta": {
+        "id": "D0034E",
+        "title": "Applied AI, Knowledge Management and Reasoning",
+        "subject": "Computer Science and Engineering",
+        "subjectGroup": "Computer Technology",
+        "mainFieldOfStudy": "Computer Science and Engineering",
+        "gradeScale": "G U 3 4 5",
+        "selection": "The selection is based on 1-165 credits.",
+        "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/d00/d0034e-applied-ai-knowledge-management-and-reasoning",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D0034E&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D0034E&lasPeriod=224&locale=en",
+        "verificationStatus": "filled-from-public-syllabus-autumn-2026"
+      },
+      "syllabus": {
+        "aim": "The course covers the fundamentals of models and computation methods of Artificial Intelligence. After the course the student should be able to: demonstrate knowledge of the disciplinary foundation and of proven experience in the design and analysis of systems built using principles of artificial intelligence; demonstrate the understanding of methods and theories in the field of artificial intelligence; demonstrate abilities to apply AI methods for solving practical tasks; demonstrate the ability to evaluate the performance of different AI models in different problem setups and quality characteristics.",
+        "contents": [
+          "Basic methodology and paradigms for artificial intelligence.",
+          "Learning methods and strategies including supervised, unsupervised, and reinforcement learning.",
+          "Methods for evaluating learning outcomes.",
+          "Knowledge models and reasoning models."
+        ],
+        "realization": "Each course occasion's language and form are stated and appear on the course page on Luleå University of Technology's website. The education consists of lectures, laboratory work and quizzes. The laboratories are presented orally and may be provided with a deadline for submission. There are no elective course elements. Unapproved students must retake the unsuccessful examination moment next time the course is given.",
+        "entryRequirements": [
+          "Successfully completed upper secondary education and documented skills in English language.",
+          "Courses of at least 60 credits at first cycle.",
+          "Programming in Python (D0009E Introduction to Programming, 7.5 hp).",
+          "Object oriented programming (D0010E Object-oriented Programming and Design, 7.5 hp).",
+          "Basic knowledge in mathematics (M0049M Linear Algebra and Differential Equations, 7.5 hp).",
+          "Boolean algebra (M0009M Discrete Mathematics, 7.5 hp).",
+          "Knowledge in English, equivalent to English 6."
+        ]
+      },
+      "examination": {
+        "description": "If there is a decision on special educational support, in accordance with the Guideline Student's rights and obligations at Luleå University of Technology, an adapted or alternative form of examination can be provided. Continuous examination with laboratory work and quizzes that give a number of points. The grade in the course is based on how many points you have accumulated. Unauthorized aids during exams and assessments: if a student, by using unauthorized aids, tries to mislead during an exam or when a study performance is to be assessed, disciplinary measures may be taken. The term “unauthorized aids” refers to aids that the teacher has not previously specified as permissible aids and that may assist in solving the examination task. This means that all aids not specified as permissible are prohibited. The Swedish version has interpretative precedence in the event of a conflict.",
+        "modules": [
+          {
+            "code": "0004",
+            "name": "Laboratory work",
+            "credits": 4.0,
+            "gradeScale": "G U 3 4 5",
+            "type": "Mandatory",
+            "fromPeriod": "H26"
+          },
+          {
+            "code": "0005",
+            "name": "Quizzes",
+            "credits": 3.5,
+            "gradeScale": "G U 3 4 5",
+            "type": "Mandatory",
+            "fromPeriod": "H26"
+          }
+        ]
+      },
+      "literature": [
+        {
+          "category": "Course book",
+          "title": "Artificial Intelligence: A Modern Approach, Global Edition",
+          "author": "Stuart Russell and Peter Norvig",
+          "publisher": "",
+          "isbn": "9781292401133",
+          "url": "",
+          "notes": ""
+        }
+      ],
+      "contact": {
+        "name": "Evgeny Osipov",
+        "role": "Professor / Examiner",
+        "phone": "0920-491578",
+        "email": "evgeny.osipov@ltu.se",
+        "profileUrl": "https://www.ltu.se/en/staff/e/evgeny-osipov"
+      },
+      "fillNotes": "Filled from official Autumn 2026 course syllabus text. Syllabus last revised: Robert Brännström 2026-02-13. Syllabus established: Jonny Johansson, HUL SRT 2022-02-11."
+    },
+    "E7010N": {
+      "meta": {
+        "id": "E7010N",
+        "title": "Artificial Intelligence and Business Development",
+        "subject": "",
+        "gradeScale": "",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/e70/e7010n-artificial-intelligence-and-business-development",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=E7010N&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=E7010N&lasPeriod=224&locale=en",
+        "verificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      },
+      "syllabus": {
+        "aim": "Describe concepts and theories related to the analysis, evaluation, and implementation of AI technology business opportunities in organizations. Explain and qualitatively assess the probability of a successful AI application. Argue about the different characteristics of AI-based business models.",
+        "contents": [
+          "The course has a business development and organizational perspective on the application of AI technology.",
+          "Key areas include AI-driven business model innovation, analysis of AI technology and digital transformation, focusing on industrial companies."
+        ],
+        "realization": "",
+        "entryRequirements": []
+      },
+      "examination": {
+        "description": "Examination is accomplished through compulsory assignments.",
+        "modules": []
+      },
+      "literature": [
+        {
+          "category": "To be structured from literature PDF",
+          "title": "",
+          "author": "",
+          "publisher": "",
+          "isbn": "",
+          "url": "",
+          "notes": "There are no course books for this course. Academic literature in the form of research articles and practitioner publications will be provided."
+        }
+      ],
+      "contact": {
+        "name": "Arun Thirumalesh Madanaguli",
+        "role": "Associate Senior Lecturer",
+        "phone": "",
+        "email": "",
+        "profileUrl": "https://www.ltu.se/en/staff/p/patricia-carolina-garcia-martin"
+      },
+      "fillNotes": "Aim/contents/examination drafted from course notes. Fill subject, gradeScale, realization, entryRequirements, examination.modules, structured literature, pdfSyllabusUrl, and pdfLiteratureUrl from official PDFs."
+    },
+    "D7046E": {
+      "meta": {
+        "id": "D7046E",
+        "title": "Neural Networks and Learning Machines",
+        "subject": "Computer Science and Engineering",
+        "subjectGroup": "Computer Technology",
+        "mainFieldOfStudy": "Computer Science and Engineering",
+        "gradeScale": "G U 3 4 5",
+        "selection": "The selection is based on 30-285 credits",
+        "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/d70/d7046e-neural-networks-and-learning-machines",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7046E&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7046E&lasPeriod=224&locale=en",
+        "verificationStatus": "filled-from-public-syllabus-spring-2027"
+      },
+      "syllabus": {
+        "aim": "After completion of the course, the student should be able to: describe and differentiate artificial intelligence, machine learning, artificial neural networks, and neuromorphic engineering; describe the function of formal neuron models and neural network architectures, including spiking neural networks, feedforward networks, convolutional networks and recurrent networks; demonstrate how neural networks can be trained, validated and tested with supervised and unsupervised methods and analyse how different hyperparameters and regularization affect model generalisation; evaluate strengths and weaknesses of neural network models and make comparisons with other machine learning methods like linear and logistic regression, including the aspects of computing requirements, data requirements, bias, variability, sensitivity and generalisation; give examples of learning machines involving neural network processors and neuromorphic systems and describe their properties and motivation, including ethical considerations; develop and evaluate a neural network model that addresses a particular engineering problem, which involves for example pattern recognition, clustering, regression, anomaly detection, recommender systems, or reinforcement learning; formulate and implement derivations of basic neural network concepts introduced in the course material and assess the validity of the results.",
+        "contents": [
+          "Neural network models and processors used to solve pattern recognition, data modelling and automatic control problems that are difficult to address with other modelling approaches.",
+          "Concepts and methods required to design, train and validate neural networks, and to determine when the use of such models is motivated.",
+          "Similarities and differences between artificial and biological neural networks.",
+          "Concepts and methods needed for further studies of advanced neural network topics and implementations for learning machines and neuromorphic systems."
+        ],
+        "realization": "Each course occasion's language and form are stated and appear on the course page on Luleå University of Technology's website. Lectures, read and view self-study material, laboratory work in the form of simulation exercises, self-assessment of learning with peer-review, and project work with oral presentation. Projects can include industrially related problems and datasets. Remarks: the laboratory exercises require basic knowledge of Python; guidance for preparatory self-studies is available in the course room.",
+        "entryRequirements": [
+          "At least 90 ECTS of completed courses.",
+          "Understanding of mathematical analysis and linear algebra.",
+          "Ability to develop and apply computer programs to solve mathematically formulated problems, e.g. D0009E Introduction to Programming, 7.5 ECTS or D0017E Introduction to Programming for Engineers, 7.5 ECTS.",
+          "Understanding of basic mathematical statistics including probability distributions, expectation and variance, such as S0001M Mathematical Statistics, 7.5 ECTS or S0008M Probability Theory and Statistics, 7.5 ECTS.",
+          "Understanding of basic signal processing including sampling, time-discrete processing of time-continuous signals, linear and time-invariant systems, such as S0001E Signal Analysis, 7.5 ECTS or S0004E Signals and Systems, 7.5 ECTS.",
+          "Understanding of basic electrical theory including RC circuits, e.g. E0003E Electric Circuit Theory, 7.5 ECTS or E0013E Fundamentals of Electrical Engineering, 7.5 ECTS.",
+          "Good knowledge in English equivalent to English 6 (see LTU English language requirements)."
+        ]
+      },
+      "examination": {
+        "description": "If there is a decision on special educational support, in accordance with the Guideline Student's rights and obligations at Luleå University of Technology, an adapted or alternative form of examination can be provided. Oral examination and written self-assessment with differentiated numerical grades as well as approved computer exercises and project assignments that are orally examined. Unauthorized aids during exams and assessments: if a student, by using unauthorized aids, tries to mislead during an exam or when a study performance is to be assessed, disciplinary measures may be taken. The term “unauthorized aids” refers to aids that the teacher has not previously specified as permissible aids and that may assist in solving the examination task. This means that all aids not specified as permissible are prohibited. The Swedish version has interpretative precedence in the event of a conflict.",
+        "modules": [
+          {
+            "code": "0005",
+            "name": "Self-assessment and oral exam",
+            "credits": 3.5,
+            "gradeScale": "G U 3 4 5",
+            "type": "Mandatory",
+            "fromPeriod": "H19"
+          },
+          {
+            "code": "0006",
+            "name": "Computer exercises",
+            "credits": 2.0,
+            "gradeScale": "U G",
+            "type": "Mandatory",
+            "fromPeriod": "V27"
+          },
+          {
+            "code": "0007",
+            "name": "Project work",
+            "credits": 2.0,
+            "gradeScale": "U G",
+            "type": "Mandatory",
+            "fromPeriod": "V27"
+          }
+        ]
+      },
+      "literature": [
+        {
+          "category": "Course book",
+          "title": "Deep Learning",
+          "author": "I. Goodfellow, Y. Bengio and A. Courville",
+          "publisher": "MIT Press",
+          "isbn": "",
+          "url": "http://www.deeplearningbook.org",
+          "notes": "2016"
+        },
+        {
+          "category": "Course book",
+          "title": "Neuronal Dynamics: From single neurons to networks and models of cognition",
+          "author": "W. Gerstner, W. M. Kistler, R. Naud and L. Paninski",
+          "publisher": "Cambridge University Press",
+          "isbn": "",
+          "url": "http://neuronaldynamics.epfl.ch",
+          "notes": "2014"
+        }
+      ],
+      "contact": {
+        "name": "Fredrik Sandin",
+        "role": "Professor / Examiner",
+        "phone": "0920-493163",
+        "email": "fredrik.sandin@ltu.se",
+        "profileUrl": "https://www.ltu.se/en/staff/f/fredrik-sandin"
+      },
+      "fillNotes": "Filled from official Spring 2027 course syllabus text. Syllabus established: Jonny Johansson, HUL SRT 2019-02-15."
+    },
+    "D7054E": {
+      "meta": {
+        "id": "D7054E",
+        "title": "Data Science Programming",
+        "subject": "",
+        "gradeScale": "",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/d70/d7054e-data-science-programming",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7054E&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7054E&lasPeriod=224&locale=en",
+        "verificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      },
+      "syllabus": {
+        "aim": "Explain why and how we program. Install the programming language, together with its packages & libraries. Learn how to retrieving, processing, and visualizing Data with data science programming languages. Solve business problems using data science programming languages.",
+        "contents": [
+          "Programming in the data science domain using R & Python.",
+          "Conducting analytics using fundamental machine learning libraries such as NumPy & SciPy.",
+          "Basics of programming using Python (variables, loops, conditional cases, classes, file I/O)."
+        ],
+        "realization": "",
+        "entryRequirements": []
+      },
+      "examination": {
+        "description": "Oral exam (2 Cr), Individual Task (2.5 Cr), Group Work/Lab (3 Cr). Grade scale U G VG.",
+        "modules": []
+      },
+      "literature": [
+        {
+          "category": "To be structured from literature PDF",
+          "title": "",
+          "author": "",
+          "publisher": "",
+          "isbn": "",
+          "url": "",
+          "notes": "Provided through the Learning Management System."
+        }
+      ],
+      "contact": {
+        "name": "Saguna Saguna",
+        "role": "Associate Professor",
+        "phone": "",
+        "email": "",
+        "profileUrl": ""
+      },
+      "fillNotes": "Aim/contents/examination drafted from course notes. Fill subject, gradeScale, realization, entryRequirements, examination.modules, structured literature, pdfSyllabusUrl, and pdfLiteratureUrl from official PDFs."
+    },
+    "D7047E": {
+      "meta": {
+        "id": "D7047E",
+        "title": "Advanced Deep Learning",
+        "subject": "",
+        "gradeScale": "",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/d70/d7047e-advanced-deep-learning",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7047E&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7047E&lasPeriod=224&locale=en",
+        "verificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      },
+      "syllabus": {
+        "aim": "Master advanced concepts in deep neural networks and be able to implement, train, and evaluate complex deep learning architectures for various data modalities.",
+        "contents": [
+          "Advanced architectures in deep learning, sequence modeling, generative models, and optimization techniques for large-scale networks.",
+          "Practical implementation using modern deep learning frameworks."
+        ],
+        "realization": "",
+        "entryRequirements": []
+      },
+      "examination": {
+        "description": "Project work and oral/written examinations.",
+        "modules": []
+      },
+      "literature": [
+        {
+          "category": "To be structured from literature PDF",
+          "title": "",
+          "author": "",
+          "publisher": "",
+          "isbn": "",
+          "url": "",
+          "notes": "Selected scientific papers and deep learning textbooks recommended by the instructor."
+        }
+      ],
+      "contact": {
+        "name": "Marcus Liwicki",
+        "role": "Professor and Head of Subject",
+        "phone": "",
+        "email": "",
+        "profileUrl": "https://www.ltu.se/en/staff/m/marcus-liwicki"
+      },
+      "fillNotes": "Aim/contents/examination drafted from course notes. Fill subject, gradeScale, realization, entryRequirements, examination.modules, structured literature, pdfSyllabusUrl, and pdfLiteratureUrl from official PDFs."
+    },
+    "M7016H": {
+      "meta": {
+        "id": "M7016H",
+        "title": "Artificial Intelligence within the Healthcare System",
+        "subject": "",
+        "gradeScale": "",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/m70/m7016h-artificial-intelligence-within-the-healthcare-system",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=M7016H&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=M7016H&lasPeriod=224&locale=en",
+        "verificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      },
+      "syllabus": {
+        "aim": "Understand and apply AI methods specifically tailored to healthcare challenges, including medical data analysis, diagnostics support, and ethical considerations in medical AI.",
+        "contents": [
+          "Application of machine learning and data mining to electronic health records, medical imaging, and sensor data.",
+          "Focus on ethics, privacy, and regulatory compliance in healthcare AI."
+        ],
+        "realization": "",
+        "entryRequirements": []
+      },
+      "examination": {
+        "description": "Assignments, project work, and written reports.",
+        "modules": []
+      },
+      "literature": [
+        {
+          "category": "To be structured from literature PDF",
+          "title": "",
+          "author": "",
+          "publisher": "",
+          "isbn": "",
+          "url": "",
+          "notes": "Domain-specific research papers and articles provided via the learning platform."
+        }
+      ],
+      "contact": {
+        "name": "Kerstin Ramser",
+        "role": "Professor",
+        "phone": "",
+        "email": "",
+        "profileUrl": ""
+      },
+      "fillNotes": "Aim/contents/examination drafted from course notes. Fill subject, gradeScale, realization, entryRequirements, examination.modules, structured literature, pdfSyllabusUrl, and pdfLiteratureUrl from official PDFs."
+    },
+    "D7043E": {
+      "meta": {
+        "id": "D7043E",
+        "title": "Advanced Data Mining",
+        "subject": "Computer Science and Engineering",
+        "subjectGroup": "Computer Technology",
+        "mainFieldOfStudy": "Information Systems Sciences",
+        "gradeScale": "U G VG *",
+        "selection": "The selection is based on 30-285 credits",
+        "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/d70/d7043e-advanced-data-mining",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7043E&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7043E&lasPeriod=224&locale=en",
+        "verificationStatus": "filled-from-public-syllabus-autumn-2026"
+      },
+      "syllabus": {
+        "aim": "The objective of the course is for the student to develop their knowledge and skills in Advanced Data Mining. After passing the course, the student should be able to: [1] use the advanced data mining concepts & techniques; [2] explain how those concepts and techniques work; [3] explain how concepts and techniques are, or should be, used in organizations; [4] evaluate results of applying the concepts and techniques discussed above; [5] analyze and reflect on the relationship between the techniques, the dataset, the problem or opportunity in hand, and the tools and technology used.",
+        "contents": [
+          "Advanced data mining addressing various data science problems and datasets.",
+          "CRISP-DM methodology.",
+          "Advanced machine learning techniques for classification, regression, clustering, and anomaly detection, for example decision trees, random forests, neural networks, Support Vector Machines and Deep Learning, Expectation Maximization (EM), Markov models and Bayesian networks."
+        ],
+        "realization": "Each course occasion's language and form are stated and appear on the course page on Luleå University of Technology's website. Lectures, labs, assignments, case studies and project work. Laboratory work requires access to very high computational capacity. During the course, the students work in small groups. Some assignments or case studies in the course might contain work in contact with or about the industry. The student uses different methods and techniques, and it is important to choose the right method, technique or computer support for each task. Before and after the tasks are solved, there are lectures to present and discuss different solutions. Technical requirements: access to PC with Windows XP, microphone, webcam and permission to install software; Internet connection (minimum 0.5 Mbps).",
+        "entryRequirements": [
+          "Minimum of 120 ECTS of university studies, out of which 60 ECTS in the areas of computer or system science.",
+          "Introductory Programming (for example D0009E Introduction to Programming, 7.5 ECTS or D0024E Software Development with Java II, 7.5 ECTS).",
+          "Fundamentals of Databases (for example D0004N Database Systems I, 7.5 ECTS or D0018E Database Technology, 7.5 ECTS).",
+          "Completion of a basic data mining course such as D0025E Data Mining, 7.5 ECTS.",
+          "Proficiency in English equivalent to Swedish upper secondary course English 6/level 2."
+        ]
+      },
+      "examination": {
+        "description": "If there is a decision on special educational support, in accordance with the Guideline Student's rights and obligations at Luleå University of Technology, an adapted or alternative form of examination can be provided. Through individual tests and group/project assignment, different student abilities are examined. Those are: the ability to explain and use advanced data mining techniques and the ability to solve business problems using data mining individually and in groups. Unauthorized aids during exams and assessments: if a student, by using unauthorized aids, tries to mislead during an exam or when a study performance is to be assessed, disciplinary measures may be taken. The term “unauthorized aids” refers to aids that the teacher has not previously specified as permissible aids and that may assist in solving the examination task. This means that all aids not specified as permissible are prohibited. The Swedish version has interpretative precedence in the event of a conflict.",
+        "modules": [
+          {
+            "code": "0001",
+            "name": "Individual exam",
+            "credits": 4.0,
+            "gradeScale": "U G VG",
+            "type": "Mandatory",
+            "fromPeriod": "H19"
+          },
+          {
+            "code": "0002",
+            "name": "Individual tasks",
+            "credits": 1.5,
+            "gradeScale": "U G#",
+            "type": "Inactive",
+            "fromPeriod": "H19"
+          },
+          {
+            "code": "0003",
+            "name": "Group/Project work",
+            "credits": 2.0,
+            "gradeScale": "U G#",
+            "type": "Inactive",
+            "fromPeriod": "H19"
+          }
+        ]
+      },
+      "literature": [
+        {
+          "category": "Course book",
+          "title": "Introduction to Data Mining",
+          "author": "Pang-Ning Tan, Michael Steinbach, and Vipin Kumar",
+          "publisher": "Addison Wesley",
+          "isbn": "",
+          "url": "",
+          "notes": "2005"
+        }
+      ],
+      "contact": {
+        "name": "Rajkumar Saini",
+        "role": "Senior Lecturer / Examiner",
+        "phone": "0920-493503",
+        "email": "rajkumar.saini@ltu.se",
+        "profileUrl": "https://www.ltu.se/en/staff/r/rajkumar-saini"
+      },
+      "fillNotes": "Filled from official Autumn 2026 course syllabus text. Syllabus last revised: Robert Brännström 2025-10-22. Syllabus established: Jonny Johansson, HUL SRT 2018-11-21. Modules 0002 and 0003 are listed as inactive on the source page."
+    },
+    "D7041E": {
+      "meta": {
+        "id": "D7041E",
+        "title": "Applied Artificial Intelligence",
+        "subject": "Computer Science",
+        "subjectGroup": "Computer Technology",
+        "mainFieldOfStudy": "",
+        "gradeScale": "G U 3 4 5",
+        "selection": "The selection is based on 30-285 credits",
+        "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/d70/d7041e-applied-artificial-intelligence",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7041E&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7041E&lasPeriod=224&locale=en",
+        "verificationStatus": "filled-from-public-syllabus-autumn-2026"
+      },
+      "syllabus": {
+        "aim": "The course covers the concepts, models and computation methods for computer programs and systems that can autonomously learn and generalise new knowledge and feature self-awareness. After the course the student should be able to: demonstrate knowledge of the disciplinary foundation and of proven experience in the design and analysis of systems built using principles of artificial intelligence; demonstrate in-depth knowledge of methods and theories in the field of artificial intelligence; demonstrate abilities to develop learning techniques and systems based on human needs as well as the society’s goals for sustainable development; demonstrate the ability to identify, formulate, design, and implement learning components and applications; demonstrate the ability to critically evaluate and compare different AI models and learning algorithms for different problem setups and quality characteristics; demonstrate the ability to model, predict and evaluate the events even with limited information.",
+        "contents": [
+          "Basic methodology and paradigms for artificial intelligence.",
+          "Learning methods and strategies including neural networks, evolutionary methods, instance-based learning, and reinforcement learning.",
+          "Methods for evaluating learning outcomes.",
+          "Declarative languages, knowledge models, and reasoning models.",
+          "Agent architectures, fuzzy sets, cognitive decision making, and associative memory.",
+          "Applications including robotics and automation."
+        ],
+        "realization": "Each course occasion's language and form are stated and appear on the course page on Luleå University of Technology's website. The education consists of lectures, laboratory work and quizzes. The laboratories are presented orally and may be provided with a deadline for submission. There are no elective course elements. Unapproved students must retake the unsuccessful examination moment next time the course is given.",
+        "entryRequirements": [
+          "Courses of at least 120 credits including basic algorithms and data structures, programming and discrete mathematics.",
+          "Equivalent to D0012E Algorithms and Data Structures, 7.5 credits.",
+          "Equivalent to M0009M Discrete Mathematics, 7.5 credits.",
+          "Good knowledge in English equivalent to English 6."
+        ]
+      },
+      "examination": {
+        "description": "If there is a decision on special educational support, in accordance with the Guideline Student's rights and obligations at Luleå University of Technology, an adapted or alternative form of examination can be provided. Continuous examination with laboratory work and quizzes that give a number of points. The grade in the course is based on how many points you have accumulated. Unauthorized aids during exams and assessments: if a student, by using unauthorized aids, tries to mislead during an exam or when a study performance is to be assessed, disciplinary measures may be taken. The term “unauthorized aids” refers to aids that the teacher has not previously specified as permissible aids and that may assist in solving the examination task. This means that all aids not specified as permissible are prohibited. The Swedish version has interpretative precedence in the event of a conflict.",
+        "modules": [
+          {
+            "code": "0008",
+            "name": "Laboratory work",
+            "credits": 4.0,
+            "gradeScale": "G U 3 4 5",
+            "type": "Mandatory",
+            "fromPeriod": "H26"
+          },
+          {
+            "code": "0009",
+            "name": "Quizzes",
+            "credits": 3.5,
+            "gradeScale": "G U 3 4 5",
+            "type": "Mandatory",
+            "fromPeriod": "H26"
+          }
+        ]
+      },
+      "literature": [
+        {
+          "category": "Course literature",
+          "title": "",
+          "author": "",
+          "publisher": "",
+          "isbn": "",
+          "url": "",
+          "notes": "There is no required textbook for this course. The course will primarily use lecture material prepared by the instructor, and some recommended reference books."
+        }
+      ],
+      "contact": {
+        "name": "Evgeny Osipov",
+        "role": "Professor / Examiner",
+        "phone": "0920-491578",
+        "email": "evgeny.osipov@ltu.se",
+        "profileUrl": "https://www.ltu.se/en/staff/e/evgeny-osipov"
+      },
+      "fillNotes": "Filled from official Autumn 2026 course syllabus text. Syllabus last revised: Robert Brännström 2026-02-13. Syllabus established: Jonny Johansson, HUL SRT 2016-06-15. Main field of study not listed on the source page."
+    },
+    "D7065E": {
+      "meta": {
+        "id": "D7065E",
+        "title": "Embedded Intelligence at the Edge",
+        "subject": "",
+        "gradeScale": "",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/d70/d7065e-embedded-intelligence-at-the-edge",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7065E&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7065E&lasPeriod=224&locale=en",
+        "verificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      },
+      "syllabus": {
+        "aim": "Deploy intelligent algorithms onto resource-constrained embedded devices (edge computing) and handle data communication requirements.",
+        "contents": [
+          "Edge computing architectures, optimization of AI models for embedded systems, real-time data processing, and IoT connectivity."
+        ],
+        "realization": "",
+        "entryRequirements": []
+      },
+      "examination": {
+        "description": "Laboratory exercises and a final project implementation.",
+        "modules": []
+      },
+      "literature": [
+        {
+          "category": "To be structured from literature PDF",
+          "title": "",
+          "author": "",
+          "publisher": "",
+          "isbn": "",
+          "url": "",
+          "notes": "Technical documentation for embedded systems and selected research papers."
+        }
+      ],
+      "contact": {
+        "name": "Jan van Deventer",
+        "role": "Associate Professor",
+        "phone": "",
+        "email": "",
+        "profileUrl": "https://www.ltu.se/en/staff/d/jan-van-deventer"
+      },
+      "fillNotes": "Aim/contents/examination drafted from course notes. Fill subject, gradeScale, realization, entryRequirements, examination.modules, structured literature, pdfSyllabusUrl, and pdfLiteratureUrl from official PDFs."
+    },
+    "D7068E": {
+      "meta": {
+        "id": "D7068E",
+        "title": "Neurochemistry for AI",
+        "subject": "",
+        "gradeScale": "",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/d70/d7068e-neurochemistry-for-ai",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7068E&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7068E&lasPeriod=224&locale=en",
+        "verificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      },
+      "syllabus": {
+        "aim": "Explain the basic cellular neurochemistry of the brain. Identify neurotransmitter systems and explain mechanisms behind membrane and action potentials, chemical signal transmission, and receptor-mediated response.",
+        "contents": [
+          "Cell biology, biomolecules, neurochemicals, and biological membranes.",
+          "Mechanisms behind chemical signal transduction with a special focus on neurotransmitters and receptors (action potential, exocytosis).",
+          "Neurodegenerative diseases and sensory transduction."
+        ],
+        "realization": "",
+        "entryRequirements": []
+      },
+      "examination": {
+        "description": "Oral and written presentations of assignments and exercises (G/U), individual written exam (U 3 4 5).",
+        "modules": []
+      },
+      "literature": [
+        {
+          "category": "To be structured from literature PDF",
+          "title": "",
+          "author": "",
+          "publisher": "",
+          "isbn": "",
+          "url": "",
+          "notes": "Standard Neurochemistry textbooks and supplementary scientific literature."
+        }
+      ],
+      "contact": {
+        "name": "Josefine Enman",
+        "role": "Senior Lecturer, Head of Division",
+        "phone": "",
+        "email": "",
+        "profileUrl": "https://www.ltu.se/en/staff/j/josefine-enman"
+      },
+      "fillNotes": "Aim/contents/examination drafted from course notes. Fill subject, gradeScale, realization, entryRequirements, examination.modules, structured literature, pdfSyllabusUrl, and pdfLiteratureUrl from official PDFs."
+    },
+    "R7020E": {
+      "meta": {
+        "id": "R7020E",
+        "title": "Computer Vision and Image Processing",
+        "subject": "",
+        "gradeScale": "",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/r70/r7020e-computer-vision-and-image-processing",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=R7020E&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=R7020E&lasPeriod=224&locale=en",
+        "verificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      },
+      "syllabus": {
+        "aim": "Apply computer vision and image processing algorithms to solve real-world problems. Propose, supervise and complete a project in computer vision.",
+        "contents": [
+          "Image formation, filtering, feature extraction, object detection, and application of machine learning to visual data.",
+          "Software project solving an industry problem."
+        ],
+        "realization": "",
+        "entryRequirements": []
+      },
+      "examination": {
+        "description": "Mandatory assignments, laboratories, and a final project.",
+        "modules": []
+      },
+      "literature": [
+        {
+          "category": "To be structured from literature PDF",
+          "title": "",
+          "author": "",
+          "publisher": "",
+          "isbn": "",
+          "url": "",
+          "notes": "Computer Vision literature and provided course notes."
+        }
+      ],
+      "contact": {
+        "name": "Christoforos Kanellakis",
+        "role": "Associate Professor",
+        "phone": "",
+        "email": "",
+        "profileUrl": "https://www.ltu.se/en/staff/c/christoforos-kanellakis"
+      },
+      "fillNotes": "Aim/contents/examination drafted from course notes. Fill subject, gradeScale, realization, entryRequirements, examination.modules, structured literature, pdfSyllabusUrl, and pdfLiteratureUrl from official PDFs."
+    },
+    "D7064E": {
+      "meta": {
+        "id": "D7064E",
+        "title": "Neuromorphic Computing",
+        "subject": "",
+        "gradeScale": "",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/d70/d7064e-neuromorphic-computing",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7064E&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7064E&lasPeriod=224&locale=en",
+        "verificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      },
+      "syllabus": {
+        "aim": "Deepen knowledge in neuromorphic technologies and spiking neural networks with applications to energy-efficient, robust, and adaptive systems.",
+        "contents": [
+          "Neuromorphic co-design, machine learning, computational physics, and physical instantiation of adaptive information processes to solve real-world interaction problems."
+        ],
+        "realization": "",
+        "entryRequirements": []
+      },
+      "examination": {
+        "description": "Project work and oral/written examinations.",
+        "modules": []
+      },
+      "literature": [
+        {
+          "category": "To be structured from literature PDF",
+          "title": "",
+          "author": "",
+          "publisher": "",
+          "isbn": "",
+          "url": "",
+          "notes": "Research articles and literature on Spiking Neural Networks (SNNs) and neuromorphic hardware."
+        }
+      ],
+      "contact": {
+        "name": "Fredrik Sandin",
+        "role": "Professor",
+        "phone": "",
+        "email": "",
+        "profileUrl": "https://www.ltu.se/en/staff/f/fredrik-sandin"
+      },
+      "fillNotes": "Aim/contents/examination drafted from course notes. Fill subject, gradeScale, realization, entryRequirements, examination.modules, structured literature, pdfSyllabusUrl, and pdfLiteratureUrl from official PDFs."
+    },
+    "P7002H": {
+      "meta": {
+        "id": "P7002H",
+        "title": "Human Cognitive Neuroscience",
+        "subject": "",
+        "gradeScale": "",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/p70/p7002h-human-cognitive-neuroscience",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=P7002H&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=P7002H&lasPeriod=224&locale=en",
+        "verificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      },
+      "syllabus": {
+        "aim": "Identify the functional and anatomical organization of the human nervous system. Characterise core cognitive functions and their underlying brain processes. Evaluate different neuroscientific techniques.",
+        "contents": [
+          "Fundamentals of human neuroanatomy and neurophysiology, the organization of the human nervous system, and key theories about the role of different brain structures in cognitive processes.",
+          "Review of brain imaging techniques and neuropsychological approaches."
+        ],
+        "realization": "",
+        "entryRequirements": []
+      },
+      "examination": {
+        "description": "Final exam, laboratory assignments, and students oral presentations.",
+        "modules": []
+      },
+      "literature": [
+        {
+          "category": "To be structured from literature PDF",
+          "title": "",
+          "author": "",
+          "publisher": "",
+          "isbn": "",
+          "url": "",
+          "notes": "Cognitive Neuroscience textbooks and research papers."
+        }
+      ],
+      "contact": {
+        "name": "Mariana Vega Mendoza",
+        "role": "Associate Professor",
+        "phone": "",
+        "email": "",
+        "profileUrl": "https://www.ltu.se/en/staff/m/mariana-vega-mendoza"
+      },
+      "fillNotes": "Aim/contents/examination drafted from course notes. Fill subject, gradeScale, realization, entryRequirements, examination.modules, structured literature, pdfSyllabusUrl, and pdfLiteratureUrl from official PDFs."
+    },
+    "R7010E": {
+      "meta": {
+        "id": "R7010E",
+        "title": "Robotics",
+        "subject": "",
+        "gradeScale": "",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/r70/r7010e-robotics",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=R7010E&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=R7010E&lasPeriod=224&locale=en",
+        "verificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      },
+      "syllabus": {
+        "aim": "Understand and apply principles of robotics, including modeling, kinematics, dynamics, and control within an industrial or research context.",
+        "contents": [
+          "Robot kinematics, dynamics, control systems (state-space, state feedback), and software projects based on industry needs."
+        ],
+        "realization": "",
+        "entryRequirements": []
+      },
+      "examination": {
+        "description": "Mandatory assignments, remote labs, and a software project.",
+        "modules": []
+      },
+      "literature": [
+        {
+          "category": "To be structured from literature PDF",
+          "title": "",
+          "author": "",
+          "publisher": "",
+          "isbn": "",
+          "url": "",
+          "notes": "Course materials provided via LMS, robotics textbooks."
+        }
+      ],
+      "contact": {
+        "name": "George Nikolakopoulos",
+        "role": "Professor and Head of Subject",
+        "phone": "",
+        "email": "",
+        "profileUrl": "https://www.ltu.se/en/staff/g/george-nikolakopoulos"
+      },
+      "fillNotes": "Aim/contents/examination drafted from course notes. Fill subject, gradeScale, realization, entryRequirements, examination.modules, structured literature, pdfSyllabusUrl, and pdfLiteratureUrl from official PDFs."
+    },
+    "X7013E": {
+      "meta": {
+        "id": "X7013E",
+        "title": "Master Thesis in Artificial Intelligence",
+        "subject": "",
+        "gradeScale": "",
+        "syllabusPageUrl": "https://www.ltu.se/en/education/course/x70/x7013e-master-thesis-in-artificial-intelligence",
+        "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=X7013E&lasPeriod=224&locale=en",
+        "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=X7013E&lasPeriod=224&locale=en",
+        "verificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      },
+      "syllabus": {
+        "aim": "Formulate a relevant problem for investigation. Apply knowledge and proficiency to a complex development project or research project. Locate and critically review information. Plan, structure and execute a project within research.",
+        "contents": [
+          "The content is designed in collaboration with the examiner.",
+          "Contains a theoretical foundation in the form of a literature survey that highlights the area of technology and methodology."
+        ],
+        "realization": "",
+        "entryRequirements": []
+      },
+      "examination": {
+        "description": "Written report of own work, oral presentation and defence of own work, opposition to the work of others, and attendance at two presentations.",
+        "modules": []
+      },
+      "literature": [
+        {
+          "category": "To be structured from literature PDF",
+          "title": "",
+          "author": "",
+          "publisher": "",
+          "isbn": "",
+          "url": "",
+          "notes": "Independent literature review conducted by the student."
+        }
+      ],
+      "contact": {
+        "name": "Rajkumar Saini",
+        "role": "Senior Lecturer",
+        "phone": "",
+        "email": "",
+        "profileUrl": "https://www.ltu.se/en/staff/r/rajkumar-saini"
+      },
+      "fillNotes": "Aim/contents/examination drafted from course notes. Fill subject, gradeScale, realization, entryRequirements, examination.modules, structured literature, pdfSyllabusUrl, and pdfLiteratureUrl from official PDFs."
+    }
+  }
+}

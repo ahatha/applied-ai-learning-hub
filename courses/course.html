@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Course hub | Applied AI Learning Hub</title>
-  <meta name="description" content="JSON-driven course hub separating official LTU facts from personal preparation, notes, projects, and reflections.">
+  <title>Course hub | Applied AI Programme Hub</title>
+  <meta name="description" content="Official LTU course hub with syllabus, examination, literature, schedule, and public profile links.">
   <link rel="canonical" href="https://ahatha.github.io/applied-ai-learning-hub/courses/course.html">
   <meta name="theme-color" content="#0f6b63">
   <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
@@ -34,20 +34,12 @@
     <div class="noscript-banner">JavaScript is required to load the shared course hub from JSON data.</div>
   </noscript>
   <header class="site-header">
-    <div class="container site-header__inner">
+    <div class="container site-header__inner site-header__inner--simple">
       <a class="brand" href="../index.html">
         <span class="brand__mark" aria-hidden="true">AI</span>
-        <span class="brand__text">Applied AI Learning Hub<small>Programme explorer</small></span>
+        <span class="brand__text">Applied AI Programme Hub<small>LTU Applied AI · 2026–2028</small></span>
       </a>
-      <div class="header-actions">
-        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">◐</button>
-        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">☰</button>
-      </div>
-      <nav class="site-nav" id="site-nav" aria-label="Primary">
-        <ul class="site-nav__list">
-          <li><a href="../index.html" data-nav="index.html">Home</a></li>
-        </ul>
-      </nav>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">◐</button>
     </div>
   </header>
 
@@ -57,30 +49,19 @@
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container site-footer__grid site-footer__grid--compact">
-      <div>
-        <h2>Applied AI Learning Hub</h2>
-        <p>Personal learning portfolio for the Master Programme in Applied AI. Not an official website of Luleå University of Technology.</p>
-      </div>
-      <div>
-        <h2>Repository</h2>
-        <ul>
-          <li><a href="https://github.com/ahatha/applied-ai-learning-hub" rel="noopener noreferrer" target="_blank">GitHub repository</a></li>
-          <li><a href="../ACADEMIC_INTEGRITY.md">Academic integrity</a></li>
-          <li><a href="../PRIVACY_CHECKLIST.md">Privacy checklist</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="container disclaimer">
-      <p>&copy; <span id="footer-year">2026</span> Applied AI Learning Hub. Personal learning portfolio — not an official website of Luleå University of Technology.</p>
+  <footer class="site-footer site-footer--compact">
+    <div class="container">
+      <p>Personal learning hub for the LTU Master Programme in Applied AI. Not an official website of Luleå University of Technology.</p>
+      <p class="site-footer__links">
+        <a href="../academic-calendar.html">Academic calendar</a>
+        <a href="https://github.com/ahatha/applied-ai-learning-hub" rel="noopener noreferrer" target="_blank">GitHub repository</a>
+        <a href="https://www.ltu.se/en/education/programme/tmdia-master-programme-in-applied-ai" rel="noopener noreferrer" target="_blank">Official LTU programme page</a>
+      </p>
     </div>
   </footer>
 
   <script src="../assets/js/theme.js" defer></script>
-  <script src="../assets/js/navigation.js" defer></script>
   <script src="../assets/js/data-loader.js" defer></script>
-  <script src="../assets/js/main.js" defer></script>
   <script src="../assets/js/course-hub.js" defer></script>
 </body>
 </html>

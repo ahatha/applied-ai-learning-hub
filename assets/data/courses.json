@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "2026-07-20",
-    "description": "Full programme course catalogue for Autumn 2026 cohort. Hub pages use courses/course.html?code=CODE.",
+    "description": "Full programme course catalogue for Autumn 2026 cohort. Hub pages use courses/course.html?code=CODE. Enriched syllabus/literature arrays live in course-details.json.",
     "sourceId": "ltu-syllabus-2026-2027"
   },
   "courses": [
@@ -31,8 +31,8 @@
       "order": 1,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/d00/d0036e-programming-for-machine-learning",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/syllabuses/course-syllabus?id=D0036E",
+      "syllabusVerificationStatus": "draft-link-added-awaiting-final-verification",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -40,12 +40,24 @@
       "officialCourseUrlVerifiedDate": "2026-07-20",
       "publicContacts": [
         {
-          "name": "Fredrik Sandin",
+          "name": "András Bota",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/f/fredrik-sandin"
+          "role": "Senior Lecturer / Examiner",
+          "profileUrl": "",
+          "phone": "0920-49",
+          "email": "andras.bota@ltu.se"
         }
-      ]
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D0036E&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D0036E&lasPeriod=224&locale=en",
+      "subject": "Computer Science and Engineering",
+      "subjectGroup": "Computer Technology",
+      "mainFieldOfStudy": "Computer Science and Engineering",
+      "gradeScale": "G U 3 4 5",
+      "selection": "The selection is based on 1-165 credits.",
+      "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
+      "syllabusAim": "After completion of the course, the student should be able to: demonstrate knowledge in designing object-oriented programs and capacity to plan and carry out advanced tasks in the form of implementation of programs designed to solve specific machine learning problems; demonstrate the ability to use data structures, algorithms and tools available in state-of-the-art machine learning libraries to solve problems in a modern object-oriented language; demonstrate the ability to critically analyze and evaluate technical solutions in the form of existing programs for machine learning, as well as predict and evaluate sequences of events in these.",
+      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026"
     },
     {
       "id": "D7062E",
@@ -72,8 +84,8 @@
       "order": 2,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7062e-artificial-intelligence-and-pattern-recognition",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/d70/d7062e-artificial-intelligence-and-pattern-recognition",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -83,17 +95,29 @@
         {
           "name": "Hamam Mokayed",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/m/hamam-mokayed"
+          "role": "Associate Professor / Examiner",
+          "profileUrl": "https://www.ltu.se/en/staff/m/hamam-mokayed",
+          "phone": "0920-492075",
+          "email": "hamam.mokayed@ltu.se"
         }
-      ]
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7062E&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7062E&lasPeriod=224&locale=en",
+      "subject": "Computer Science and Engineering",
+      "subjectGroup": "Computer Technology",
+      "mainFieldOfStudy": "Computer Science and Engineering",
+      "gradeScale": "G U 3 4 5",
+      "selection": "The selection is based on 30-285 credits",
+      "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
+      "syllabusAim": "After completion of the course, the student should be able to: define the area of Artificial Intelligence (in particular, with relation to control theory and computer science), and shortly describe its major fields; list a minimum of three existing tools implementing AI methods, and describe their basic characteristics; given two existing tools implementing AI methods, compare them with respect to their basic characteristics. In-depth understanding of the basic methods and theories used in AI and pattern recognition. Given a real-life applied AI problem: categorize the problem, list appropriate AI methods, describe methods in their own words, and apply one appropriate AI method. Understanding of appearance-based recognition approaches for robotic applications.",
+      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026"
     },
     {
       "id": "S0046P",
       "code": "S0046P",
       "title": "Swedish for International Students 1",
       "ects": 3,
-      "level": "N/A",
+      "level": "Bachelor's",
       "role": "optional-non-degree",
       "category": "optional-non-degree",
       "myStatus": "optional-not-selected",
@@ -111,14 +135,23 @@
       "order": 3,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/s00/s0046p-swedish-for-international-students-1",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/s00/s0046p-swedish-for-international-students-1",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
       ],
       "officialCourseUrlVerifiedDate": "2026-07-20",
-      "publicContacts": [],
+      "publicContacts": [
+        {
+          "name": "Katja Merkle Söderholm",
+          "role": "Lecturer / Examiner",
+          "profileUrl": "",
+          "phone": "0920-492288",
+          "email": "katja.merkle-soderholm@ltu.se",
+          "lastVerified": "2026-07-20"
+        }
+      ],
       "offeringDetails": {
         "season": "Autumn 2026",
         "notes": "Optional course outside the degree requirements.",
@@ -126,7 +159,17 @@
         "weeks": "36–44",
         "studyPace": "20%",
         "instanceLabel": "Autumn 2026 offering"
-      }
+      },
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=S0046P&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=S0046P&lasPeriod=224&locale=en",
+      "subject": "Swedish",
+      "subjectGroup": "Swedish/Scandinavian Languages",
+      "mainFieldOfStudy": "",
+      "gradeScale": "G U 3 4 5",
+      "selection": "The selection is based on final school grades or Swedish Scholastic Aptitude Test.",
+      "offeredBy": "Department of Health, Education and Technology",
+      "syllabusAim": "After finished course, the student is to have gained basic language skills: handle everyday language situations to present themselves and their background in Swedish; read and understand simple Swedish texts; make use of basic knowledge about the structure of the Swedish language.",
+      "detailsVerificationStatus": "filled-from-public-syllabus"
     },
     {
       "id": "D0034E",
@@ -151,8 +194,8 @@
       "order": 4,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/d00/d0034e-applied-ai-knowledge-management-and-reasoning",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/d00/d0034e-applied-ai-knowledge-management-and-reasoning",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -162,10 +205,22 @@
         {
           "name": "Evgeny Osipov",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/e/evgeny-osipov"
+          "role": "Professor / Examiner",
+          "profileUrl": "https://www.ltu.se/en/staff/e/evgeny-osipov",
+          "phone": "0920-491578",
+          "email": "evgeny.osipov@ltu.se"
         }
-      ]
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D0034E&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D0034E&lasPeriod=224&locale=en",
+      "subject": "Computer Science and Engineering",
+      "subjectGroup": "Computer Technology",
+      "mainFieldOfStudy": "Computer Science and Engineering",
+      "gradeScale": "G U 3 4 5",
+      "selection": "The selection is based on 1-165 credits.",
+      "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
+      "syllabusAim": "The course covers the fundamentals of models and computation methods of Artificial Intelligence. After the course the student should be able to demonstrate knowledge of the disciplinary foundation and proven experience in the design and analysis of AI systems; understand methods and theories in AI; apply AI methods for practical tasks; and evaluate the performance of different AI models in different problem setups and quality characteristics.",
+      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026"
     },
     {
       "id": "E7010N",
@@ -190,8 +245,8 @@
       "order": 5,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/e70/e7010n-artificial-intelligence-and-business-development",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/e70/e7010n-artificial-intelligence-and-business-development",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -204,7 +259,13 @@
           "role": "Listed course contact",
           "profileUrl": "https://www.ltu.se/en/staff/p/patricia-carolina-garcia-martin"
         }
-      ]
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=E7010N&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=E7010N&lasPeriod=224&locale=en",
+      "subject": "",
+      "gradeScale": "",
+      "syllabusAim": "Describe concepts and theories related to the analysis, evaluation, and implementation of AI technology business opportunities in organizations. Explain and qualitatively assess the probability of a successful AI application. Argue about the different characteristics of AI-based business models.",
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
     },
     {
       "id": "D7046E",
@@ -229,8 +290,8 @@
       "order": 6,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7046e-neural-networks-and-learning-machines",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/d70/d7046e-neural-networks-and-learning-machines",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -240,8 +301,10 @@
         {
           "name": "Fredrik Sandin",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/f/fredrik-sandin"
+          "role": "Professor / Examiner",
+          "profileUrl": "https://www.ltu.se/en/staff/f/fredrik-sandin",
+          "phone": "0920-493163",
+          "email": "fredrik.sandin@ltu.se"
         },
         {
           "name": "Marcus Liwicki",
@@ -257,7 +320,17 @@
         "weeks": "3–12",
         "studyPace": "50%",
         "instanceLabel": "Spring 2027 offering"
-      }
+      },
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7046E&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7046E&lasPeriod=224&locale=en",
+      "subject": "Computer Science and Engineering",
+      "subjectGroup": "Computer Technology",
+      "mainFieldOfStudy": "Computer Science and Engineering",
+      "gradeScale": "G U 3 4 5",
+      "selection": "The selection is based on 30-285 credits",
+      "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
+      "syllabusAim": "After completion of the course, the student should be able to describe and differentiate AI, machine learning, artificial neural networks, and neuromorphic engineering; describe formal neuron models and architectures (spiking, feedforward, convolutional, recurrent); train, validate and test networks with supervised and unsupervised methods; evaluate strengths and weaknesses versus other ML methods; give examples of learning machines and neuromorphic systems including ethical considerations; develop and evaluate a neural network model for an engineering problem; and formulate and implement derivations of basic neural network concepts.",
+      "detailsVerificationStatus": "filled-from-public-syllabus-spring-2027"
     },
     {
       "id": "D7054E",
@@ -282,14 +355,27 @@
       "order": 7,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7054e-data-science-programming",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/d70/d7054e-data-science-programming",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
       ],
       "officialCourseUrlVerifiedDate": "2026-07-20",
-      "publicContacts": []
+      "publicContacts": [
+        {
+          "name": "Saguna Saguna",
+          "role": "Associate Professor",
+          "profileUrl": "",
+          "lastVerified": "2026-07-20"
+        }
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7054E&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7054E&lasPeriod=224&locale=en",
+      "subject": "",
+      "gradeScale": "",
+      "syllabusAim": "Explain why and how we program. Install the programming language, together with its packages & libraries. Learn how to retrieving, processing, and visualizing Data with data science programming languages. Solve business problems using data science programming languages.",
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
     },
     {
       "id": "D7047E",
@@ -314,8 +400,8 @@
       "order": 8,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7047e-advanced-deep-learning",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/d70/d7047e-advanced-deep-learning",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -336,7 +422,13 @@
         "weeks": "13–22",
         "studyPace": "50%",
         "instanceLabel": "Spring 2027 offering"
-      }
+      },
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7047E&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7047E&lasPeriod=224&locale=en",
+      "subject": "",
+      "gradeScale": "",
+      "syllabusAim": "Master advanced concepts in deep neural networks and be able to implement, train, and evaluate complex deep learning architectures for various data modalities.",
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
     },
     {
       "id": "M7016H",
@@ -361,14 +453,27 @@
       "order": 9,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/m70/m7016h-artificial-intelligence-within-the-healthcare-system",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/m70/m7016h-artificial-intelligence-within-the-healthcare-system",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
       ],
       "officialCourseUrlVerifiedDate": "2026-07-20",
-      "publicContacts": []
+      "publicContacts": [
+        {
+          "name": "Kerstin Ramser",
+          "role": "Professor",
+          "profileUrl": "",
+          "lastVerified": "2026-07-20"
+        }
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=M7016H&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=M7016H&lasPeriod=224&locale=en",
+      "subject": "",
+      "gradeScale": "",
+      "syllabusAim": "Understand and apply AI methods specifically tailored to healthcare challenges, including medical data analysis, diagnostics support, and ethical considerations in medical AI.",
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
     },
     {
       "id": "D7043E",
@@ -393,8 +498,8 @@
       "order": 10,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7043e-advanced-data-mining",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/d70/d7043e-advanced-data-mining",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -404,10 +509,22 @@
         {
           "name": "Rajkumar Saini",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/r/rajkumar-saini"
+          "role": "Senior Lecturer / Examiner",
+          "profileUrl": "https://www.ltu.se/en/staff/r/rajkumar-saini",
+          "phone": "0920-493503",
+          "email": "rajkumar.saini@ltu.se"
         }
-      ]
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7043E&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7043E&lasPeriod=224&locale=en",
+      "subject": "Computer Science and Engineering",
+      "subjectGroup": "Computer Technology",
+      "mainFieldOfStudy": "Information Systems Sciences",
+      "gradeScale": "U G VG *",
+      "selection": "The selection is based on 30-285 credits",
+      "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
+      "syllabusAim": "Develop knowledge and skills in Advanced Data Mining: use advanced data mining concepts and techniques; explain how they work and how they are or should be used in organizations; evaluate results of applying those concepts and techniques; analyze and reflect on the relationship between techniques, dataset, problem or opportunity, and tools and technology used.",
+      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026"
     },
     {
       "id": "D7041E",
@@ -432,8 +549,8 @@
       "order": 11,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7041e-applied-artificial-intelligence",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/d70/d7041e-applied-artificial-intelligence",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -443,10 +560,22 @@
         {
           "name": "Evgeny Osipov",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/e/evgeny-osipov"
+          "role": "Professor / Examiner",
+          "profileUrl": "https://www.ltu.se/en/staff/e/evgeny-osipov",
+          "phone": "0920-491578",
+          "email": "evgeny.osipov@ltu.se"
         }
-      ]
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7041E&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7041E&lasPeriod=224&locale=en",
+      "subject": "Computer Science",
+      "subjectGroup": "Computer Technology",
+      "mainFieldOfStudy": "",
+      "gradeScale": "G U 3 4 5",
+      "selection": "The selection is based on 30-285 credits",
+      "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
+      "syllabusAim": "The course covers concepts, models and computation methods for programs and systems that can autonomously learn and generalise new knowledge and feature self-awareness. Students should demonstrate knowledge of AI system design and analysis; in-depth AI methods and theories; develop learning techniques aligned with human needs and sustainable development; identify, formulate, design and implement learning components; critically evaluate and compare AI models; and model, predict and evaluate events with limited information.",
+      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026"
     },
     {
       "id": "D7065E",
@@ -471,8 +600,8 @@
       "order": 12,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7065e-embedded-intelligence-at-the-edge",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/d70/d7065e-embedded-intelligence-at-the-edge",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -485,7 +614,13 @@
           "role": "Listed course contact",
           "profileUrl": "https://www.ltu.se/en/staff/d/jan-van-deventer"
         }
-      ]
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7065E&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7065E&lasPeriod=224&locale=en",
+      "subject": "",
+      "gradeScale": "",
+      "syllabusAim": "Deploy intelligent algorithms onto resource-constrained embedded devices (edge computing) and handle data communication requirements.",
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
     },
     {
       "id": "D7068E",
@@ -510,8 +645,8 @@
       "order": 13,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7068e-neurochemistry-for-ai",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/d70/d7068e-neurochemistry-for-ai",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -524,7 +659,13 @@
           "role": "Listed course contact",
           "profileUrl": "https://www.ltu.se/en/staff/j/josefine-enman"
         }
-      ]
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7068E&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7068E&lasPeriod=224&locale=en",
+      "subject": "",
+      "gradeScale": "",
+      "syllabusAim": "Explain the basic cellular neurochemistry of the brain. Identify neurotransmitter systems and explain mechanisms behind membrane and action potentials, chemical signal transmission, and receptor-mediated response.",
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
     },
     {
       "id": "R7020E",
@@ -549,8 +690,8 @@
       "order": 14,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/r70/r7020e-computer-vision-and-image-processing",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/r70/r7020e-computer-vision-and-image-processing",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -569,7 +710,13 @@
           "role": "Listed course contact",
           "profileUrl": "https://www.ltu.se/en/staff/g/george-nikolakopoulos"
         }
-      ]
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=R7020E&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=R7020E&lasPeriod=224&locale=en",
+      "subject": "",
+      "gradeScale": "",
+      "syllabusAim": "Apply computer vision and image processing algorithms to solve real-world problems. Propose, supervise and complete a project in computer vision.",
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
     },
     {
       "id": "D7064E",
@@ -594,8 +741,8 @@
       "order": 15,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7064e-neuromorphic-computing",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/d70/d7064e-neuromorphic-computing",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -614,7 +761,13 @@
           "role": "Listed course contact",
           "profileUrl": "https://www.ltu.se/en/staff/f/foteini-liwicki"
         }
-      ]
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7064E&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=D7064E&lasPeriod=224&locale=en",
+      "subject": "",
+      "gradeScale": "",
+      "syllabusAim": "Deepen knowledge in neuromorphic technologies and spiking neural networks with applications to energy-efficient, robust, and adaptive systems.",
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
     },
     {
       "id": "P7002H",
@@ -639,8 +792,8 @@
       "order": 16,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/p70/p7002h-human-cognitive-neuroscience",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/p70/p7002h-human-cognitive-neuroscience",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -653,7 +806,13 @@
           "role": "Listed course contact",
           "profileUrl": "https://www.ltu.se/en/staff/m/mariana-vega-mendoza"
         }
-      ]
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=P7002H&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=P7002H&lasPeriod=224&locale=en",
+      "subject": "",
+      "gradeScale": "",
+      "syllabusAim": "Identify the functional and anatomical organization of the human nervous system. Characterise core cognitive functions and their underlying brain processes. Evaluate different neuroscientific techniques.",
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
     },
     {
       "id": "R7010E",
@@ -678,8 +837,8 @@
       "order": 17,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/r70/r7010e-robotics",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/r70/r7010e-robotics",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -692,7 +851,13 @@
           "role": "Listed course contact",
           "profileUrl": "https://www.ltu.se/en/staff/g/george-nikolakopoulos"
         }
-      ]
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=R7010E&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=R7010E&lasPeriod=224&locale=en",
+      "subject": "",
+      "gradeScale": "",
+      "syllabusAim": "Understand and apply principles of robotics, including modeling, kinematics, dynamics, and control within an industrial or research context.",
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
     },
     {
       "id": "X7013E",
@@ -717,8 +882,8 @@
       "order": 18,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/x70/x7013e-master-thesis-in-artificial-intelligence",
-      "officialSyllabusUrl": "",
-      "syllabusVerificationStatus": "not-yet-verified",
+      "officialSyllabusUrl": "https://www.ltu.se/en/education/course/x70/x7013e-master-thesis-in-artificial-intelligence",
+      "syllabusVerificationStatus": "draft-from-course-details",
       "sourceIds": [
         "ltu-syllabus-2026-2027",
         "ltu-programme-info-export-2026"
@@ -731,7 +896,13 @@
           "role": "Listed course contact",
           "profileUrl": "https://www.ltu.se/en/staff/r/rajkumar-saini"
         }
-      ]
+      ],
+      "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=X7013E&lasPeriod=224&locale=en",
+      "pdfLiteratureUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicLitteraturlista.pdf?kursKod=X7013E&lasPeriod=224&locale=en",
+      "subject": "",
+      "gradeScale": "",
+      "syllabusAim": "Formulate a relevant problem for investigation. Apply knowledge and proficiency to a complex development project or research project. Locate and critically review information. Plan, structure and execute a project within research.",
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
     }
   ]
 }

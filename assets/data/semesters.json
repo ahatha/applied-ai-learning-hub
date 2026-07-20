@@ -1,9 +1,11 @@
 {
   "meta": {
     "lastUpdated": "2026-07-20",
-    "description": "Semester layer between programme and courses. journeyStatus is manually updated (upcoming | current | completed | planned).",
+    "description": "Semester layer between programme and courses. Period dates for 2026/2027 follow LTU Classification of quarters. journeyStatus is manually updated (upcoming | current | completed | planned).",
     "homepageSemesterId": "autumn-2026",
-    "sourceId": "ltu-syllabus-2026-2027"
+    "sourceId": "ltu-syllabus-2026-2027",
+    "scheduleSource": "https://www.ltu.se/en/student-web/your-studies/schedule",
+    "examScheduleUrl": "https://www.ltu.se/en/student-web/your-studies/schedule"
   },
   "semesters": [
     {
@@ -12,17 +14,62 @@
       "displayLabel": "Upcoming semester — Autumn 2026",
       "yearOfStudy": 1,
       "academicYear": "2026/2027",
-      "studyPeriods": [1, 2],
+      "startDate": "2026-08-31",
+      "endDate": "2027-01-17",
+      "weeksLabel": "W36–W2",
+      "studyPeriods": [
+        1,
+        2
+      ],
       "journeyStatus": "upcoming",
       "scheduleConfidence": "confirmed",
       "verificationStatus": "verified-for-autumn-2026-cohort",
       "personalFocus": "Python foundations, programming for machine learning, and AI/pattern recognition preparation.",
-      "courseIds": ["D0036E", "D7062E", "D0034E", "E7010N"],
-      "optionalCourseIds": ["S0046P"],
+      "courseIds": [
+        "D0036E",
+        "D7062E",
+        "D0034E",
+        "E7010N"
+      ],
+      "optionalCourseIds": [
+        "S0046P"
+      ],
       "electiveOptionIds": [],
       "periodMap": {
-        "1": ["D0036E", "D7062E"],
-        "2": ["D0034E", "E7010N"]
+        "1": [
+          "D0036E",
+          "D7062E"
+        ],
+        "2": [
+          "D0034E",
+          "E7010N"
+        ]
+      },
+      "periodDetails": {
+        "1": {
+          "startDate": "2026-08-31",
+          "endDate": "2026-11-01",
+          "weeksLabel": "W36–W44",
+          "exam": {
+            "label": "Examination week",
+            "startDate": "2026-10-26",
+            "endDate": "2026-11-01",
+            "note": "Exact times appear in TimeEdit 1–2 weeks before the exam period."
+          },
+          "quarterLabel": "Q1"
+        },
+        "2": {
+          "startDate": "2026-11-02",
+          "endDate": "2027-01-17",
+          "weeksLabel": "W45–W2",
+          "exam": {
+            "label": "Examination week",
+            "startDate": "2027-01-11",
+            "endDate": "2027-01-17",
+            "note": "Exact times appear in TimeEdit 1–2 weeks before the exam period."
+          },
+          "quarterLabel": "Q2"
+        }
       }
     },
     {
@@ -31,17 +78,66 @@
       "displayLabel": "Spring 2027",
       "yearOfStudy": 1,
       "academicYear": "2026/2027",
-      "studyPeriods": [3, 4],
+      "startDate": "2027-01-18",
+      "endDate": "2027-06-05",
+      "weeksLabel": "W3–W22",
+      "studyPeriods": [
+        3,
+        4
+      ],
       "journeyStatus": "planned",
       "scheduleConfidence": "confirmed",
       "verificationStatus": "verified-for-autumn-2026-cohort",
       "personalFocus": "",
-      "courseIds": ["D7046E", "D7054E", "D7047E", "M7016H"],
+      "courseIds": [
+        "D7046E",
+        "D7054E",
+        "D7047E",
+        "M7016H"
+      ],
       "optionalCourseIds": [],
       "electiveOptionIds": [],
       "periodMap": {
-        "3": ["D7046E", "D7054E"],
-        "4": ["D7047E", "M7016H"]
+        "3": [
+          "D7046E",
+          "D7054E"
+        ],
+        "4": [
+          "D7047E",
+          "M7016H"
+        ]
+      },
+      "periodDetails": {
+        "3": {
+          "startDate": "2027-01-18",
+          "endDate": "2027-03-29",
+          "weeksLabel": "W3–W12",
+          "exam": {
+            "label": "Examination week",
+            "startDate": "2027-03-23",
+            "endDate": "2027-03-29",
+            "note": "Exact times appear in TimeEdit 1–2 weeks before the exam period."
+          },
+          "quarterLabel": "Q3"
+        },
+        "4": {
+          "startDate": "2027-03-30",
+          "endDate": "2027-06-05",
+          "weeksLabel": "W13–W22",
+          "exam": {
+            "label": "Examination week",
+            "startDate": "2027-05-30",
+            "endDate": "2027-06-05",
+            "note": "Exact times appear in TimeEdit 1–2 weeks before the exam period."
+          },
+          "quarterLabel": "Q4"
+        }
+      },
+      "reExamination": {
+        "label": "August re-examination",
+        "monthLabel": "2027-Aug",
+        "note": "August re-sit schedule is published in April.",
+        "scheduleUrl": "https://www.ltu.se/en/student-web/your-studies/schedule"
       }
     },
     {
@@ -50,23 +146,77 @@
       "displayLabel": "Autumn 2027",
       "yearOfStudy": 2,
       "academicYear": "2027/2028",
-      "studyPeriods": [1, 2],
+      "startDate": "2027-08-30",
+      "endDate": "2028-01-16",
+      "weeksLabel": "W35–W2",
+      "studyPeriods": [
+        1,
+        2
+      ],
       "journeyStatus": "planned",
       "scheduleConfidence": "planned",
       "verificationStatus": "official-planned-schedule",
       "personalFocus": "",
-      "courseIds": ["D7043E", "D7041E"],
+      "courseIds": [
+        "D7043E",
+        "D7041E"
+      ],
       "optionalCourseIds": [],
-      "electiveOptionIds": ["D7065E", "D7068E", "R7020E", "D7064E", "P7002H", "R7010E"],
+      "electiveOptionIds": [
+        "D7065E",
+        "D7068E",
+        "R7020E",
+        "D7064E",
+        "P7002H",
+        "R7010E"
+      ],
       "periodMap": {
-        "1": ["D7043E"],
-        "2": ["D7041E"]
+        "1": [
+          "D7043E"
+        ],
+        "2": [
+          "D7041E"
+        ]
       },
       "electivePeriodMap": {
-        "1": ["D7065E", "D7068E", "R7020E"],
-        "2": ["D7064E", "P7002H", "R7010E"]
+        "1": [
+          "D7065E",
+          "D7068E",
+          "R7020E"
+        ],
+        "2": [
+          "D7064E",
+          "P7002H",
+          "R7010E"
+        ]
       },
-      "notes": "Elective options shown for decision support only. Degree requires 15 ECTS electives (normally two courses). Not all listed electives will be taken."
+      "periodDetails": {
+        "1": {
+          "startDate": "2027-08-30",
+          "endDate": "2027-10-31",
+          "weeksLabel": "W35–W43",
+          "exam": {
+            "label": "Examination week",
+            "startDate": "2027-10-25",
+            "endDate": "2027-10-31",
+            "note": "Exact times appear in TimeEdit 1–2 weeks before the exam period."
+          },
+          "quarterLabel": "Q1"
+        },
+        "2": {
+          "startDate": "2027-11-01",
+          "endDate": "2028-01-16",
+          "weeksLabel": "W44–W2",
+          "exam": {
+            "label": "Examination week",
+            "startDate": "2028-01-10",
+            "endDate": "2028-01-16",
+            "note": "Exact times appear in TimeEdit 1–2 weeks before the exam period."
+          },
+          "quarterLabel": "Q2"
+        }
+      },
+      "notes": "Elective options shown for decision support only. Degree requires 15 ECTS electives (normally two courses). Not all listed electives will be taken. 2027/2028 period dates are approximated from LTU week division pending final quarter table."
     },
     {
       "id": "spring-2028",
@@ -74,18 +224,48 @@
       "displayLabel": "Spring 2028",
       "yearOfStudy": 2,
       "academicYear": "2027/2028",
-      "studyPeriods": [3, 4],
+      "startDate": "2028-01-17",
+      "endDate": "2028-06-05",
+      "weeksLabel": "W3–W22",
+      "studyPeriods": [
+        3,
+        4
+      ],
       "journeyStatus": "planned",
       "scheduleConfidence": "planned",
       "verificationStatus": "official-planned-schedule",
       "personalFocus": "",
-      "courseIds": ["X7013E"],
+      "courseIds": [
+        "X7013E"
+      ],
       "optionalCourseIds": [],
       "electiveOptionIds": [],
       "periodMap": {
-        "3-4": ["X7013E"]
+        "3-4": [
+          "X7013E"
+        ]
       },
-      "notes": "Master thesis spans study periods 3–4. Entry requirements apply."
+      "periodDetails": {
+        "3-4": {
+          "startDate": "2028-01-17",
+          "endDate": "2028-06-05",
+          "weeksLabel": "W3–W22",
+          "exam": {
+            "label": "Examination week",
+            "startDate": "2028-05-30",
+            "endDate": "2028-06-05",
+            "note": "Exact times appear in TimeEdit 1–2 weeks before the exam period."
+          },
+          "quarterLabel": "Q3–Q4"
+        }
+      },
+      "notes": "Master thesis spans study periods 3–4. Entry requirements apply. 2027/2028 period dates are approximated from LTU week division pending final quarter table.",
+      "reExamination": {
+        "label": "August re-examination",
+        "monthLabel": "2028-Aug",
+        "note": "August re-sit schedule is published in April.",
+        "scheduleUrl": "https://www.ltu.se/en/student-web/your-studies/schedule"
+      }
     }
   ]
 }

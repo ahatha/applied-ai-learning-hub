@@ -21,5 +21,4 @@ This is primarily a personal learning portfolio. External contributions are welc
 
 - Open home explorer, a course hub, and 404 via a static server
 - Confirm light/dark theme toggle
-- Confirm mobile navigation open/close (Escape and outside click)
 - Confirm programme explorer keyboard selection (Tab, Enter/Space, Escape)

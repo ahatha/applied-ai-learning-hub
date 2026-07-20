@@ -2,6 +2,51 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.5] — 2026-07-20
+
+### Changed
+- Synced TSX course enrichment into `courses.json` and `course-details.json`
+- Course hub now renders full syllabus contents, examination modules, and literature arrays
+- Official facts show subject/grade scale and PDF syllabus/literature links when available
+
+## [0.3.4] — 2026-07-20
+
+### Added
+- `assets/data/course-details.json` with enriched syllabus/literature scaffolds for all 18 courses
+- Course hub section “Syllabus and literature details” driven by `course-details.json`
+- Matching `enriched` blocks for every course in the TSX reference draft
+
+### Changed
+- Empty tags left for PDF links, grade scale, realization, entry requirements, exam modules, and structured literature where not yet verified
+
+## [0.3.3] — 2026-07-20
+
+### Changed
+- Removed personal preparation/materials/evidence previews from programme explorer details
+- Course hub sections renamed to “My preparation plan” and “Suggested learning support”
+- Personal statuses labelled “My status” so they are not read as official LTU statuses
+
+## [0.3.2] — 2026-07-20
+
+### Changed
+- Programme explorer uses a full-width Year → Semester → Study period → Course layout
+- Selected-course details move below the explorer (no desktop side panel)
+- Course rows show full titles, ECTS, level, role, and status badges
+- D0036E / D7062E details include compact preparation, materials, and evidence previews
+
+## [0.3.1] — 2026-07-20
+
+
+### Changed
+- Homepage simplified to programme summary + explorer + compact footer
+- Removed duplicate upcoming-semester, composition, official-links, and about-learner sections
+- Distance study reduced to a compact disclosure; official programme link kept beside the summary
+- Explorer opens Year 1 → Autumn 2026 → Study Period 1 and highlights D0036E / D7062E
+- Header reduced to branding + theme toggle (navigation menu removed)
+
+### Removed
+- `navigation.js` and unused primary navigation markup
+
 ## [0.3.0] — 2026-07-20
 
 ### Added

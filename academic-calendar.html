@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" data-asset-base="assets/" data-path-depth="0">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LTU Academic Calendar 2026–2028 | Applied AI Programme Hub</title>
+  <meta name="description" content="LTU academic year calendars for 2026–2027 and 2027–2028: study periods, examinations, re-examinations, reading days and special days.">
+  <link rel="canonical" href="https://ahatha.github.io/applied-ai-learning-hub/academic-calendar.html">
+  <meta name="theme-color" content="#0f6b63">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("aailh-theme");
+        var theme = stored === "light" || stored === "dark"
+          ? stored
+          : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    .calendar-page {
+      --cal-text: #20242b;
+      --cal-muted: #666;
+      --cal-border: #ccc;
+      --cal-accent: #0d6efd;
+      --period-1: #d8ecff;
+      --period-2: #e7dcff;
+      --period-3: #dff3e5;
+      --period-4: #fff0c9;
+      --exam: #f7c9c9;
+      --reexam: #f2b5dc;
+      --orientation: #d9e2f2;
+      --reading-day: #cceef2;
+      --special-day: #f7df9d;
+      --saturday: #ececec;
+      --weekend: rgba(255, 0, 0, 0.1);
+      --holiday: #c9b8b8;
+    }
+
+    .calendar-page .page-title {
+      text-align: center;
+      margin: 0 0 6px;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+    }
+
+    .calendar-page .subtitle {
+      text-align: center;
+      color: var(--text-muted, var(--cal-muted));
+      margin-bottom: 16px;
+    }
+
+    .calendar-page .error-box {
+      max-width: 920px;
+      margin: 0 auto 18px;
+      padding: 14px 16px;
+      border: 1px solid #f1aeb5;
+      border-radius: 8px;
+      background: #f8d7da;
+      color: #842029;
+      font-size: 14px;
+      display: none;
+    }
+
+    .calendar-page .error-box.visible { display: block; }
+
+    .calendar-page .nav-tabs {
+      flex-wrap: wrap;
+      margin-top: 8px;
+      margin-bottom: 20px;
+    }
+
+    .calendar-page .nav-tabs .nav-link {
+      color: var(--cal-accent);
+      font-weight: 500;
+    }
+
+    .calendar-page .nav-tabs .nav-link.active {
+      color: #495057;
+      font-weight: 600;
+    }
+
+    .calendar-page .summary {
+      width: 100%;
+      margin: 0 0 20px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(160px, 1fr));
+      border: 1px solid var(--cal-border);
+      background: #fff;
+      color: var(--cal-text);
+    }
+
+    .calendar-page .summary-card {
+      border-right: 1px solid var(--cal-border);
+      padding: 8px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .calendar-page .summary-card:last-child { border-right: 0; }
+
+    .calendar-page .summary-card strong {
+      display: block;
+      background: #f0f0f0;
+      margin: -8px -8px 8px;
+      padding: 8px;
+    }
+
+    .calendar-page .summary-card span {
+      display: block;
+      color: #555;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .calendar-page .calendar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      max-width: 100%;
+    }
+
+    .calendar-page .month {
+      width: 280px;
+      flex: none;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid var(--cal-border);
+      border-radius: 8px;
+      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      background: #fff;
+      color: var(--cal-text);
+      overflow: visible;
+    }
+
+    .calendar-page .month h3 {
+      margin: 0 0 10px;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .calendar-page .weekdays,
+    .calendar-page .days {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .calendar-page .weekdays div,
+    .calendar-page .day {
+      width: calc(100% / 7);
+      text-align: center;
+      padding: 5px 0;
+      border: 1px dotted var(--cal-border);
+    }
+
+    .calendar-page .weekdays div {
+      font-size: 12px;
+      font-weight: 700;
+      color: #555;
+    }
+
+    .calendar-page .day {
+      min-height: 54px;
+      position: relative;
+      font-weight: bold;
+      background: #fff;
+      color: var(--cal-text);
+    }
+
+    .calendar-page .day.empty {
+      background: #fff;
+      min-height: 54px;
+    }
+
+    .calendar-page .day .n {
+      display: block;
+      font-size: 12px;
+      line-height: 1.1;
+      color: var(--cal-text);
+    }
+
+    .calendar-page .day .tag {
+      display: block;
+      margin: 3px 1px 0;
+      padding: 2px 1px;
+      border-radius: 3px;
+      text-align: center;
+      font-size: 9px;
+      line-height: 1.15;
+      font-weight: 600;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    .calendar-page .day .tag.long {
+      font-size: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .calendar-page .day.period-1 { background: var(--period-1); }
+    .calendar-page .day.period-2 { background: var(--period-2); }
+    .calendar-page .day.period-3 { background: var(--period-3); }
+    .calendar-page .day.period-4 { background: var(--period-4); }
+    .calendar-page .day.exam { background: var(--exam); }
+    .calendar-page .day.reexam { background: var(--reexam); }
+    .calendar-page .day.orientation { background: var(--orientation); }
+    .calendar-page .day.reading-day { background: var(--reading-day); }
+    .calendar-page .day.special-day { background: var(--special-day); }
+    .calendar-page .day.saturday { background: var(--saturday); }
+    .calendar-page .day.weekend { background: var(--weekend); }
+    .calendar-page .day.holiday { background: var(--holiday); }
+
+    .calendar-page .legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 12px 18px;
+      margin-top: 18px;
+      padding: 12px 0;
+    }
+
+    .calendar-page .legend-item {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .calendar-page .swatch {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      flex: 0 0 auto;
+    }
+
+    .calendar-page .note,
+    .calendar-page .source-links {
+      font-size: 13px;
+      color: var(--text-muted, var(--cal-muted));
+      margin-top: 10px;
+    }
+
+    .calendar-page .source-links a { color: var(--cal-accent); }
+
+    .calendar-page .year-section { margin-bottom: 8px; }
+
+    @media (max-width: 900px) {
+      .calendar-page .summary { grid-template-columns: repeat(2, 1fr); }
+      .calendar-page .summary-card:nth-child(2) { border-right: 0; }
+      .calendar-page .summary-card:nth-child(-n+2) { border-bottom: 1px solid var(--cal-border); }
+    }
+
+    @media (max-width: 620px) {
+      .calendar-page .summary { grid-template-columns: 1fr; }
+      .calendar-page .summary-card {
+        border-right: 0;
+        border-bottom: 1px solid var(--cal-border);
+      }
+      .calendar-page .summary-card:last-child { border-bottom: 0; }
+      .calendar-page .calendar { justify-content: center; }
+      .calendar-page .month {
+        width: min(100%, 340px);
+        margin: 8px 0;
+      }
+    }
+
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      .site-header,
+      .site-footer,
+      .skip-link,
+      .calendar-page .nav-tabs {
+        display: none !important;
+      }
+
+      .calendar-page .tab-pane {
+        display: block !important;
+        opacity: 1 !important;
+        page-break-after: always;
+        break-after: page;
+      }
+
+      .calendar-page .tab-pane:last-of-type {
+        page-break-after: auto;
+        break-after: auto;
+      }
+
+      .calendar-page .month {
+        box-shadow: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <noscript>
+    <div class="noscript-banner">JavaScript is required to load the LTU academic calendar from JSON data.</div>
+  </noscript>
+
+  <header class="site-header">
+    <div class="container site-header__inner site-header__inner--simple">
+      <a class="brand" href="index.html">
+        <span class="brand__mark" aria-hidden="true">AI</span>
+        <span class="brand__text">Applied AI Programme Hub<small>LTU Applied AI · 2026–2028</small></span>
+      </a>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">◐</button>
+    </div>
+  </header>
+
+  <main id="main" class="site-main">
+    <div class="container calendar-page">
+      <h1 class="page-title">LTU Academic Year Calendars</h1>
+      <p class="subtitle">Study periods, examinations, re-examinations, reading days and special days</p>
+
+      <div id="load-error" class="error-box" role="alert"></div>
+
+      <ul class="nav nav-tabs" id="yearTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="tab-2026-2027" data-bs-toggle="tab"
+            data-bs-target="#panel-2026-2027" type="button" role="tab"
+            aria-controls="panel-2026-2027" aria-selected="true">2026–2027</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="tab-2027-2028" data-bs-toggle="tab"
+            data-bs-target="#panel-2027-2028" type="button" role="tab"
+            aria-controls="panel-2027-2028" aria-selected="false">2027–2028</button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="yearTabContent">
+        <div class="tab-pane fade show active year-section" id="panel-2026-2027" role="tabpanel"
+          aria-labelledby="tab-2026-2027" tabindex="0">
+          <div id="summary-2026-2027" class="summary"></div>
+          <div id="calendar-2026-2027" class="calendar"></div>
+          <div id="legend-2026-2027" class="legend"></div>
+          <div id="source-2026-2027" class="source-links"></div>
+          <p class="note">Canvas and TimeEdit are authoritative for course-specific schedules.</p>
+        </div>
+
+        <div class="tab-pane fade year-section" id="panel-2027-2028" role="tabpanel"
+          aria-labelledby="tab-2027-2028" tabindex="0">
+          <div id="summary-2027-2028" class="summary"></div>
+          <div id="calendar-2027-2028" class="calendar"></div>
+          <div id="legend-2027-2028" class="legend"></div>
+          <div id="source-2027-2028" class="source-links"></div>
+          <p class="note">Canvas and TimeEdit are authoritative for course-specific schedules.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer site-footer--compact">
+    <div class="container">
+      <p>Personal learning hub for the LTU Master Programme in Applied AI. Not an official website of Luleå University of Technology.</p>
+      <p class="site-footer__links">
+        <a href="index.html">Programme explorer</a>
+        <a href="academic-calendar.html">Academic calendar</a>
+        <a href="https://github.com/ahatha/applied-ai-learning-hub" rel="noopener noreferrer" target="_blank">GitHub repository</a>
+        <a href="https://www.ltu.se/en/education/programme/tmdia-master-programme-in-applied-ai" rel="noopener noreferrer" target="_blank">Official LTU programme page</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="assets/js/theme.js" defer></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    "use strict";
+
+    var WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    var MONTH_NAMES = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    var ACADEMIC_MONTHS = [
+      { monthIndex: 7 },
+      { monthIndex: 8 },
+      { monthIndex: 9 },
+      { monthIndex: 10 },
+      { monthIndex: 11 },
+      { monthIndex: 0 },
+      { monthIndex: 1 },
+      { monthIndex: 2 },
+      { monthIndex: 3 },
+      { monthIndex: 4 },
+      { monthIndex: 5 }
+    ];
+
+    var JSON_FILES = {
+      "2026-2027": "assets/data/ltu-academic-calendar-2026-2027.json",
+      "2027-2028": "assets/data/ltu-academic-calendar-2027-2028.json"
+    };
+
+    function escapeHtml(value) {
+      return String(value == null ? "" : value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function formatWeeks(weeks) {
+      if (!weeks) {
+        return "";
+      }
+      return "Weeks " + String(weeks).replace(/-/g, "–");
+    }
+
+    function parseAcademicYears(academicYear) {
+      var parts = String(academicYear || "").split("-");
+      var start = parseInt(parts[0], 10);
+      var end = parseInt(parts[1], 10);
+      if (isNaN(start) || isNaN(end)) {
+        throw new Error("Invalid academic_year: " + academicYear);
+      }
+      return { startYear: start, endYear: end };
+    }
+
+    function dayByDate(days) {
+      var map = Object.create(null);
+      (days || []).forEach(function (day) {
+        if (day && day.date) {
+          map[day.date] = day;
+        }
+      });
+      return map;
+    }
+
+    function resolveStyleClass(day) {
+      if (!day) {
+        return "";
+      }
+      if (day.holiday) {
+        return "holiday";
+      }
+      if (day.special_day) {
+        return "special-day";
+      }
+      if (day.reading_day) {
+        return "reading-day";
+      }
+      if (day.exam_period != null) {
+        return "exam";
+      }
+      if (day.reexam_period != null) {
+        return "reexam";
+      }
+      if (day.orientation_period) {
+        return "orientation";
+      }
+      if (day.study_period === 1) {
+        return "period-1";
+      }
+      if (day.study_period === 2) {
+        return "period-2";
+      }
+      if (day.study_period === 3) {
+        return "period-3";
+      }
+      if (day.study_period === 4) {
+        return "period-4";
+      }
+      if (day.saturday) {
+        return "saturday";
+      }
+      if (day.weekend) {
+        return "weekend";
+      }
+      return "";
+    }
+
+    function tooltipText(day) {
+      if (!day) {
+        return "";
+      }
+      return [
+        "Date: " + day.date,
+        "Official label: " + (day.official_label == null ? "none" : day.official_label),
+        "Display label: " + (day.display_label == null ? "none" : day.display_label),
+        "Study period: " + (day.study_period == null ? "none" : day.study_period),
+        "Exam period: " + (day.exam_period == null ? "none" : day.exam_period),
+        "Re-exam period: " + (day.reexam_period == null ? "none" : day.reexam_period),
+        "Holiday: " + (day.holiday ? "yes" : "no"),
+        "Reading day: " + (day.reading_day ? "yes" : "no"),
+        "Special day: " + (day.special_day ? "yes" : "no"),
+        "Orientation: " + (day.orientation_period ? "yes" : "no")
+      ].join("\n");
+    }
+
+    function legendHtml() {
+      var items = [
+        ["var(--period-1)", "P1 Classes"],
+        ["var(--period-2)", "P2 Classes"],
+        ["var(--period-3)", "P3 Classes"],
+        ["var(--period-4)", "P4 Classes"],
+        ["var(--exam)", "P1–P4 Exams"],
+        ["var(--reexam)", "P1–P4 Re-exams"],
+        ["var(--orientation)", "Orientation / Re-exams"],
+        ["var(--reading-day)", "Reading Day"],
+        ["var(--special-day)", "Special Day / Eve"],
+        ["var(--saturday)", "Saturday"],
+        ["var(--weekend)", "Weekend"],
+        ["var(--holiday)", "Holiday"]
+      ];
+      return items.map(function (item) {
+        return (
+          '<div class="legend-item">' +
+          '<span class="swatch" style="background:' + item[0] + '"></span>' +
+          escapeHtml(item[1]) +
+          "</div>"
+        );
+      }).join("");
+    }
+
+    function renderSummary(studyPeriods, host) {
+      var html = "";
+      [1, 2, 3, 4].forEach(function (n) {
+        var period = (studyPeriods && studyPeriods[String(n)]) || {};
+        html +=
+          '<div class="summary-card">' +
+          "<strong>Study Period " + n + "</strong>" +
+          "<span>" + escapeHtml(formatWeeks(period.weeks)) + "</span>" +
+          "<span>" +
+          escapeHtml(String(period.study_days != null ? period.study_days : "–")) +
+          " study days</span>" +
+          "</div>";
+      });
+      host.innerHTML = html;
+    }
+
+    function renderMonth(year, monthIndex, byDate, parent) {
+      var box = document.createElement("div");
+      box.className = "month";
+
+      var title = document.createElement("h3");
+      title.textContent = MONTH_NAMES[monthIndex] + " " + year;
+      box.appendChild(title);
+
+      var weekdayRow = document.createElement("div");
+      weekdayRow.className = "weekdays";
+      WEEKDAYS.forEach(function (label) {
+        var cell = document.createElement("div");
+        cell.textContent = label;
+        weekdayRow.appendChild(cell);
+      });
+      box.appendChild(weekdayRow);
+
+      var daysRow = document.createElement("div");
+      daysRow.className = "days";
+
+      var first = new Date(year, monthIndex, 1);
+      var mondayIndex = (first.getDay() + 6) % 7;
+      var i;
+      for (i = 0; i < mondayIndex; i += 1) {
+        var empty = document.createElement("div");
+        empty.className = "day empty";
+        daysRow.appendChild(empty);
+      }
+
+      var dayCount = new Date(year, monthIndex + 1, 0).getDate();
+      for (var d = 1; d <= dayCount; d += 1) {
+        var dateKey =
+          year +
+          "-" +
+          String(monthIndex + 1).padStart(2, "0") +
+          "-" +
+          String(d).padStart(2, "0");
+        var day = byDate[dateKey];
+        var cell = document.createElement("div");
+        var styleClass = resolveStyleClass(day);
+        cell.className = "day" + (styleClass ? " " + styleClass : "");
+        cell.title = tooltipText(day);
+
+        var number = document.createElement("span");
+        number.className = "n";
+        number.textContent = String(d);
+        cell.appendChild(number);
+
+        if (day && day.display_label) {
+          var tag = document.createElement("span");
+          tag.className = "tag";
+          if (String(day.display_label).length > 14) {
+            tag.classList.add("long");
+          }
+          tag.textContent = day.display_label;
+          cell.appendChild(tag);
+        }
+
+        daysRow.appendChild(cell);
+      }
+
+      box.appendChild(daysRow);
+      parent.appendChild(box);
+    }
+
+    function renderCalendar(data, host) {
+      host.innerHTML = "";
+      var years = parseAcademicYears(data.academic_year);
+      var byDate = dayByDate(data.days);
+
+      ACADEMIC_MONTHS.forEach(function (item) {
+        var year = item.monthIndex >= 7 ? years.startYear : years.endYear;
+        renderMonth(year, item.monthIndex, byDate, host);
+      });
+    }
+
+    function renderSource(data, host) {
+      var url = data && data.source && data.source.url ? data.source.url : "";
+      var title = data && data.title ? data.title : "Official LTU PDF";
+      if (!url) {
+        host.innerHTML = "Source PDF: not provided in JSON.";
+        return;
+      }
+      host.innerHTML =
+        'Source PDF: <a href="' +
+        escapeHtml(url) +
+        '" target="_blank" rel="noopener noreferrer">' +
+        escapeHtml(title) +
+        "</a>";
+    }
+
+    function renderYear(key, data) {
+      renderSummary(data.study_periods, document.getElementById("summary-" + key));
+      renderCalendar(data, document.getElementById("calendar-" + key));
+      document.getElementById("legend-" + key).innerHTML = legendHtml();
+      renderSource(data, document.getElementById("source-" + key));
+    }
+
+    function showError(message) {
+      var box = document.getElementById("load-error");
+      box.textContent = message;
+      box.classList.add("visible");
+    }
+
+    async function loadJson(fileName) {
+      var response = await fetch(fileName, { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error("Failed to load " + fileName + " (HTTP " + response.status + ")");
+      }
+      return response.json();
+    }
+
+    async function init() {
+      try {
+        var results = await Promise.all([
+          loadJson(JSON_FILES["2026-2027"]),
+          loadJson(JSON_FILES["2027-2028"])
+        ]);
+        renderYear("2026-2027", results[0]);
+        renderYear("2027-2028", results[1]);
+      } catch (error) {
+        var detail = error && error.message ? error.message : String(error);
+        showError("Could not load calendar JSON. " + detail);
+      }
+    }
+
+    init();
+  });
+  </script>
+</body>
+</html>

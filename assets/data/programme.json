@@ -86,6 +86,7 @@
   "notes": [
     "Elective requirement is normally two 7.5 ECTS courses (15 ECTS total).",
     "Optional Swedish course S0046P (3 ECTS) is outside the 120 ECTS degree.",
+    "Enriched course syllabus, examination modules and literature arrays are stored in course-details.json and displayed on each course hub.",
     "This portfolio paraphrases official facts and is not an official LTU website."
   ],
   "sourceId": "ltu-syllabus-2026-2027",

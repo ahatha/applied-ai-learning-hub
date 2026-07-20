@@ -9,6 +9,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .ects-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .site-footer__grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -23,49 +27,48 @@
     grid-template-columns: 1fr;
   }
 
-  .nav-toggle {
-    display: inline-flex;
+  .course-row__btn {
+    grid-template-columns: 1fr;
   }
 
-  .site-nav {
-    position: absolute;
-    top: calc(var(--header-h) + 0.5rem);
-    right: 1rem;
-    left: 1rem;
-    display: none;
-    flex-direction: column;
-    align-items: stretch;
+  .course-row__meta,
+  .course-row__badges {
+    justify-content: flex-start;
+  }
+
+  .programme-explorer,
+  .selected-course-details,
+  .course-row__title {
+    overflow-x: visible;
+  }
+
+  .course-row__title {
+    overflow-wrap: anywhere;
+  }
+
+  .explorer-block--semester {
+    padding-left: var(--space-2);
+  }
+
+  .explorer-shell {
     padding: var(--space-4);
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
   }
 
-  .site-nav.is-open {
-    display: flex;
+  .explorer-block--semester,
+  .explorer-block--period {
+    padding-left: var(--space-4);
   }
 
-  .site-nav__list {
-    flex-direction: column;
-  }
-
-  .site-nav__list a {
-    border-radius: var(--radius-sm);
-  }
-
-  .header-actions {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
+  .explorer-block__dates {
+    margin-top: var(--space-1);
   }
 }
 
 @media (max-width: 700px) {
   .fact-strip,
   .filters,
+  .ects-row,
   .site-footer__grid,
-  .site-footer__grid--compact,
   .search-box {
     grid-template-columns: 1fr;
   }
@@ -79,33 +82,25 @@
     padding-block: var(--space-6);
   }
 
-  .brand__text span {
-    max-width: 12rem;
-  }
-}
-
-@media (max-width: 900px) {
-  .explorer-desktop {
-    display: none;
+  .brand__text small {
+    max-width: 14rem;
   }
 
-  .explorer-mobile {
-    display: block;
+  .site-footer__links {
+    flex-direction: column;
+    gap: var(--space-2);
   }
 
-  .programme-explorer {
-    overflow-x: hidden;
+  .course-row__btn,
+  .selected-course-card {
+    padding: var(--space-3);
   }
 
-  .explorer-panel--tree,
-  .explorer-acc,
-  .explorer-node__btn {
-    max-width: 100%;
+  .course-hero {
+    padding: var(--space-4);
   }
-}
 
-@media (min-width: 901px) {
-  .header-actions {
-    display: contents;
+  .content-zone--course {
+    padding: var(--space-4);
   }
 }
