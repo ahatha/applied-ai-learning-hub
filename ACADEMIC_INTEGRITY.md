@@ -37,3 +37,7 @@ Use statements such as:
 - Prefer your own explanations and summaries
 - Link to official sources when publicly available
 - Keep assessment integrity intact for yourself and others
+- Keep Official LTU information visually and structurally separate from My Preparation, My Notes, My Projects, and My Reflections
+- Do not present personal preparation checklists as official LTU prerequisites
+- Do not publish full assignment instructions, exam questions, or copied lecture slides
+- Course-linked resources should be public, verified, or clearly marked as needing verification

@@ -23,6 +23,20 @@
   }
 
   /**
+   * @param {object[]} courses
+   * @param {string[]} ids
+   * @returns {object[]}
+   */
+  function pickCourses(courses, ids) {
+    var map = D().indexById(courses);
+    return (ids || [])
+      .map(function (id) {
+        return map[id];
+      })
+      .filter(Boolean);
+  }
+
+  /**
    * @param {object} project
    * @returns {string}
    */
@@ -42,7 +56,9 @@
     }
     if (project.demoUrl) {
       links.push(
-        '<a href="' + escapeHtml(project.demoUrl) + '" rel="noopener noreferrer" target="_blank">Live demo</a>'
+        '<a href="' +
+          escapeHtml(project.demoUrl) +
+          '" rel="noopener noreferrer" target="_blank">Live demo</a>'
       );
     }
 
@@ -75,29 +91,27 @@
    */
   function courseCard(course) {
     var escapeHtml = D().escapeHtml;
-    var resolvePageLink = D().resolvePageLink;
-    var ects = course.ects == null ? "To be confirmed" : course.ects + " ECTS";
-    var notes =
-      course.publicNotesUrl
-        ? '<a href="' + escapeHtml(resolvePageLink(course.publicNotesUrl)) + '">Public notes</a>'
-        : "";
-    var official =
-      course.officialUrl
+    var ects = course.ects == null ? "—" : course.ects + " ECTS";
+    var period =
+      course.studyPeriod == null ? "—" : "Study period " + course.studyPeriod;
+    var hub = D().courseHubUrl(course.code || course.id);
+    var verify =
+      course.officialCourseUrl
         ? '<a href="' +
-          escapeHtml(course.officialUrl) +
-          '" rel="noopener noreferrer" target="_blank">Official syllabus</a>'
-        : '<span>Official syllabus: to be added</span>';
+          D().escapeHtml(course.officialCourseUrl) +
+          '" rel="noopener noreferrer" target="_blank">Verify on LTU</a>'
+        : "";
 
     return (
       '<article class="card" data-course-id="' +
       escapeHtml(course.id) +
       '">' +
       '<div class="card__meta">' +
-      D().statusBadge(course.status) +
+      D().statusBadge(course.myStatus) +
+      D().statusBadge(course.scheduleConfidence) +
       '<span class="badge">' +
-      escapeHtml(course.category || "Course") +
-      "</span>" +
-      "</div>" +
+      escapeHtml(D().formatStatus(course.role || course.category || "Course")) +
+      "</span></div>" +
       "<h3>" +
       escapeHtml(course.title) +
       "</h3>" +
@@ -108,25 +122,42 @@
       "<div><dt>Code</dt><dd>" +
       escapeHtml(course.code || "—") +
       "</dd></div>" +
-      "<div><dt>Period</dt><dd>" +
-      escapeHtml(course.semester || "—") +
+      "<div><dt>Level</dt><dd>" +
+      escapeHtml(course.level || "—") +
       "</dd></div>" +
-      "<div><dt>Year</dt><dd>" +
-      escapeHtml(course.academicYear || "—") +
+      "<div><dt>Period</dt><dd>" +
+      escapeHtml(period) +
       "</dd></div>" +
       "<div><dt>Extent</dt><dd>" +
       escapeHtml(ects) +
       "</dd></div>" +
       "</dl>" +
-      D().tagList(course.skills || []) +
-      '<div class="card__actions">' +
-      notes +
-      official +
-      "</div>" +
-      '<p class="card__meta">Updated ' +
-      escapeHtml(course.lastUpdated || "—") +
-      "</p>" +
-      "</article>"
+      '<div class="card__actions"><a href="' +
+      escapeHtml(hub) +
+      '">Open course hub</a>' +
+      verify +
+      "</div></article>"
+    );
+  }
+
+  /**
+   * @param {string} title
+   * @param {string} intro
+   * @param {object[]} courses
+   * @returns {string}
+   */
+  function courseSection(title, intro, courses) {
+    if (!courses || courses.length === 0) {
+      return "";
+    }
+    return (
+      '<section class="catalogue-section"><h2 class="section-title">' +
+      D().escapeHtml(title) +
+      "</h2><p>" +
+      D().escapeHtml(intro) +
+      '</p><div class="card-grid">' +
+      courses.map(courseCard).join("") +
+      "</div></section>"
     );
   }
 
@@ -159,42 +190,78 @@
   }
 
   async function renderHome() {
-    var areasEl = document.getElementById("featured-areas");
+    var semesterEl = document.getElementById("home-semester");
+    var focusCoursesEl = document.getElementById("home-focus-courses");
     var projectsEl = document.getElementById("featured-projects");
     var postsEl = document.getElementById("latest-posts");
-    if (!areasEl && !projectsEl && !postsEl) {
+    if (!semesterEl && !focusCoursesEl && !projectsEl && !postsEl) {
       return;
     }
 
-    if (areasEl) {
-      var areasData = await D().loadJson("data/learning-areas.json");
-      if (!areasData || !areasData.areas) {
-        setHtml(areasEl, '<div class="empty-state"><p>Learning areas will appear here once data is available.</p></div>');
+    var semestersData = await D().loadJson("data/semesters.json");
+    var coursesData = await D().loadJson("data/courses.json");
+    var courses = coursesData && coursesData.courses ? coursesData.courses : [];
+    var homepageId =
+      (semestersData && semestersData.meta && semestersData.meta.homepageSemesterId) ||
+      "autumn-2026";
+    var semester =
+      semestersData && semestersData.semesters
+        ? semestersData.semesters.find(function (item) {
+            return item.id === homepageId;
+          })
+        : null;
+
+    if (semesterEl && semester) {
+      setHtml(
+        semesterEl,
+        '<div class="semester-panel">' +
+          '<div class="card__meta">' +
+          D().statusBadge(semester.journeyStatus) +
+          D().statusBadge(semester.scheduleConfidence) +
+          '<span class="badge">Year ' +
+          D().escapeHtml(String(semester.yearOfStudy)) +
+          "</span></div>" +
+          "<h2>" +
+          D().escapeHtml(semester.displayLabel || semester.label) +
+          "</h2>" +
+          "<p>" +
+          D().escapeHtml(
+            semester.personalFocus ||
+              "Semester focus will be updated as learning progresses."
+          ) +
+          "</p>" +
+          "<p>Academic year " +
+          D().escapeHtml(semester.academicYear) +
+          " · Study periods " +
+          D().escapeHtml((semester.studyPeriods || []).join(" & ")) +
+          " · " +
+          D().escapeHtml(D().formatStatus(semester.verificationStatus)) +
+          "</p></div>"
+      );
+    }
+
+    if (focusCoursesEl && semester) {
+      var focusIds = (semester.periodMap && semester.periodMap["1"]) || [];
+      var focusCourses = pickCourses(courses, focusIds);
+      if (focusCourses.length === 0) {
+        setHtml(
+          focusCoursesEl,
+          '<div class="empty-state"><p>No upcoming study-period courses found.</p></div>'
+        );
       } else {
         setHtml(
-          areasEl,
-          '<div class="card-grid">' +
-            areasData.areas
-              .map(function (area) {
-                return (
-                  '<article class="card"><div class="card__meta">' +
-                  D().statusBadge(area.status) +
-                  "</div><h3>" +
-                  D().escapeHtml(area.title) +
-                  "</h3><p>" +
-                  D().escapeHtml(area.summary) +
-                  "</p></article>"
-                );
-              })
-              .join("") +
-            "</div>"
+          focusCoursesEl,
+          '<div class="card-grid">' + focusCourses.map(courseCard).join("") + "</div>"
         );
       }
     }
 
     if (projectsEl) {
-      var projectsData = await D().loadJson("data/projects.json");
-      var featured = (projectsData && projectsData.projects ? projectsData.projects : [])
+      var projectsDataHome = await D().loadJson("data/projects.json");
+      var featured = (projectsDataHome && projectsDataHome.projects
+        ? projectsDataHome.projects
+        : []
+      )
         .filter(function (p) {
           return p.featured;
         })
@@ -218,99 +285,284 @@
   }
 
   async function renderCoursesPage() {
-    var list = document.getElementById("courses-list");
+    var list = document.getElementById("courses-catalogue");
     if (!list) {
       return;
     }
 
-    var data = await D().loadJson("data/courses.json");
-    var courses = data && Array.isArray(data.courses) ? data.courses : [];
-    var search = document.getElementById("course-search");
-    var year = document.getElementById("course-year");
-    var semester = document.getElementById("course-semester");
-    var status = document.getElementById("course-status");
-    var category = document.getElementById("course-category");
-    var sort = document.getElementById("course-sort");
-    var meta = document.getElementById("courses-meta");
+    var coursesData = await D().loadJson("data/courses.json");
+    var semestersData = await D().loadJson("data/semesters.json");
+    var programmeData = await D().loadJson("data/programme.json");
+    var courses = coursesData && coursesData.courses ? coursesData.courses : [];
+    var homepageId =
+      (semestersData && semestersData.meta && semestersData.meta.homepageSemesterId) ||
+      "autumn-2026";
+    var semester =
+      semestersData && semestersData.semesters
+        ? semestersData.semesters.find(function (item) {
+            return item.id === homepageId;
+          })
+        : null;
 
-    F().fillSelect(
-      year,
-      courses.map(function (c) {
-        return c.academicYear;
-      }),
-      "All years"
-    );
-    F().fillSelect(
-      semester,
-      courses.map(function (c) {
-        return c.semester;
-      }),
-      "All semesters"
-    );
-    F().fillSelect(
-      status,
-      courses.map(function (c) {
-        return c.status;
-      }),
-      "All statuses"
-    );
-    F().fillSelect(
-      category,
-      courses.map(function (c) {
-        return c.category;
-      }),
-      "All subjects"
-    );
-
-    function apply() {
-      var query = search ? search.value.trim() : "";
-      var filtered = courses.filter(function (course) {
-        return (
-          (!year || !year.value || course.academicYear === year.value) &&
-          (!semester || !semester.value || course.semester === semester.value) &&
-          (!status || !status.value || course.status === status.value) &&
-          (!category || !category.value || course.category === category.value) &&
-          F().matchesQuery(course, query, ["title", "code", "summary", "category", "skills"])
-        );
-      });
-
-      var sortValue = sort ? sort.value : "order";
-      filtered = F().sortItems(filtered, function (a, b) {
-        if (sortValue === "title") {
-          return a.title.localeCompare(b.title);
-        }
-        if (sortValue === "status") {
-          return String(a.status).localeCompare(String(b.status));
-        }
-        if (sortValue === "ects") {
-          return (a.ects || 0) - (b.ects || 0);
-        }
-        if (sortValue === "updated") {
-          return String(b.lastUpdated || "").localeCompare(String(a.lastUpdated || ""));
-        }
-        return (a.order || 0) - (b.order || 0);
-      });
-
-      if (meta) {
-        meta.textContent = filtered.length + " course" + (filtered.length === 1 ? "" : "s") + " shown";
-      }
-
-      if (filtered.length === 0) {
-        setHtml(list, '<div class="empty-state"><p>No courses match the current filters.</p></div>');
-        return;
-      }
-      setHtml(list, '<div class="card-grid">' + filtered.map(courseCard).join("") + "</div>");
+    var totals = programmeData && programmeData.totals ? programmeData.totals : {};
+    var totalsEl = document.getElementById("courses-totals");
+    if (totalsEl) {
+      setHtml(
+        totalsEl,
+        '<dl class="fact-strip">' +
+          "<div><dt>Compulsory</dt><dd>" +
+          D().escapeHtml(String(totals.compulsoryEcts || 75)) +
+          " ECTS</dd></div>" +
+          "<div><dt>Electives required</dt><dd>" +
+          D().escapeHtml(String(totals.electiveRequirementEcts || 15)) +
+          " ECTS</dd></div>" +
+          "<div><dt>Thesis</dt><dd>" +
+          D().escapeHtml(String(totals.thesisEcts || 30)) +
+          " ECTS</dd></div>" +
+          "<div><dt>Degree total</dt><dd>" +
+          D().escapeHtml(String(totals.degreeEcts || 120)) +
+          " ECTS</dd></div></dl>"
+      );
     }
 
-    [search, year, semester, status, category, sort].forEach(function (el) {
-      if (!el) {
-        return;
+    var html = "";
+    if (semester) {
+      var period1 = semester.periodMap ? semester.periodMap["1"] || [] : [];
+      var period2 = semester.periodMap ? semester.periodMap["2"] || [] : [];
+      html +=
+        '<section class="catalogue-section"><h2 class="section-title">' +
+        D().escapeHtml(semester.displayLabel || "Upcoming semester") +
+        "</h2><p>Schedule confidence: " +
+        D().escapeHtml(semester.scheduleConfidence) +
+        ". Study period 1 focus courses are listed first. Optional Swedish is shown separately and is not part of the degree total.</p>";
+      html +=
+        '<h3>Study period 1</h3><div class="card-grid">' +
+        pickCourses(courses, period1).map(courseCard).join("") +
+        "</div>";
+      if (period2.length) {
+        html +=
+          '<h3>Study period 2</h3><div class="card-grid">' +
+          pickCourses(courses, period2).map(courseCard).join("") +
+          "</div>";
       }
-      el.addEventListener("input", apply);
-      el.addEventListener("change", apply);
+      html += "</section>";
+    }
+
+    var compulsory = courses.filter(function (c) {
+      return c.role === "compulsory";
+    });
+    var electives = courses.filter(function (c) {
+      return c.role === "elective-option";
+    });
+    var thesis = courses.filter(function (c) {
+      return c.role === "thesis";
+    });
+    var optional = courses.filter(function (c) {
+      return c.role === "optional-non-degree";
     });
 
-    apply();
+    html += courseSection(
+      "Compulsory courses",
+      "75 ECTS of compulsory coursework across the programme.",
+      compulsory
+    );
+    html += courseSection(
+      "Elective options",
+      "Alternatives toward the 15 ECTS elective requirement (normally two courses). Not all will be taken. Selection status: not selected.",
+      electives
+    );
+    html += courseSection(
+      "Master thesis",
+      "30 ECTS thesis component. Topic not selected. Entry requirements apply.",
+      thesis
+    );
+    html += courseSection(
+      "Optional non-degree course",
+      "Outside the 120 ECTS degree. Not selected.",
+      optional
+    );
+
+    setHtml(list, html || '<div class="empty-state"><p>Course catalogue could not be loaded.</p></div>');
+  }
+
+  async function renderProgrammePage() {
+    var host = document.getElementById("programme-overview");
+    if (!host) {
+      return;
+    }
+    var programme = await D().loadJson("data/programme.json");
+    var sources = await D().loadJson("data/sources.json");
+    var semesters = await D().loadJson("data/semesters.json");
+    if (!programme) {
+      setHtml(host, '<div class="empty-state"><p>Programme data could not be loaded.</p></div>');
+      return;
+    }
+    var source =
+      sources && sources.sources
+        ? sources.sources.find(function (item) {
+            return item.id === programme.sourceId;
+          })
+        : null;
+    var totals = programme.totals || {};
+    var semesterHtml =
+      semesters && semesters.semesters
+        ? '<div class="card-grid">' +
+          semesters.semesters
+            .map(function (semester) {
+              return (
+                '<article class="card"><div class="card__meta">' +
+                D().statusBadge(semester.journeyStatus) +
+                D().statusBadge(semester.scheduleConfidence) +
+                "</div><h3>" +
+                D().escapeHtml(semester.label) +
+                "</h3><p>Year " +
+                D().escapeHtml(String(semester.yearOfStudy)) +
+                " · " +
+                D().escapeHtml(semester.academicYear) +
+                "</p><p>" +
+                D().escapeHtml(D().formatStatus(semester.verificationStatus)) +
+                "</p>" +
+                (semester.notes ? "<p>" + D().escapeHtml(semester.notes) + "</p>" : "") +
+                "</article>"
+              );
+            })
+            .join("") +
+          "</div>"
+        : "";
+
+    var delivery = programme.delivery || {};
+    var admission = programme.admissionCycle || {};
+    var officialLinks = Array.isArray(programme.officialLinks) ? programme.officialLinks : [];
+    var distance = programme.distanceStudy || {};
+    var exams = programme.examinations || {};
+    var thesisDistance = programme.thesisAtDistance || {};
+
+    function proseBlock(block) {
+      if (!block || !block.title) {
+        return "";
+      }
+      return (
+        "<section class=\"catalogue-section\"><h2>" +
+        D().escapeHtml(block.title) +
+        "</h2>" +
+        (block.paragraphs || [])
+          .map(function (paragraph) {
+            return "<p>" + D().escapeHtml(paragraph) + "</p>";
+          })
+          .join("") +
+        (block.caveat ? "<p><em>" + D().escapeHtml(block.caveat) + "</em></p>" : "") +
+        "</section>"
+      );
+    }
+
+    var linksHtml =
+      '<section class="catalogue-section"><h2>Official LTU links</h2><ul>' +
+      officialLinks
+        .map(function (link) {
+          return (
+            "<li><a href=\"" +
+            D().escapeHtml(link.url) +
+            '" rel="noopener noreferrer" target="_blank">' +
+            D().escapeHtml(link.label) +
+            "</a>" +
+            (link.note ? " — " + D().escapeHtml(link.note) : "") +
+            " · Verified " +
+            D().escapeHtml(link.lastVerified || "—") +
+            "</li>"
+          );
+        })
+        .join("") +
+      "</ul></section>";
+
+    setHtml(
+      host,
+      '<dl class="meta-list">' +
+        "<div><dt>Programme</dt><dd>" +
+        D().escapeHtml(programme.name) +
+        "</dd></div>" +
+        "<div><dt>Programme code</dt><dd>" +
+        D().escapeHtml(programme.programmeCode || "—") +
+        "</dd></div>" +
+        "<div><dt>Institution</dt><dd>" +
+        D().escapeHtml(programme.institution) +
+        "</dd></div>" +
+        "<div><dt>Enrollment</dt><dd>" +
+        D().escapeHtml(programme.enrollmentSemester) +
+        "</dd></div>" +
+        "<div><dt>Start</dt><dd>" +
+        D().escapeHtml(programme.startDate || programme.programmeStart) +
+        "</dd></div>" +
+        "<div><dt>End</dt><dd>" +
+        D().escapeHtml(programme.endDate || "—") +
+        "</dd></div>" +
+        "<div><dt>Duration</dt><dd>" +
+        D().escapeHtml(String(programme.durationYears || 2)) +
+        " years</dd></div>" +
+        "<div><dt>Delivery</dt><dd>" +
+        D().escapeHtml(delivery.mode || "—") +
+        "</dd></div>" +
+        "<div><dt>Study pace</dt><dd>" +
+        D().escapeHtml(delivery.studyPace || "—") +
+        "</dd></div>" +
+        "<div><dt>Teaching time</dt><dd>" +
+        D().escapeHtml(delivery.instructionalTime || "—") +
+        "</dd></div>" +
+        "<div><dt>Language</dt><dd>" +
+        D().escapeHtml(delivery.language || "—") +
+        "</dd></div>" +
+        "<div><dt>Location</dt><dd>" +
+        D().escapeHtml(delivery.location || "—") +
+        "</dd></div>" +
+        "<div><dt>Compulsory gatherings (first semester)</dt><dd>" +
+        D().escapeHtml(String(delivery.compulsoryGatheringsFirstSemester)) +
+        "</dd></div>" +
+        "<div><dt>Gatherings note</dt><dd>" +
+        D().escapeHtml(delivery.gatheringNote || "—") +
+        "</dd></div>" +
+        "<div><dt>Compulsory</dt><dd>" +
+        D().escapeHtml(String(totals.compulsoryEcts)) +
+        " ECTS</dd></div>" +
+        "<div><dt>Electives</dt><dd>" +
+        D().escapeHtml(String(totals.electiveRequirementEcts)) +
+        " ECTS</dd></div>" +
+        "<div><dt>Thesis</dt><dd>" +
+        D().escapeHtml(String(totals.thesisEcts)) +
+        " ECTS</dd></div>" +
+        "<div><dt>Degree total</dt><dd>" +
+        D().escapeHtml(String(totals.degreeEcts)) +
+        " ECTS</dd></div></dl>" +
+        '<section class="catalogue-section"><h2>Admission-cycle information</h2>' +
+        "<p>" +
+        D().escapeHtml(admission.cycleLabel || "Admission-cycle facts for this intake.") +
+        "</p>" +
+        '<dl class="meta-list">' +
+        "<div><dt>Application code</dt><dd>" +
+        D().escapeHtml(String(admission.applicationCode || "—")) +
+        "</dd></div>" +
+        "<div><dt>Number of places</dt><dd>" +
+        D().escapeHtml(String(admission.numberOfPlaces || "—")) +
+        "</dd></div></dl>" +
+        "<p><em>" +
+        D().escapeHtml(admission.note || "") +
+        "</em></p></section>" +
+        linksHtml +
+        proseBlock(distance) +
+        proseBlock(exams) +
+        proseBlock(thesisDistance) +
+        "<h2>Semester overview</h2>" +
+        semesterHtml +
+        (source
+          ? "<h2>Source</h2><p>" +
+            D().escapeHtml(source.sourceTitle) +
+            " · " +
+            D().escapeHtml(source.sourceReference) +
+            " · Decision " +
+            D().escapeHtml(source.sourceDate) +
+            " · Verified " +
+            D().escapeHtml(source.verifiedDate) +
+            "</p>"
+          : "")
+    );
   }
 
   async function renderProjectsPage() {
@@ -352,7 +604,8 @@
       });
 
       if (meta) {
-        meta.textContent = filtered.length + " project" + (filtered.length === 1 ? "" : "s") + " shown";
+        meta.textContent =
+          filtered.length + " project" + (filtered.length === 1 ? "" : "s") + " shown";
       }
 
       if (filtered.length === 0) {
@@ -504,15 +757,18 @@
     if (!host) {
       return;
     }
-    var data = await D().loadJson("data/resources.json");
+    var data = await D().loadJson("data/course-resources.json");
     var resources = data && Array.isArray(data.resources) ? data.resources : [];
     if (resources.length === 0) {
-      setHtml(host, '<div class="empty-state"><p>Resources will appear here after curation.</p></div>');
+      setHtml(
+        host,
+        '<div class="empty-state"><p>Course-linked resources will appear here as they are curated.</p></div>'
+      );
       return;
     }
     setHtml(
       host,
-      '<div class="card-grid">' +
+      '<p class="lead">Resources are attached to courses rather than kept as a generic library.</p><div class="card-grid">' +
         resources
           .map(function (resource) {
             var link = resource.url
@@ -520,23 +776,18 @@
                 D().escapeHtml(resource.url) +
                 '" rel="noopener noreferrer" target="_blank">Open resource</a>'
               : "<span>Link to be verified</span>";
+            var courses = (resource.courseIds || []).join(", ");
             return (
               '<article class="card"><div class="card__meta">' +
-              D().statusBadge(resource.status) +
+              D().statusBadge(String(resource.status || "").toLowerCase().replace(/\s+/g, "-")) +
               '<span class="badge">' +
-              D().escapeHtml(resource.category) +
+              D().escapeHtml(resource.recommendedStage || "") +
               "</span></div><h3>" +
               D().escapeHtml(resource.title) +
               "</h3><p>" +
               D().escapeHtml(resource.description) +
-              "</p><p><strong>" +
-              D().escapeHtml(resource.provider) +
-              "</strong> · " +
-              D().escapeHtml(resource.cost) +
-              " · " +
-              D().escapeHtml(resource.difficulty) +
-              "</p><p>" +
-              D().escapeHtml(resource.personalNote || "") +
+              "</p><p>Courses: " +
+              D().escapeHtml(courses) +
               '</p><div class="card__actions">' +
               link +
               "</div></article>"
@@ -569,6 +820,7 @@
     initContactPlaceholder();
     renderHome();
     renderCoursesPage();
+    renderProgrammePage();
     renderProjectsPage();
     renderBlogPage();
     renderSkills();

@@ -1,71 +1,737 @@
 {
   "meta": {
-    "description": "Public course catalogue for the Applied AI Learning Hub. Add a new course object and optionally create courses/<id>.html.",
-    "lastUpdated": "2026-07-20"
+    "lastUpdated": "2026-07-20",
+    "description": "Full programme course catalogue for Autumn 2026 cohort. Hub pages use courses/course.html?code=CODE.",
+    "sourceId": "ltu-syllabus-2026-2027"
   },
   "courses": [
     {
-      "id": "programming-for-machine-learning",
-      "title": "Programming for Machine Learning",
+      "id": "D0036E",
       "code": "D0036E",
-      "ects": null,
-      "academicYear": "2026–2027",
-      "semester": "Autumn 2026",
-      "status": "upcoming",
-      "category": "Programming",
+      "title": "Programming for Machine Learning",
+      "ects": 7.5,
+      "level": "Bachelor's",
+      "role": "compulsory",
+      "category": "compulsory",
+      "myStatus": "upcoming",
+      "preparationStatus": "preparing",
+      "selectionStatus": null,
+      "countTowardDegree": true,
+      "yearOfStudy": 1,
+      "academicYear": "2026/2027",
+      "semesterId": "autumn-2026",
+      "studyPeriod": 1,
+      "scheduleConfidence": "confirmed",
+      "verificationStatus": "verified-for-autumn-2026-cohort",
+      "summary": "Compulsory course developing programming foundations for machine learning.",
+      "relatedProjectIds": [
+        "exploratory-data-analysis-python",
+        "applied-ai-learning-hub"
+      ],
       "order": 1,
-      "summary": "Developing Python programming and computational foundations for machine learning.",
-      "objectives": [
-        "Strengthen Python programming for data and ML workflows",
-        "Practise computational problem-solving relevant to machine learning"
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/d00/d0036e-programming-for-machine-learning",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
       ],
-      "skills": ["Python", "NumPy", "pandas", "Algorithms", "Data processing"],
-      "relatedProjects": ["exploratory-data-analysis-python", "applied-ai-learning-hub"],
-      "officialUrl": "",
-      "publicNotesUrl": "courses/programming-for-machine-learning.html",
-      "lastUpdated": "2026-07-20"
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "Fredrik Sandin",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/f/fredrik-sandin"
+        }
+      ]
     },
     {
-      "id": "ai-pattern-recognition",
-      "title": "Artificial Intelligence and Pattern Recognition",
+      "id": "D7062E",
       "code": "D7062E",
-      "ects": null,
-      "academicYear": "2026–2027",
-      "semester": "Autumn 2026",
-      "status": "upcoming",
-      "category": "Artificial Intelligence",
-      "order": 2,
-      "summary": "Foundations of artificial intelligence and pattern recognition methods.",
-      "objectives": [
-        "Build conceptual foundations in AI and pattern recognition",
-        "Connect classical methods to practical learning problems"
+      "title": "Artificial Intelligence and Pattern Recognition",
+      "ects": 7.5,
+      "level": "Master's",
+      "role": "compulsory",
+      "category": "compulsory",
+      "myStatus": "upcoming",
+      "preparationStatus": "preparing",
+      "selectionStatus": null,
+      "countTowardDegree": true,
+      "yearOfStudy": 1,
+      "academicYear": "2026/2027",
+      "semesterId": "autumn-2026",
+      "studyPeriod": 1,
+      "scheduleConfidence": "confirmed",
+      "verificationStatus": "verified-for-autumn-2026-cohort",
+      "summary": "Compulsory course covering artificial intelligence and pattern recognition foundations.",
+      "relatedProjectIds": [
+        "tips-dataset-clustering-pca"
       ],
-      "skills": ["Pattern recognition", "AI foundations", "Classification concepts"],
-      "relatedProjects": ["tips-dataset-clustering-pca"],
-      "officialUrl": "",
-      "publicNotesUrl": "",
-      "lastUpdated": "2026-07-20"
+      "order": 2,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7062e-artificial-intelligence-and-pattern-recognition",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "Hamam Mokayed",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/m/hamam-mokayed"
+        }
+      ]
     },
     {
-      "id": "neural-networks",
-      "title": "Neural Networks and Learning Machines",
-      "code": "D7046E",
-      "ects": null,
-      "academicYear": "2026–2027",
-      "semester": "Spring 2027",
-      "status": "planned",
-      "category": "Deep Learning",
+      "id": "S0046P",
+      "code": "S0046P",
+      "title": "Swedish for International Students 1",
+      "ects": 3,
+      "level": "N/A",
+      "role": "optional-non-degree",
+      "category": "optional-non-degree",
+      "myStatus": "optional-not-selected",
+      "preparationStatus": "not-started",
+      "selectionStatus": "not-selected",
+      "countTowardDegree": false,
+      "yearOfStudy": 1,
+      "academicYear": "2026/2027",
+      "semesterId": "autumn-2026",
+      "studyPeriod": 1,
+      "scheduleConfidence": "confirmed",
+      "verificationStatus": "verified-for-autumn-2026-cohort",
+      "summary": "Selectable optional language course outside the 120 ECTS degree requirements.",
+      "relatedProjectIds": [],
       "order": 3,
-      "summary": "Planned study of neural networks and learning machines within the programme sequence.",
-      "objectives": [
-        "Understand core neural network concepts",
-        "Connect theory to practical deep learning workflows"
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/s00/s0046p-swedish-for-international-students-1",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
       ],
-      "skills": ["Neural networks", "Deep learning foundations"],
-      "relatedProjects": [],
-      "officialUrl": "",
-      "publicNotesUrl": "",
-      "lastUpdated": "2026-07-20"
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [],
+      "offeringDetails": {
+        "season": "Autumn 2026",
+        "notes": "Optional course outside the degree requirements.",
+        "academicYear": "2026/2027",
+        "weeks": "36–44",
+        "studyPace": "20%",
+        "instanceLabel": "Autumn 2026 offering"
+      }
+    },
+    {
+      "id": "D0034E",
+      "code": "D0034E",
+      "title": "Applied AI, Knowledge Management and Reasoning",
+      "ects": 7.5,
+      "level": "Bachelor's",
+      "role": "compulsory",
+      "category": "compulsory",
+      "myStatus": "planned",
+      "preparationStatus": "not-started",
+      "selectionStatus": null,
+      "countTowardDegree": true,
+      "yearOfStudy": 1,
+      "academicYear": "2026/2027",
+      "semesterId": "autumn-2026",
+      "studyPeriod": 2,
+      "scheduleConfidence": "confirmed",
+      "verificationStatus": "verified-for-autumn-2026-cohort",
+      "summary": "Compulsory course on applied AI, knowledge management, and reasoning.",
+      "relatedProjectIds": [],
+      "order": 4,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/d00/d0034e-applied-ai-knowledge-management-and-reasoning",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "Evgeny Osipov",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/e/evgeny-osipov"
+        }
+      ]
+    },
+    {
+      "id": "E7010N",
+      "code": "E7010N",
+      "title": "Artificial Intelligence and Business Development",
+      "ects": 7.5,
+      "level": "Master's",
+      "role": "compulsory",
+      "category": "compulsory",
+      "myStatus": "planned",
+      "preparationStatus": "not-started",
+      "selectionStatus": null,
+      "countTowardDegree": true,
+      "yearOfStudy": 1,
+      "academicYear": "2026/2027",
+      "semesterId": "autumn-2026",
+      "studyPeriod": 2,
+      "scheduleConfidence": "confirmed",
+      "verificationStatus": "verified-for-autumn-2026-cohort",
+      "summary": "Compulsory course linking artificial intelligence and business development.",
+      "relatedProjectIds": [],
+      "order": 5,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/e70/e7010n-artificial-intelligence-and-business-development",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "Patricia Carolina Garcia Martin",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/p/patricia-carolina-garcia-martin"
+        }
+      ]
+    },
+    {
+      "id": "D7046E",
+      "code": "D7046E",
+      "title": "Neural Networks and Learning Machines",
+      "ects": 7.5,
+      "level": "Master's",
+      "role": "compulsory",
+      "category": "compulsory",
+      "myStatus": "planned",
+      "preparationStatus": "not-started",
+      "selectionStatus": null,
+      "countTowardDegree": true,
+      "yearOfStudy": 1,
+      "academicYear": "2026/2027",
+      "semesterId": "spring-2027",
+      "studyPeriod": 3,
+      "scheduleConfidence": "confirmed",
+      "verificationStatus": "verified-for-autumn-2026-cohort",
+      "summary": "Compulsory course on neural networks and learning machines.",
+      "relatedProjectIds": [],
+      "order": 6,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7046e-neural-networks-and-learning-machines",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "Fredrik Sandin",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/f/fredrik-sandin"
+        },
+        {
+          "name": "Marcus Liwicki",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/m/marcus-liwicki"
+        }
+      ],
+      "offeringDetails": {
+        "applicationPeriodStart": "2026-09-15",
+        "season": "Spring 2027",
+        "academicYear": "2026/2027",
+        "weeks": "3–12",
+        "studyPace": "50%",
+        "instanceLabel": "Spring 2027 offering"
+      }
+    },
+    {
+      "id": "D7054E",
+      "code": "D7054E",
+      "title": "Data Science Programming",
+      "ects": 7.5,
+      "level": "Master's",
+      "role": "compulsory",
+      "category": "compulsory",
+      "myStatus": "planned",
+      "preparationStatus": "not-started",
+      "selectionStatus": null,
+      "countTowardDegree": true,
+      "yearOfStudy": 1,
+      "academicYear": "2026/2027",
+      "semesterId": "spring-2027",
+      "studyPeriod": 3,
+      "scheduleConfidence": "confirmed",
+      "verificationStatus": "verified-for-autumn-2026-cohort",
+      "summary": "Compulsory course on data science programming.",
+      "relatedProjectIds": [],
+      "order": 7,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7054e-data-science-programming",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": []
+    },
+    {
+      "id": "D7047E",
+      "code": "D7047E",
+      "title": "Advanced Deep Learning",
+      "ects": 7.5,
+      "level": "Master's",
+      "role": "compulsory",
+      "category": "compulsory",
+      "myStatus": "planned",
+      "preparationStatus": "not-started",
+      "selectionStatus": null,
+      "countTowardDegree": true,
+      "yearOfStudy": 1,
+      "academicYear": "2026/2027",
+      "semesterId": "spring-2027",
+      "studyPeriod": 4,
+      "scheduleConfidence": "confirmed",
+      "verificationStatus": "verified-for-autumn-2026-cohort",
+      "summary": "Compulsory course on advanced deep learning.",
+      "relatedProjectIds": [],
+      "order": 8,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7047e-advanced-deep-learning",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "Marcus Liwicki",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/m/marcus-liwicki"
+        }
+      ],
+      "offeringDetails": {
+        "applicationPeriodStart": "2026-09-15",
+        "season": "Spring 2027",
+        "academicYear": "2026/2027",
+        "weeks": "13–22",
+        "studyPace": "50%",
+        "instanceLabel": "Spring 2027 offering"
+      }
+    },
+    {
+      "id": "M7016H",
+      "code": "M7016H",
+      "title": "Artificial Intelligence within the Healthcare System",
+      "ects": 7.5,
+      "level": "Master's",
+      "role": "compulsory",
+      "category": "compulsory",
+      "myStatus": "planned",
+      "preparationStatus": "not-started",
+      "selectionStatus": null,
+      "countTowardDegree": true,
+      "yearOfStudy": 1,
+      "academicYear": "2026/2027",
+      "semesterId": "spring-2027",
+      "studyPeriod": 4,
+      "scheduleConfidence": "confirmed",
+      "verificationStatus": "verified-for-autumn-2026-cohort",
+      "summary": "Compulsory course on artificial intelligence within healthcare systems. Public notes will remain privacy-safe.",
+      "relatedProjectIds": [],
+      "order": 9,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/m70/m7016h-artificial-intelligence-within-the-healthcare-system",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": []
+    },
+    {
+      "id": "D7043E",
+      "code": "D7043E",
+      "title": "Advanced Data Mining",
+      "ects": 7.5,
+      "level": "Master's",
+      "role": "compulsory",
+      "category": "compulsory",
+      "myStatus": "planned",
+      "preparationStatus": "not-started",
+      "selectionStatus": null,
+      "countTowardDegree": true,
+      "yearOfStudy": 2,
+      "academicYear": "2027/2028",
+      "semesterId": "autumn-2027",
+      "studyPeriod": 1,
+      "scheduleConfidence": "planned",
+      "verificationStatus": "official-planned-schedule",
+      "summary": "Compulsory Year 2 course on advanced data mining (official planned schedule).",
+      "relatedProjectIds": [],
+      "order": 10,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7043e-advanced-data-mining",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "Rajkumar Saini",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/r/rajkumar-saini"
+        }
+      ]
+    },
+    {
+      "id": "D7041E",
+      "code": "D7041E",
+      "title": "Applied Artificial Intelligence",
+      "ects": 7.5,
+      "level": "Master's",
+      "role": "compulsory",
+      "category": "compulsory",
+      "myStatus": "planned",
+      "preparationStatus": "not-started",
+      "selectionStatus": null,
+      "countTowardDegree": true,
+      "yearOfStudy": 2,
+      "academicYear": "2027/2028",
+      "semesterId": "autumn-2027",
+      "studyPeriod": 2,
+      "scheduleConfidence": "planned",
+      "verificationStatus": "official-planned-schedule",
+      "summary": "Compulsory Year 2 course on applied artificial intelligence (official planned schedule).",
+      "relatedProjectIds": [],
+      "order": 11,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7041e-applied-artificial-intelligence",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "Evgeny Osipov",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/e/evgeny-osipov"
+        }
+      ]
+    },
+    {
+      "id": "D7065E",
+      "code": "D7065E",
+      "title": "Embedded Intelligence at the Edge",
+      "ects": 7.5,
+      "level": "Master's",
+      "role": "elective-option",
+      "category": "elective-option",
+      "myStatus": "decision-pending",
+      "preparationStatus": "not-started",
+      "selectionStatus": "not-selected",
+      "countTowardDegree": false,
+      "yearOfStudy": 2,
+      "academicYear": "2027/2028",
+      "semesterId": "autumn-2027",
+      "studyPeriod": 1,
+      "scheduleConfidence": "planned",
+      "verificationStatus": "decision-pending",
+      "summary": "Elective option (not selected). One of several alternatives toward the 15 ECTS elective requirement.",
+      "relatedProjectIds": [],
+      "order": 12,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7065e-embedded-intelligence-at-the-edge",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "Jan van Deventer",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/d/jan-van-deventer"
+        }
+      ]
+    },
+    {
+      "id": "D7068E",
+      "code": "D7068E",
+      "title": "Neurochemistry for AI",
+      "ects": 7.5,
+      "level": "Master's",
+      "role": "elective-option",
+      "category": "elective-option",
+      "myStatus": "decision-pending",
+      "preparationStatus": "not-started",
+      "selectionStatus": "not-selected",
+      "countTowardDegree": false,
+      "yearOfStudy": 2,
+      "academicYear": "2027/2028",
+      "semesterId": "autumn-2027",
+      "studyPeriod": 1,
+      "scheduleConfidence": "planned",
+      "verificationStatus": "decision-pending",
+      "summary": "Elective option (not selected). One of several alternatives toward the 15 ECTS elective requirement.",
+      "relatedProjectIds": [],
+      "order": 13,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7068e-neurochemistry-for-ai",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "Josefine Enman",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/j/josefine-enman"
+        }
+      ]
+    },
+    {
+      "id": "R7020E",
+      "code": "R7020E",
+      "title": "Computer Vision and Image Processing",
+      "ects": 7.5,
+      "level": "Master's",
+      "role": "elective-option",
+      "category": "elective-option",
+      "myStatus": "decision-pending",
+      "preparationStatus": "not-started",
+      "selectionStatus": "not-selected",
+      "countTowardDegree": false,
+      "yearOfStudy": 2,
+      "academicYear": "2027/2028",
+      "semesterId": "autumn-2027",
+      "studyPeriod": 1,
+      "scheduleConfidence": "planned",
+      "verificationStatus": "decision-pending",
+      "summary": "Elective option (not selected). One of several alternatives toward the 15 ECTS elective requirement.",
+      "relatedProjectIds": [],
+      "order": 14,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/r70/r7020e-computer-vision-and-image-processing",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "Christoforos Kanellakis",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/c/christoforos-kanellakis"
+        },
+        {
+          "name": "George Nikolakopoulos",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/g/george-nikolakopoulos"
+        }
+      ]
+    },
+    {
+      "id": "D7064E",
+      "code": "D7064E",
+      "title": "Neuromorphic Computing",
+      "ects": 7.5,
+      "level": "Master's",
+      "role": "elective-option",
+      "category": "elective-option",
+      "myStatus": "decision-pending",
+      "preparationStatus": "not-started",
+      "selectionStatus": "not-selected",
+      "countTowardDegree": false,
+      "yearOfStudy": 2,
+      "academicYear": "2027/2028",
+      "semesterId": "autumn-2027",
+      "studyPeriod": 2,
+      "scheduleConfidence": "planned",
+      "verificationStatus": "decision-pending",
+      "summary": "Elective option (not selected). One of several alternatives toward the 15 ECTS elective requirement.",
+      "relatedProjectIds": [],
+      "order": 15,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/d70/d7064e-neuromorphic-computing",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "Fredrik Sandin",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/f/fredrik-sandin"
+        },
+        {
+          "name": "Foteini Liwicki",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/f/foteini-liwicki"
+        }
+      ]
+    },
+    {
+      "id": "P7002H",
+      "code": "P7002H",
+      "title": "Human Cognitive Neuroscience",
+      "ects": 7.5,
+      "level": "Master's",
+      "role": "elective-option",
+      "category": "elective-option",
+      "myStatus": "decision-pending",
+      "preparationStatus": "not-started",
+      "selectionStatus": "not-selected",
+      "countTowardDegree": false,
+      "yearOfStudy": 2,
+      "academicYear": "2027/2028",
+      "semesterId": "autumn-2027",
+      "studyPeriod": 2,
+      "scheduleConfidence": "planned",
+      "verificationStatus": "decision-pending",
+      "summary": "Elective option (not selected). One of several alternatives toward the 15 ECTS elective requirement.",
+      "relatedProjectIds": [],
+      "order": 16,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/p70/p7002h-human-cognitive-neuroscience",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "Mariana Vega Mendoza",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/m/mariana-vega-mendoza"
+        }
+      ]
+    },
+    {
+      "id": "R7010E",
+      "code": "R7010E",
+      "title": "Robotics",
+      "ects": 7.5,
+      "level": "Master's",
+      "role": "elective-option",
+      "category": "elective-option",
+      "myStatus": "decision-pending",
+      "preparationStatus": "not-started",
+      "selectionStatus": "not-selected",
+      "countTowardDegree": false,
+      "yearOfStudy": 2,
+      "academicYear": "2027/2028",
+      "semesterId": "autumn-2027",
+      "studyPeriod": 2,
+      "scheduleConfidence": "planned",
+      "verificationStatus": "decision-pending",
+      "summary": "Elective option (not selected). One of several alternatives toward the 15 ECTS elective requirement.",
+      "relatedProjectIds": [],
+      "order": 17,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/r70/r7010e-robotics",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "George Nikolakopoulos",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/g/george-nikolakopoulos"
+        }
+      ]
+    },
+    {
+      "id": "X7013E",
+      "code": "X7013E",
+      "title": "Master Thesis in Artificial Intelligence",
+      "ects": 30,
+      "level": "Master's",
+      "role": "thesis",
+      "category": "thesis",
+      "myStatus": "planned",
+      "preparationStatus": "not-started",
+      "selectionStatus": null,
+      "countTowardDegree": true,
+      "yearOfStudy": 2,
+      "academicYear": "2027/2028",
+      "semesterId": "spring-2028",
+      "studyPeriod": "3-4",
+      "scheduleConfidence": "planned",
+      "verificationStatus": "official-planned-schedule",
+      "summary": "Master thesis (30 ECTS). Topic not selected. Entry requirements apply.",
+      "relatedProjectIds": [],
+      "order": 18,
+      "lastUpdated": "2026-07-20",
+      "officialCourseUrl": "https://www.ltu.se/en/education/course/x70/x7013e-master-thesis-in-artificial-intelligence",
+      "officialSyllabusUrl": "",
+      "syllabusVerificationStatus": "not-yet-verified",
+      "sourceIds": [
+        "ltu-syllabus-2026-2027",
+        "ltu-programme-info-export-2026"
+      ],
+      "officialCourseUrlVerifiedDate": "2026-07-20",
+      "publicContacts": [
+        {
+          "name": "Rajkumar Saini",
+          "lastVerified": "2026-07-20",
+          "role": "Listed course contact",
+          "profileUrl": "https://www.ltu.se/en/staff/r/rajkumar-saini"
+        }
+      ]
     }
   ]
 }

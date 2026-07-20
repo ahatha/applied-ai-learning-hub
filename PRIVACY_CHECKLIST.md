@@ -21,6 +21,19 @@ Review this checklist before every public deployment or push to a GitHub Pages b
 - [ ] No grades unless explicitly approved for publication
 - [ ] No billing or payment information
 - [ ] No student-only portal URLs that expose account flows
+- [ ] No personal admission status
+- [ ] No personal application number
+- [ ] No merit rating or selection-group result
+- [ ] No tuition-payment status
+- [ ] No University Admissions personal messages
+- [ ] No private raw programme/admissions attachments stored in the public repo
+
+## Staff contact rules
+
+- [ ] Staff entries include only name, listed-contact role, and public LTU profile URL
+- [ ] No staff email addresses
+- [ ] No staff telephone numbers
+- [ ] Course contact note reminds visitors to verify on the current official LTU course page
 
 ## Credentials and secrets
 

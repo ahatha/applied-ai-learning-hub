@@ -2,6 +2,30 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.1] — 2026-07-20
+
+### Added
+- Public programme delivery facts, official LTU programme/course links, and selected public staff profile links
+- Distance-study, examination, and thesis-at-a-distance guidance on the Programme page
+- Offering-instance details only where unambiguously associated with a course
+
+### Changed
+- Course hubs show Official LTU course page / Verify on LTU links and source badges
+- Privacy and academic-integrity checklists cover admissions exports and course-contact rules
+
+## [0.2.0] — 2026-07-20
+
+### Added
+- Programme, sources, and semester JSON for Autumn 2026 cohort (LTU-1670-2025)
+- Full 18-item course catalogue with confirmed Year 1 and planned Year 2 schedules
+- Shared JSON-driven course hub (`courses/course.html?code=…`)
+- Preparation and course-linked resources for D0036E and D7062E only
+- Homepage oriented to upcoming Autumn 2026 semester
+
+### Changed
+- Courses page organised by upcoming semester, compulsory, elective options, thesis, optional non-degree
+- Programme page uses concise verified totals and source metadata
+
 ## [0.1.0] — 2026-07-20
 
 ### Added

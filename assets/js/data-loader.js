@@ -125,6 +125,31 @@
     );
   }
 
+  /**
+   * Shared course hub URL (JSON-driven page).
+   * @param {string} code
+   * @returns {string}
+   */
+  function courseHubUrl(code) {
+    return resolvePageLink("courses/course.html?code=" + encodeURIComponent(code));
+  }
+
+  /**
+   * Index courses by id/code.
+   * @param {object[]} courses
+   * @returns {Record<string, object>}
+   */
+  function indexById(courses) {
+    var map = {};
+    (courses || []).forEach(function (course) {
+      map[course.id] = course;
+      if (course.code) {
+        map[course.code] = course;
+      }
+    });
+    return map;
+  }
+
   window.AailhData = {
     assetUrl: assetUrl,
     loadJson: loadJson,
@@ -132,6 +157,8 @@
     resolvePageLink: resolvePageLink,
     formatStatus: formatStatus,
     statusBadge: statusBadge,
-    tagList: tagList
+    tagList: tagList,
+    courseHubUrl: courseHubUrl,
+    indexById: indexById
   };
 })();

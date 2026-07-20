@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "lastUpdated": "2026-07-20",
+    "description": "Official source trail for programme facts and public LTU links. Do not store private admissions attachments."
+  },
+  "sources": [
+    {
+      "id": "ltu-syllabus-2026-2027",
+      "sourceType": "official-programme-syllabus",
+      "sourceTitle": "Master Programme in Applied AI — Syllabus Study Year 2026/2027",
+      "sourceReference": "LTU-1670-2025",
+      "sourceDate": "2025-04-25",
+      "enrollmentSemester": "Autumn 2026",
+      "sourceUrl": "",
+      "verifiedDate": "2026-07-20",
+      "verificationStatus": "verified-for-autumn-2026-cohort",
+      "notes": "Canonical source for programme structure, ECTS, course list, Year 1 schedule, and official planned Year 2 schedule."
+    },
+    {
+      "id": "ltu-programme-info-export-2026",
+      "sourceType": "public-programme-information",
+      "sourceTitle": "Public LTU programme information export used for enrichment",
+      "sourceReference": "Public programme and course pages for TMDIA / Autumn 2026 intake",
+      "sourceDate": "2026-07-20",
+      "extractionDate": "2026-07-20",
+      "sourceUrl": "https://www.ltu.se/en/education/programme/tmdia-master-programme-in-applied-ai",
+      "verifiedDate": "2026-07-20",
+      "verificationStatus": "verified-public-facts",
+      "confidenceNotes": [
+        "Only publication-safe programme delivery facts and official public course/staff profile links were retained.",
+        "Private admissions fields from the export were excluded.",
+        "Official course syllabus URLs were left empty unless the URL course code matched exactly."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-07-20",
+      "action": "Syllabus facts entered into learning hub data model",
+      "sourceId": "ltu-syllabus-2026-2027"
+    },
+    {
+      "date": "2026-07-20",
+      "action": "Enriched programme delivery facts, official course page URLs, and selected public staff profile links",
+      "sourceId": "ltu-programme-info-export-2026"
+    }
+  ]
+}

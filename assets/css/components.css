@@ -467,8 +467,87 @@
   gap: var(--space-6);
 }
 
-.notice-list {
-  margin: 0;
-  padding-left: 1.2rem;
+.content-zone {
+  margin: var(--space-6) 0;
+  padding: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+}
+
+.zone-label {
+  display: inline-flex;
+  margin: 0 0 var(--space-4);
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: var(--bg-muted);
   color: var(--text-muted);
+}
+
+.content-zone--official .zone-label {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.content-zone--prep .zone-label,
+.content-zone--notes .zone-label,
+.content-zone--reflections .zone-label {
+  background: var(--warm-soft);
+  color: var(--warm);
+}
+
+.content-zone h2 {
+  margin-top: 0;
+  font-family: var(--font-serif);
+}
+
+.semester-panel {
+  padding: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 10%, var(--bg-elevated)), var(--bg-elevated));
+  box-shadow: var(--shadow);
+}
+
+.semester-panel h2 {
+  margin: var(--space-3) 0;
+  font-family: var(--font-serif);
+}
+
+.catalogue-section {
+  margin-top: var(--space-7);
+}
+
+.catalogue-section > p {
+  color: var(--text-muted);
+  max-width: 48rem;
+}
+
+.catalogue-section h3 {
+  margin: var(--space-5) 0 var(--space-3);
+}
+
+.badge--confirmed,
+.badge--upcoming,
+.badge--verified-for-autumn-2026-cohort {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.badge--decision-pending,
+.badge--optional-not-selected,
+.badge--not-selected,
+.badge--link-needs-verification {
+  background: var(--warm-soft);
+  color: var(--warm);
+}
+
+.badge--official-planned-schedule,
+.badge--recommended {
+  background: color-mix(in srgb, var(--focus) 14%, transparent);
+  color: var(--focus);
 }

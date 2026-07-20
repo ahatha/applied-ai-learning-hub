@@ -34,9 +34,9 @@
           type: "Course",
           title: course.title,
           summary: course.summary || "",
-          url: resolvePageLink(course.publicNotesUrl || "courses.html"),
-          meta: [course.code, course.status, course.category].filter(Boolean).join(" · "),
-          searchText: [course.title, course.code, course.summary, course.category, (course.skills || []).join(" ")].join(" ")
+          url: window.AailhData.courseHubUrl(course.code || course.id),
+          meta: [course.code, course.myStatus, course.role].filter(Boolean).join(" · "),
+          searchText: [course.title, course.code, course.summary, course.role, course.level].join(" ")
         });
       });
     }
@@ -85,7 +85,7 @@
       });
     }
 
-    var resources = await loadJson("data/resources.json");
+    var resources = await loadJson("data/course-resources.json");
     if (resources && Array.isArray(resources.resources)) {
       resources.resources.forEach(function (resource) {
         records.push({
@@ -93,8 +93,8 @@
           title: resource.title,
           summary: resource.description || "",
           url: resource.url || resolvePageLink("resources.html"),
-          meta: [resource.category, resource.provider].filter(Boolean).join(" · "),
-          searchText: [resource.title, resource.description, resource.category, resource.provider].join(" ")
+          meta: [(resource.courseIds || []).join(", "), resource.provider].filter(Boolean).join(" · "),
+          searchText: [resource.title, resource.description, (resource.courseIds || []).join(" "), resource.provider].join(" ")
         });
       });
     }

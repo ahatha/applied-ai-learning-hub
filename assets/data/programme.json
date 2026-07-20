@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "lastUpdated": "2026-07-20",
+    "description": "Canonical programme totals and public delivery facts for the Autumn 2026 cohort."
+  },
+  "name": "Master Programme in Applied Artificial Intelligence",
+  "shortName": "Master Programme in Applied AI",
+  "programmeCode": "TMDIA",
+  "institution": "Luleå University of Technology",
+  "enrollmentSemester": "Autumn 2026",
+  "startDate": "2026-08-31",
+  "endDate": "2028-06-06",
+  "durationYears": 2,
+  "delivery": {
+    "mode": "Internet-based distance education",
+    "studyPace": "100%",
+    "instructionalTime": "Daytime",
+    "language": "English",
+    "location": "Varied",
+    "compulsoryGatheringsFirstSemester": 0,
+    "gatheringNote": "No compulsory gatherings"
+  },
+  "admissionCycle": {
+    "applicationCode": "LTU-97393",
+    "numberOfPlaces": 30,
+    "cycleLabel": "Admission-cycle information for the Autumn 2026 intake",
+    "note": "Application code and number of places are cycle-specific and may change in future intakes."
+  },
+  "totals": {
+    "degreeEcts": 120,
+    "compulsoryEcts": 75,
+    "electiveRequirementEcts": 15,
+    "thesisEcts": 30,
+    "courseworkEcts": 90
+  },
+  "officialLinks": [
+    {
+      "id": "official-programme",
+      "label": "Official programme page",
+      "url": "https://www.ltu.se/en/education/programme/tmdia-master-programme-in-applied-ai",
+      "category": "core-programme",
+      "lastVerified": "2026-07-20"
+    },
+    {
+      "id": "degree-information",
+      "label": "Degree information",
+      "url": "https://www.ltu.se/en/education/degree/exa2240-degree-of-master-of-science-120-credits---major-computer-science-and-engineering",
+      "category": "core-programme",
+      "lastVerified": "2026-07-20"
+    },
+    {
+      "id": "new-student",
+      "label": "New-student information",
+      "url": "https://www.ltu.se/en/student-web/new-student",
+      "category": "public-support",
+      "lastVerified": "2026-07-20",
+      "note": "Public support information for new students; not part of the core programme curriculum."
+    }
+  ],
+  "distanceStudy": {
+    "title": "What distance study means",
+    "paragraphs": [
+      "This is not an on-demand or self-paced programme.",
+      "Study normally takes place during daytime working hours, and scheduled activities may occur approximately between 08:00 and 17:00.",
+      "Active participation is expected.",
+      "Most lectures are delivered live, and recordings may be available only in limited cases."
+    ],
+    "caveat": "Arrangements can vary by course. Always verify current expectations through official LTU course information."
+  },
+  "examinations": {
+    "title": "Examinations for distance students",
+    "paragraphs": [
+      "Some examinations may be conducted online for admitted distance students.",
+      "Examination arrangements differ by course.",
+      "The current course syllabus and examiner are authoritative."
+    ]
+  },
+  "thesisAtDistance": {
+    "title": "Thesis at a distance",
+    "paragraphs": [
+      "Thesis work can often be performed partly or fully remotely.",
+      "Many thesis projects are completed with companies or organisations."
+    ],
+    "caveat": "This is general programme guidance, not a guarantee for every thesis project."
+  },
+  "notes": [
+    "Elective requirement is normally two 7.5 ECTS courses (15 ECTS total).",
+    "Optional Swedish course S0046P (3 ECTS) is outside the 120 ECTS degree.",
+    "This portfolio paraphrases official facts and is not an official LTU website."
+  ],
+  "sourceId": "ltu-syllabus-2026-2027",
+  "programmeInfoSourceId": "ltu-programme-info-export-2026"
+}

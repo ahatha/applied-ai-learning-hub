@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "lastUpdated": "2026-07-20",
+    "description": "Semester layer between programme and courses. journeyStatus is manually updated (upcoming | current | completed | planned).",
+    "homepageSemesterId": "autumn-2026",
+    "sourceId": "ltu-syllabus-2026-2027"
+  },
+  "semesters": [
+    {
+      "id": "autumn-2026",
+      "label": "Autumn 2026",
+      "displayLabel": "Upcoming semester — Autumn 2026",
+      "yearOfStudy": 1,
+      "academicYear": "2026/2027",
+      "studyPeriods": [1, 2],
+      "journeyStatus": "upcoming",
+      "scheduleConfidence": "confirmed",
+      "verificationStatus": "verified-for-autumn-2026-cohort",
+      "personalFocus": "Python foundations, programming for machine learning, and AI/pattern recognition preparation.",
+      "courseIds": ["D0036E", "D7062E", "D0034E", "E7010N"],
+      "optionalCourseIds": ["S0046P"],
+      "electiveOptionIds": [],
+      "periodMap": {
+        "1": ["D0036E", "D7062E"],
+        "2": ["D0034E", "E7010N"]
+      }
+    },
+    {
+      "id": "spring-2027",
+      "label": "Spring 2027",
+      "displayLabel": "Spring 2027",
+      "yearOfStudy": 1,
+      "academicYear": "2026/2027",
+      "studyPeriods": [3, 4],
+      "journeyStatus": "planned",
+      "scheduleConfidence": "confirmed",
+      "verificationStatus": "verified-for-autumn-2026-cohort",
+      "personalFocus": "",
+      "courseIds": ["D7046E", "D7054E", "D7047E", "M7016H"],
+      "optionalCourseIds": [],
+      "electiveOptionIds": [],
+      "periodMap": {
+        "3": ["D7046E", "D7054E"],
+        "4": ["D7047E", "M7016H"]
+      }
+    },
+    {
+      "id": "autumn-2027",
+      "label": "Autumn 2027",
+      "displayLabel": "Autumn 2027",
+      "yearOfStudy": 2,
+      "academicYear": "2027/2028",
+      "studyPeriods": [1, 2],
+      "journeyStatus": "planned",
+      "scheduleConfidence": "planned",
+      "verificationStatus": "official-planned-schedule",
+      "personalFocus": "",
+      "courseIds": ["D7043E", "D7041E"],
+      "optionalCourseIds": [],
+      "electiveOptionIds": ["D7065E", "D7068E", "R7020E", "D7064E", "P7002H", "R7010E"],
+      "periodMap": {
+        "1": ["D7043E"],
+        "2": ["D7041E"]
+      },
+      "electivePeriodMap": {
+        "1": ["D7065E", "D7068E", "R7020E"],
+        "2": ["D7064E", "P7002H", "R7010E"]
+      },
+      "notes": "Elective options shown for decision support only. Degree requires 15 ECTS electives (normally two courses). Not all listed electives will be taken."
+    },
+    {
+      "id": "spring-2028",
+      "label": "Spring 2028",
+      "displayLabel": "Spring 2028",
+      "yearOfStudy": 2,
+      "academicYear": "2027/2028",
+      "studyPeriods": [3, 4],
+      "journeyStatus": "planned",
+      "scheduleConfidence": "planned",
+      "verificationStatus": "official-planned-schedule",
+      "personalFocus": "",
+      "courseIds": ["X7013E"],
+      "optionalCourseIds": [],
+      "electiveOptionIds": [],
+      "periodMap": {
+        "3-4": ["X7013E"]
+      },
+      "notes": "Master thesis spans study periods 3–4. Entry requirements apply."
+    }
+  ]
+}
