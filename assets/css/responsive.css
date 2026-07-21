@@ -54,18 +54,6 @@
     padding: var(--space-4);
   }
 
-  .explorer-block--semester > .explorer-block__heading .explorer-branch {
-    top: calc(var(--space-4) + 0.1rem);
-  }
-
-  .explorer-block--semester::after {
-    top: calc(var(--space-4) + 0.6rem);
-  }
-
-  .explorer-block--period {
-    padding-left: var(--space-4);
-  }
-
   .explorer-block__dates {
     margin-top: var(--space-1);
   }

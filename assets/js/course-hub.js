@@ -147,6 +147,59 @@
     return '<div class="literature-book-groups">' + parts.join("") + "</div>";
   }
 
+  /** Vertical literature cards for the course-hub right rail. */
+  function literatureRailHtml(lit) {
+    var esc = D().escapeHtml.bind(D());
+    var body;
+    if (!lit || !lit.length) {
+      body =
+        '<div class="empty-state"><p>No literature listed for this course yet.</p></div>';
+    } else {
+      var parts = [];
+      groupLiteratureByCategory(lit).forEach(function (group) {
+        var isSharedChoice = group.books.length > 1 && group.category;
+        if (isSharedChoice) {
+          parts.push(
+            '<div class="course-lit-rail__group">' +
+              '<p class="course-lit-rail__group-label">' +
+              esc(group.category) +
+              "</p>" +
+              group.books
+                .map(function (book) {
+                  return (
+                    '<div class="course-lit-rail__item" role="listitem">' +
+                    literatureBookCardHtml(book, { showCategory: false }) +
+                    "</div>"
+                  );
+                })
+                .join("") +
+              "</div>"
+          );
+        } else {
+          group.books.forEach(function (book) {
+            parts.push(
+              '<div class="course-lit-rail__item" role="listitem">' +
+                literatureBookCardHtml(book, { showCategory: true }) +
+                "</div>"
+            );
+          });
+        }
+      });
+      body =
+        '<div class="course-lit-rail__list" role="list">' + parts.join("") + "</div>";
+    }
+
+    return (
+      '<aside id="literature" class="course-lit-rail" aria-label="Course literature">' +
+      '<div class="course-lit-rail__head">' +
+      '<p class="course-lit-rail__eyebrow"><i class="fa-solid fa-book" aria-hidden="true"></i> Literature</p>' +
+      "<h2>Course books</h2>" +
+      "</div>" +
+      body +
+      "</aside>"
+    );
+  }
+
   /** Compact LTU person card (local copy so course hub works even if data-loader cache is stale). */
   function contactInitials(name) {
     var parts = String(name || "")
@@ -403,6 +456,7 @@
       ["literature", "fa-solid fa-book", "Literature"],
       ["links", "fa-solid fa-address-card", "Contacts"]
     ];
+    /* Literature targets the right rail (#literature), not a middle section. */
     return (
       '<nav class="course-quick-nav" aria-label="Course hub sections">' +
       items
@@ -489,8 +543,9 @@
   function periodNavLabel(period) {
     var value = String(period == null ? "" : period).trim();
     if (!value || value === "?") return "Unscheduled";
-    if (/^\d+$/.test(value)) return "Period " + value;
-    return "Periods " + value.replace(/-/g, "–");
+    if (value === "3-4") return "Study periods 3–4";
+    if (/^\d+$/.test(value)) return "Study period " + value;
+    return "Study periods " + value.replace(/-/g, "–");
   }
 
   function roleNavClass(role) {
@@ -662,23 +717,30 @@
     });
   }
 
-  function courseHubLayoutHtml(courses, activeCode, mainHtml) {
+  function courseHubLayoutHtml(courses, activeCode, mainHtml, litRailHtml) {
     var nav = courseSideNavHtml(courses, activeCode);
-    if (!nav) {
+    var rail = litRailHtml || "";
+    if (!nav && !rail) {
       return mainHtml;
     }
+    var layoutClass =
+      "course-hub-layout" + (rail ? " course-hub-layout--with-lit" : "");
     return (
-      '<div class="course-hub-layout">' +
+      '<div class="' +
+      layoutClass +
+      '">' +
       '<div class="course-side-nav__toolbar">' +
       '<button type="button" class="course-side-nav__open" data-course-nav-open aria-controls="course-side-nav" aria-expanded="false">' +
       '<i class="fa-solid fa-bars" aria-hidden="true"></i> Courses' +
       "</button>" +
       "</div>" +
       '<button type="button" class="course-side-nav__backdrop" data-course-nav-backdrop aria-label="Close course menu"></button>' +
-      nav +
+      (nav || "") +
       '<div class="course-hub-layout__main">' +
       mainHtml +
-      "</div></div>"
+      "</div>" +
+      rail +
+      "</div>"
     );
   }
 
@@ -700,9 +762,12 @@
     var coursesData = await D().loadJson("data/courses.json");
     var courses = coursesData && coursesData.courses ? coursesData.courses : [];
 
-    function paint(mainHtml, activeCode) {
+    function paint(mainHtml, activeCode, litRailHtml) {
       host.classList.add("container--course-hub");
-      setHtml(host, courseHubLayoutHtml(courses, activeCode || "", mainHtml));
+      setHtml(
+        host,
+        courseHubLayoutHtml(courses, activeCode || "", mainHtml, litRailHtml || "")
+      );
       bindCourseSideNav(host);
     }
 
@@ -734,8 +799,10 @@
     var details =
       detailsData && detailsData.courses ? detailsData.courses[course.code] || null : null;
 
-    var periodLabel =
-      course.studyPeriod == null ? "—" : "Study period " + course.studyPeriod;
+    var periodBadgeHtml =
+      course.studyPeriod == null
+        ? "—"
+        : D().metaBadge("studyPeriod", course.studyPeriod);
 
     var meta = (details && details.meta) || {};
     var syl = (details && details.syllabus) || {};
@@ -825,22 +892,13 @@
 
     var heroBadges =
       '<div class="course-hero__badges">' +
-      '<span class="badge badge--ects">' +
-      D().escapeHtml(String(course.ects)) +
-      " ECTS</span>" +
-      '<span class="badge badge--level">' +
-      D().escapeHtml(course.level || "Level") +
-      "</span>" +
+      D().metaBadge("ects", course.ects) +
+      D().metaBadge("level", course.level || "Level") +
       '<span class="badge badge--' +
       D().escapeHtml(String(course.role || "role").toLowerCase().replace(/\s+/g, "-")) +
       '">' +
       D().escapeHtml(D().formatStatus(course.role)) +
       "</span>" +
-      (course.role === "elective-option"
-        ? '<span class="badge">' +
-          D().escapeHtml(D().formatStatus(course.selectionStatus || "not-selected")) +
-          "</span>"
-        : "") +
       (course.role === "optional-non-degree"
         ? '<span class="badge badge--warning">Outside 120 ECTS</span>'
         : "") +
@@ -856,22 +914,27 @@
       );
     }
 
+    function factRowHtml(label, html) {
+      return (
+        "<tr><th scope=\"row\">" +
+        D().escapeHtml(label) +
+        "</th><td>" +
+        html +
+        "</td></tr>"
+      );
+    }
+
     var heroFactsHtml =
       '<div class="course-hero__facts" aria-label="Course facts">' +
       '<table class="course-facts-table">' +
       "<tbody>" +
       factRow("Academic year", course.academicYear || "—") +
-      factRow("Period", periodLabel) +
-      factRow(
+      factRowHtml("Period", periodBadgeHtml) +
+      factRowHtml(
         "Programme segment",
-        ({
-          "computer-science-and-engineering": "Computer Science and Engineering",
-          selective: "Selective courses",
-          "computer-science": "Computer Science",
-          entrepreneurship: "Entrepreneurship"
-        })[course.subjectSegment] ||
-          D().formatStatus(course.subjectSegment) ||
-          "—"
+        course.subjectSegment
+          ? D().metaBadge("segment", course.subjectSegment)
+          : "—"
       ) +
       factRow("Subject", subject || "—") +
       factRow("Subject group (SCB)", subjectGroup || "—") +
@@ -879,7 +942,6 @@
       factRow("Grade scale", gradeScale || "—") +
       factRow("Selection", selection || "—") +
       factRow("Course offered by", offeredBy || "—") +
-      factRow("Source status", D().formatStatus(course.verificationStatus) || "—") +
       "</tbody></table>" +
       offeringHtml +
       "</div>";
@@ -950,13 +1012,11 @@
 
     var syllabusDetailsHtml;
     var examinationBodyHtml;
-    var literatureBodyHtml;
     if (!details) {
       syllabusDetailsHtml =
         sectionHead("Syllabus", "Syllabus details", "fa-solid fa-book-open-reader") +
         emptyPersonal("No enriched course-details entry yet for this course.");
       examinationBodyHtml = emptyTag("Examination modules");
-      literatureBodyHtml = emptyTag("Literature");
     } else {
       var modulesHtml;
       if (Array.isArray(exam.modules) && exam.modules.length) {
@@ -1019,8 +1079,6 @@
       }
 
       examinationBodyHtml = modulesHtml;
-      literatureBodyHtml =
-        lit.length === 0 ? emptyTag("Literature") : literatureGroupsHtml(lit);
 
       syllabusDetailsHtml =
         sectionHead("Syllabus", "Syllabus details", "fa-solid fa-book-open-reader") +
@@ -1045,9 +1103,6 @@
     var examinationHtml =
       sectionHead("Examination", "Examination modules", "fa-solid fa-clipboard-check") +
       examinationBodyHtml;
-
-    var literatureHtml =
-      sectionHead("Literature", "Course literature", "fa-solid fa-book") + literatureBodyHtml;
 
     var linksHtml =
       sectionHead("Contacts", "Course contacts", "fa-solid fa-address-card") + contactsHtml;
@@ -1087,18 +1142,12 @@
         "content-zone--official content-zone--examination",
         examinationHtml
       ) +
-      zone(
-        "literature",
-        "Literature",
-        "content-zone--official content-zone--literature",
-        literatureHtml
-      ) +
       zone("links", "Contacts", "content-zone--official content-zone--links", linksHtml) +
       '<p class="course-updated"><em>Last updated: ' +
       D().escapeHtml(course.lastUpdated || "—") +
       "</em></p></div>";
 
-    paint(mainHtml, course.code);
+    paint(mainHtml, course.code, literatureRailHtml(lit));
   }
 
   document.addEventListener("DOMContentLoaded", function () {

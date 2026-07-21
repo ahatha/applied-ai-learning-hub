@@ -70,6 +70,37 @@
     return href;
   }
 
+  var MONTH_NAMES = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  /**
+   * Canonical long date format used everywhere on the site, e.g. "31 August 2026".
+   * @param {string} iso YYYY-MM-DD
+   * @returns {string}
+   */
+  function formatLongDate(iso) {
+    if (!iso) return "";
+    var parts = String(iso).split("-");
+    if (parts.length !== 3) return String(iso);
+    var month = MONTH_NAMES[Number(parts[1]) - 1] || parts[1];
+    return Number(parts[2]) + " " + month + " " + parts[0];
+  }
+
+  /**
+   * Same canonical format without the year, e.g. "31 August".
+   * @param {string} iso YYYY-MM-DD
+   * @returns {string}
+   */
+  function formatDayMonth(iso) {
+    if (!iso) return "";
+    var parts = String(iso).split("-");
+    if (parts.length !== 3) return String(iso);
+    var month = MONTH_NAMES[Number(parts[1]) - 1] || parts[1];
+    return Number(parts[2]) + " " + month;
+  }
+
   /**
    * Format status labels for display.
    * @param {string} status
@@ -78,6 +109,14 @@
   function formatStatus(status) {
     if (!status) {
       return "";
+    }
+    var shortLabels = {
+      "elective-option": "Elective",
+      "optional-non-degree": "Optional"
+    };
+    var key = String(status).toLowerCase();
+    if (shortLabels[key]) {
+      return shortLabels[key];
     }
     return String(status)
       .split("-")
@@ -356,6 +395,198 @@
   }
 
   /**
+   * Shared coloured meta badges used site-wide for schedule facts.
+   * Kinds: date | week | quarter | ects | semester | year | studyPeriod | segment | exam | level
+   * @param {string} kind
+   * @param {unknown} value
+   * @returns {string}
+   */
+  function metaBadge(kind, value) {
+    if (value == null || value === "") {
+      return "";
+    }
+    var classMap = {
+      date: "badge--period-date",
+      week: "badge--period-week",
+      quarter: "badge--period-quarter",
+      ects: "badge--period-ects",
+      semester: "badge--period-semester",
+      year: "badge--period-year",
+      studyPeriod: "badge--period-study",
+      exam: "badge--exam",
+      level: "badge--level"
+    };
+    var segmentLabels = {
+      "computer-science-and-engineering": "Computer Science and Engineering",
+      selective: "Selective courses",
+      "computer-science": "Computer Science",
+      entrepreneurship: "Entrepreneurship"
+    };
+    var segmentClassMap = {
+      "computer-science-and-engineering": "badge--segment-cse",
+      selective: "badge--segment-selective",
+      "computer-science": "badge--segment-cs",
+      entrepreneurship: "badge--segment-entrepreneurship"
+    };
+    var text = String(value).trim();
+    if (!text) {
+      return "";
+    }
+    var badgeClass = classMap[kind] || "";
+    if (kind === "ects" && !/\bECTS\b/i.test(text)) {
+      text += " ECTS";
+    }
+    if (kind === "year" && !/^Year\b/i.test(text)) {
+      text = "Year " + text;
+    }
+    if (kind === "studyPeriod" && !/^Study period/i.test(text)) {
+      text = text === "3-4" ? "Study periods 3–4" : "Study period " + text;
+    }
+    if (kind === "segment") {
+      badgeClass = segmentClassMap[text] || "badge--segment-other";
+      text = segmentLabels[text] || formatStatus(text);
+    }
+    return (
+      '<span class="badge ' +
+      badgeClass +
+      '">' +
+      escapeHtml(text) +
+      "</span>"
+    );
+  }
+
+  /**
+   * @param {string[]} parts badge HTML fragments
+   * @returns {string}
+   */
+  function metaBadgeGroup(parts) {
+    var list = (parts || []).filter(Boolean);
+    if (!list.length) {
+      return "";
+    }
+    return '<span class="meta-badge-group">' + list.join("") + "</span>";
+  }
+
+  /**
+   * @param {string} startLabel already-formatted or ISO date
+   * @param {string} endLabel already-formatted or ISO date
+   * @returns {string}
+   */
+  function dateRangeMetaBadges(startLabel, endLabel) {
+    if (!startLabel || !endLabel) {
+      return "";
+    }
+    var start =
+      /^\d{4}-\d{2}-\d{2}$/.test(startLabel) ? formatLongDate(startLabel) : startLabel;
+    var end = /^\d{4}-\d{2}-\d{2}$/.test(endLabel) ? formatLongDate(endLabel) : endLabel;
+    return (
+      '<span class="meta-badge-group meta-badge-group--range">' +
+      metaBadge("date", start) +
+      '<span class="meta-badge-group__sep">to</span>' +
+      metaBadge("date", end) +
+      "</span>"
+    );
+  }
+
+  /**
+   * Shared course card used by Programme explorer and Course browser.
+   * @param {object} course
+   * @param {{ quarterLabel?: string, weeksLabel?: string }} [options]
+   * @returns {string}
+   */
+  function courseBrowserCardHtml(course, options) {
+    options = options || {};
+    if (!course || !course.code) {
+      return "";
+    }
+
+    var roleClasses = {
+      compulsory: "role-compulsory",
+      "elective-option": "role-elective",
+      "optional-non-degree": "role-optional",
+      thesis: "role-thesis"
+    };
+
+    return (
+      '<a class="browser-card ' +
+      (roleClasses[course.role] || "") +
+      '" href="' +
+      escapeHtml(courseHubUrl(course.code)) +
+      '">' +
+      '<div class="browser-card__top">' +
+      '<span class="course-code-chip">' +
+      escapeHtml(course.code) +
+      "</span>" +
+      statusBadge(course.role) +
+      "</div>" +
+      '<h4 class="browser-card__title">' +
+      escapeHtml(course.title) +
+      "</h4>" +
+      '<div class="browser-card__chips">' +
+      metaBadgeGroup([
+        metaBadge("ects", course.ects),
+        metaBadge("level", course.level)
+      ]) +
+      metaBadgeGroup([
+        metaBadge("quarter", options.quarterLabel),
+        metaBadge("week", options.weeksLabel)
+      ]) +
+      (course.subjectSegment
+        ? metaBadgeGroup([metaBadge("segment", course.subjectSegment)])
+        : "") +
+      "</div>" +
+      "</a>"
+    );
+  }
+
+  /**
+   * Render course cards in two rows: non-electives first, elective options second
+   * (so Year 2's three electives share one row).
+   * @param {object[]} items
+   * @param {(item: object) => object} getCourse
+   * @param {(item: object) => { quarterLabel?: string, weeksLabel?: string }} [getOptions]
+   * @returns {string}
+   */
+  function courseBrowserCardStacksHtml(items, getCourse, getOptions) {
+    getOptions = getOptions || function () {
+      return {};
+    };
+    var primary = [];
+    var electives = [];
+    (items || []).forEach(function (item) {
+      var course = getCourse(item);
+      if (!course) return;
+      if (course.role === "elective-option") {
+        electives.push(item);
+      } else {
+        primary.push(item);
+      }
+    });
+
+    function gridHtml(list, extraClass) {
+      if (!list.length) return "";
+      return (
+        '<div class="browser-card-grid ' +
+        extraClass +
+        '">' +
+        list
+          .map(function (item) {
+            return courseBrowserCardHtml(getCourse(item), getOptions(item));
+          })
+          .join("") +
+        "</div>"
+      );
+    }
+
+    return (
+      '<div class="browser-card-stacks">' +
+      gridHtml(primary, "browser-card-grid--primary") +
+      gridHtml(electives, "browser-card-grid--elective") +
+      "</div>"
+    );
+  }
+
+  /**
    * Index courses by id/code.
    * @param {object[]} courses
    * @returns {Record<string, object>}
@@ -376,14 +607,21 @@
     loadJson: loadJson,
     escapeHtml: escapeHtml,
     resolvePageLink: resolvePageLink,
+    formatLongDate: formatLongDate,
+    formatDayMonth: formatDayMonth,
     formatStatus: formatStatus,
     statusBadge: statusBadge,
+    metaBadge: metaBadge,
+    metaBadgeGroup: metaBadgeGroup,
+    dateRangeMetaBadges: dateRangeMetaBadges,
     tagList: tagList,
     contactCardHtml: contactCardHtml,
     contactCardGridHtml: contactCardGridHtml,
     parsePersonByline: parsePersonByline,
     attributionContactCardHtml: attributionContactCardHtml,
     courseHubUrl: courseHubUrl,
+    courseBrowserCardHtml: courseBrowserCardHtml,
+    courseBrowserCardStacksHtml: courseBrowserCardStacksHtml,
     indexById: indexById
   };
   // Alias used by some pages / older references

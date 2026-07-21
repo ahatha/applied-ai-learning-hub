@@ -8,32 +8,6 @@
     return window.AailhData;
   }
 
-  function formatDisplayDate(iso) {
-    if (!iso) {
-      return "";
-    }
-    var parts = String(iso).split("-");
-    if (parts.length !== 3) {
-      return iso;
-    }
-    var months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
-    var month = months[Number(parts[1]) - 1] || parts[1];
-    return Number(parts[2]) + " " + month + " " + parts[0];
-  }
-
   function factRow(label, value) {
     if (value == null || value === "") {
       return "";
@@ -193,12 +167,20 @@
     var totals = programme.totals || {};
     var degree = programme.degree || {};
 
-    var periodLabel = "";
+    var startDateValue = "";
     if (programme.startDate) {
-      periodLabel = "Start date " + programme.startDate;
-      if (programme.startWeekLabel) {
-        periodLabel += ", " + programme.startWeekLabel;
-      }
+      startDateValue = D().metaBadgeGroup([
+        D().metaBadge("date", D().formatLongDate(programme.startDate)),
+        D().metaBadge("week", programme.startWeekLabel)
+      ]);
+    }
+
+    var endDateValue = "";
+    if (programme.endDate) {
+      endDateValue = D().metaBadgeGroup([
+        D().metaBadge("date", D().formatLongDate(programme.endDate)),
+        D().metaBadge("week", programme.endWeekLabel)
+      ]);
     }
 
     var degreeHtml = "";
@@ -216,14 +198,12 @@
 
     if (composition) {
       composition.innerHTML =
+        '<p class="home-hero__pie-kicker">Programme details</p>' +
         '<table class="course-facts-table"><tbody>' +
         factRow("Intake", programme.intakeLabel || programme.enrollmentSemester) +
         factRow("Programme code", programme.programmeCode) +
-        factRow("Period", periodLabel) +
-        factRow(
-          "End date",
-          programme.endDate ? formatDisplayDate(programme.endDate) : ""
-        ) +
+        factRowHtml("Start date", startDateValue) +
+        factRowHtml("End date", endDateValue) +
         factRow("Language", delivery.language) +
         factRowHtml("Degree", degreeHtml) +
         "</tbody></table>";

@@ -10,8 +10,9 @@
   "enrollmentSemester": "Autumn 2026",
   "intakeLabel": "Master's Programmes Autumn Semester 2026",
   "startDate": "2026-08-31",
-  "startWeekLabel": "v. 36 2026",
+  "startWeekLabel": "W36",
   "endDate": "2028-06-03",
+  "endWeekLabel": "W22",
   "durationYears": 2,
   "delivery": {
     "mode": "Internet-based distance education",

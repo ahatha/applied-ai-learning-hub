@@ -33,9 +33,9 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/components.css?v=20260721p">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-  <link rel="stylesheet" href="assets/css/home.css?v=20260721ae">
+  <link rel="stylesheet" href="assets/css/components.css?v=20260721ad">
+  <link rel="stylesheet" href="assets/css/responsive.css?v=20260721a">
+  <link rel="stylesheet" href="assets/css/home.css?v=20260721am">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -76,6 +76,12 @@
           <a class="btn btn--primary" href="academic-calendar.html">
             <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Academic calendar
           </a>
+          <a class="btn btn--secondary" href="course-browser.html">
+            <i class="fa-solid fa-layer-group" aria-hidden="true"></i> Browse courses
+          </a>
+          <a class="btn btn--secondary" href="book-browser.html">
+            <i class="fa-solid fa-book" aria-hidden="true"></i> Browse books
+          </a>
           <a class="btn btn--secondary" href="https://www.ltu.se/en/education/programme/tmdia-master-programme-in-applied-ai" rel="noopener noreferrer" target="_blank">
             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Official LTU programme page
           </a>
@@ -83,12 +89,13 @@
 
         <div class="home-hero__facts-layout">
           <div id="programme-composition" class="home-hero__facts" aria-label="Programme facts">
+            <p class="home-hero__pie-kicker">Programme details</p>
             <table class="course-facts-table">
               <tbody>
                 <tr><th scope="row">Intake</th><td>Master's Programmes Autumn Semester 2026</td></tr>
                 <tr><th scope="row">Programme code</th><td>TMDIA</td></tr>
-                <tr><th scope="row">Period</th><td>Start date 2026-08-31, v. 36 2026</td></tr>
-                <tr><th scope="row">End date</th><td>2028-06-03</td></tr>
+                <tr><th scope="row">Start date</th><td><span class="meta-badge-group"><span class="badge badge--period-date">31 August 2026</span><span class="badge badge--period-week">W36</span></span></td></tr>
+                <tr><th scope="row">End date</th><td><span class="meta-badge-group"><span class="badge badge--period-date">3 June 2028</span><span class="badge badge--period-week">W22</span></span></td></tr>
                 <tr><th scope="row">Language</th><td>English</td></tr>
                 <tr><th scope="row">Degree</th><td><span class="home-hero__degree-line">Degree of Master of Science (120 credits)</span><span class="home-hero__degree-line">Computer Science and Engineering with specialisation Applied AI</span></td></tr>
               </tbody>
@@ -132,6 +139,26 @@
       </div>
     </section>
 
+    <section class="section section--journey" aria-labelledby="journey-title">
+      <div class="container">
+        <div class="home-section-head">
+          <span class="home-section-head__icon" aria-hidden="true"><i class="fa-solid fa-route"></i></span>
+          <div>
+            <h2 id="journey-title" class="section-title">Programme journey</h2>
+            <p class="home-section-head__desc">Where you are right now, and the full two-year plan at a glance.</p>
+          </div>
+        </div>
+        <div class="journey-layout">
+          <div id="programme-status" class="journey-status" aria-label="Current programme status">
+            <div class="empty-state"><p>Loading status…</p></div>
+          </div>
+          <div id="programme-timeline-strip" class="journey-timeline" aria-label="Programme timeline">
+            <div class="empty-state"><p>Loading timeline…</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section section--explorer" aria-labelledby="explorer-title">
       <div class="container">
         <div class="home-section-head">
@@ -141,7 +168,6 @@
             <p class="home-section-head__desc">Browse by year, semester and study period — every course links straight to its hub.</p>
           </div>
         </div>
-        <div id="explorer-legend" class="explorer-legend" aria-label="Legend"></div>
         <div class="explorer-shell home-panel">
           <div id="programme-explorer" class="programme-explorer" aria-busy="true">
             <div class="empty-state"><p>Loading programme structure…</p></div>
@@ -158,6 +184,8 @@
         <p>Personal learning hub for the LTU Master Programme in Applied AI. Not an official website of Luleå University of Technology.</p>
       </div>
       <p class="site-footer__links">
+        <a href="course-browser.html"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Browse courses</a>
+        <a href="book-browser.html"><i class="fa-solid fa-book" aria-hidden="true"></i> Browse books</a>
         <a href="academic-calendar.html"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Academic calendar</a>
         <a href="https://github.com/ahatha/applied-ai-learning-hub" rel="noopener noreferrer" target="_blank"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub repository</a>
         <a href="https://www.ltu.se/en/education/programme/tmdia-master-programme-in-applied-ai" rel="noopener noreferrer" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Official LTU programme page</a>
@@ -166,8 +194,9 @@
   </footer>
 
   <script src="assets/js/theme.js" defer></script>
-  <script src="assets/js/data-loader.js?v=20260721p" defer></script>
-  <script src="assets/js/main.js?v=20260721ae" defer></script>
-  <script src="assets/js/explorer.js" defer></script>
+  <script src="assets/js/data-loader.js?v=20260721y" defer></script>
+  <script src="assets/js/main.js?v=20260721ai" defer></script>
+  <script src="assets/js/explorer.js?v=20260721h" defer></script>
+  <script src="assets/js/programme-timeline.js?v=20260721f" defer></script>
 </body>
 </html>
