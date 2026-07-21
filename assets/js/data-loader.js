@@ -399,9 +399,10 @@
    * Kinds: date | week | quarter | ects | semester | year | studyPeriod | segment | exam | level
    * @param {string} kind
    * @param {unknown} value
+   * @param {{ allowRange?: boolean }} [options]
    * @returns {string}
    */
-  function metaBadge(kind, value) {
+  function metaBadge(kind, value, options) {
     if (value == null || value === "") {
       return "";
     }
@@ -432,6 +433,19 @@
     if (!text) {
       return "";
     }
+
+    var allowRange = !options || options.allowRange !== false;
+    if (allowRange && (kind === "week" || kind === "quarter")) {
+      var rangeParts = text.split(/\s*[–—-]\s*/);
+      if (rangeParts.length >= 2) {
+        var rangeStart = rangeParts[0].trim();
+        var rangeEnd = rangeParts[rangeParts.length - 1].trim();
+        if (rangeStart && rangeEnd && rangeStart !== rangeEnd) {
+          return rangeMetaBadges(kind, rangeStart, rangeEnd);
+        }
+      }
+    }
+
     var badgeClass = classMap[kind] || "";
     if (kind === "ects" && !/\bECTS\b/i.test(text)) {
       text += " ECTS";
@@ -468,6 +482,26 @@
   }
 
   /**
+   * Two badges with an arrow separator (dates, weeks, quarters).
+   * @param {string} kind
+   * @param {string} startLabel
+   * @param {string} endLabel
+   * @returns {string}
+   */
+  function rangeMetaBadges(kind, startLabel, endLabel) {
+    if (!startLabel || !endLabel) {
+      return "";
+    }
+    return (
+      '<span class="meta-badge-group meta-badge-group--range">' +
+      metaBadge(kind, startLabel, { allowRange: false }) +
+      '<span class="meta-badge-group__sep" aria-hidden="true">→</span>' +
+      metaBadge(kind, endLabel, { allowRange: false }) +
+      "</span>"
+    );
+  }
+
+  /**
    * @param {string} startLabel already-formatted or ISO date
    * @param {string} endLabel already-formatted or ISO date
    * @returns {string}
@@ -479,13 +513,7 @@
     var start =
       /^\d{4}-\d{2}-\d{2}$/.test(startLabel) ? formatLongDate(startLabel) : startLabel;
     var end = /^\d{4}-\d{2}-\d{2}$/.test(endLabel) ? formatLongDate(endLabel) : endLabel;
-    return (
-      '<span class="meta-badge-group meta-badge-group--range">' +
-      metaBadge("date", start) +
-      '<span class="meta-badge-group__sep">to</span>' +
-      metaBadge("date", end) +
-      "</span>"
-    );
+    return rangeMetaBadges("date", start, end);
   }
 
   /**
@@ -613,6 +641,7 @@
     statusBadge: statusBadge,
     metaBadge: metaBadge,
     metaBadgeGroup: metaBadgeGroup,
+    rangeMetaBadges: rangeMetaBadges,
     dateRangeMetaBadges: dateRangeMetaBadges,
     tagList: tagList,
     contactCardHtml: contactCardHtml,

@@ -362,6 +362,27 @@
   margin-bottom: var(--space-5);
 }
 
+.home-section-head--explorer {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.home-section-head__intro {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.home-section-head__tabs {
+  flex: 1 1 12rem;
+  width: min(100%, 17.5rem);
+  max-width: 17.5rem;
+  margin-left: auto;
+}
+
 .home-section-head__icon {
   display: inline-flex;
   align-items: center;
@@ -686,6 +707,16 @@
   .home-hero__facts .course-facts-table th {
     width: 8.5rem;
     white-space: normal;
+  }
+
+  .home-section-head--explorer {
+    align-items: stretch;
+  }
+
+  .home-section-head__tabs {
+    margin-left: 0;
+    max-width: none;
+    width: 100%;
   }
 
   .home-section-head {

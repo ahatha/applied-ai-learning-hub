@@ -192,6 +192,8 @@
         name: semester.label,
         startDateLabel: dates.startLabel,
         endDateLabel: dates.endLabel,
+        quarterLabel: semesterQuarterLabel(periodNodes),
+        weeksLabel: semester.weeksLabel || "",
         ectsTotal: semesterEcts,
         journeyStatus: semester.journeyStatus,
         scheduleConfidence: semester.scheduleConfidence,
@@ -211,6 +213,31 @@
     };
   }
 
+  function semesterQuarterLabel(periodNodes) {
+    var labels = (periodNodes || [])
+      .map(function (period) {
+        return String(period.quarterLabel || "").trim();
+      })
+      .filter(Boolean);
+    if (!labels.length) {
+      return "";
+    }
+    if (labels.length === 1) {
+      return labels[0];
+    }
+    var startParts = labels[0].split(/\s*[–—-]\s*/);
+    var endParts = labels[labels.length - 1].split(/\s*[–—-]\s*/);
+    var start = startParts[0].trim();
+    var end = endParts[endParts.length - 1].trim();
+    if (!start || !end) {
+      return labels[0];
+    }
+    if (start === end) {
+      return start;
+    }
+    return start + "–" + end;
+  }
+
   function periodBadgesHtml(options) {
     options = options || {};
     return D().metaBadgeGroup([
@@ -224,12 +251,13 @@
   }
 
   function semesterBadgesHtml(node) {
-    return D().metaBadgeGroup([
-      node.startDateLabel && node.endDateLabel
-        ? dateRangeBadgesHtml(node.startDateLabel, node.endDateLabel)
-        : "",
-      ectsBadgeHtml(node.ectsTotal)
-    ]);
+    return periodBadgesHtml({
+      quarterLabel: node.quarterLabel,
+      weeksLabel: node.weeksLabel,
+      startDateLabel: node.startDateLabel,
+      endDateLabel: node.endDateLabel,
+      ectsTotal: node.ectsTotal
+    });
   }
 
   function examCardHtml(exam) {
@@ -258,7 +286,7 @@
         : "") +
       '<a class="exam-card__link" href="' +
       D().escapeHtml(scheduleUrl) +
-      '" rel="noopener noreferrer" target="_blank">LTU schedule / TimeEdit</a>' +
+      '" rel="noopener noreferrer" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> LTU schedule / TimeEdit</a>' +
       "</aside>"
     );
   }
@@ -275,7 +303,9 @@
           weeksLabel: periodNode.weeksLabel
         };
       }
-    );
+    )
+      .replace(/badge--level">Bachelor's/g, 'badge--level badge--level-bachelors">Bachelor\'s')
+      .replace(/badge--level">Master's/g, 'badge--level badge--level-masters">Master\'s');
   }
 
   function sectionHtml(node) {
@@ -310,9 +340,11 @@
         ? ""
         : '<span class="explorer-branch" aria-hidden="true"></span>') +
       (node.type === "semester"
-        ? D().metaBadge("semester", label)
+        ? '<span class="explorer-heading-badge"><i class="fa-solid ' +
+          (/spring/i.test(label) ? "fa-seedling" : "fa-leaf") +
+          '" aria-hidden="true"></i>' + D().metaBadge("semester", label) + "</span>"
         : node.type === "period"
-          ? D().metaBadge("studyPeriod", label)
+          ? '<span class="explorer-heading-badge"><i class="fa-solid fa-book-open" aria-hidden="true"></i>' + D().metaBadge("studyPeriod", label) + "</span>"
           : '<span class="explorer-block__label">' +
             D().escapeHtml(label) +
             "</span>") +
@@ -353,8 +385,8 @@
             D().escapeHtml(y) +
             '" data-year-tab="' +
             D().escapeHtml(y) +
-            '">' +
-            D().metaBadge("year", y) +
+            '">Year ' +
+            D().escapeHtml(y) +
             (active ? ' <span class="sr-only">(selected)</span>' : "") +
             "</button>"
           );
@@ -366,12 +398,16 @@
 
   function renderExplorer() {
     var host = document.getElementById("programme-explorer");
+    var tabsHost = document.getElementById("programme-year-tabs");
     if (!host || !state.tree) {
       return;
     }
 
     var years = state.tree.children || [];
     if (!years.length) {
+      if (tabsHost) {
+        setHtml(tabsHost, "");
+      }
       setHtml(host, '<div class="empty-state"><p>No programme years found.</p></div>');
       return;
     }
@@ -387,10 +423,13 @@
     });
 
     host.setAttribute("aria-busy", "false");
+    if (tabsHost) {
+      setHtml(tabsHost, yearTabsHtml(years));
+    }
     setHtml(
       host,
       '<div class="explorer-structure">' +
-        yearTabsHtml(years) +
+        (tabsHost ? "" : yearTabsHtml(years)) +
         '<div class="explorer-tab-panel" role="tabpanel" id="year-panel-' +
         D().escapeHtml(state.activeYear) +
         '" aria-labelledby="year-tab-' +
@@ -407,11 +446,13 @@
 
   function bindEvents() {
     var explorer = document.getElementById("programme-explorer");
+    var tabsHost = document.getElementById("programme-year-tabs");
     if (!explorer) {
       return;
     }
 
-    explorer.addEventListener("click", function (event) {
+    var clickRoot = tabsHost || explorer;
+    clickRoot.addEventListener("click", function (event) {
       var target = event.target;
       if (!(target instanceof Element)) {
         return;
@@ -421,7 +462,7 @@
         event.preventDefault();
         state.activeYear = tab.getAttribute("data-year-tab");
         renderExplorer();
-        var active = explorer.querySelector('[data-year-tab="' + state.activeYear + '"]');
+        var active = clickRoot.querySelector('[data-year-tab="' + state.activeYear + '"]');
         if (active) {
           active.focus();
         }

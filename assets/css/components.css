@@ -1338,55 +1338,46 @@
 
 .explorer-tabs {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin: 0 0 var(--space-5);
+  flex-wrap: nowrap;
+  gap: 0;
+  margin: 0;
   padding: 0.25rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  border: 2px solid color-mix(in srgb, var(--border) 60%, transparent);
+  border-radius: 0.75rem;
   background: var(--bg-muted);
+  width: 100%;
 }
 
 .explorer-tab {
-  flex: 1 1 8rem;
+  flex: 1 1 0;
   margin: 0;
-  padding: 0.45rem 0.65rem;
-  border: 1px solid transparent;
-  border-radius: calc(var(--radius-sm) - 2px);
+  padding: 0.5rem 0.75rem;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
   background: transparent;
   color: var(--text-muted);
   font: inherit;
-  font-weight: 700;
+  font-weight: 500;
+  text-align: center;
   cursor: pointer;
-  transition: background var(--transition), color var(--transition), border-color var(--transition);
-}
-
-.explorer-tab .badge--period-year {
-  opacity: 0.72;
+  z-index: 0;
+  transition: background var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
 .explorer-tab:hover,
 .explorer-tab:focus-visible {
-  color: var(--text);
-  background: color-mix(in srgb, var(--bg-elevated) 80%, var(--accent-soft));
+  color: color-mix(in srgb, var(--text) 70%, var(--text-muted));
   outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
 
-.explorer-tab:hover .badge--period-year,
-.explorer-tab:focus-visible .badge--period-year {
-  opacity: 1;
-}
-
 .explorer-tab.is-active {
-  color: var(--accent);
-  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+  color: var(--text);
+  font-weight: 700;
+  border-color: var(--border);
   background: var(--bg-elevated);
   box-shadow: var(--shadow);
-}
-
-.explorer-tab.is-active .badge--period-year {
-  opacity: 1;
+  z-index: 1;
 }
 
 .explorer-tab-panel {
@@ -2003,4 +1994,235 @@
 .browser-card__chips .meta-badge-group {
   margin-top: 0;
   width: 100%;
+}
+/* Modern programme explorer — scoped so shared course-browser cards are unchanged. */
+.programme-explorer .explorer-block--semester,
+.programme-explorer .explorer-block--period {
+  overflow: visible;
+  border-width: 2px;
+}
+
+.programme-explorer .explorer-block--semester {
+  padding: var(--space-6);
+  border-radius: 1rem;
+}
+
+.programme-explorer .explorer-block--period {
+  padding: var(--space-5);
+  background: color-mix(in srgb, var(--bg-muted) 45%, var(--bg-elevated));
+}
+
+.programme-explorer .explorer-block__heading {
+  align-items: center;
+  min-height: 2.25rem;
+  padding-right: 8.25rem;
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid color-mix(in srgb, var(--border) 55%, transparent);
+}
+
+.programme-explorer .explorer-heading-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid color-mix(in srgb, currentColor 32%, var(--border));
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px color-mix(in srgb, var(--text) 7%, transparent);
+}
+
+.programme-explorer .explorer-block--semester > .explorer-block__heading .explorer-heading-badge {
+  color: var(--warm);
+  background: color-mix(in srgb, var(--warm) 14%, var(--bg-elevated));
+}
+
+.programme-explorer .explorer-block--period > .explorer-block__heading .explorer-heading-badge {
+  color: var(--success);
+  background: color-mix(in srgb, var(--success) 14%, var(--bg-elevated));
+}
+
+.programme-explorer .explorer-heading-badge .badge {
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.programme-explorer .explorer-block__heading > .meta-badge-group {
+  margin-left: 0;
+}
+
+.programme-explorer .explorer-block__heading > .meta-badge-group > .badge--period-ects {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  z-index: 2;
+  min-height: 2.4rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid color-mix(in srgb, #eab308 35%, var(--border));
+  border-radius: 0 0.9rem 0 0.75rem;
+  background: color-mix(in srgb, #fef08a 52%, var(--bg-elevated));
+  color: var(--warning);
+  font-size: 0.82rem;
+  font-weight: 750;
+  box-shadow: -2px 2px 6px color-mix(in srgb, var(--text) 12%, transparent);
+}
+
+:is(.programme-explorer, .browser-results) .badge--period-ects::before {
+  content: "\f005";
+  color: #d9a600;
+  font: var(--fa-font-solid);
+  -webkit-font-smoothing: antialiased;
+}
+
+:is(.programme-explorer, .browser-results) .badge--period-date::before,
+:is(.programme-explorer, .browser-results) .badge--period-quarter::before,
+:is(.programme-explorer, .browser-results) .badge--period-week::before,
+:is(.programme-explorer, .browser-results) .badge--level::before,
+:is(.programme-explorer, .browser-results) .badge--compulsory::before,
+:is(.programme-explorer, .browser-results) .badge--elective-option::before,
+:is(.programme-explorer, .browser-results) .badge--optional-non-degree::before,
+:is(.programme-explorer, .browser-results) .badge--thesis::before,
+:is(.programme-explorer, .browser-results) .badge--segment-cse::before,
+:is(.programme-explorer, .browser-results) .badge--segment-selective::before,
+:is(.programme-explorer, .browser-results) .badge--segment-cs::before,
+:is(.programme-explorer, .browser-results) .badge--segment-entrepreneurship::before {
+  font: var(--fa-font-solid);
+  -webkit-font-smoothing: antialiased;
+}
+
+:is(.programme-explorer, .browser-results) .badge--period-date::before { content: "\f133"; }
+:is(.programme-explorer, .browser-results) .badge--period-quarter::before { content: "\f017"; }
+:is(.programme-explorer, .browser-results) .badge--period-week::before { content: "\f784"; }
+:is(.programme-explorer, .browser-results) .badge--level::before { content: "\f19d"; }
+.programme-explorer .badge--level-bachelors::before { content: "\f501"; }
+.programme-explorer .badge--level-masters::before { content: "\f19d"; }
+:is(.programme-explorer, .browser-results) .badge--compulsory::before { content: "\f058"; }
+:is(.programme-explorer, .browser-results) .badge--elective-option::before { content: "\f0eb"; }
+:is(.programme-explorer, .browser-results) .badge--optional-non-degree::before { content: "\f055"; }
+:is(.programme-explorer, .browser-results) .badge--thesis::before { content: "\f70e"; }
+:is(.programme-explorer, .browser-results) .badge--segment-cse::before { content: "\f19c"; }
+:is(.programme-explorer, .browser-results) .badge--segment-selective::before { content: "\f03a"; }
+:is(.programme-explorer, .browser-results) .badge--segment-cs::before { content: "\f108"; }
+:is(.programme-explorer, .browser-results) .badge--segment-entrepreneurship::before { content: "\f0eb"; }
+
+:is(.programme-explorer, .browser-results) .meta-badge-group__sep {
+  font-size: 0;
+}
+
+:is(.programme-explorer, .browser-results) .meta-badge-group__sep::before {
+  content: "\f061";
+  font: var(--fa-font-solid);
+  font-size: 0.72rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+:is(.programme-explorer, .browser-results) .browser-card-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.5rem), 16.5rem));
+  gap: var(--space-3);
+}
+
+:is(.programme-explorer, .browser-results) .browser-card {
+  position: relative;
+  overflow: visible;
+  padding: 2.65rem var(--space-4) var(--space-4);
+  border: 2px solid var(--border);
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 7px color-mix(in srgb, var(--text) 6%, transparent);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+:is(.programme-explorer, .browser-results) .browser-card:hover,
+:is(.programme-explorer, .browser-results) .browser-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+:is(.programme-explorer, .browser-results) .browser-card__top {
+  justify-content: flex-start;
+}
+
+:is(.programme-explorer, .browser-results) .course-code-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 0.35rem;
+  background: #115e59;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+:is(.programme-explorer, .browser-results) .course-code-chip::before {
+  content: "\f02a";
+  color: #ccfbf1;
+  font: var(--fa-font-solid);
+  -webkit-font-smoothing: antialiased;
+  opacity: 0.75;
+}
+
+:is(.programme-explorer, .browser-results) .browser-card__title {
+  margin-bottom: var(--space-3);
+  font-family: var(--font-sans);
+  font-size: 0.96rem;
+  font-weight: 700;
+}
+
+:is(.programme-explorer, .browser-results) .browser-card__chips > .meta-badge-group:first-child .badge--period-ects {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  z-index: 2;
+  min-height: 2rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid color-mix(in srgb, #eab308 35%, var(--border));
+  border-radius: 0 0.7rem 0 0.65rem;
+  background: color-mix(in srgb, #fef08a 52%, var(--bg-elevated));
+  color: var(--warning);
+  font-weight: 750;
+  box-shadow: -2px 2px 5px color-mix(in srgb, var(--text) 12%, transparent);
+}
+
+:is(.programme-explorer, .browser-results) .browser-card__chips .meta-badge-group {
+  width: auto;
+}
+
+:is(.programme-explorer, .browser-results) .browser-card__chips > .meta-badge-group:last-child {
+  margin-top: var(--space-2);
+}
+
+:is(.programme-explorer, .browser-results) .browser-card__chips > .meta-badge-group:last-child .badge {
+  flex: 1 1 auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.programme-explorer .exam-card {
+  border: 2px solid color-mix(in srgb, var(--warm) 38%, var(--border));
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--warm) 9%, var(--bg-elevated));
+  box-shadow: 0 2px 7px color-mix(in srgb, var(--text) 5%, transparent);
+}
+
+.programme-explorer .badge--exam::before {
+  content: "\f044";
+  font: var(--fa-font-solid);
+  -webkit-font-smoothing: antialiased;
+}
+
+.programme-explorer .exam-card__link > i {
+  margin-right: 0.25rem;
+}
+
+@media (max-width: 700px) {
+  .programme-explorer .explorer-block--semester,
+  .programme-explorer .explorer-block--period {
+    padding: var(--space-4);
+  }
+
+  .programme-explorer .explorer-block__heading {
+    padding-right: 0;
+    padding-top: 2rem;
+  }
 }
