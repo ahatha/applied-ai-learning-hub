@@ -132,7 +132,7 @@
     }
 
     .calendar-page .month {
-      width: 280px;
+      width: 401px;
       flex: none;
       margin: 10px;
       padding: 10px;
@@ -156,27 +156,54 @@
 
     .calendar-page .weekdays,
     .calendar-page .days {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1.2rem repeat(7, minmax(0, 1fr));
+      width: 100%;
     }
 
     .calendar-page .weekdays div,
-    .calendar-page .day {
-      width: calc(100% / 7);
+    .calendar-page .day,
+    .calendar-page .weeknum {
       text-align: center;
-      padding: 5px 0;
       border: 1px dotted var(--cal-border);
     }
 
     .calendar-page .weekdays div {
-      font-size: 12px;
+      padding: 5px 0;
+      font-size: 13px;
       font-weight: 700;
       color: #555;
     }
 
+    .calendar-page .weekdays .weeknum-head {
+      font-size: 11px;
+      color: #888;
+      padding: 5px 0;
+    }
+
+    .calendar-page .weeknum {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #888;
+      background: #f7f7f7;
+      line-height: 1;
+      padding: 0;
+    }
+
     .calendar-page .day {
-      min-height: 54px;
+      aspect-ratio: 1 / 1;
+      min-height: 0;
+      width: auto;
+      padding: 2px 1px;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
       font-weight: bold;
       background: #fff;
       color: var(--cal-text);
@@ -184,33 +211,38 @@
 
     .calendar-page .day.empty {
       background: #fff;
-      min-height: 54px;
+      aspect-ratio: 1 / 1;
     }
 
     .calendar-page .day .n {
       display: block;
-      font-size: 12px;
-      line-height: 1.1;
+      flex: 0 0 auto;
+      font-size: 14px;
+      line-height: 1.15;
       color: var(--cal-text);
     }
 
     .calendar-page .day .tag {
       display: block;
-      margin: 3px 1px 0;
+      flex: 1 1 auto;
+      width: 100%;
+      margin: 2px 0 0;
       padding: 2px 1px;
-      border-radius: 3px;
+      border-radius: 2px;
       text-align: center;
-      font-size: 9px;
+      font-size: 11px;
       line-height: 1.15;
       font-weight: 600;
       border: 1px solid rgba(0, 0, 0, 0.1);
       word-break: break-word;
       overflow-wrap: anywhere;
+      overflow: hidden;
     }
 
     .calendar-page .day .tag.long {
-      font-size: 8px;
+      font-size: 9.5px;
       letter-spacing: -0.01em;
+      line-height: 1.12;
     }
 
     .calendar-page .day.period-1 { background: var(--period-1); }
@@ -277,7 +309,7 @@
       .calendar-page .summary-card:last-child { border-bottom: 0; }
       .calendar-page .calendar { justify-content: center; }
       .calendar-page .month {
-        width: min(100%, 340px);
+        width: min(100%, 485px);
         margin: 8px 0;
       }
     }
@@ -400,17 +432,18 @@
       "July", "August", "September", "October", "November", "December"
     ];
     var ACADEMIC_MONTHS = [
-      { monthIndex: 7 },
+      { monthIndex: 7 },  // Aug
       { monthIndex: 8 },
       { monthIndex: 9 },
       { monthIndex: 10 },
       { monthIndex: 11 },
-      { monthIndex: 0 },
+      { monthIndex: 0 },  // Jan (next year)
       { monthIndex: 1 },
       { monthIndex: 2 },
       { monthIndex: 3 },
       { monthIndex: 4 },
-      { monthIndex: 5 }
+      { monthIndex: 5 },  // Jun
+      { monthIndex: 6 }   // Jul (summer; end year)
     ];
 
     var JSON_FILES = {
@@ -539,20 +572,75 @@
       }).join("");
     }
 
-    function renderSummary(studyPeriods, host) {
+    function formatYearMonthDay(isoDate) {
+      if (!isoDate) {
+        return "";
+      }
+      var parts = String(isoDate).split("-");
+      if (parts.length < 3) {
+        return "";
+      }
+      var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      var monthIndex = parseInt(parts[1], 10) - 1;
+      var day = parseInt(parts[2], 10);
+      if (monthIndex < 0 || monthIndex > 11 || isNaN(day) || day < 1 || day > 31) {
+        return "";
+      }
+      var dayLabel = day < 10 ? "0" + day : String(day);
+      return parts[0] + "-" + months[monthIndex] + "-" + dayLabel;
+    }
+
+    function studyPeriodDateRange(days, periodNumber) {
+      var dates = [];
+      (days || []).forEach(function (day) {
+        if (day && day.study_period === periodNumber && day.date) {
+          dates.push(day.date);
+        }
+      });
+      if (!dates.length) {
+        return { startLabel: "", endLabel: "" };
+      }
+      dates.sort();
+      return {
+        startLabel: formatYearMonthDay(dates[0]),
+        endLabel: formatYearMonthDay(dates[dates.length - 1])
+      };
+    }
+
+    function renderSummary(studyPeriods, days, host) {
       var html = "";
       [1, 2, 3, 4].forEach(function (n) {
         var period = (studyPeriods && studyPeriods[String(n)]) || {};
+        var range = studyPeriodDateRange(days, n);
+        var dateLine =
+          range.startLabel && range.endLabel
+            ? range.startLabel + " to " + range.endLabel
+            : "";
         html +=
           '<div class="summary-card">' +
-          "<strong>Study Period " + n + "</strong>" +
-          "<span>" + escapeHtml(formatWeeks(period.weeks)) + "</span>" +
+          "<strong>Study Period " +
+          n +
+          "</strong>" +
+          "<span>" +
+          escapeHtml(formatWeeks(period.weeks)) +
+          "</span>" +
+          (dateLine
+            ? "<span>" + escapeHtml(dateLine) + "</span>"
+            : "") +
           "<span>" +
           escapeHtml(String(period.study_days != null ? period.study_days : "–")) +
           " study days</span>" +
           "</div>";
       });
       host.innerHTML = html;
+    }
+
+    function isoWeekNumber(date) {
+      var utc = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+      var dayNum = utc.getUTCDay() || 7;
+      utc.setUTCDate(utc.getUTCDate() + 4 - dayNum);
+      var yearStart = new Date(Date.UTC(utc.getUTCFullYear(), 0, 1));
+      return Math.ceil(((utc - yearStart) / 86400000 + 1) / 7);
     }
 
     function renderMonth(year, monthIndex, byDate, parent) {
@@ -565,6 +653,11 @@
 
       var weekdayRow = document.createElement("div");
       weekdayRow.className = "weekdays";
+      var weekHead = document.createElement("div");
+      weekHead.className = "weeknum-head";
+      weekHead.textContent = "W";
+      weekHead.title = "ISO week number";
+      weekdayRow.appendChild(weekHead);
       WEEKDAYS.forEach(function (label) {
         var cell = document.createElement("div");
         cell.textContent = label;
@@ -577,15 +670,31 @@
 
       var first = new Date(year, monthIndex, 1);
       var mondayIndex = (first.getDay() + 6) % 7;
-      var i;
-      for (i = 0; i < mondayIndex; i += 1) {
-        var empty = document.createElement("div");
-        empty.className = "day empty";
-        daysRow.appendChild(empty);
-      }
-
       var dayCount = new Date(year, monthIndex + 1, 0).getDate();
-      for (var d = 1; d <= dayCount; d += 1) {
+      var totalSlots = mondayIndex + dayCount;
+      var trailing = (7 - (totalSlots % 7)) % 7;
+      totalSlots += trailing;
+
+      var slot;
+      for (slot = 0; slot < totalSlots; slot += 1) {
+        var cellDate = new Date(year, monthIndex, 1 - mondayIndex + slot);
+
+        if (slot % 7 === 0) {
+          var weekCell = document.createElement("div");
+          weekCell.className = "weeknum";
+          weekCell.textContent = String(isoWeekNumber(cellDate));
+          weekCell.title = "Week " + isoWeekNumber(cellDate);
+          daysRow.appendChild(weekCell);
+        }
+
+        if (cellDate.getMonth() !== monthIndex) {
+          var empty = document.createElement("div");
+          empty.className = "day empty";
+          daysRow.appendChild(empty);
+          continue;
+        }
+
+        var d = cellDate.getDate();
         var dateKey =
           year +
           "-" +
@@ -647,7 +756,11 @@
     }
 
     function renderYear(key, data) {
-      renderSummary(data.study_periods, document.getElementById("summary-" + key));
+      renderSummary(
+        data.study_periods,
+        data.days,
+        document.getElementById("summary-" + key)
+      );
       renderCalendar(data, document.getElementById("calendar-" + key));
       document.getElementById("legend-" + key).innerHTML = legendHtml();
       renderSource(data, document.getElementById("source-" + key));

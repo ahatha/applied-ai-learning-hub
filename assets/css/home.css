@@ -1,0 +1,92 @@
+/* Homepage-only enhancements (icons via Font Awesome + richer hero/feature sections).
+   Scoped to index.html only — loaded after main.css/components.css/responsive.css so it
+   can safely refine those shared styles without editing them, and without affecting any
+   other page (academic-calendar.html, courses/course.html, 404.html). */
+
+/* ---------- Hero ---------- */
+
+.home-hero {
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-6);
+}
+
+.home-hero__inner {
+  display: block;
+}
+
+.home-hero__content .eyebrow i {
+  margin-right: 0.4rem;
+}
+
+.home-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-6);
+}
+
+.home-hero__actions .btn i {
+  margin-right: 0.15rem;
+}
+
+/* Icon overlay on the ECTS stat row, purely decorative — markup is unchanged/JS-driven. */
+.home-hero .ects-row__item {
+  position: relative;
+  padding-top: 2.5rem;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.home-hero .ects-row__item:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+.home-hero .ects-row__item::before {
+  position: absolute;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+.home-hero .ects-row__item:nth-child(1)::before {
+  content: "\f19d"; /* graduation-cap */
+}
+
+.home-hero .ects-row__item:nth-child(2)::before {
+  content: "\f0ae"; /* tasks */
+}
+
+.home-hero .ects-row__item:nth-child(3)::before {
+  content: "\f074"; /* shuffle */
+}
+
+.home-hero .ects-row__item:nth-child(4)::before {
+  content: "\f304"; /* pen */
+}
+
+/* ---------- Explorer heading icon ---------- */
+
+.section--explorer .section-title i {
+  color: var(--accent);
+  margin-right: 0.5rem;
+}
+
+/* ---------- Footer icons ---------- */
+
+.site-footer__links a i {
+  margin-right: 0.35rem;
+  color: var(--accent);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 700px) {
+  .home-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

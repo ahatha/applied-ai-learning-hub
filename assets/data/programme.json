@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-20",
+    "lastUpdated": "2026-07-21",
     "description": "Canonical programme totals and public delivery facts for the Autumn 2026 cohort."
   },
   "name": "Master Programme in Applied Artificial Intelligence",
@@ -9,7 +9,7 @@
   "institution": "Luleå University of Technology",
   "enrollmentSemester": "Autumn 2026",
   "startDate": "2026-08-31",
-  "endDate": "2028-06-06",
+  "endDate": "2028-06-03",
   "durationYears": 2,
   "delivery": {
     "mode": "Internet-based distance education",

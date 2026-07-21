@@ -13,26 +13,27 @@ Paths are relative so the same files work under `/applied-ai-learning-hub/`.
 ## Purpose
 
 1. Show the LTU Master Programme in Applied AI structure
-2. Let visitors select a course
-3. Open the course hub (preparation, materials, notes, projects, reflections)
+2. Explore years, semesters, study periods, and courses
+3. Open each course hub for official LTU syllabus facts and links
+4. View the official LTU academic calendar for 2026–2028
 
 ## Public pages
 
 | Path | Role |
 |------|------|
-| `index.html` | Compact programme summary + explorer |
-| `courses/course.html?code=…` | Shared course hub |
+| `index.html` | Programme summary + explorer |
+| `academic-calendar.html` | LTU academic year calendars 2026–2028 |
+| `courses/course.html?code=…` | Shared JSON-driven course hub |
 | `404.html` | Not found |
-| `projects/applied-ai-learning-hub.html` | Evidence case study (linked from course hubs) |
 
 ## Features
 
 - Vanilla HTML, CSS, and JavaScript (no React, TypeScript, Tailwind, npm, bundling, or D3)
-- JSON-driven explorer from `programme.json`, `semesters.json`, `courses.json`, and `sources.json`
+- JSON-driven explorer from `programme.json`, `semesters.json`, and `courses.json`
 - Light / dark theme with system preference and manual override
-- Full-width Year → Semester → Study period → Course explorer
-- Selected-course details below the explorer (shared desktop/mobile)
-- Initial focus on Autumn 2026 / Study Period 1 (D0036E selected)
+- Year tabs → Semester → Study period → Course rows linking to course hubs
+- Course hubs show official LTU facts, syllabus details, literature, schedule links, and listed contacts
+- Academic calendar with study periods, exams, re-exams, reading days, and special days
 
 ## Canonical data
 
@@ -41,30 +42,27 @@ assets/data/
 ├── programme.json
 ├── semesters.json
 ├── courses.json
-├── sources.json
-├── preparation.json
-├── course-resources.json
 ├── course-details.json
-└── projects.json
+├── sources.json
+├── ltu-academic-calendar-2026-2027.json
+└── ltu-academic-calendar-2027-2028.json
 ```
 
-`course-details.json` holds enriched syllabus/literature scaffolds for all 18 courses. Course hubs (`courses/course.html`) load those arrays and render aim, contents, realization, entry requirements, examination modules, literature, and listed contacts (including email/phone when present). Empty tags are intentional placeholders to fill from official syllabus and literature PDFs.
-
-Architecture notes and data file roles belong in this README — not on the public homepage.
+`course-details.json` holds syllabus/literature scaffolds for all 18 courses. Empty fields are intentional placeholders until verified from official sources.
 
 ## Local usage
 
 ```powershell
-# From the repository root (Python example)
+# From the repository root
 python -m http.server 8080
 # Then open http://localhost:8080/
 ```
 
-## Privacy and integrity
+Also open `http://localhost:8080/academic-calendar.html` (JSON calendars require a local server).
 
-See `PRIVACY_CHECKLIST.md` and `ACADEMIC_INTEGRITY.md` (repository docs; not linked from the public footer).
+## Deployment
 
-Public course contacts use only name, role, and public LTU profile URL — never email or phone.
+See `docs/DEPLOYMENT.md`.
 
 ## License
 

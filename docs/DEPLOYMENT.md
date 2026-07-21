@@ -49,16 +49,16 @@ python -m http.server 8080
 Check:
 
 - Home programme explorer (`/`)
+- Academic calendar (`/academic-calendar.html`) — both year tabs
 - Course hubs (`/courses/course.html?code=D0036E`, `D7062E`)
 - 404 page
 - Theme toggle persistence
-- Relative links from nested course/evidence pages
-- Mobile accordion explorer (no horizontal scrolling)
-- Keyboard selection in the explorer (Tab, Enter/Space, Escape)
+- Relative links from nested course pages
+- Mobile layout (no horizontal scrolling)
 
 ## Custom domain readiness
 
-1. Choose a domain later (examples only: `ahamed.tech`, `ahamed.me`, `appliedaijourney.dev`).
+1. Choose a domain later.
 2. Copy `CNAME.example` to `CNAME` and put the domain on the first line.
 3. In your DNS provider, add the records GitHub documents for Pages custom domains.
 4. In GitHub Pages settings, add the custom domain and enable **Enforce HTTPS** after the certificate provisions.
