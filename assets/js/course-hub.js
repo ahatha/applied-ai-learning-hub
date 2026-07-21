@@ -421,12 +421,22 @@
     if (!href) {
       return "";
     }
+    var icons = {
+      primary: "fa-solid fa-arrow-up-right-from-square",
+      secondary: "fa-solid fa-book-open",
+      pdf: "fa-solid fa-file-pdf",
+      ghost: "fa-solid fa-link"
+    };
+    var icon = icons[kind] || icons.ghost;
     return (
       '<a class="action-chip action-chip--' +
       D().escapeHtml(kind || "ghost") +
       '" href="' +
       D().escapeHtml(href) +
       '" rel="noopener noreferrer" target="_blank">' +
+      '<i class="' +
+      icon +
+      '" aria-hidden="true"></i>' +
       D().escapeHtml(label) +
       "</a>"
     );
@@ -890,10 +900,16 @@
       actionLink(pdfLiteratureUrl, "Literature PDF", "pdf") +
       "</div>";
 
+    var levelBadge = D().metaBadge("level", course.level || "Level");
+    if (/bachelor/i.test(String(course.level || ""))) {
+      levelBadge = levelBadge.replace('badge--level"', 'badge--level badge--level-bachelors"');
+    } else if (/master/i.test(String(course.level || ""))) {
+      levelBadge = levelBadge.replace('badge--level"', 'badge--level badge--level-masters"');
+    }
+
     var heroBadges =
       '<div class="course-hero__badges">' +
-      D().metaBadge("ects", course.ects) +
-      D().metaBadge("level", course.level || "Level") +
+      levelBadge +
       '<span class="badge badge--' +
       D().escapeHtml(String(course.role || "role").toLowerCase().replace(/\s+/g, "-")) +
       '">' +
@@ -1115,10 +1131,10 @@
       D().escapeHtml(course.code) +
       "</li></ol></nav>" +
       '<header class="course-hero">' +
-      '<p class="course-hero__eyebrow">Official course hub</p>' +
-      '<p class="course-hero__code"><span class="course-code-chip">' +
+      D().metaBadge("ects", course.ects) +
+      '<span class="course-code-chip">' +
       D().escapeHtml(course.code) +
-      "</span></p>" +
+      "</span>" +
       "<h1>" +
       D().escapeHtml(course.title) +
       "</h1>" +

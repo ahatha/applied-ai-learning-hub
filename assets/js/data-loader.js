@@ -517,9 +517,46 @@
   }
 
   /**
+   * Full-width schedule row: quarter left, week center, dates right.
+   * @param {{
+   *   quarterLabel?: string,
+   *   weeksLabel?: string,
+   *   startDateLabel?: string,
+   *   endDateLabel?: string,
+   *   trailing?: string[]
+   * }} [options]
+   * @returns {string}
+   */
+  function scheduleMetaBadgeGroup(options) {
+    options = options || {};
+    var trailing = (options.trailing || []).filter(Boolean).join("");
+    return (
+      '<span class="meta-badge-group meta-badge-group--schedule">' +
+      '<span class="meta-badge-group__slot meta-badge-group__slot--start">' +
+      metaBadge("quarter", options.quarterLabel) +
+      "</span>" +
+      '<span class="meta-badge-group__slot meta-badge-group__slot--center">' +
+      metaBadge("week", options.weeksLabel) +
+      "</span>" +
+      '<span class="meta-badge-group__slot meta-badge-group__slot--end">' +
+      (options.startDateLabel && options.endDateLabel
+        ? dateRangeMetaBadges(options.startDateLabel, options.endDateLabel)
+        : "") +
+      "</span>" +
+      trailing +
+      "</span>"
+    );
+  }
+
+  /**
    * Shared course card used by Programme explorer and Course browser.
    * @param {object} course
-   * @param {{ quarterLabel?: string, weeksLabel?: string }} [options]
+   * @param {{
+   *   quarterLabel?: string,
+   *   weeksLabel?: string,
+   *   startDateLabel?: string,
+   *   endDateLabel?: string
+   * }} [options]
    * @returns {string}
    */
   function courseBrowserCardHtml(course, options) {
@@ -541,23 +578,17 @@
       '" href="' +
       escapeHtml(courseHubUrl(course.code)) +
       '">' +
-      '<div class="browser-card__top">' +
       '<span class="course-code-chip">' +
       escapeHtml(course.code) +
       "</span>" +
-      statusBadge(course.role) +
-      "</div>" +
+      metaBadge("ects", course.ects) +
       '<h4 class="browser-card__title">' +
       escapeHtml(course.title) +
       "</h4>" +
       '<div class="browser-card__chips">' +
       metaBadgeGroup([
-        metaBadge("ects", course.ects),
+        statusBadge(course.role),
         metaBadge("level", course.level)
-      ]) +
-      metaBadgeGroup([
-        metaBadge("quarter", options.quarterLabel),
-        metaBadge("week", options.weeksLabel)
       ]) +
       (course.subjectSegment
         ? metaBadgeGroup([metaBadge("segment", course.subjectSegment)])
@@ -643,6 +674,7 @@
     metaBadgeGroup: metaBadgeGroup,
     rangeMetaBadges: rangeMetaBadges,
     dateRangeMetaBadges: dateRangeMetaBadges,
+    scheduleMetaBadgeGroup: scheduleMetaBadgeGroup,
     tagList: tagList,
     contactCardHtml: contactCardHtml,
     contactCardGridHtml: contactCardGridHtml,

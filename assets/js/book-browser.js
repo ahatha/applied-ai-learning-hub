@@ -254,7 +254,7 @@
       {
         id: "quarter",
         label: "Quarter",
-        order: ["Q1", "Q2", "Q3", "Q4", "Q3–Q4"],
+        order: ["AQ1", "AQ2", "AQ3", "AQ4", "AQ3–AQ4"],
         getValue: function (e) {
           return e.quarterLabel;
         },

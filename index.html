@@ -33,9 +33,9 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/components.css?v=20260721ap">
+  <link rel="stylesheet" href="assets/css/components.css?v=20260721ba">
   <link rel="stylesheet" href="assets/css/responsive.css?v=20260721a">
-  <link rel="stylesheet" href="assets/css/home.css?v=20260721an">
+  <link rel="stylesheet" href="assets/css/home.css?v=20260721bm">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -68,8 +68,9 @@
   <main id="main">
     <section class="home-hero" aria-labelledby="programme-title">
       <div class="home-hero__backdrop" aria-hidden="true"></div>
+      <span class="home-hero__ltu-ribbon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Luleå University of Technology</span>
+      <span id="home-hero-ects-ribbon" class="badge badge--period-ects home-hero__ects-ribbon">120 ECTS</span>
       <div class="container">
-        <p class="home-hero__badge"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Luleå University of Technology</p>
         <h1 id="programme-title" class="home-hero__title">Master Programme in <span class="accent-text">Applied Artificial Intelligence</span></h1>
 
         <div class="home-hero__actions">
@@ -94,8 +95,8 @@
               <tbody>
                 <tr><th scope="row">Intake</th><td>Master's Programmes Autumn Semester 2026</td></tr>
                 <tr><th scope="row">Programme code</th><td>TMDIA</td></tr>
-                <tr><th scope="row">Start date</th><td><span class="meta-badge-group"><span class="badge badge--period-date">31 August 2026</span><span class="badge badge--period-week">W36</span></span></td></tr>
-                <tr><th scope="row">End date</th><td><span class="meta-badge-group"><span class="badge badge--period-date">3 June 2028</span><span class="badge badge--period-week">W22</span></span></td></tr>
+                <tr><th scope="row">Start date</th><td><span class="meta-badge-group"><span class="badge badge--period-date">31 August 2026</span><span class="badge badge--period-week">W36 2026</span></span></td></tr>
+                <tr><th scope="row">End date</th><td><span class="meta-badge-group"><span class="badge badge--period-date">3 June 2028</span><span class="badge badge--period-week">W22 2028</span></span></td></tr>
                 <tr><th scope="row">Language</th><td>English</td></tr>
                 <tr><th scope="row">Degree</th><td><span class="home-hero__degree-line">Degree of Master of Science (120 credits)</span><span class="home-hero__degree-line">Computer Science and Engineering with specialisation Applied AI</span></td></tr>
               </tbody>
@@ -108,9 +109,9 @@
               <p class="home-hero__pie-total"><strong>120</strong> ECTS</p>
             </div>
             <ul class="home-hero__pie-legend">
-              <li><span class="home-hero__pie-swatch is-compulsory" aria-hidden="true"></span> 75 compulsory</li>
-              <li><span class="home-hero__pie-swatch is-elective" aria-hidden="true"></span> 15 elective</li>
-              <li><span class="home-hero__pie-swatch is-thesis" aria-hidden="true"></span> 30 thesis</li>
+              <li><span class="home-hero__pie-swatch is-compulsory" aria-hidden="true"></span> compulsory <span class="badge badge--period-ects">75 ECTS</span></li>
+              <li><span class="home-hero__pie-swatch is-elective" aria-hidden="true"></span> elective <span class="badge badge--period-ects">15 ECTS</span></li>
+              <li><span class="home-hero__pie-swatch is-thesis" aria-hidden="true"></span> thesis <span class="badge badge--period-ects">30 ECTS</span></li>
             </ul>
           </aside>
           <aside id="programme-overview" class="home-hero__pie home-hero__overview" aria-label="Programme overview">
@@ -118,22 +119,21 @@
             <div class="home-hero__stack" role="img" aria-label="120 ECTS by subject area">
               <div class="home-hero__stack-seg is-cse" style="flex-grow: 82.5">
                 <span class="home-hero__stack-label">Computer Science and Engineering</span>
-                <strong class="home-hero__stack-ects">82.5 cr</strong>
+                <span class="badge badge--period-ects">82.5 ECTS</span>
               </div>
               <div class="home-hero__stack-seg is-selective" style="flex-grow: 15">
                 <span class="home-hero__stack-label">Selective courses</span>
-                <strong class="home-hero__stack-ects">15 cr</strong>
+                <span class="badge badge--period-ects">15 ECTS</span>
               </div>
               <div class="home-hero__stack-seg is-cs" style="flex-grow: 15">
                 <span class="home-hero__stack-label">Computer Science</span>
-                <strong class="home-hero__stack-ects">15 cr</strong>
+                <span class="badge badge--period-ects">15 ECTS</span>
               </div>
               <div class="home-hero__stack-seg is-entrepreneurship" style="flex-grow: 7.5">
                 <span class="home-hero__stack-label">Entrepreneurship</span>
-                <strong class="home-hero__stack-ects">7.5 cr</strong>
+                <span class="badge badge--period-ects">7.5 ECTS</span>
               </div>
             </div>
-            <p class="home-hero__stack-total"><strong>120</strong> ECTS degree total</p>
           </aside>
         </div>
       </div>
@@ -141,17 +141,17 @@
 
     <section class="section section--journey" aria-labelledby="journey-title">
       <div class="container">
-        <div class="home-section-head">
-          <span class="home-section-head__icon" aria-hidden="true"><i class="fa-solid fa-route"></i></span>
-          <div>
-            <h2 id="journey-title" class="section-title">Programme journey</h2>
-            <p class="home-section-head__desc">Where you are right now, and the full two-year plan at a glance.</p>
+        <div class="home-section-head home-section-head--explorer">
+          <div class="home-section-head__intro">
+            <span class="home-section-head__icon" aria-hidden="true"><i class="fa-solid fa-route"></i></span>
+            <div>
+              <h2 id="journey-title" class="section-title">Programme journey</h2>
+              <p class="home-section-head__desc">A Gantt view of years, semesters, study periods, and exams across the programme.</p>
+            </div>
           </div>
+          <div id="programme-timeline-tabs" class="home-section-head__tabs"></div>
         </div>
         <div class="journey-layout">
-          <div id="programme-status" class="journey-status" aria-label="Current programme status">
-            <div class="empty-state"><p>Loading status…</p></div>
-          </div>
           <div id="programme-timeline-strip" class="journey-timeline" aria-label="Programme timeline">
             <div class="empty-state"><p>Loading timeline…</p></div>
           </div>
@@ -197,9 +197,9 @@
   </footer>
 
   <script src="assets/js/theme.js" defer></script>
-  <script src="assets/js/data-loader.js?v=20260721z" defer></script>
-  <script src="assets/js/main.js?v=20260721ai" defer></script>
-  <script src="assets/js/explorer.js?v=20260721n" defer></script>
-  <script src="assets/js/programme-timeline.js?v=20260721f" defer></script>
+  <script src="assets/js/data-loader.js?v=20260721ad" defer></script>
+  <script src="assets/js/main.js?v=20260721am" defer></script>
+  <script src="assets/js/explorer.js?v=20260721q" defer></script>
+  <script src="assets/js/programme-timeline.js?v=20260721z" defer></script>
 </body>
 </html>

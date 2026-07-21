@@ -201,6 +201,30 @@
       });
     });
 
+    Object.keys(years).forEach(function (key) {
+      var yearNode = years[key];
+      var semesterNodes = yearNode.children || [];
+      yearNode.ectsTotal = semesterNodes.reduce(function (sum, semester) {
+        return sum + (Number(semester.ectsTotal) || 0);
+      }, 0);
+      yearNode.quarterLabel = rangeLabelFromList(
+        semesterNodes.map(function (semester) {
+          return semester.quarterLabel;
+        })
+      );
+      yearNode.weeksLabel = rangeLabelFromList(
+        semesterNodes.map(function (semester) {
+          return semester.weeksLabel;
+        })
+      );
+      yearNode.startDateLabel = semesterNodes.length
+        ? semesterNodes[0].startDateLabel || ""
+        : "";
+      yearNode.endDateLabel = semesterNodes.length
+        ? semesterNodes[semesterNodes.length - 1].endDateLabel || ""
+        : "";
+    });
+
     return {
       id: "programme-root",
       type: "root",
@@ -213,24 +237,24 @@
     };
   }
 
-  function semesterQuarterLabel(periodNodes) {
-    var labels = (periodNodes || [])
-      .map(function (period) {
-        return String(period.quarterLabel || "").trim();
+  function rangeLabelFromList(labels) {
+    var cleaned = (labels || [])
+      .map(function (label) {
+        return String(label || "").trim();
       })
       .filter(Boolean);
-    if (!labels.length) {
+    if (!cleaned.length) {
       return "";
     }
-    if (labels.length === 1) {
-      return labels[0];
+    if (cleaned.length === 1) {
+      return cleaned[0];
     }
-    var startParts = labels[0].split(/\s*[–—-]\s*/);
-    var endParts = labels[labels.length - 1].split(/\s*[–—-]\s*/);
+    var startParts = cleaned[0].split(/\s*[–—-]\s*/);
+    var endParts = cleaned[cleaned.length - 1].split(/\s*[–—-]\s*/);
     var start = startParts[0].trim();
     var end = endParts[endParts.length - 1].trim();
     if (!start || !end) {
-      return labels[0];
+      return cleaned[0];
     }
     if (start === end) {
       return start;
@@ -238,16 +262,23 @@
     return start + "–" + end;
   }
 
+  function semesterQuarterLabel(periodNodes) {
+    return rangeLabelFromList(
+      (periodNodes || []).map(function (period) {
+        return period.quarterLabel;
+      })
+    );
+  }
+
   function periodBadgesHtml(options) {
     options = options || {};
-    return D().metaBadgeGroup([
-      D().metaBadge("quarter", options.quarterLabel),
-      D().metaBadge("week", options.weeksLabel),
-      options.startDateLabel && options.endDateLabel
-        ? dateRangeBadgesHtml(options.startDateLabel, options.endDateLabel)
-        : "",
-      ectsBadgeHtml(options.ectsTotal)
-    ]);
+    return D().scheduleMetaBadgeGroup({
+      quarterLabel: options.quarterLabel,
+      weeksLabel: options.weeksLabel,
+      startDateLabel: options.startDateLabel,
+      endDateLabel: options.endDateLabel,
+      trailing: [ectsBadgeHtml(options.ectsTotal)]
+    });
   }
 
   function semesterBadgesHtml(node) {
@@ -300,7 +331,9 @@
       function () {
         return {
           quarterLabel: periodNode.quarterLabel,
-          weeksLabel: periodNode.weeksLabel
+          weeksLabel: periodNode.weeksLabel,
+          startDateLabel: periodNode.startDateLabel,
+          endDateLabel: periodNode.endDateLabel
         };
       }
     )
@@ -311,7 +344,8 @@
   function sectionHtml(node) {
     var label = node.name;
     var extraClass = "";
-    var headingLevel = node.type === "semester" ? "3" : "4";
+    var headingLevel =
+      node.type === "year" ? "2" : node.type === "semester" ? "3" : "4";
 
     if (node.type === "semester" && node.id === state.homepageSemesterId) {
       extraClass = " is-upcoming-semester";
@@ -328,6 +362,38 @@
         .join("");
     }
 
+    var headingBadge =
+      node.type === "year"
+        ? '<span class="explorer-heading-badge"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i>' +
+          D().metaBadge("year", node.yearOfStudy) +
+          "</span>"
+        : node.type === "semester"
+          ? '<span class="explorer-heading-badge"><i class="fa-solid ' +
+            (/spring/i.test(label) ? "fa-seedling" : "fa-leaf") +
+            '" aria-hidden="true"></i>' +
+            D().metaBadge("semester", label) +
+            "</span>"
+          : node.type === "period"
+            ? '<span class="explorer-heading-badge"><i class="fa-solid fa-book-open" aria-hidden="true"></i>' +
+              D().metaBadge("studyPeriod", label) +
+              "</span>"
+            : '<span class="explorer-branch" aria-hidden="true"></span><span class="explorer-block__label">' +
+              D().escapeHtml(label) +
+              "</span>";
+
+    var headingMeta =
+      node.type === "year" || node.type === "semester"
+        ? semesterBadgesHtml(node)
+        : node.type === "period"
+          ? periodBadgesHtml({
+              quarterLabel: node.quarterLabel,
+              weeksLabel: node.weeksLabel,
+              startDateLabel: node.startDateLabel,
+              endDateLabel: node.endDateLabel,
+              ectsTotal: node.ectsTotal
+            })
+          : "";
+
     return (
       '<section class="explorer-block explorer-block--' +
       D().escapeHtml(node.type) +
@@ -336,28 +402,8 @@
       "<h" +
       headingLevel +
       ' class="explorer-block__heading">' +
-      (node.type === "period" || node.type === "semester"
-        ? ""
-        : '<span class="explorer-branch" aria-hidden="true"></span>') +
-      (node.type === "semester"
-        ? '<span class="explorer-heading-badge"><i class="fa-solid ' +
-          (/spring/i.test(label) ? "fa-seedling" : "fa-leaf") +
-          '" aria-hidden="true"></i>' + D().metaBadge("semester", label) + "</span>"
-        : node.type === "period"
-          ? '<span class="explorer-heading-badge"><i class="fa-solid fa-book-open" aria-hidden="true"></i>' + D().metaBadge("studyPeriod", label) + "</span>"
-          : '<span class="explorer-block__label">' +
-            D().escapeHtml(label) +
-            "</span>") +
-      (node.type === "semester" ? semesterBadgesHtml(node) : "") +
-      (node.type === "period"
-        ? periodBadgesHtml({
-            quarterLabel: node.quarterLabel,
-            weeksLabel: node.weeksLabel,
-            startDateLabel: node.startDateLabel,
-            endDateLabel: node.endDateLabel,
-            ectsTotal: node.ectsTotal
-          })
-        : "") +
+      headingBadge +
+      headingMeta +
       "</h" +
       headingLevel +
       ">" +
@@ -435,11 +481,7 @@
         '" aria-labelledby="year-tab-' +
         D().escapeHtml(state.activeYear) +
         '">' +
-        ((activeYear && activeYear.children) || [])
-          .map(function (semester) {
-            return sectionHtml(semester);
-          })
-          .join("") +
+        (activeYear ? sectionHtml(activeYear) : "") +
         "</div></div>"
     );
   }

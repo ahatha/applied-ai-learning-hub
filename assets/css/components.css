@@ -520,9 +520,11 @@
 }
 
 .course-hero {
+  position: relative;
+  overflow: visible;
   margin: var(--space-4) 0 var(--space-6);
-  padding: var(--space-6);
-  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+  padding: 2.75rem var(--space-6) var(--space-6);
+  border: 2px solid color-mix(in srgb, var(--accent) 28%, var(--border));
   border-radius: var(--radius);
   background:
     linear-gradient(145deg, color-mix(in srgb, var(--accent) 14%, var(--bg-elevated)) 0%, var(--bg-elevated) 42%, color-mix(in srgb, var(--warm) 8%, var(--bg-elevated)) 100%);
@@ -562,6 +564,60 @@
 
 [data-theme="dark"] .course-code-chip {
   color: #0b1a18;
+}
+
+.course-hero > .badge--period-ects {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  z-index: 2;
+  min-height: 2.4rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid color-mix(in srgb, #eab308 35%, var(--border));
+  border-radius: 0 0.9rem 0 0.75rem;
+  background: color-mix(in srgb, #fef08a 52%, var(--bg-elevated));
+  color: var(--warning);
+  font-size: 0.82rem;
+  font-weight: 750;
+  box-shadow: -2px 2px 6px color-mix(in srgb, var(--text) 12%, transparent);
+}
+
+.course-hero > .badge--period-ects::before {
+  content: "\f005";
+  color: #d9a600;
+  font: var(--fa-font-solid);
+  -webkit-font-smoothing: antialiased;
+}
+
+.course-hero > .course-code-chip {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.4rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid color-mix(in srgb, #115e59 35%, var(--border));
+  border-radius: 0.9rem 0 0.75rem 0;
+  background: #115e59;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  box-shadow: 2px 2px 6px color-mix(in srgb, var(--text) 12%, transparent);
+}
+
+.course-hero > .course-code-chip::before {
+  content: "\f02a";
+  color: #ccfbf1;
+  font: var(--fa-font-solid);
+  -webkit-font-smoothing: antialiased;
+  opacity: 0.75;
+}
+
+[data-theme="dark"] .course-hero > .course-code-chip {
+  color: #fff;
 }
 
 .course-hero h1 {
@@ -1349,6 +1405,10 @@
 }
 
 .explorer-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   flex: 1 1 0;
   margin: 0;
   padding: 0.5rem 0.75rem;
@@ -1362,6 +1422,14 @@
   cursor: pointer;
   z-index: 0;
   transition: background var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.explorer-tab::before {
+  content: "\f073";
+  font: var(--fa-font-solid);
+  -webkit-font-smoothing: antialiased;
+  font-size: 0.85em;
+  opacity: 0.9;
 }
 
 .explorer-tab:hover,
@@ -1602,9 +1670,47 @@
   gap: 0.35rem;
 }
 
+.meta-badge-group--schedule {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  width: 100%;
+}
+
+.meta-badge-group__slot {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.meta-badge-group__slot--start {
+  justify-self: start;
+  justify-content: flex-start;
+}
+
+.meta-badge-group__slot--center {
+  justify-self: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.meta-badge-group__slot--end {
+  justify-self: end;
+  justify-content: flex-end;
+  text-align: end;
+}
+
 .explorer-block__heading .meta-badge-group,
 .explorer-period-badges {
   margin-left: auto;
+}
+
+.explorer-block__heading .meta-badge-group--schedule {
+  margin-left: 0;
+  width: 100%;
 }
 
 .meta-badge-group__sep,
@@ -1996,10 +2102,28 @@
   width: 100%;
 }
 /* Modern programme explorer — scoped so shared course-browser cards are unchanged. */
+.programme-explorer .explorer-block--year,
 .programme-explorer .explorer-block--semester,
 .programme-explorer .explorer-block--period {
   overflow: visible;
   border-width: 2px;
+}
+
+.programme-explorer .explorer-block--year {
+  padding: var(--space-6);
+  padding-top: calc(var(--space-6) + 0.35rem);
+  border-radius: 1rem;
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow);
+}
+
+.programme-explorer .explorer-block--year > .explorer-block__heading {
+  border-bottom: none;
+  margin-bottom: var(--space-4);
+  padding-bottom: 0;
+  /* Match semester/period ribbons: year heading used serif, which leaked into ribbons. */
+  font-family: var(--font-sans, inherit);
+  font-size: inherit;
 }
 
 .programme-explorer .explorer-block--semester {
@@ -2015,29 +2139,50 @@
 .programme-explorer .explorer-block__heading {
   align-items: center;
   min-height: 2.25rem;
-  padding-right: 8.25rem;
+  padding-top: 2.75rem;
+  padding-right: 0;
   padding-bottom: var(--space-4);
   border-bottom: 2px solid color-mix(in srgb, var(--border) 55%, transparent);
 }
 
 .programme-explorer .explorer-heading-badge {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 0.75rem;
+  min-height: 2.4rem;
+  padding: 0.55rem 1rem;
   border: 1px solid color-mix(in srgb, currentColor 32%, var(--border));
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 5px color-mix(in srgb, var(--text) 7%, transparent);
-}
-
-.programme-explorer .explorer-block--semester > .explorer-block__heading .explorer-heading-badge {
-  color: var(--warm);
-  background: color-mix(in srgb, var(--warm) 14%, var(--bg-elevated));
+  border-radius: 0.9rem 0 0.75rem 0;
+  box-shadow: 2px 2px 6px color-mix(in srgb, var(--text) 12%, transparent);
+  font-size: 0.85rem;
 }
 
 .programme-explorer .explorer-block--period > .explorer-block__heading .explorer-heading-badge {
   color: var(--success);
   background: color-mix(in srgb, var(--success) 14%, var(--bg-elevated));
+  min-height: 2.35rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.programme-explorer .explorer-block--semester > .explorer-block__heading .explorer-heading-badge {
+  color: var(--warm);
+  background: color-mix(in srgb, var(--warm) 14%, var(--bg-elevated));
+  min-height: 2.55rem;
+  padding: 0.6rem 1.05rem;
+  font-size: 0.95rem;
+}
+
+.programme-explorer .explorer-block--year > .explorer-block__heading .explorer-heading-badge {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, var(--bg-elevated));
+  min-height: 2.85rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 1.1rem;
 }
 
 .programme-explorer .explorer-heading-badge .badge {
@@ -2045,8 +2190,13 @@
   padding: 0;
   background: transparent;
   color: inherit;
-  font-size: 0.85rem;
+  font-size: inherit;
   font-weight: 700;
+}
+
+/* Heading ribbon already has an <i>; skip the badge ::before to avoid double icons. */
+.programme-explorer .explorer-heading-badge .badge::before {
+  content: none;
 }
 
 .programme-explorer .explorer-block__heading > .meta-badge-group {
@@ -2064,54 +2214,80 @@
   border-radius: 0 0.9rem 0 0.75rem;
   background: color-mix(in srgb, #fef08a 52%, var(--bg-elevated));
   color: var(--warning);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 750;
   box-shadow: -2px 2px 6px color-mix(in srgb, var(--text) 12%, transparent);
 }
 
-:is(.programme-explorer, .browser-results) .badge--period-ects::before {
+.programme-explorer .explorer-block--period > .explorer-block__heading > .meta-badge-group > .badge--period-ects {
+  min-height: 2.35rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.programme-explorer .explorer-block--semester > .explorer-block__heading > .meta-badge-group > .badge--period-ects {
+  min-height: 2.55rem;
+  padding: 0.6rem 1.05rem;
+  font-size: 0.95rem;
+}
+
+.programme-explorer .explorer-block--year > .explorer-block__heading > .meta-badge-group > .badge--period-ects {
+  min-height: 2.85rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 1.1rem;
+}
+
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--period-ects::before {
   content: "\f005";
   color: #d9a600;
   font: var(--fa-font-solid);
   -webkit-font-smoothing: antialiased;
 }
 
-:is(.programme-explorer, .browser-results) .badge--period-date::before,
-:is(.programme-explorer, .browser-results) .badge--period-quarter::before,
-:is(.programme-explorer, .browser-results) .badge--period-week::before,
-:is(.programme-explorer, .browser-results) .badge--level::before,
-:is(.programme-explorer, .browser-results) .badge--compulsory::before,
-:is(.programme-explorer, .browser-results) .badge--elective-option::before,
-:is(.programme-explorer, .browser-results) .badge--optional-non-degree::before,
-:is(.programme-explorer, .browser-results) .badge--thesis::before,
-:is(.programme-explorer, .browser-results) .badge--segment-cse::before,
-:is(.programme-explorer, .browser-results) .badge--segment-selective::before,
-:is(.programme-explorer, .browser-results) .badge--segment-cs::before,
-:is(.programme-explorer, .browser-results) .badge--segment-entrepreneurship::before {
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--period-date::before,
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--period-quarter::before,
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--period-week::before,
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--period-study::before,
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--period-year::before,
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--period-semester::before,
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--level::before,
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--compulsory::before,
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--elective-option::before,
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--optional-non-degree::before,
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--thesis::before,
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--segment-cse::before,
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--segment-selective::before,
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--segment-cs::before,
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--segment-entrepreneurship::before,
+.course-hero .badge--warning::before {
   font: var(--fa-font-solid);
   -webkit-font-smoothing: antialiased;
 }
 
-:is(.programme-explorer, .browser-results) .badge--period-date::before { content: "\f133"; }
-:is(.programme-explorer, .browser-results) .badge--period-quarter::before { content: "\f017"; }
-:is(.programme-explorer, .browser-results) .badge--period-week::before { content: "\f784"; }
-:is(.programme-explorer, .browser-results) .badge--level::before { content: "\f19d"; }
-.programme-explorer .badge--level-bachelors::before { content: "\f501"; }
-.programme-explorer .badge--level-masters::before { content: "\f19d"; }
-:is(.programme-explorer, .browser-results) .badge--compulsory::before { content: "\f058"; }
-:is(.programme-explorer, .browser-results) .badge--elective-option::before { content: "\f0eb"; }
-:is(.programme-explorer, .browser-results) .badge--optional-non-degree::before { content: "\f055"; }
-:is(.programme-explorer, .browser-results) .badge--thesis::before { content: "\f70e"; }
-:is(.programme-explorer, .browser-results) .badge--segment-cse::before { content: "\f19c"; }
-:is(.programme-explorer, .browser-results) .badge--segment-selective::before { content: "\f03a"; }
-:is(.programme-explorer, .browser-results) .badge--segment-cs::before { content: "\f108"; }
-:is(.programme-explorer, .browser-results) .badge--segment-entrepreneurship::before { content: "\f0eb"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--period-date::before { content: "\f133"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--period-quarter::before { content: "\f017"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--period-week::before { content: "\f784"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--period-study::before { content: "\f518"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--period-year::before { content: "\f073"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--period-semester::before { content: "\f06c"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--level::before { content: "\f19d"; }
+:is(.programme-explorer, .course-hero) .badge--level-bachelors::before { content: "\f501"; }
+:is(.programme-explorer, .course-hero) .badge--level-masters::before { content: "\f19d"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--compulsory::before { content: "\f058"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--elective-option::before { content: "\f0eb"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--optional-non-degree::before { content: "\f055"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--thesis::before { content: "\f70e"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--segment-cse::before { content: "\f19c"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--segment-selective::before { content: "\f03a"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--segment-cs::before { content: "\f108"; }
+:is(.programme-explorer, .browser-results, .course-hero, .home-hero, .section--journey) .badge--segment-entrepreneurship::before { content: "\f0eb"; }
+.course-hero .badge--warning::before { content: "\f071"; }
 
-:is(.programme-explorer, .browser-results) .meta-badge-group__sep {
+:is(.programme-explorer, .browser-results, .home-hero, .section--journey) .meta-badge-group__sep {
   font-size: 0;
 }
 
-:is(.programme-explorer, .browser-results) .meta-badge-group__sep::before {
+:is(.programme-explorer, .browser-results, .home-hero, .section--journey) .meta-badge-group__sep::before {
   content: "\f061";
   font: var(--fa-font-solid);
   font-size: 0.72rem;
@@ -2144,14 +2320,23 @@
 }
 
 :is(.programme-explorer, .browser-results) .course-code-chip {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  border-radius: 0.35rem;
+  min-height: 2rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid color-mix(in srgb, #115e59 35%, var(--border));
+  border-radius: 0.7rem 0 0.65rem 0;
   background: #115e59;
   color: #fff;
   font-family: var(--font-mono);
+  font-size: 0.72rem;
   font-weight: 700;
+  box-shadow: 2px 2px 5px color-mix(in srgb, var(--text) 12%, transparent);
 }
 
 :is(.programme-explorer, .browser-results) .course-code-chip::before {
@@ -2169,7 +2354,7 @@
   font-weight: 700;
 }
 
-:is(.programme-explorer, .browser-results) .browser-card__chips > .meta-badge-group:first-child .badge--period-ects {
+:is(.programme-explorer, .browser-results) .browser-card > .badge--period-ects {
   position: absolute;
   top: -2px;
   right: -2px;
@@ -2180,12 +2365,17 @@
   border-radius: 0 0.7rem 0 0.65rem;
   background: color-mix(in srgb, #fef08a 52%, var(--bg-elevated));
   color: var(--warning);
+  font-size: 0.72rem;
   font-weight: 750;
   box-shadow: -2px 2px 5px color-mix(in srgb, var(--text) 12%, transparent);
 }
 
 :is(.programme-explorer, .browser-results) .browser-card__chips .meta-badge-group {
   width: auto;
+}
+
+:is(.programme-explorer, .browser-results) .browser-card__chips .meta-badge-group--schedule {
+  width: 100%;
 }
 
 :is(.programme-explorer, .browser-results) .browser-card__chips > .meta-badge-group:last-child {
@@ -2216,13 +2406,13 @@
 }
 
 @media (max-width: 700px) {
+  .programme-explorer .explorer-block--year,
   .programme-explorer .explorer-block--semester,
   .programme-explorer .explorer-block--period {
     padding: var(--space-4);
   }
 
   .programme-explorer .explorer-block__heading {
-    padding-right: 0;
-    padding-top: 2rem;
+    padding-top: 2.75rem;
   }
 }

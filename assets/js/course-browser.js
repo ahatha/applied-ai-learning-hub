@@ -61,6 +61,8 @@
         studyPeriod: studyPeriod,
         quarterLabel: meta.quarterLabel || "",
         weeksLabel: meta.weeksLabel || "",
+        startDateLabel: meta.startDate || "",
+        endDateLabel: meta.endDate || "",
         segment: course.subjectSegment || "",
         role: course.role || ""
       };
@@ -101,7 +103,7 @@
       {
         id: "quarter",
         label: "Quarter",
-        order: ["Q1", "Q2", "Q3", "Q4", "Q3–Q4"],
+        order: ["AQ1", "AQ2", "AQ3", "AQ4", "AQ3–AQ4"],
         getValue: function (e) { return e.quarterLabel; },
         getLabel: function (v) { return v; }
       },
@@ -230,7 +232,9 @@
             function (entry) {
               return {
                 quarterLabel: entry.quarterLabel,
-                weeksLabel: entry.weeksLabel
+                weeksLabel: entry.weeksLabel,
+                startDateLabel: entry.startDateLabel,
+                endDateLabel: entry.endDateLabel
               };
             }
           ) +

@@ -1,8 +1,6 @@
 /**
- * "Programme journey" home section — a current-status card plus a two-year
- * timeline strip. Built only from semesters.json. Independent from
- * explorer.js and main.js so the existing Programme explorer and hero
- * summary are untouched.
+ * "Programme journey" home section — Gantt-style timeline from semesters.json.
+ * Each year uses a fixed Jul→Jun grid with 12 equal month columns.
  */
 (function () {
   "use strict";
@@ -15,41 +13,452 @@
     return iso ? new Date(iso + "T00:00:00") : null;
   }
 
-  function daysBetween(a, b) {
-    return Math.round((b.getTime() - a.getTime()) / 86400000);
-  }
-
   function formatLongDate(iso) {
     return D().formatLongDate(iso);
-  }
-
-  function dateRangeBadgesHtml(startIso, endIso) {
-    return D().dateRangeMetaBadges(startIso, endIso);
   }
 
   function periodLabel(periodKey) {
     return periodKey === "3-4" ? "Study periods 3–4" : "Study period " + periodKey;
   }
 
-  /**
-   * Flatten every semester's teaching periods + exam windows into one
-   * chronologically sorted list, so "today" can be located within it.
-   */
+  function clamp(n, min, max) {
+    return Math.min(max, Math.max(min, n));
+  }
+
+  function sortedPeriodKeys(details) {
+    return Object.keys(details || {}).sort(function (a, b) {
+      return toDate(details[a].startDate) - toDate(details[b].startDate);
+    });
+  }
+
+  function yearsFromSemesters(semesters) {
+    var years = {};
+    (semesters || []).forEach(function (semester) {
+      var y = String(semester.yearOfStudy);
+      if (!years[y]) {
+        years[y] = { yearOfStudy: semester.yearOfStudy, semesters: [] };
+      }
+      years[y].semesters.push(semester);
+    });
+    return Object.keys(years)
+      .sort()
+      .map(function (key) {
+        return years[key];
+      });
+  }
+
+  /** Fixed Jul→Jun academic window with 12 equal month columns. */
+  function academicYearGrid(year) {
+    var first = year.semesters[0] && toDate(year.semesters[0].startDate);
+    if (!first) {
+      return null;
+    }
+    // Include July before autumn start so "today" is visible before August.
+    var startYear = first.getMonth() >= 6 ? first.getFullYear() : first.getFullYear() - 1;
+    var gridStart = new Date(startYear, 6, 1);
+    var months = [];
+    for (var i = 0; i < 12; i++) {
+      months.push(new Date(startYear, 6 + i, 1));
+    }
+    return { start: gridStart, months: months };
+  }
+
+  function monthProgress(date, gridStart, atEnd) {
+    if (!date || !gridStart) {
+      return 0;
+    }
+    var monthsFromStart =
+      (date.getFullYear() - gridStart.getFullYear()) * 12 +
+      (date.getMonth() - gridStart.getMonth());
+    var daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    var dayFrac = atEnd
+      ? date.getDate() / daysInMonth
+      : (date.getDate() - 1) / daysInMonth;
+    return clamp((monthsFromStart + dayFrac) / 12, 0, 1);
+  }
+
+  function barStyle(startIso, endIso, gridStart) {
+    var start = toDate(startIso);
+    var end = toDate(endIso);
+    if (!start || !end || !gridStart) {
+      return "";
+    }
+    var left = monthProgress(start, gridStart, false) * 100;
+    var right = monthProgress(end, gridStart, true) * 100;
+    var width = Math.max(right - left, 100 / 12 / 4);
+    return "left:" + left.toFixed(3) + "%;width:" + width.toFixed(3) + "%;";
+  }
+
+  function nestedBarStyle(startIso, endIso, parentStartIso, parentEndIso, gridStart) {
+    var parentLeft = monthProgress(toDate(parentStartIso), gridStart, false);
+    var parentRight = monthProgress(toDate(parentEndIso), gridStart, true);
+    var childLeft = monthProgress(toDate(startIso), gridStart, false);
+    var childRight = monthProgress(toDate(endIso), gridStart, true);
+    var parentWidth = Math.max(parentRight - parentLeft, 0.001);
+    var left = clamp(((childLeft - parentLeft) / parentWidth) * 100, 0, 100);
+    var width = clamp(((childRight - childLeft) / parentWidth) * 100, 0.8, 100 - left);
+    return "left:" + left.toFixed(3) + "%;width:" + width.toFixed(3) + "%;";
+  }
+
+  function monthLabel(date) {
+    return date.toLocaleDateString("en-GB", { month: "short" });
+  }
+
+  function yearLabel(date) {
+    return String(date.getFullYear());
+  }
+
+  function tooltipText(title, startIso, endIso, quarterLabel, weeksLabel) {
+    var parts = [title];
+    if (quarterLabel) parts.push(quarterLabel);
+    if (weeksLabel) parts.push(weeksLabel);
+    parts.push(formatLongDate(startIso) + " – " + formatLongDate(endIso));
+    return parts.join(" · ");
+  }
+
+  function barHtml(options) {
+    var className = "gantt__bar " + (options.mod || "");
+    if (options.highlight) className += " is-highlight";
+    var style = options.nested
+      ? nestedBarStyle(
+          options.startDate,
+          options.endDate,
+          options.parentStartDate,
+          options.parentEndDate,
+          options.gridStart
+        )
+      : barStyle(options.startDate, options.endDate, options.gridStart);
+    return (
+      '<span class="' +
+      className +
+      '" style="' +
+      style +
+      '" title="' +
+      D().escapeHtml(options.title || "") +
+      '"><span class="gantt__bar-label">' +
+      D().escapeHtml(options.label || "") +
+      "</span></span>"
+    );
+  }
+
+  function axisHtml(months) {
+    return (
+      '<div class="gantt__axis" aria-hidden="true">' +
+      (months || [])
+        .map(function (month, index) {
+          var showYear = index === 0 || month.getMonth() === 0;
+          return (
+            '<span class="gantt__col">' +
+            '<span class="gantt__tick-month">' +
+            D().escapeHtml(monthLabel(month)) +
+            "</span>" +
+            (showYear
+              ? '<span class="gantt__tick-year">' +
+                D().escapeHtml(yearLabel(month)) +
+                "</span>"
+              : "") +
+            "</span>"
+          );
+        })
+        .join("") +
+      "</div>"
+    );
+  }
+
+  function todayMarkerHtml(today, gridStart) {
+    var gridEnd = new Date(gridStart.getFullYear() + 1, 6, 1);
+    if (today < gridStart || today >= gridEnd) {
+      return "";
+    }
+    var pct = monthProgress(today, gridStart, false) * 100;
+    var iso =
+      today.getFullYear() +
+      "-" +
+      String(today.getMonth() + 1).padStart(2, "0") +
+      "-" +
+      String(today.getDate()).padStart(2, "0");
+    return (
+      '<div class="gantt__today" style="--today-pct: ' +
+      pct.toFixed(3) +
+      ';" title="Today — ' +
+      D().escapeHtml(formatLongDate(iso)) +
+      '" aria-hidden="true"></div>'
+    );
+  }
+
+  function rowHtml(labelHtml, laneHtml, rowClass) {
+    return (
+      '<div class="gantt__row' +
+      (rowClass ? " " + rowClass : "") +
+      '">' +
+      '<div class="gantt__label">' +
+      labelHtml +
+      "</div>" +
+      '<div class="gantt__lane">' +
+      laneHtml +
+      "</div>" +
+      "</div>"
+    );
+  }
+
+  function isHighlighted(highlightSegment, semester, kind, periodKey) {
+    if (!highlightSegment || !highlightSegment.semester) return false;
+    if (highlightSegment.semester.id !== semester.id) return false;
+    if (kind && highlightSegment.kind !== kind) return false;
+    if (periodKey != null && highlightSegment.periodKey !== periodKey) return false;
+    return true;
+  }
+
+  function ganttYearHtml(year, highlightSegment, today) {
+    var grid = academicYearGrid(year);
+    if (!grid) {
+      return "";
+    }
+
+    var yearStart = year.semesters[0] && year.semesters[0].startDate;
+    var yearEnd =
+      year.semesters.length && year.semesters[year.semesters.length - 1].endDate;
+    var yearHighlight = year.semesters.some(function (semester) {
+      return (
+        highlightSegment &&
+        highlightSegment.semester &&
+        highlightSegment.semester.id === semester.id
+      );
+    });
+
+    var yearRowHtml = rowHtml(
+      D().metaBadge("year", year.yearOfStudy),
+      barHtml({
+        mod: "gantt__bar--year",
+        label: "Year " + year.yearOfStudy,
+        title: tooltipText("Year " + year.yearOfStudy, yearStart, yearEnd, "", ""),
+        startDate: yearStart,
+        endDate: yearEnd,
+        gridStart: grid.start,
+        highlight: yearHighlight
+      }),
+      "gantt__row--year"
+    );
+
+    function periodRowHtml(semester, key, info) {
+      var teachHighlight = isHighlighted(highlightSegment, semester, "teaching", key);
+      var examHighlight = isHighlighted(highlightSegment, semester, "exam", key);
+      var laneHtml =
+        barHtml({
+          mod: "gantt__bar--period",
+          label: info.quarterLabel || periodLabel(key),
+          title: tooltipText(
+            periodLabel(key),
+            info.startDate,
+            info.endDate,
+            info.quarterLabel,
+            info.weeksLabel
+          ),
+          startDate: info.startDate,
+          endDate: info.endDate,
+          gridStart: grid.start,
+          highlight: teachHighlight
+        }) +
+        (info.exam
+          ? barHtml({
+              mod: "gantt__bar--exam",
+              label: "Exam",
+              title: tooltipText(
+                info.exam.label || "Examination week",
+                info.exam.startDate,
+                info.exam.endDate,
+                "",
+                ""
+              ),
+              startDate: info.exam.startDate,
+              endDate: info.exam.endDate,
+              gridStart: grid.start,
+              highlight: examHighlight
+            })
+          : "");
+
+      return rowHtml(
+        D().metaBadge("studyPeriod", periodLabel(key)),
+        laneHtml,
+        "gantt__row--period"
+      );
+    }
+
+    var semesterSectionsHtml = (year.semesters || [])
+      .map(function (semester) {
+        var seasonMod = /spring/i.test(semester.label || "")
+          ? "gantt__bar--spring"
+          : "gantt__bar--autumn";
+        var semesterRowHtml = rowHtml(
+          D().metaBadge("semester", semester.label),
+          barHtml({
+            mod: "gantt__bar--semester " + seasonMod,
+            label: semester.label,
+            title: tooltipText(
+              semester.label,
+              semester.startDate,
+              semester.endDate,
+              "",
+              semester.weeksLabel
+            ),
+            startDate: semester.startDate,
+            endDate: semester.endDate,
+            gridStart: grid.start,
+            highlight: isHighlighted(highlightSegment, semester)
+          }),
+          "gantt__row--semester"
+        );
+
+        var details = semester.periodDetails || {};
+        var periodRowsHtml = sortedPeriodKeys(details)
+          .map(function (key) {
+            return periodRowHtml(semester, key, details[key]);
+          })
+          .join("");
+
+        return semesterRowHtml + periodRowsHtml;
+      })
+      .join("");
+
+    return (
+      '<section class="gantt-panel">' +
+      '<h3 class="gantt-panel__title">Year ' +
+      D().escapeHtml(String(year.yearOfStudy)) +
+      "</h3>" +
+      '<div class="gantt" role="img" aria-label="Year ' +
+      D().escapeHtml(String(year.yearOfStudy)) +
+      ' schedule as a Gantt timeline">' +
+      '<div class="gantt__corner" aria-hidden="true"></div>' +
+      axisHtml(grid.months) +
+      '<div class="gantt__rows">' +
+      yearRowHtml +
+      semesterSectionsHtml +
+      "</div>" +
+      todayMarkerHtml(today, grid.start) +
+      "</div>" +
+      "</section>"
+    );
+  }
+
+  function yearTabsHtml(years, activeYear) {
+    return (
+      '<div class="explorer-tabs" role="tablist" aria-label="Programme year">' +
+      years
+        .map(function (year) {
+          var y = String(year.yearOfStudy);
+          var active = y === activeYear;
+          return (
+            '<button type="button" class="explorer-tab' +
+            (active ? " is-active" : "") +
+            '" role="tab" id="timeline-year-tab-' +
+            D().escapeHtml(y) +
+            '" aria-selected="' +
+            (active ? "true" : "false") +
+            '" aria-controls="timeline-year-panel-' +
+            D().escapeHtml(y) +
+            '" data-timeline-year-tab="' +
+            D().escapeHtml(y) +
+            '">Year ' +
+            D().escapeHtml(y) +
+            (active ? ' <span class="sr-only">(selected)</span>' : "") +
+            "</button>"
+          );
+        })
+        .join("") +
+      "</div>"
+    );
+  }
+
+  var state = {
+    semesters: [],
+    highlightSegment: null,
+    today: null,
+    activeYear: null
+  };
+
+  function render() {
+    var timelineHost = document.getElementById("programme-timeline-strip");
+    var tabsHost = document.getElementById("programme-timeline-tabs");
+    if (!timelineHost) {
+      return;
+    }
+
+    var years = yearsFromSemesters(state.semesters);
+    if (!years.length) {
+      if (tabsHost) {
+        tabsHost.innerHTML = "";
+      }
+      timelineHost.innerHTML =
+        '<div class="empty-state"><p>Programme schedule unavailable.</p></div>';
+      return;
+    }
+
+    if (
+      !years.some(function (year) {
+        return String(year.yearOfStudy) === state.activeYear;
+      })
+    ) {
+      state.activeYear = String(years[0].yearOfStudy);
+    }
+
+    var activeYear = years.find(function (year) {
+      return String(year.yearOfStudy) === state.activeYear;
+    });
+
+    if (tabsHost) {
+      tabsHost.innerHTML = yearTabsHtml(years, state.activeYear);
+    }
+    timelineHost.innerHTML =
+      (tabsHost ? "" : yearTabsHtml(years, state.activeYear)) +
+      '<div class="explorer-tab-panel" role="tabpanel" id="timeline-year-panel-' +
+      D().escapeHtml(state.activeYear) +
+      '" aria-labelledby="timeline-year-tab-' +
+      D().escapeHtml(state.activeYear) +
+      '">' +
+      (activeYear
+        ? ganttYearHtml(activeYear, state.highlightSegment, state.today)
+        : "") +
+      "</div>";
+  }
+
+  function bindEvents() {
+    var timelineHost = document.getElementById("programme-timeline-strip");
+    var tabsHost = document.getElementById("programme-timeline-tabs");
+    if (!timelineHost) {
+      return;
+    }
+
+    var clickRoot = tabsHost || timelineHost;
+    clickRoot.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+      var tab = target.closest("[data-timeline-year-tab]");
+      if (tab) {
+        event.preventDefault();
+        state.activeYear = tab.getAttribute("data-timeline-year-tab");
+        render();
+        var active = clickRoot.querySelector(
+          '[data-timeline-year-tab="' + state.activeYear + '"]'
+        );
+        if (active) {
+          active.focus();
+        }
+      }
+    });
+  }
+
   function buildSegments(semesters) {
     var segments = [];
     (semesters || []).forEach(function (semester) {
       var details = semester.periodDetails || {};
-      var keys = Object.keys(details).sort(function (a, b) {
-        return toDate(details[a].startDate) - toDate(details[b].startDate);
-      });
-      keys.forEach(function (key) {
+      sortedPeriodKeys(details).forEach(function (key) {
         var info = details[key];
         segments.push({
           kind: "teaching",
           semester: semester,
           periodKey: key,
-          quarterLabel: info.quarterLabel,
-          weeksLabel: info.weeksLabel,
           startDate: info.startDate,
           endDate: info.endDate
         });
@@ -58,7 +467,6 @@
             kind: "exam",
             semester: semester,
             periodKey: key,
-            label: info.exam.label,
             startDate: info.exam.startDate,
             endDate: info.exam.endDate
           });
@@ -86,225 +494,35 @@
     return { state: "after", segment: segments[segments.length - 1] || null };
   }
 
-  function segmentHeadline(seg) {
-    if (seg.kind === "exam") {
-      return (seg.label || "Examination week") + " — " + seg.semester.label;
-    }
-    return periodLabel(seg.periodKey) + " (" + (seg.quarterLabel || "") + ") — " + seg.semester.label;
-  }
-
-  function statusCardHtml(status, today) {
-    var seg = status && status.segment;
-    if (!seg) {
-      return '<div class="empty-state"><p>Programme schedule unavailable.</p></div>';
-    }
-
-    var headline;
-    var detail;
-    var badges = D().metaBadgeGroup([
-      D().metaBadge("week", seg.weeksLabel),
-      dateRangeBadgesHtml(seg.startDate, seg.endDate)
-    ]);
-
-    if (status.state === "current") {
-      var daysLeft = daysBetween(today, toDate(seg.endDate));
-      headline = seg.kind === "exam" ? "Examination week is underway" : "You're in " + periodLabel(seg.periodKey);
-      detail =
-        segmentHeadline(seg) +
-        (daysLeft > 0
-          ? ". " + daysLeft + " day" + (daysLeft === 1 ? "" : "s") + " left."
-          : ". Wraps up today.");
-    } else if (status.state === "before" && status.index === 0) {
-      var daysToStart = daysBetween(today, toDate(seg.startDate));
-      headline = "Programme starts in " + daysToStart + " day" + (daysToStart === 1 ? "" : "s");
-      detail =
-        periodLabel(seg.periodKey) +
-        (seg.quarterLabel ? " (" + seg.quarterLabel + ")" : "") +
-        " opens the programme.";
-    } else if (status.state === "before") {
-      headline = "On a break between study periods";
-      detail = "Next up: " + segmentHeadline(seg) + ".";
-    } else {
-      headline = "Programme complete";
-      detail = "All study periods finished as of " + formatLongDate(seg.endDate) + ".";
-      badges = "";
-    }
-
-    return (
-      '<p class="journey-status__kicker">Where you are</p>' +
-      '<h3 class="journey-status__headline">' + D().escapeHtml(headline) + "</h3>" +
-      '<p class="journey-status__detail">' + D().escapeHtml(detail) + "</p>" +
-      (badges ? '<div class="journey-status__meta">' + badges + "</div>" : "")
-    );
-  }
-
-  function yearsFromSemesters(semesters) {
-    var years = {};
-    (semesters || []).forEach(function (semester) {
-      var y = String(semester.yearOfStudy);
-      if (!years[y]) {
-        years[y] = { yearOfStudy: semester.yearOfStudy, academicYear: semester.academicYear, semesters: [] };
-      }
-      years[y].semesters.push(semester);
-    });
-    return Object.keys(years)
-      .sort()
-      .map(function (key) {
-        return years[key];
-      });
-  }
-
-  function timelineSemesterHtml(semester, highlightSegment) {
-    var start = toDate(semester.startDate);
-    var end = toDate(semester.endDate);
-    var totalDays = Math.max(daysBetween(start, end), 1);
-    var details = semester.periodDetails || {};
-    var keys = Object.keys(details).sort(function (a, b) {
-      return toDate(details[a].startDate) - toDate(details[b].startDate);
-    });
-    var isSemesterHighlight = !!(highlightSegment && highlightSegment.semester.id === semester.id);
-
-    var segmentsHtml = keys
-      .map(function (key) {
-        var info = details[key];
-        var pDays = Math.max(daysBetween(toDate(info.startDate), toDate(info.endDate)), 1);
-        var isPeriodHighlight =
-          isSemesterHighlight && highlightSegment.kind === "teaching" && highlightSegment.periodKey === key;
-        var periodTitle = info.quarterLabel || periodLabel(key);
-        var periodTooltip =
-          periodTitle +
-          "\nStart: " +
-          formatLongDate(info.startDate) +
-          "\nEnd: " +
-          formatLongDate(info.endDate);
-        var periodAria =
-          periodTitle +
-          ". Start: " +
-          formatLongDate(info.startDate) +
-          ". End: " +
-          formatLongDate(info.endDate);
-
-        var html =
-          '<span class="prog-timeline__period' +
-          (isPeriodHighlight ? " is-highlight" : "") +
-          '" style="flex-grow: ' +
-          pDays +
-          '" tabindex="0" data-tooltip="' +
-          D().escapeHtml(periodTooltip) +
-          '" aria-label="' +
-          D().escapeHtml(periodAria) +
-          '">' +
-          '<span class="prog-timeline__period-label">' +
-          D().escapeHtml(info.quarterLabel || periodLabel(key)) +
-          "</span></span>";
-
-        if (info.exam) {
-          var eDays = Math.max(daysBetween(toDate(info.exam.startDate), toDate(info.exam.endDate)), 1);
-          var isExamHighlight =
-            isSemesterHighlight && highlightSegment.kind === "exam" && highlightSegment.periodKey === key;
-          var examTitle = info.exam.label || "Examination week";
-          var examTooltip =
-            examTitle +
-            "\nStart: " +
-            formatLongDate(info.exam.startDate) +
-            "\nEnd: " +
-            formatLongDate(info.exam.endDate);
-          var examAria =
-            examTitle +
-            ". Start: " +
-            formatLongDate(info.exam.startDate) +
-            ". End: " +
-            formatLongDate(info.exam.endDate);
-          html +=
-            '<span class="prog-timeline__exam' +
-            (isExamHighlight ? " is-highlight" : "") +
-            '" style="flex-grow: ' +
-            eDays +
-            '" tabindex="0" data-tooltip="' +
-            D().escapeHtml(examTooltip) +
-            '" aria-label="' +
-            D().escapeHtml(examAria) +
-            '"></span>';
-        }
-        return html;
-      })
-      .join("");
-
-    return (
-      '<div class="prog-timeline__semester' +
-      (isSemesterHighlight ? " is-highlight" : "") +
-      '" style="flex-grow: ' +
-      totalDays +
-      '">' +
-      '<span class="prog-timeline__semester-label">' + D().escapeHtml(semester.label) + "</span>" +
-      '<span class="prog-timeline__periods">' + segmentsHtml + "</span>" +
-      '<span class="prog-timeline__semester-dates">' +
-      D().escapeHtml(formatLongDate(semester.startDate) + " – " + formatLongDate(semester.endDate)) +
-      "</span>" +
-      "</div>"
-    );
-  }
-
-  function timelineHtml(semesters, highlightSegment) {
-    var years = yearsFromSemesters(semesters);
-    if (!years.length) {
-      return '<div class="empty-state"><p>Programme schedule unavailable.</p></div>';
-    }
-    return years
-      .map(function (year) {
-        return (
-          '<div class="prog-timeline__year">' +
-          '<div class="prog-timeline__year-label">' +
-          D().metaBadgeGroup([
-            D().metaBadge("year", year.yearOfStudy),
-            year.academicYear
-              ? '<span class="prog-timeline__ay">' +
-                D().escapeHtml(year.academicYear) +
-                "</span>"
-              : ""
-          ]) +
-          "</div>" +
-          '<div class="prog-timeline__row">' +
-          year.semesters
-            .map(function (semester) {
-              return timelineSemesterHtml(semester, highlightSegment);
-            })
-            .join("") +
-          "</div></div>"
-        );
-      })
-      .join("");
-  }
-
   async function init() {
-    var statusHost = document.getElementById("programme-status");
     var timelineHost = document.getElementById("programme-timeline-strip");
-    if (!statusHost && !timelineHost) {
-      return;
-    }
-    if (!window.AailhData) {
+    if (!timelineHost || !window.AailhData) {
       return;
     }
 
     var semestersData = await D().loadJson("data/semesters.json");
     var semesters = (semestersData && semestersData.semesters) || [];
     if (!semesters.length) {
-      var emptyHtml = '<div class="empty-state"><p>Programme schedule unavailable.</p></div>';
-      if (statusHost) statusHost.innerHTML = emptyHtml;
-      if (timelineHost) timelineHost.innerHTML = emptyHtml;
+      timelineHost.innerHTML =
+        '<div class="empty-state"><p>Programme schedule unavailable.</p></div>';
       return;
     }
 
     var today = new Date();
-    var segments = buildSegments(semesters);
-    var status = locateStatus(segments, today);
+    today.setHours(0, 0, 0, 0);
+    var status = locateStatus(buildSegments(semesters), today);
 
-    if (statusHost) {
-      statusHost.innerHTML = statusCardHtml(status, today);
-    }
-    if (timelineHost) {
-      timelineHost.innerHTML = timelineHtml(semesters, status && status.segment);
-    }
+    state.semesters = semesters;
+    state.highlightSegment = status && status.segment;
+    state.today = today;
+    state.activeYear =
+      (state.highlightSegment &&
+        state.highlightSegment.semester &&
+        String(state.highlightSegment.semester.yearOfStudy)) ||
+      null;
+
+    render();
+    bindEvents();
   }
 
   document.addEventListener("DOMContentLoaded", init);

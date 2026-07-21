@@ -86,15 +86,15 @@
       "</strong> ECTS</p>" +
       "</div>" +
       '<ul class="home-hero__pie-legend">' +
-      '<li><span class="home-hero__pie-swatch is-compulsory" aria-hidden="true"></span> ' +
-      D().escapeHtml(String(compulsory)) +
-      " compulsory</li>" +
-      '<li><span class="home-hero__pie-swatch is-elective" aria-hidden="true"></span> ' +
-      D().escapeHtml(String(elective)) +
-      " elective</li>" +
-      '<li><span class="home-hero__pie-swatch is-thesis" aria-hidden="true"></span> ' +
-      D().escapeHtml(String(thesis)) +
-      " thesis</li>" +
+      '<li><span class="home-hero__pie-swatch is-compulsory" aria-hidden="true"></span> compulsory ' +
+      D().metaBadge("ects", compulsory) +
+      "</li>" +
+      '<li><span class="home-hero__pie-swatch is-elective" aria-hidden="true"></span> elective ' +
+      D().metaBadge("ects", elective) +
+      "</li>" +
+      '<li><span class="home-hero__pie-swatch is-thesis" aria-hidden="true"></span> thesis ' +
+      D().metaBadge("ects", thesis) +
+      "</li>" +
       "</ul>"
     );
   }
@@ -126,9 +126,7 @@
           '<span class="home-hero__stack-label">' +
           D().escapeHtml(label) +
           "</span>" +
-          '<strong class="home-hero__stack-ects">' +
-          D().escapeHtml(String(ects)) +
-          " cr</strong>" +
+          D().metaBadge("ects", ects) +
           "</div>"
         );
       })
@@ -140,10 +138,7 @@
       D().escapeHtml(total + " ECTS by subject area") +
       '">' +
       rows +
-      "</div>" +
-      '<p class="home-hero__stack-total"><strong>' +
-      D().escapeHtml(String(total)) +
-      "</strong> ECTS degree total</p>"
+      "</div>"
     );
   }
 
@@ -215,6 +210,17 @@
 
     if (overviewHost) {
       overviewHost.innerHTML = programmeOverviewHtml(programme);
+    }
+
+    var ectsRibbon = document.getElementById("home-hero-ects-ribbon");
+    if (ectsRibbon) {
+      var degreeEcts =
+        Number(totals.degreeEcts) ||
+        Number(totals.compulsoryEcts || 0) +
+          Number(totals.electiveRequirementEcts || 0) +
+          Number(totals.thesisEcts || 0) ||
+        120;
+      ectsRibbon.textContent = degreeEcts + " ECTS";
     }
   }
 
