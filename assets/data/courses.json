@@ -38,10 +38,11 @@
         {
           "name": "András Bota",
           "lastVerified": "2026-07-20",
-          "role": "Senior Lecturer / Examiner",
-          "profileUrl": "",
+          "role": "Senior Lecturer",
+          "profileUrl": "https://www.ltu.se/en/staff/a/andras-bota",
           "phone": "0920-49",
-          "email": "andras.bota@ltu.se"
+          "email": "andras.bota@ltu.se",
+          "photoUrl": "https://www.ltu.se/images/200.3cab4fb218ee70e5e7c1bcf2/1713536444975/Andras-Bota-SRT.jpg"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D0036E&lasPeriod=224&locale=en",
@@ -88,10 +89,11 @@
         {
           "name": "Hamam Mokayed",
           "lastVerified": "2026-07-20",
-          "role": "Associate Professor / Examiner",
+          "role": "Associate Professor",
           "profileUrl": "https://www.ltu.se/en/staff/m/hamam-mokayed",
           "phone": "0920-492075",
-          "email": "hamam.mokayed@ltu.se"
+          "email": "hamam.mokayed@ltu.se",
+          "photoUrl": "https://www.ltu.se/images/200.64257e3118d877d8daf2b819/1707829694175/Hamam%20Mokayed.jpg"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7062E&lasPeriod=224&locale=en",
@@ -137,11 +139,12 @@
       "publicContacts": [
         {
           "name": "Katja Merkle Söderholm",
-          "role": "Lecturer / Examiner",
-          "profileUrl": "",
+          "role": "Lecturer",
+          "profileUrl": "https://www.ltu.se/en/staff/k/katja-merkle-soderholm",
           "phone": "0920-492288",
           "email": "katja.merkle-soderholm@ltu.se",
-          "lastVerified": "2026-07-20"
+          "lastVerified": "2026-07-20",
+          "photoUrl": "https://www.ltu.se/images/200.68ba52d51932979083621b62/1731923667098/Katja_Merkle_Soderholm_LTU.jpg"
         }
       ],
       "offeringDetails": {
@@ -196,10 +199,11 @@
         {
           "name": "Evgeny Osipov",
           "lastVerified": "2026-07-20",
-          "role": "Professor / Examiner",
+          "role": "Professor",
           "profileUrl": "https://www.ltu.se/en/staff/e/evgeny-osipov",
           "phone": "0920-491578",
-          "email": "evgeny.osipov@ltu.se"
+          "email": "evgeny.osipov@ltu.se",
+          "photoUrl": "https://www.ltu.se/images/200.68ba52d519329790836291de/1732009928769/eao_web_2.jpg"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D0034E&lasPeriod=224&locale=en",
@@ -245,9 +249,12 @@
       "publicContacts": [
         {
           "name": "Patricia Carolina Garcia Martin",
-          "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/p/patricia-carolina-garcia-martin"
+          "lastVerified": "2026-07-21",
+          "role": "Postdoctoral position",
+          "profileUrl": "https://www.ltu.se/en/staff/p/patricia-carolina-garcia-martin",
+          "phone": "0920-49",
+          "email": "patricia.carolina.garcia.martin@ltu.se",
+          "photoUrl": "https://www.ltu.se/images/200.1290fc0918d8763190a5c3fd/1708344735333/PhotoPG.png"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=E7010N&lasPeriod=224&locale=en",
@@ -290,16 +297,20 @@
         {
           "name": "Fredrik Sandin",
           "lastVerified": "2026-07-20",
-          "role": "Professor / Examiner",
+          "role": "Professor",
           "profileUrl": "https://www.ltu.se/en/staff/f/fredrik-sandin",
           "phone": "0920-493163",
-          "email": "fredrik.sandin@ltu.se"
+          "email": "fredrik.sandin@ltu.se",
+          "photoUrl": "https://www.ltu.se/images/200.1290fc0918d8763190a30891/1707892510557/Fredrik%20Sandin.jpg"
         },
         {
           "name": "Marcus Liwicki",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/m/marcus-liwicki"
+          "role": "Professor and Head of Subject, Vice-Chancellor's Council within Artificial Intelligence",
+          "profileUrl": "https://www.ltu.se/en/staff/m/marcus-liwicki",
+          "email": "marcus.liwicki@ltu.se",
+          "phone": "0920-491006",
+          "photoUrl": "https://www.ltu.se/images/200.61fb6bf618d8748b9ca639f9/1708413022719/Marcus-Liwicki_LTU.jpg"
         }
       ],
       "offeringDetails": {
@@ -354,8 +365,11 @@
         {
           "name": "Saguna Saguna",
           "role": "Associate Professor",
-          "profileUrl": "",
-          "lastVerified": "2026-07-20"
+          "profileUrl": "https://www.ltu.se/en/staff/s/saguna-saguna",
+          "lastVerified": "2026-07-20",
+          "email": "saguna.saguna@ltu.se",
+          "phone": "0910-585385",
+          "photoUrl": "https://www.ltu.se/images/200.2c38b31a18df261efe92982a/1709565971302/LTU_Saguna_web_pic.jpeg"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7054E&lasPeriod=224&locale=en",
@@ -398,8 +412,11 @@
         {
           "name": "Marcus Liwicki",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/m/marcus-liwicki"
+          "role": "Professor and Head of Subject, Vice-Chancellor's Council within Artificial Intelligence",
+          "profileUrl": "https://www.ltu.se/en/staff/m/marcus-liwicki",
+          "email": "marcus.liwicki@ltu.se",
+          "phone": "0920-491006",
+          "photoUrl": "https://www.ltu.se/images/200.61fb6bf618d8748b9ca639f9/1708413022719/Marcus-Liwicki_LTU.jpg"
         }
       ],
       "offeringDetails": {
@@ -435,7 +452,7 @@
       "studyPeriod": 4,
       "scheduleConfidence": "confirmed",
       "verificationStatus": "verified-for-autumn-2026-cohort",
-      "summary": "Compulsory course on artificial intelligence within healthcare systems. Public notes will remain privacy-safe.",
+      "summary": "",
       "order": 9,
       "lastUpdated": "2026-07-20",
       "officialCourseUrl": "https://www.ltu.se/en/education/course/m70/m7016h-artificial-intelligence-within-the-healthcare-system",
@@ -450,8 +467,11 @@
         {
           "name": "Kerstin Ramser",
           "role": "Professor",
-          "profileUrl": "",
-          "lastVerified": "2026-07-20"
+          "profileUrl": "https://www.ltu.se/en/staff/r/kerstin-ramser",
+          "lastVerified": "2026-07-20",
+          "email": "kerstin.ramser@ltu.se",
+          "phone": "0920-491648",
+          "photoUrl": "https://www.ltu.se/images/200.165b8c0418fa40350313c35b/1717148798664/RamserNy-3_preview%20(1).jpg"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=M7016H&lasPeriod=224&locale=en",
@@ -494,10 +514,11 @@
         {
           "name": "Rajkumar Saini",
           "lastVerified": "2026-07-20",
-          "role": "Senior Lecturer / Examiner",
+          "role": "Senior Lecturer",
           "profileUrl": "https://www.ltu.se/en/staff/r/rajkumar-saini",
           "phone": "0920-493503",
-          "email": "rajkumar.saini@ltu.se"
+          "email": "rajkumar.saini@ltu.se",
+          "photoUrl": "https://www.ltu.se/images/18.768aaefe194b12fa80f3461/1738233391879/rajkumar%20saini%20official%20photo.jpg"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7043E&lasPeriod=224&locale=en",
@@ -544,10 +565,11 @@
         {
           "name": "Evgeny Osipov",
           "lastVerified": "2026-07-20",
-          "role": "Professor / Examiner",
+          "role": "Professor",
           "profileUrl": "https://www.ltu.se/en/staff/e/evgeny-osipov",
           "phone": "0920-491578",
-          "email": "evgeny.osipov@ltu.se"
+          "email": "evgeny.osipov@ltu.se",
+          "photoUrl": "https://www.ltu.se/images/200.68ba52d519329790836291de/1732009928769/eao_web_2.jpg"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7041E&lasPeriod=224&locale=en",
@@ -594,8 +616,11 @@
         {
           "name": "Jan van Deventer",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/d/jan-van-deventer"
+          "role": "Associate Professor",
+          "profileUrl": "https://www.ltu.se/en/staff/d/jan-van-deventer",
+          "email": "jan.van.deventer@ltu.se",
+          "phone": "0920-493316",
+          "photoUrl": "https://www.ltu.se/images/200.140b209918e5f97b82a9990e/1712299812638/JvD2016.jpg"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7065E&lasPeriod=224&locale=en",
@@ -638,8 +663,11 @@
         {
           "name": "Josefine Enman",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/j/josefine-enman"
+          "role": "Senior Lecturer, Head of Division",
+          "profileUrl": "https://www.ltu.se/en/staff/j/josefine-enman",
+          "email": "josefine.enman@ltu.se",
+          "phone": "0920-491267",
+          "photoUrl": "https://www.ltu.se/images/200.68ba52d5193297908361e22/1731590698754/josefine.jpg"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7068E&lasPeriod=224&locale=en",
@@ -682,14 +710,20 @@
         {
           "name": "Christoforos Kanellakis",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/c/christoforos-kanellakis"
+          "role": "Associate Professor",
+          "profileUrl": "https://www.ltu.se/en/staff/c/christoforos-kanellakis",
+          "email": "christoforos.kanellakis@ltu.se",
+          "phone": "0920-492363",
+          "photoUrl": "https://www.ltu.se/images/200.3b703ab4196f6330d3a17c9/1747904879895/IMG_9728_1x1_small.JPG"
         },
         {
           "name": "George Nikolakopoulos",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/g/george-nikolakopoulos"
+          "role": "Professor and Head of Subject",
+          "profileUrl": "https://www.ltu.se/en/staff/g/george-nikolakopoulos",
+          "email": "george.nikolakopoulos@ltu.se",
+          "phone": "0920-491298",
+          "photoUrl": "https://www.ltu.se/images/200.68ba52d51932979083632c74/1732113330488/George-Nikolakopoulos_LTU.jpg"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=R7020E&lasPeriod=224&locale=en",
@@ -732,14 +766,20 @@
         {
           "name": "Fredrik Sandin",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/f/fredrik-sandin"
+          "role": "Professor",
+          "profileUrl": "https://www.ltu.se/en/staff/f/fredrik-sandin",
+          "email": "fredrik.sandin@ltu.se",
+          "phone": "0920-493163",
+          "photoUrl": "https://www.ltu.se/images/200.1290fc0918d8763190a30891/1707892510557/Fredrik%20Sandin.jpg"
         },
         {
           "name": "Foteini Liwicki",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/f/foteini-liwicki"
+          "role": "Associate Professor",
+          "profileUrl": "https://www.ltu.se/en/staff/f/foteini-liwicki",
+          "email": "foteini.liwicki@ltu.se",
+          "phone": "0920-491004",
+          "photoUrl": "https://www.ltu.se/images/200.64257e3118d877d8daf1c4b/1707402795430/FoteiniSimistiraLiwicki.png"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=D7064E&lasPeriod=224&locale=en",
@@ -782,8 +822,11 @@
         {
           "name": "Mariana Vega Mendoza",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/m/mariana-vega-mendoza"
+          "role": "Associate Professor",
+          "profileUrl": "https://www.ltu.se/en/staff/m/mariana-vega-mendoza",
+          "email": "mariana.vega.mendoza@ltu.se",
+          "phone": "0920-491253",
+          "photoUrl": "https://www.ltu.se/images/200.68ba52d51932979083621f6e/1731926041069/NIK_7867%20mvm.jpeg"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=P7002H&lasPeriod=224&locale=en",
@@ -826,8 +869,11 @@
         {
           "name": "George Nikolakopoulos",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/g/george-nikolakopoulos"
+          "role": "Professor and Head of Subject",
+          "profileUrl": "https://www.ltu.se/en/staff/g/george-nikolakopoulos",
+          "email": "george.nikolakopoulos@ltu.se",
+          "phone": "0920-491298",
+          "photoUrl": "https://www.ltu.se/images/200.68ba52d51932979083632c74/1732113330488/George-Nikolakopoulos_LTU.jpg"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=R7010E&lasPeriod=224&locale=en",
@@ -870,8 +916,11 @@
         {
           "name": "Rajkumar Saini",
           "lastVerified": "2026-07-20",
-          "role": "Listed course contact",
-          "profileUrl": "https://www.ltu.se/en/staff/r/rajkumar-saini"
+          "role": "Senior Lecturer",
+          "profileUrl": "https://www.ltu.se/en/staff/r/rajkumar-saini",
+          "email": "rajkumar.saini@ltu.se",
+          "phone": "0920-493503",
+          "photoUrl": "https://www.ltu.se/images/18.768aaefe194b12fa80f3461/1738233391879/rajkumar%20saini%20official%20photo.jpg"
         }
       ],
       "pdfSyllabusUrl": "https://epok.ltu.se/epok/dynpdf/public/kursplan/downloadPublicKursplan.pdf?kursKod=X7013E&lasPeriod=224&locale=en",

@@ -1,81 +1,248 @@
-/* Homepage-only enhancements (icons via Font Awesome + richer hero/feature sections).
-   Scoped to index.html only — loaded after main.css/components.css/responsive.css so it
-   can safely refine those shared styles without editing them, and without affecting any
-   other page (academic-calendar.html, courses/course.html, 404.html). */
+/* Homepage design makeover (icons via Font Awesome + a richer visual layer on top of the
+   site's existing design tokens). Scoped to index.html only — loaded after main.css/
+   components.css/responsive.css so it can safely refine those shared styles without
+   editing them, and without affecting any other page (academic-calendar.html,
+   courses/course.html, 404.html). */
+
+/* ---------- Theme toggle icon swap (no JS changes needed) ---------- */
+
+.theme-toggle {
+  font-size: 1.05rem;
+}
+
+.theme-toggle__icon {
+  display: none;
+}
+
+[data-theme="light"] .theme-toggle__icon--light,
+[data-theme="dark"] .theme-toggle__icon--dark {
+  display: inline-block;
+}
 
 /* ---------- Hero ---------- */
 
 .home-hero {
-  padding-top: var(--space-7);
-  padding-bottom: var(--space-6);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: clamp(3rem, 8vw, 6rem) 0 clamp(2.75rem, 6vw, 4.5rem);
+  border-bottom: 1px solid var(--border);
+  animation: home-rise-in 560ms ease both;
 }
 
-.home-hero__inner {
-  display: block;
+@keyframes home-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-.home-hero__content .eyebrow i {
-  margin-right: 0.4rem;
+.home-hero__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%),
+    radial-gradient(circle at 88% 0%, color-mix(in srgb, var(--warm) 20%, transparent), transparent 50%),
+    radial-gradient(circle at 55% 105%, color-mix(in srgb, var(--focus) 12%, transparent), transparent 60%),
+    var(--bg-hero);
+}
+
+.home-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 var(--space-5);
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.home-hero__title {
+  max-width: 22ch;
+  margin: 0 0 var(--space-5);
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  font-size: clamp(2.3rem, 5.4vw, 3.75rem);
+}
+
+.home-hero__title .accent-text {
+  background: linear-gradient(120deg, var(--accent), var(--warm));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.home-hero__lead {
+  max-width: 44rem;
+  margin: 0 0 var(--space-6);
+  font-size: 1.2rem;
+  color: var(--text-muted);
 }
 
 .home-hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin: 0 0 var(--space-6);
+  margin: 0 0 var(--space-7);
+}
+
+.home-hero__actions .btn {
+  font-size: 1.02rem;
+  padding: 0.85rem 1.6rem;
 }
 
 .home-hero__actions .btn i {
-  margin-right: 0.15rem;
+  margin-right: 0.4rem;
 }
 
-/* Icon overlay on the ECTS stat row, purely decorative — markup is unchanged/JS-driven. */
-.home-hero .ects-row__item {
+/* ECTS stat cards — markup is JS-driven and unchanged; this only restyles it. */
+.home-hero__stats.ects-row {
+  gap: var(--space-4);
+}
+
+.home-hero__stats .ects-row__item {
   position: relative;
-  padding-top: 2.5rem;
-  transition: transform var(--transition), border-color var(--transition);
+  padding: 2.9rem 1rem 1.35rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
-.home-hero .ects-row__item:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+.home-hero__stats .ects-row__item:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.14);
 }
 
-.home-hero .ects-row__item::before {
+.home-hero__stats .ects-row__item strong {
+  font-size: 1.6rem;
+}
+
+.home-hero__stats .ects-row__item::before {
+  content: "";
   position: absolute;
-  top: 0.75rem;
+  top: 1rem;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   font-size: 1rem;
-  color: var(--accent);
 }
 
-.home-hero .ects-row__item:nth-child(1)::before {
+.home-hero__stats .ects-row__item:nth-child(1)::before {
   content: "\f19d"; /* graduation-cap */
 }
 
-.home-hero .ects-row__item:nth-child(2)::before {
+.home-hero__stats .ects-row__item:nth-child(2)::before {
   content: "\f0ae"; /* tasks */
 }
 
-.home-hero .ects-row__item:nth-child(3)::before {
+.home-hero__stats .ects-row__item:nth-child(3)::before {
   content: "\f074"; /* shuffle */
 }
 
-.home-hero .ects-row__item:nth-child(4)::before {
+.home-hero__stats .ects-row__item:nth-child(4)::before {
   content: "\f304"; /* pen */
 }
 
-/* ---------- Explorer heading icon ---------- */
+/* ---------- Explorer section header ---------- */
 
-.section--explorer .section-title i {
-  color: var(--accent);
-  margin-right: 0.5rem;
+.home-section-head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
 }
 
-/* ---------- Footer icons ---------- */
+.home-section-head__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 1.3rem;
+}
+
+.home-section-head .section-title {
+  margin: 0;
+}
+
+.home-section-head__desc {
+  margin: var(--space-2) 0 0;
+  max-width: 42rem;
+  color: var(--text-muted);
+}
+
+/* Explorer panel gets a subtle gradient accent bar + lift */
+.explorer-shell.home-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.explorer-shell.home-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--warm));
+}
+
+/* ---------- Footer ---------- */
+
+.home-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.home-footer__about {
+  flex: 1 1 20rem;
+}
+
+.home-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.home-footer__brand i {
+  color: var(--accent);
+}
+
+.home-footer .site-footer__links {
+  flex: 1 1 20rem;
+  justify-content: flex-end;
+}
 
 .site-footer__links a i {
   margin-right: 0.35rem;
@@ -84,9 +251,27 @@
 
 /* ---------- Responsive ---------- */
 
+@media (max-width: 900px) {
+  .home-hero__stats.ects-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 700px) {
   .home-hero__actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .home-hero__stats.ects-row {
+    grid-template-columns: 1fr;
+  }
+
+  .home-section-head {
+    align-items: center;
+  }
+
+  .home-footer .site-footer__links {
+    justify-content: flex-start;
   }
 }

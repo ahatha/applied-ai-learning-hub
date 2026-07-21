@@ -33,7 +33,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/components.css?v=20260721p">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <link rel="stylesheet" href="assets/css/home.css">
   <script type="application/ld+json">
@@ -58,44 +58,52 @@
         <span class="brand__mark" aria-hidden="true">AI</span>
         <span class="brand__text">Applied AI Programme Hub<small>LTU Applied AI · 2026–2028</small></span>
       </a>
-      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">◐</button>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">
+        <i class="fa-solid fa-sun theme-toggle__icon theme-toggle__icon--light" aria-hidden="true"></i>
+        <i class="fa-solid fa-moon theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true"></i>
+      </button>
     </div>
   </header>
 
   <main id="main">
-    <section class="section hero home-hero" aria-labelledby="programme-title">
-      <div class="container home-hero__inner">
-        <div class="home-hero__content programme-summary">
-          <p class="eyebrow"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Luleå University of Technology</p>
-          <h1 id="programme-title">Master Programme in Applied Artificial Intelligence</h1>
-          <p class="lead programme-summary__meta" id="programme-dates">
-            31 August 2026 – 6 June 2028 · Distance, full-time, daytime · English
-          </p>
+    <section class="home-hero" aria-labelledby="programme-title">
+      <div class="home-hero__backdrop" aria-hidden="true"></div>
+      <div class="container">
+        <p class="home-hero__badge"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Luleå University of Technology</p>
+        <h1 id="programme-title" class="home-hero__title">Master Programme in <span class="accent-text">Applied Artificial Intelligence</span></h1>
+        <p class="home-hero__lead" id="programme-dates">
+          31 August 2026 – 6 June 2028 · Distance, full-time, daytime · English
+        </p>
 
-          <div class="home-hero__actions">
-            <a class="btn btn--primary" href="academic-calendar.html">
-              <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Academic calendar
-            </a>
-            <a class="btn btn--secondary" href="https://www.ltu.se/en/education/programme/tmdia-master-programme-in-applied-ai" rel="noopener noreferrer" target="_blank">
-              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Official LTU programme page
-            </a>
-          </div>
+        <div class="home-hero__actions">
+          <a class="btn btn--primary" href="academic-calendar.html">
+            <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Academic calendar
+          </a>
+          <a class="btn btn--secondary" href="https://www.ltu.se/en/education/programme/tmdia-master-programme-in-applied-ai" rel="noopener noreferrer" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Official LTU programme page
+          </a>
+        </div>
 
-          <div id="programme-composition" class="ects-row" aria-label="Programme composition">
-            <div class="ects-row__item"><strong>120</strong><span>ECTS total</span></div>
-            <div class="ects-row__item"><strong>75</strong><span>compulsory</span></div>
-            <div class="ects-row__item"><strong>15</strong><span>elective</span></div>
-            <div class="ects-row__item"><strong>30</strong><span>thesis</span></div>
-          </div>
+        <div id="programme-composition" class="ects-row home-hero__stats" aria-label="Programme composition">
+          <div class="ects-row__item"><strong>120</strong><span>ECTS total</span></div>
+          <div class="ects-row__item"><strong>75</strong><span>compulsory</span></div>
+          <div class="ects-row__item"><strong>15</strong><span>elective</span></div>
+          <div class="ects-row__item"><strong>30</strong><span>thesis</span></div>
         </div>
       </div>
     </section>
 
     <section class="section section--explorer" aria-labelledby="explorer-title">
       <div class="container">
-        <h2 id="explorer-title" class="section-title"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Programme explorer</h2>
+        <div class="home-section-head">
+          <span class="home-section-head__icon" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></span>
+          <div>
+            <h2 id="explorer-title" class="section-title">Programme explorer</h2>
+            <p class="home-section-head__desc">Browse by year, semester and study period — every course links straight to its hub.</p>
+          </div>
+        </div>
         <div id="explorer-legend" class="explorer-legend" aria-label="Legend"></div>
-        <div class="explorer-shell">
+        <div class="explorer-shell home-panel">
           <div id="programme-explorer" class="programme-explorer" aria-busy="true">
             <div class="empty-state"><p>Loading programme structure…</p></div>
           </div>
@@ -104,9 +112,12 @@
     </section>
   </main>
 
-  <footer class="site-footer site-footer--compact">
-    <div class="container">
-      <p>Personal learning hub for the LTU Master Programme in Applied AI. Not an official website of Luleå University of Technology.</p>
+  <footer class="site-footer site-footer--compact home-footer">
+    <div class="container home-footer__inner">
+      <div class="home-footer__about">
+        <p class="home-footer__brand"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Applied AI Programme Hub</p>
+        <p>Personal learning hub for the LTU Master Programme in Applied AI. Not an official website of Luleå University of Technology.</p>
+      </div>
       <p class="site-footer__links">
         <a href="academic-calendar.html"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Academic calendar</a>
         <a href="https://github.com/ahatha/applied-ai-learning-hub" rel="noopener noreferrer" target="_blank"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub repository</a>
@@ -116,7 +127,7 @@
   </footer>
 
   <script src="assets/js/theme.js" defer></script>
-  <script src="assets/js/data-loader.js" defer></script>
+  <script src="assets/js/data-loader.js?v=20260721p" defer></script>
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/explorer.js" defer></script>
 </body>

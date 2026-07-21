@@ -1,0 +1,729 @@
+/* Course hub page enhancements: quick-nav between sections, section icons, and the
+   sun/moon theme-toggle icon swap. Scoped to courses/course.html only — loaded after
+   main.css/components.css/responsive.css so it can safely refine those shared styles
+   without editing them, and without affecting index.html, academic-calendar.html or
+   404.html. */
+
+/* ---------- Theme toggle icon swap (no JS changes needed) ---------- */
+
+.theme-toggle__icon {
+  display: none;
+}
+
+[data-theme="light"] .theme-toggle__icon--light,
+[data-theme="dark"] .theme-toggle__icon--dark {
+  display: inline-block;
+}
+
+/* ---------- Quick navigation between course-hub sections ---------- */
+
+.course-quick-nav {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 90;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-6);
+  padding: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
+}
+
+.course-quick-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: calc(var(--radius-sm) - 2px);
+  color: var(--text-muted);
+  font-weight: 650;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+}
+
+.course-quick-nav a:hover,
+.course-quick-nav a:focus-visible {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* ---------- Hero facts (merged overview + schedule) ---------- */
+
+.course-hero__facts {
+  margin: 0 0 var(--space-5);
+  padding: var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--border));
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--bg-elevated) 70%, transparent);
+}
+
+.course-hero__facts .fact-chip-grid {
+  margin: 0;
+}
+
+.course-facts-table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.course-facts-table th,
+.course-facts-table td {
+  padding: 0.4rem 0.75rem;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.course-facts-table tr:last-child th,
+.course-facts-table tr:last-child td {
+  border-bottom: none;
+}
+
+.course-facts-table th {
+  width: 11.5rem;
+  max-width: 38%;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.course-facts-table td {
+  font-weight: 600;
+  color: var(--text);
+}
+
+@media (max-width: 560px) {
+  .course-facts-table th,
+  .course-facts-table td {
+    display: block;
+    width: 100%;
+    max-width: none;
+    padding: 0.2rem 0;
+    border-bottom: none;
+    white-space: normal;
+  }
+
+  .course-facts-table tr {
+    display: block;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .course-facts-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .course-facts-table td {
+    padding-bottom: 0.35rem;
+  }
+}
+
+.exam-table-wrap {
+  overflow-x: auto;
+  margin: 0;
+}
+
+.exam-modules-table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.exam-modules-table th,
+.exam-modules-table td {
+  padding: 0.45rem 0.65rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+.exam-modules-table thead th {
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.exam-modules-table tbody td:nth-child(3),
+.exam-modules-table tfoot td:first-of-type {
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.exam-modules-table tfoot th,
+.exam-modules-table tfoot td {
+  border-bottom: none;
+  padding-top: 0.65rem;
+  background: color-mix(in srgb, var(--bg-muted) 55%, transparent);
+}
+
+.exam-modules-table tfoot th {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.exam-modules-table tfoot td:first-of-type {
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.literature-table td:nth-child(2) {
+  min-width: 12rem;
+}
+
+.literature-table td:nth-child(5) {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.literature-table__notes {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.literature-table a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.literature-table a:hover,
+.literature-table a:focus-visible {
+  text-decoration: underline;
+}
+
+/* ---------- Literature book cards (cover format) ---------- */
+
+.literature-book-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+.literature-book-group {
+  display: block;
+}
+
+.literature-book-group--multi {
+  display: grid;
+  grid-template-columns: 6.75rem minmax(0, 1fr);
+  gap: 0.65rem 0.9rem;
+  align-items: end;
+}
+
+.literature-book-group--flow {
+  display: block;
+}
+
+.literature-book-group__label {
+  margin: 0;
+  padding-bottom: 0.15rem;
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: left;
+  hyphens: auto;
+}
+
+.literature-book-group__label--empty {
+  visibility: hidden;
+}
+
+.literature-book__caption {
+  margin: 0 0 0.4rem;
+  font-size: 0.62rem;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 1.6rem;
+}
+
+.literature-book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 11rem);
+  gap: 1.25rem 1.1rem;
+  justify-content: start;
+  margin: 0;
+}
+
+.literature-book-grid__item {
+  width: 11rem;
+}
+
+.literature-book {
+  display: flex;
+  flex-direction: column;
+  width: 11rem;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+}
+
+.literature-book--link {
+  cursor: pointer;
+}
+
+.literature-book--link:hover .literature-book__cover-wrap,
+.literature-book--link:focus-visible .literature-book__cover-wrap {
+  transform: translateY(-0.2rem) rotate(-1deg);
+  box-shadow:
+    0.15rem 0.45rem 1.1rem color-mix(in srgb, var(--text) 18%, transparent),
+    0.05rem 0.1rem 0.25rem color-mix(in srgb, var(--text) 10%, transparent);
+  outline: none;
+}
+
+.literature-book--link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 0.35rem;
+  border-radius: 0.25rem;
+}
+
+.literature-book__cover-wrap {
+  position: relative;
+  width: 11rem;
+  height: 16.5rem;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 0.15rem 0.35rem 0.35rem 0.15rem;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--bg-muted) 70%, var(--accent-soft)), var(--bg-elevated));
+  box-shadow:
+    0.12rem 0.35rem 0.85rem color-mix(in srgb, var(--text) 14%, transparent),
+    inset -0.35rem 0 0.55rem color-mix(in srgb, #000 12%, transparent);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.literature-book__cover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.literature-book__fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  color: color-mix(in srgb, var(--text-muted) 80%, var(--accent));
+  font-size: 2.4rem;
+  background:
+    repeating-linear-gradient(
+      -12deg,
+      transparent,
+      transparent 0.7rem,
+      color-mix(in srgb, var(--border) 55%, transparent) 0.7rem,
+      color-mix(in srgb, var(--border) 55%, transparent) 0.74rem
+    ),
+    linear-gradient(160deg, var(--bg-elevated), color-mix(in srgb, var(--bg-muted) 80%, var(--warm)));
+}
+
+.literature-book__cover-wrap.is-fallback .literature-book__fallback {
+  display: flex;
+}
+
+.literature-book__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  height: 8.25rem;
+  margin-top: 0.7rem;
+  overflow: hidden;
+}
+
+.literature-book__category {
+  display: none;
+}
+
+.literature-book h4 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.literature-book__byline,
+.literature-book__isbn {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.literature-book__isbn {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.72rem;
+}
+
+.literature-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.literature-hero__layout {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.literature-hero__cover.literature-book__cover-wrap {
+  width: 11rem;
+  height: 16.5rem;
+}
+
+@media (max-width: 640px) {
+  .literature-book-group--multi {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .literature-book-group__label {
+    padding-bottom: 0;
+  }
+
+  .literature-book-grid {
+    grid-template-columns: repeat(auto-fill, 9.5rem);
+    gap: 1rem 0.85rem;
+  }
+
+  .literature-book-grid__item,
+  .literature-book,
+  .literature-book__cover-wrap {
+    width: 9.5rem;
+  }
+
+  .literature-book__cover-wrap {
+    height: 14.25rem;
+  }
+
+  .literature-book__meta {
+    height: 7.75rem;
+  }
+
+  .literature-hero__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .literature-hero__cover.literature-book__cover-wrap {
+    width: 9.5rem;
+    height: 14.25rem;
+  }
+}
+
+.course-hero__facts .course-block {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+.course-hero__facts .course-block:first-of-type {
+  margin-top: var(--space-4);
+}
+
+/* ---------- Section head icons ---------- */
+
+.course-section-head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.course-section-head__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: 0.1rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 1.05rem;
+}
+
+.content-zone--links .course-section-head__icon {
+  background: color-mix(in srgb, var(--success) 16%, transparent);
+  color: var(--success);
+}
+
+/* ---------- Syllabus revision / established attribution ---------- */
+
+.syllabus-meta {
+  margin: 0;
+}
+
+.syllabus-meta-line {
+  margin: 0.25rem 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.syllabus-meta-line__label {
+  font-weight: 650;
+  color: var(--text-muted);
+}
+
+.course-block--syllabus-footer {
+  margin-top: var(--space-5);
+}
+
+.course-block--syllabus-footer .syllabus-meta {
+  margin-bottom: 0;
+}
+
+.source-line {
+  margin: var(--space-4) 0 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.source-line__label {
+  font-weight: 650;
+  color: var(--text-muted);
+}
+
+.syllabus-block__intro {
+  margin: 0 0 var(--space-3);
+  color: var(--text);
+}
+
+.syllabus-block__section + .syllabus-block__section {
+  margin-top: var(--space-4);
+}
+
+.syllabus-block__heading {
+  margin: 0 0 var(--space-2);
+  font-size: 1.05rem;
+  font-weight: 650;
+  color: var(--text);
+}
+
+.syllabus-bullets {
+  margin: 0;
+}
+
+.syllabus-bullets li {
+  margin: 0.45rem 0;
+  line-height: 1.55;
+}
+
+.literature-card--link {
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  cursor: pointer;
+}
+
+.literature-card--link:hover,
+.literature-card--link:focus-visible {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  box-shadow: 0 0.35rem 1.1rem color-mix(in srgb, var(--accent) 12%, transparent);
+  outline: none;
+}
+
+.literature-card--link:hover h4,
+.literature-card--link:focus-visible h4 {
+  color: var(--accent);
+}
+
+.literature-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: var(--space-3);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.literature-hero__eyebrow {
+  margin: 0 0 var(--space-2);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.literature-hero__eyebrow i {
+  margin-right: 0.35rem;
+}
+
+.literature-hero__subtitle {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.literature-hero__authors {
+  margin: var(--space-3) 0 var(--space-4);
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.literature-hero__status {
+  margin: 0 0 var(--space-4);
+}
+
+.literature-hero .book-identity-table {
+  margin-top: var(--space-2);
+}
+
+.book-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.75rem;
+  margin: 0 0 var(--space-5);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.book-jump__link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.book-jump__link:hover,
+.book-jump__link:focus-visible {
+  text-decoration: underline;
+}
+
+.literature-body .book-section + .book-section {
+  margin-top: var(--space-5);
+}
+
+.book-toc__section + .book-toc__section {
+  margin-top: var(--space-4);
+}
+
+.book-toc__heading {
+  margin: 0 0 var(--space-2);
+  font-size: 1.02rem;
+  font-weight: 650;
+  color: var(--text);
+}
+
+.book-link-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.book-link-list li {
+  margin: 0.45rem 0;
+  line-height: 1.5;
+}
+
+.book-link-list .badge {
+  margin-right: 0.35rem;
+}
+
+.badge--stub,
+.badge--partial,
+.badge--detailed {
+  background: color-mix(in srgb, var(--bg-muted) 70%, var(--border));
+  color: var(--text-muted);
+}
+
+.badge--partial {
+  background: var(--warm-soft);
+  color: var(--warm);
+}
+
+.badge--detailed {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.literature-back {
+  margin: 0 0 var(--space-4);
+}
+
+.literature-empty {
+  margin: 0;
+}
+
+.source-card__status {
+  margin: var(--space-3) 0 0;
+}
+
+.course-disclaimer {
+  margin: var(--space-4) 0 0;
+  font-size: 0.9rem;
+  max-width: 48rem;
+}
+
+/* ---------- Footer icons ---------- */
+
+.site-footer__links a i {
+  margin-right: 0.35rem;
+  color: var(--accent);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 700px) {
+  .course-quick-nav {
+    position: static;
+  }
+
+  .course-quick-nav a {
+    flex: 1 1 7rem;
+    justify-content: center;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .syllabus-meta {
+    grid-template-columns: 1fr;
+  }
+}

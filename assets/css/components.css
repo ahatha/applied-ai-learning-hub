@@ -917,36 +917,239 @@
 
 .contact-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 17.5rem));
+  justify-content: start;
   gap: var(--space-3);
+  margin: var(--space-3) 0 var(--space-4);
+  align-items: stretch;
+}
+
+.contact-section-stacks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
   margin: var(--space-3) 0 var(--space-4);
 }
 
-.contact-card {
-  padding: var(--space-4);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--bg-muted);
-}
-
-.contact-card h3 {
-  margin: var(--space-2) 0 var(--space-3);
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-}
-
-.contact-card__role {
+.contact-section-stacks .contact-card-grid {
   margin: 0;
 }
 
-.contact-card__line {
-  margin: 0 0 var(--space-2);
-  font-size: 0.95rem;
+.contact-card-grid--attribution {
+  margin: 0;
 }
 
-.contact-card__line .fact-chip__label {
-  display: inline;
-  margin-right: 0.35rem;
+.contact-card {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--border) 80%, var(--accent));
+  border-radius: 0.55rem;
+  background: var(--bg-elevated);
+  box-shadow:
+    0 0.2rem 0.55rem color-mix(in srgb, var(--text) 8%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--bg-elevated) 70%, transparent);
+  overflow: hidden;
+}
+
+.contact-card--id {
+  display: flex;
+  flex-direction: column;
+  min-height: 11.75rem;
+}
+
+.contact-card--compact {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-card__band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.4rem 0.7rem;
+  background: linear-gradient(
+    105deg,
+    var(--accent) 0%,
+    color-mix(in srgb, var(--accent) 75%, #1a3a48) 100%
+  );
+  color: #f4faf9;
+}
+
+.contact-card__org {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+}
+
+.contact-card__label {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.92;
+  text-align: right;
+  line-height: 1.2;
+}
+
+.contact-card__body {
+  display: grid;
+  grid-template-columns: 3.35rem minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.75rem 0.75rem 0.55rem;
+  min-width: 0;
+}
+
+.contact-card__photo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.35rem;
+  height: 3.35rem;
+  border-radius: 0.35rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--accent-soft) 80%, var(--bg-muted)),
+      color-mix(in srgb, var(--bg-muted) 70%, var(--warm-soft))
+    );
+  color: var(--accent);
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.contact-card__photo-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.contact-card__initials {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.contact-card__photo.is-fallback .contact-card__initials {
+  display: flex;
+}
+
+.contact-card__identity,
+.contact-card__top {
+  min-width: 0;
+}
+
+.contact-card__name {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.25;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.contact-card__name-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-card__name-link:hover,
+.contact-card__name-link:focus-visible {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.contact-card__role {
+  margin: 0.28rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.contact-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  flex: 1 1 auto;
+  padding: 0 0.75rem 0.65rem;
+  min-width: 0;
+}
+
+.contact-card__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+  font-size: 0.78rem;
+  font-weight: 550;
+  color: var(--accent);
+  text-decoration: none;
+  line-height: 1.3;
+}
+
+.contact-card__meta-item span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-card__meta-item i {
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+  opacity: 0.9;
+}
+
+.contact-card__meta-item:hover,
+.contact-card__meta-item:focus-visible {
+  text-decoration: underline;
+}
+
+.contact-card__meta-item--muted {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.contact-card__meta-item--muted:hover {
+  text-decoration: none;
+}
+
+.contact-card__strip {
+  margin-top: auto;
+  height: 0.35rem;
+  background: linear-gradient(
+    90deg,
+    var(--warm) 0%,
+    color-mix(in srgb, var(--accent) 55%, var(--warm)) 55%,
+    var(--accent) 100%
+  );
+}
+
+.contact-card--attribution {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
 }
 
 .source-card {
@@ -1170,7 +1373,20 @@
 }
 
 .explorer-tab-panel {
+  position: relative;
   width: 100%;
+  padding-left: 1.75rem;
+}
+
+.explorer-tab-panel::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  left: 0.55rem;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, var(--accent), color-mix(in srgb, var(--accent) 12%, var(--border)));
 }
 
 .programme-explorer {
@@ -1241,23 +1457,39 @@
 }
 
 .explorer-block--semester {
-  margin-top: var(--space-5);
+  margin-top: var(--space-6);
   margin-left: 0;
   margin-right: 0;
-  padding: var(--space-4) var(--space-4) var(--space-4) var(--space-5);
-  border-left: 3px solid color-mix(in srgb, var(--accent) 35%, var(--border));
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  background: color-mix(in srgb, var(--bg-muted) 35%, var(--bg-elevated));
+  padding: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow);
+}
+
+.explorer-block--semester:first-of-type {
+  margin-top: 0;
 }
 
 .explorer-block--semester.is-upcoming-semester {
-  border-left-color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+}
+
+/* Short tick connecting the timeline dot (see .explorer-branch below) to the card edge. */
+.explorer-block--semester::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--space-5) + 0.6rem);
+  left: -0.6rem;
+  width: 0.6rem;
+  height: 2px;
+  background: color-mix(in srgb, var(--accent) 40%, var(--border));
 }
 
 .explorer-block--period {
   margin-top: var(--space-4);
   margin-left: 0.25rem;
-  padding: var(--space-2) var(--space-3) var(--space-3) var(--space-5);
+  padding: var(--space-2) var(--space-3) var(--space-3) var(--space-4);
   border-left: 2px solid color-mix(in srgb, var(--accent) 22%, var(--border));
   background: transparent;
 }
@@ -1301,9 +1533,18 @@
 }
 
 .explorer-block--semester > .explorer-block__heading .explorer-branch {
-  width: 0.5rem;
-  height: 0.5rem;
-  background: color-mix(in srgb, var(--accent) 70%, var(--border));
+  position: absolute;
+  left: -1.6rem;
+  top: calc(var(--space-5) + 0.1rem);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+
+.explorer-block--semester.is-upcoming-semester > .explorer-block__heading .explorer-branch {
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 7px var(--accent-soft);
 }
 
 .explorer-block--period > .explorer-block__heading .explorer-branch {

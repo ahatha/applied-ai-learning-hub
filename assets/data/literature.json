@@ -1,0 +1,3050 @@
+{
+  "meta": {
+    "lastUpdated": "2026-07-21",
+    "description": "Shared literature catalog. Each book page uses literature/<isbn-or-slug>.html. Fill fields from publisher/author pages; leave arrays empty until ready.",
+    "schema": "id, slug, title, subtitle, authors, authorDisplay, publisher, year, edition, isbn, isbn10, language, pages, format, url, coverUrl, summary, whyRead, audience, prerequisites, agenda, topics, tableOfContents, howToUse, editions, links, sources, notes, status, usedIn",
+    "urlScheme": "literature/<isbn-or-slug>.html (ISBN preferred)",
+    "aliases": {
+      "think-python-2e": "9781491939369",
+      "hands-on-ml-2e": "9781492032649",
+      "pattern-classification-2e": "9780471056690",
+      "bishop-prml": "9780387310732",
+      "alpaydin-iml-4e": "9780262043793",
+      "rivstart-a1-a2-3e": "9789127462342",
+      "aima-global-4e": "9781292401133",
+      "goodfellow-deep-learning": "9780262035613",
+      "neuronal-dynamics": "9781107060838",
+      "lander-r-for-everyone-2e": "9780134546926",
+      "grus-ds-from-scratch-2e": "9781492041139",
+      "schmidhuber-dnn-overview": "schmidhuber-dnn-overview",
+      "stanford-ufldl-tutorial": "stanford-ufldl-tutorial",
+      "medicinsk-informatik": "9789147134083",
+      "tan-intro-data-mining": "9780321321367",
+      "delsing-iot-arrowhead": "9781498756754",
+      "basic-neurochemistry": "9780123749475",
+      "szeliski-cv-2e": "9783030343712",
+      "corke-rvc-2e": "9783319544120",
+      "ma-invitation-3d-vision": "9780387008936",
+      "hartley-zisserman-mvg-2e": "9780521540513",
+      "gazzaniga-cognitive-neuroscience": "9780393667813",
+      "corke-rvc-springer-briefs": "9783642201431"
+    },
+    "pageSections": [
+      "Identity (title, authors, publisher, year, edition, ISBN)",
+      "Summary",
+      "Why read this book",
+      "Audience",
+      "Prerequisites",
+      "Learning agenda",
+      "Key topics",
+      "Table of contents",
+      "How to use it",
+      "Editions",
+      "Links & resources",
+      "Used in courses",
+      "Notes"
+    ],
+    "bookTemplate": {
+      "id": "ISBN_OR_SLUG",
+      "slug": "",
+      "title": "Book title",
+      "subtitle": "",
+      "authors": [],
+      "authorDisplay": "",
+      "publisher": "",
+      "year": null,
+      "edition": "",
+      "isbn": "",
+      "isbn10": "",
+      "language": "en",
+      "pages": null,
+      "format": "",
+      "url": "",
+      "coverUrl": "",
+      "summary": "",
+      "whyRead": [],
+      "audience": [],
+      "prerequisites": [],
+      "agenda": [],
+      "topics": [],
+      "tableOfContents": [
+        {
+          "heading": "Part or unit name",
+          "items": [
+            "Chapter 1 …",
+            "Chapter 2 …"
+          ]
+        }
+      ],
+      "howToUse": [],
+      "editions": [
+        {
+          "label": "2nd edition",
+          "isbn": "",
+          "year": null,
+          "notes": ""
+        }
+      ],
+      "links": [
+        {
+          "label": "Publisher page",
+          "url": "https://…",
+          "kind": "publisher"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Source used while filling",
+          "url": "https://…"
+        }
+      ],
+      "notes": "",
+      "status": "stub",
+      "usedIn": []
+    }
+  },
+  "books": {
+    "9781491939369": {
+      "id": "9781491939369",
+      "slug": "think-python-2e",
+      "title": "Think Python: How to Think Like a Computer Scientist",
+      "subtitle": "How to Think Like a Computer Scientist",
+      "authors": [
+        "Allen B. Downey"
+      ],
+      "authorDisplay": "Allen B. Downey",
+      "publisher": "O'Reilly Media (print); Green Tea Press (free edition)",
+      "year": 2015,
+      "edition": "2nd",
+      "isbn": "9781491939369",
+      "isbn10": "1491939362",
+      "language": "en",
+      "pages": 292,
+      "format": "Paperback / free PDF & HTML",
+      "url": "https://www.oreilly.com/library/view/think-python-2nd/9781491939406/",
+      "coverUrl": "",
+      "summary": "Think Python is an introduction to Python for beginners that emphasises how to think like a computer scientist: defining terms carefully, building concepts in a logical progression, and practising problem decomposition, algorithms, and debugging. The 2nd edition targets Python 3, reduces common beginner pain points, and includes a chapter on extra Python features such as list comprehensions.",
+      "whyRead": [
+        "Builds programming foundations needed before machine-learning coding courses.",
+        "Free Creative Commons edition makes it easy to study without buying a print copy first.",
+        "Short chapters and exercises are designed for progressive practice, not only reading.",
+        "Widely used open textbook with matching print edition from O'Reilly."
+      ],
+      "audience": [
+        "Absolute beginners to programming",
+        "Students moving into Python for data science or ML",
+        "Self-learners who want a free, structured textbook"
+      ],
+      "prerequisites": [
+        "No prior programming experience required",
+        "Basic computer literacy (files, browsers, installing software or using an online Python environment)"
+      ],
+      "agenda": [
+        "Learn Python syntax and core data types through short exercises.",
+        "Practice writing functions, using iteration and recursion, and structuring programs.",
+        "Build fluency with strings, lists, dictionaries, files, and classes.",
+        "Develop debugging habits and a problem-solving mindset for later ML coding courses."
+      ],
+      "topics": [
+        "Variables and expressions",
+        "Functions",
+        "Conditionals and recursion",
+        "Iteration",
+        "Strings",
+        "Lists and dictionaries",
+        "Tuples",
+        "Files",
+        "Classes and objects",
+        "Inheritance",
+        "The Goodies (extras)"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Getting started",
+          "items": [
+            "The way of the program",
+            "Variables, expressions and statements",
+            "Functions"
+          ]
+        },
+        {
+          "heading": "Control flow & data",
+          "items": [
+            "Case study: interface design",
+            "Conditionals and recursion",
+            "Fruitful functions",
+            "Iteration",
+            "Strings"
+          ]
+        },
+        {
+          "heading": "Collections & files",
+          "items": [
+            "Lists",
+            "Dictionaries",
+            "Tuples",
+            "Case study: data structure selection",
+            "Files"
+          ]
+        },
+        {
+          "heading": "Objects",
+          "items": [
+            "Classes and objects",
+            "Classes and functions",
+            "Classes and methods",
+            "Inheritance",
+            "The Goodies"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Read a chapter, then run the examples and try the exercises before moving on.",
+        "Use the free HTML/PDF from Green Tea Press; use the O'Reilly print edition if you prefer paper.",
+        "Code examples and some exercise solutions are available in the companion GitHub repository described in the preface.",
+        "Beginners can start with an in-browser Python environment (e.g. PythonAnywhere) before installing Python locally."
+      ],
+      "editions": [
+        {
+          "label": "2nd edition (Python 3) — O'Reilly / Green Tea Press",
+          "isbn": "9781491939369",
+          "year": 2015,
+          "notes": "Primary edition used in this hub."
+        },
+        {
+          "label": "1st edition (Python 2)",
+          "isbn": "",
+          "year": null,
+          "notes": "Earlier free edition for Python 2 readers."
+        },
+        {
+          "label": "3rd edition",
+          "isbn": "",
+          "year": null,
+          "notes": "Author notes that a third edition is available; confirm edition with the course examiner if needed."
+        }
+      ],
+      "links": [
+        {
+          "label": "Free HTML edition (Green Tea Press)",
+          "url": "https://greenteapress.com/wp/think-python-2e/",
+          "kind": "free"
+        },
+        {
+          "label": "Free full PDF (Green Tea Press)",
+          "url": "https://greenteapress.com/thinkpython2/thinkpython2.pdf",
+          "kind": "pdf"
+        },
+        {
+          "label": "Free HTML/PDF (Green Tea Press)",
+          "url": "http://greenteapress.com/wp/think-python-2e/",
+          "kind": "free"
+        },
+        {
+          "label": "O'Reilly edition",
+          "url": "https://www.oreilly.com/library/view/think-python-2nd/9781491939406/",
+          "kind": "publisher"
+        },
+        {
+          "label": "Code examples (GitHub)",
+          "url": "https://github.com/AllenDowney/ThinkPython",
+          "kind": "code"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Green Tea Press — Think Python 2e",
+          "url": "http://greenteapress.com/wp/think-python-2e/"
+        },
+        {
+          "label": "O'Reilly — Think Python 2nd edition",
+          "url": "https://www.oreilly.com/library/view/think-python-2nd/9781491939406/"
+        }
+      ],
+      "notes": "Free book under Creative Commons Attribution-NonCommercial 3.0. Print ISBN 9781491939369 is the O'Reilly Media 2nd edition of the same text.",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D0036E",
+          "courseTitle": "Programming for Machine Learning",
+          "category": "Programming (book)",
+          "notes": ""
+        },
+        {
+          "courseCode": "D0036E",
+          "courseTitle": "Programming for Machine Learning",
+          "category": "Programming (online alternative)",
+          "notes": "Free PDF from Green Tea Press. Print ISBN 9781491939369 is the O'Reilly Media 2nd edition."
+        }
+      ]
+    },
+    "9781492032649": {
+      "id": "9781492032649",
+      "slug": "hands-on-ml-2e",
+      "title": "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 2nd or later edition",
+      "subtitle": "",
+      "authors": [
+        "Aurélien Géron"
+      ],
+      "authorDisplay": "Aurélien Géron",
+      "publisher": "O'Reilly Media, Inc.",
+      "year": 2019,
+      "edition": "2nd",
+      "isbn": "9781492032649",
+      "isbn10": "",
+      "language": "en",
+      "pages": null,
+      "format": "",
+      "url": "https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/",
+      "coverUrl": "",
+      "summary": "Practical end-to-end machine learning with Scikit-Learn, Keras, and TensorFlow. Covers classical ML pipelines and modern deep learning workflows with code-first examples.",
+      "whyRead": [
+        "Code-first path from classical ML to deep learning in one volume.",
+        "Uses Scikit-Learn, Keras, and TensorFlow — the stack most ML courses expect.",
+        "Strong end-to-end project chapter for labs and portfolios.",
+        "Clear explanations with runnable notebooks and exercises."
+      ],
+      "audience": [
+        "Students in applied ML / programming-for-ML courses",
+        "Engineers who want a practical bridge into TensorFlow/Keras"
+      ],
+      "prerequisites": [
+        "Python programming comfort",
+        "Basic linear algebra and probability help for later chapters",
+        "No prior deep-learning experience required"
+      ],
+      "agenda": [
+        "Build ML projects from data prep through evaluation and deployment thinking.",
+        "Apply Scikit-Learn for classical models and pipelines.",
+        "Train neural nets with Keras/TensorFlow (CNNs, RNNs, and more).",
+        "Use the book as a lab companion for programming-for-ML coursework."
+      ],
+      "topics": [
+        "End-to-end ML project",
+        "Classification and training models",
+        "SVM, decision trees, ensembles",
+        "Dimensionality reduction",
+        "Neural nets and deep learning",
+        "CNNs, RNNs, autoencoders",
+        "Reinforcement learning overview"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "The fundamentals of machine learning",
+          "items": [
+            "The machine learning landscape",
+            "End-to-end machine learning project",
+            "Classification",
+            "Training models",
+            "Support vector machines",
+            "Decision trees",
+            "Ensemble learning and random forests",
+            "Dimensionality reduction",
+            "Unsupervised learning techniques"
+          ]
+        },
+        {
+          "heading": "Neural networks and deep learning",
+          "items": [
+            "Introduction to artificial neural networks with Keras",
+            "Training deep neural networks",
+            "Custom models and training with TensorFlow",
+            "Deep computer vision using CNNs",
+            "Processing sequences using RNNs and CNNs",
+            "Natural language processing with RNNs and attention",
+            "Representation learning and generative learning using autoencoders and GANs",
+            "Reinforcement learning",
+            "Training and deploying TensorFlow models at scale"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Work Part I with Scikit-Learn before starting neural nets.",
+        "Run the companion notebooks chapter by chapter.",
+        "Treat the end-to-end housing project as a template for course assignments."
+      ],
+      "editions": [
+        {
+          "label": "2nd edition",
+          "isbn": "9781492032649",
+          "year": 2019,
+          "notes": "ISBN used in this hub; O'Reilly."
+        },
+        {
+          "label": "3rd edition",
+          "isbn": "9781098125974",
+          "year": 2022,
+          "notes": "Later update; confirm which edition your course specifies."
+        }
+      ],
+      "links": [
+        {
+          "label": "O'Reilly / publisher page",
+          "url": "https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/"
+        }
+      ],
+      "sources": [],
+      "notes": "",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D0036E",
+          "courseTitle": "Programming for Machine Learning",
+          "category": "Machine learning (book)",
+          "notes": ""
+        }
+      ]
+    },
+    "9780471056690": {
+      "id": "9780471056690",
+      "slug": "pattern-classification-2e",
+      "title": "Pattern Classification",
+      "subtitle": "",
+      "authors": [
+        "Richard O. Duda",
+        "Peter E. Hart",
+        "David G. Stork"
+      ],
+      "authorDisplay": "Richard O. Duda, Peter E. Hart, David G. Stork",
+      "publisher": "Wiley-Interscience / John Wiley & Sons",
+      "year": 2000,
+      "edition": "2nd",
+      "isbn": "9780471056690",
+      "isbn10": "0471056693",
+      "language": "en",
+      "pages": 688,
+      "format": "Hardcover / e-book",
+      "url": "https://www.wiley.com/en-us/Pattern+Classification%2C+2nd+Edition-p-9780471056690",
+      "coverUrl": "",
+      "summary": "A classic graduate-level textbook on statistical pattern recognition and classification. The 2nd edition (2000) updates the 1973 classic with material on neural networks, statistical learning theory, invariances, worked examples, comparisons between methods, and computer project topics. It remains a standard reference for Bayesian decision theory, discriminant functions, nonparametric methods, and unsupervised learning.",
+      "whyRead": [
+        "Foundational theory for pattern recognition courses (e.g. D7062E AI and Pattern Recognition).",
+        "Clear Bayesian and statistical treatment of classifiers still used as the conceptual backbone of modern ML.",
+        "Covers both classical methods and multilayer neural networks in one coherent framework.",
+        "Exercises and computer projects support exam and lab preparation."
+      ],
+      "audience": [
+        "Graduate and advanced undergraduate students in computer science, electrical engineering, and related fields",
+        "Researchers needing a classical reference on statistical pattern recognition"
+      ],
+      "prerequisites": [
+        "Linear algebra and multivariable calculus",
+        "Basic probability and statistics",
+        "Comfort with mathematical notation; programming helps for computer exercises"
+      ],
+      "agenda": [
+        "Learn Bayesian decision theory and error-rate classification.",
+        "Estimate class-conditional densities (parametric and nonparametric).",
+        "Design linear and multilayer neural classifiers.",
+        "Apply unsupervised learning and clustering methods.",
+        "Compare algorithm-independent learning principles and evaluation ideas."
+      ],
+      "topics": [
+        "Bayesian decision theory",
+        "Maximum-likelihood and Bayesian parameter estimation",
+        "Nonparametric techniques (e.g. nearest neighbours)",
+        "Linear discriminant functions",
+        "Multilayer neural networks / backpropagation",
+        "Stochastic methods",
+        "Nonmetric methods",
+        "Algorithm-independent machine learning",
+        "Unsupervised learning and clustering"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Core chapters (2nd edition)",
+          "items": [
+            "1. Introduction",
+            "2. Bayesian Decision Theory",
+            "3. Maximum-Likelihood and Bayesian Parameter Estimation",
+            "4. Nonparametric Techniques",
+            "5. Linear Discriminant Functions",
+            "6. Multilayer Neural Networks",
+            "7. Stochastic Methods",
+            "8. Nonmetric Methods",
+            "9. Algorithm-Independent Machine Learning",
+            "10. Unsupervised Learning and Clustering"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Use as the theoretical backbone alongside applied labs and modern ML tooling.",
+        "Work chapter problems and computer exercises; a solutions manual exists for instructors.",
+        "Focus first on Chapters 2–5 for classical classification theory, then 6 and 10 for networks and clustering."
+      ],
+      "editions": [
+        {
+          "label": "2nd edition (hardcover)",
+          "isbn": "9780471056690",
+          "year": 2000,
+          "notes": "Wiley; ~688 pages. Primary ISBN used in this hub."
+        },
+        {
+          "label": "2nd edition (e-book)",
+          "isbn": "9781118586006",
+          "year": 2012,
+          "notes": "Wiley digital edition."
+        },
+        {
+          "label": "1st edition",
+          "isbn": "",
+          "year": 1973,
+          "notes": "Original classic by Duda & Hart; largely superseded by the 2nd edition for coursework."
+        }
+      ],
+      "links": [
+        {
+          "label": "Wiley publisher page",
+          "url": "https://www.wiley.com/en-us/Pattern+Classification%2C+2nd+Edition-p-9780471056690",
+          "kind": "publisher"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Wiley — Pattern Classification, 2nd Edition",
+          "url": "https://www.wiley.com/en-us/Pattern+Classification%2C+2nd+Edition-p-9780471056690"
+        },
+        {
+          "label": "Chapter listing (course materials mirroring 2e TOC)",
+          "url": "https://www.gabormelli.com/RKB/2000_PatternClassification"
+        }
+      ],
+      "notes": "First edition published 1973; second edition November 2000. Authors: Richard O. Duda (San José State University), Peter E. Hart and David G. Stork (Ricoh Innovations at time of publication).",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D7062E",
+          "courseTitle": "Artificial Intelligence and Pattern Recognition",
+          "category": "One of the following books",
+          "notes": "2nd edition (2000/2001), Wiley-Interscience."
+        }
+      ]
+    },
+    "9780387310732": {
+      "id": "9780387310732",
+      "slug": "bishop-prml",
+      "title": "Pattern Recognition and Machine Learning",
+      "subtitle": "",
+      "authors": [
+        "Christopher M. Bishop"
+      ],
+      "authorDisplay": "Christopher M. Bishop",
+      "publisher": "Springer",
+      "year": 2006,
+      "edition": "1st",
+      "isbn": "9780387310732",
+      "isbn10": "",
+      "language": "en",
+      "pages": null,
+      "format": "",
+      "url": "https://link.springer.com/book/9780387310732",
+      "coverUrl": "",
+      "summary": "A graduate-level foundational text on pattern recognition and machine learning from a Bayesian and probabilistic perspective. Dense but standard reference for classical ML theory.",
+      "whyRead": [
+        "Standard graduate ML text with a Bayesian / probabilistic focus.",
+        "Clear treatment of graphical models and approximate inference.",
+        "Free full PDF from Microsoft Research for course use.",
+        "Excellent companion when courses emphasise generative models."
+      ],
+      "audience": [
+        "Advanced undergraduates and first-year PhD students",
+        "Researchers needing a Bayesian ML reference"
+      ],
+      "prerequisites": [
+        "Undergraduate calculus and linear algebra",
+        "Basic probability and statistics",
+        "Some programming for exercises (optional companion materials)"
+      ],
+      "agenda": [
+        "Build a probabilistic view of learning and inference.",
+        "Study linear models, kernels, graphical models, and approximate inference.",
+        "Use as theoretical backbone alongside applied AI / pattern recognition courses."
+      ],
+      "topics": [
+        "Probability and decision theory",
+        "Linear models for regression and classification",
+        "Neural networks",
+        "Kernel methods and sparse methods",
+        "Graphical models",
+        "Mixture models and EM",
+        "Approximate inference",
+        "Sampling methods"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Core chapters",
+          "items": [
+            "Introduction",
+            "Probability distributions",
+            "Linear models for regression",
+            "Linear models for classification",
+            "Neural networks",
+            "Kernel methods",
+            "Sparse kernel machines",
+            "Graphical models",
+            "Mixture models and EM",
+            "Approximate inference",
+            "Sampling methods",
+            "Continuous latent variables",
+            "Sequential data",
+            "Combining models"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Read early chapters for foundations; use later chapters as reference.",
+        "WWW-marked exercises have freely available solutions.",
+        "Pair with a practical ML book (e.g. Géron) for implementation labs."
+      ],
+      "editions": [],
+      "links": [
+        {
+          "label": "Microsoft Research book page",
+          "url": "https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/",
+          "kind": "free"
+        },
+        {
+          "label": "Free full PDF (Microsoft Research)",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf",
+          "kind": "pdf"
+        },
+        {
+          "label": "Springer",
+          "url": "https://link.springer.com/book/9780387310732"
+        }
+      ],
+      "sources": [],
+      "notes": "",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D7062E",
+          "courseTitle": "Artificial Intelligence and Pattern Recognition",
+          "category": "One of the following books",
+          "notes": "Hardcover 2006. Softcover reprint ISBN 9781493938438 (2016)."
+        }
+      ]
+    },
+    "9780262043793": {
+      "id": "9780262043793",
+      "slug": "alpaydin-iml-4e",
+      "title": "Introduction to Machine Learning",
+      "subtitle": "",
+      "authors": [
+        "Ethem Alpaydin"
+      ],
+      "authorDisplay": "Ethem Alpaydin",
+      "publisher": "The MIT Press",
+      "year": 2020,
+      "edition": "4th",
+      "isbn": "9780262043793",
+      "isbn10": "0262043793",
+      "language": "en",
+      "pages": 712,
+      "format": "Hardcover / e-book",
+      "url": "https://mitpress.mit.edu/9780262043793/introduction-to-machine-learning/",
+      "coverUrl": "",
+      "summary": "A comprehensive machine-learning textbook for advanced undergraduates, graduates, and professionals. The substantially revised 4th edition (MIT Press, 2020) adds a full chapter on deep learning (CNNs, GANs, regularisation and structuring of deep nets), expands reinforcement learning (deep RL, policy gradients), and updates multilayer perceptrons (autoencoders, word2vec) plus dimensionality reduction (t-SNE). Appendices cover linear algebra and optimization; end-of-chapter exercises support coursework.",
+      "whyRead": [
+        "Broad survey from Bayesian decision theory through kernels, graphical models, HMMs, and deep learning in one book.",
+        "Suitable companion for pattern recognition / ML electives when a single modern textbook is needed.",
+        "Balances theory and practice; widely adopted in university courses.",
+        "New deep learning and RL material in the 4th edition keeps the text current."
+      ],
+      "audience": [
+        "Advanced undergraduate and graduate students",
+        "Professionals needing a structured ML reference"
+      ],
+      "prerequisites": [
+        "Probability and statistics",
+        "Linear algebra and calculus",
+        "Programming experience helpful for exercises (MATLAB materials available to instructors)"
+      ],
+      "agenda": [
+        "Master supervised learning concepts, model selection, and generalisation.",
+        "Apply Bayesian decision theory and parametric / nonparametric methods.",
+        "Study multivariate analysis, clustering, trees, and linear discrimination.",
+        "Build intuition for multilayer perceptrons and deep learning architectures.",
+        "Explore kernels, graphical models, HMMs, ensemble methods, and reinforcement learning.",
+        "Learn how to design and analyse machine-learning experiments."
+      ],
+      "topics": [
+        "Supervised learning",
+        "Bayesian decision theory",
+        "Parametric and nonparametric methods",
+        "Dimensionality reduction (including t-SNE)",
+        "Clustering",
+        "Decision trees and linear discrimination",
+        "Multilayer perceptrons and deep learning",
+        "Kernel machines",
+        "Graphical models and HMMs",
+        "Reinforcement learning",
+        "Combining multiple learners / experiment design"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Main chapters (4th edition)",
+          "items": [
+            "1. Introduction",
+            "2. Supervised Learning",
+            "3. Bayesian Decision Theory",
+            "4. Parametric Methods",
+            "5. Multivariate Methods",
+            "6. Dimensionality Reduction",
+            "7. Clustering",
+            "8. Nonparametric Methods",
+            "9. Decision Trees",
+            "10. Linear Discrimination",
+            "11. Multilayer Perceptrons",
+            "12. Deep Learning",
+            "13. Local Models",
+            "14. Kernel Machines",
+            "15. Graphical Models",
+            "16. Hidden Markov Models",
+            "17. Bayesian Estimation",
+            "18. Combining Multiple Learners",
+            "19. Reinforcement Learning",
+            "20. Design and Analysis of Machine Learning Experiments"
+          ]
+        },
+        {
+          "heading": "Appendices",
+          "items": [
+            "A. Probability",
+            "B. Linear Algebra",
+            "C. Optimization"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Follow chapter order for a full course; pick chapters 2–12 for a first pass through classical ML + deep learning.",
+        "Use end-of-chapter exercises to check understanding.",
+        "Instructors can request MIT Press supplements (slides, solutions, MATLAB programs)."
+      ],
+      "editions": [
+        {
+          "label": "4th edition (hardcover)",
+          "isbn": "9780262043793",
+          "year": 2020,
+          "notes": "MIT Press; published 17 March 2020; 712 pages."
+        },
+        {
+          "label": "4th edition (e-book)",
+          "isbn": "9780262358064",
+          "year": 2020,
+          "notes": "MIT Press e-book."
+        }
+      ],
+      "links": [
+        {
+          "label": "MIT Press book page",
+          "url": "https://mitpress.mit.edu/9780262043793/introduction-to-machine-learning/",
+          "kind": "publisher"
+        }
+      ],
+      "sources": [
+        {
+          "label": "MIT Press — Introduction to Machine Learning, fourth edition",
+          "url": "https://mitpress.mit.edu/9780262043793/introduction-to-machine-learning/"
+        }
+      ],
+      "notes": "Author: Ethem Alpaydın, Professor of Computer Engineering (Özyeğin University). Part of the Adaptive Computation and Machine Learning series.",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D7062E",
+          "courseTitle": "Artificial Intelligence and Pattern Recognition",
+          "category": "One of the following books",
+          "notes": "Fourth edition (2020)."
+        }
+      ]
+    },
+    "9789127462342": {
+      "id": "9789127462342",
+      "slug": "rivstart-a1-a2",
+      "title": "Rivstart A1/A2. Textbok, tredje upplagan",
+      "subtitle": "Svenska som främmande språk — Textbok",
+      "authors": [
+        "Paula Levy Scherrer",
+        "Karl Lindemalm"
+      ],
+      "authorDisplay": "Paula Levy Scherrer, Karl Lindemalm",
+      "publisher": "Natur & Kultur Läromedel och Akademi",
+      "year": 2023,
+      "edition": "3rd",
+      "isbn": "9789127462342",
+      "isbn10": "",
+      "language": "sv",
+      "pages": 280,
+      "format": "Häftad",
+      "url": "https://www.akademibokhandeln.se/bok/rivstart-a1a2-textbok-tredje-upplagan/9789127462342",
+      "coverUrl": "",
+      "summary": "Enspråkigt nybörjar- och fortsättningsmaterial i svenska som främmande språk (GERS A1–A2). Tredje upplagan (2023) sätter kommunikation i centrum med varierade texttyper och uppgifter för att läsa, skriva, lyssna och samtala. Textboken navigerar mellan grammatik, språkfakta, ord/fraser och Sverige-information; övningsbok, digitalt extramaterial och lärarhandledning kompletterar.",
+      "whyRead": [
+        "Standardkursbok för svenska som andraspråk på A1/A2 (t.ex. språkkrav / SFI-nära kurser).",
+        "Tydlig GERS-progression med snabb men strukturerad grammatik.",
+        "Passar klassrum och självstudier; digitalt stöd med ljud och självrättande övningar.",
+        "3:e upplagan har utökade grammatikförklaringar och mer repetition."
+      ],
+      "audience": [
+        "Studenter som lär sig svenska i eller utanför Sverige",
+        "Lärare i svenska som främmande språk"
+      ],
+      "prerequisites": [
+        "Inga förkunskaper i svenska krävs (A1-start)",
+        "Grundläggande studievana hjälper vid snabb progression"
+      ],
+      "agenda": [
+        "Bygg vardaglig kommunikation: presentation, tid, platser, rutin.",
+        "Träna grammatik parallellt med ordförråd och kulturkunskap om Sverige.",
+        "Utveckla alla fyra färdigheter: läsa, skriva, lyssna, tala.",
+        "Använd repetitionsavsnitt för att befästa kapitel och tidigare stoff."
+      ],
+      "topics": [
+        "Svenska A1–A2 (GERS/CEFR)",
+        "Kommunikativ språkundervisning",
+        "Grammatikprogression",
+        "Ordförråd och fraser",
+        "Hörförståelse och uttal",
+        "Sverige- och samhällskunskap på nybörjarnivå"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Läromedelspaket",
+          "items": [
+            "Textbok (denna post) — kapitelbaserad progression A1→A2",
+            "Övningsbok — systematiska övningar + repetition per kapitel / tidigare kapitel",
+            "Webbaserad lärarhandledning — tips, tester, hörövningsmanus",
+            "Digitalt extramaterial — ljudfiler, självrättande övningar, facit"
+          ]
+        },
+        {
+          "heading": "Textbokens upplägg (tematiskt)",
+          "items": [
+            "Kapitel med dialoger och texttyper för kommunikation",
+            "Grammatikrutor + korta introduktionsövningar (utökade i 3:e upplagan)",
+            "Fakta om svenska språket, användbara ord och fraser",
+            "Information om Sverige / kultur",
+            "Ca 14 kapitel i A1/A2-serien (följ bokens innehållsförteckning)"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Arbeta kapitelvis: textbok → övningsbok → digital repetition.",
+        "Lyssna på ljudfiler till dialoger innan eller efter läsning.",
+        "Använd repetitionsavsnitten i övningsboken för att synliggöra luckor."
+      ],
+      "editions": [
+        {
+          "label": "3:e upplagan, textbok",
+          "isbn": "9789127462342",
+          "year": 2023,
+          "notes": "Utgiven 2023-06-20; 280 sidor. ISBN i denna hub."
+        },
+        {
+          "label": "Övningsbok (kompletterande)",
+          "isbn": "9789127462366",
+          "year": 2023,
+          "notes": "Separat ISBN; behövs ofta tillsammans med textboken."
+        }
+      ],
+      "links": [
+        {
+          "label": "Akademibokhandeln — produkt",
+          "url": "https://www.akademibokhandeln.se/bok/rivstart-a1a2-textbok-tredje-upplagan/9789127462342",
+          "kind": "publisher"
+        },
+        {
+          "label": "Bokus — produkt",
+          "url": "https://www.bokus.com/bok/9789127462342/rivstart-a1a2-textbok-tredje-upplagan/",
+          "kind": "publisher"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Akademibokhandeln — Rivstart A1/A2 Textbok, 3:e uppl.",
+          "url": "https://www.akademibokhandeln.se/bok/rivstart-a1a2-textbok-tredje-upplagan/9789127462342"
+        },
+        {
+          "label": "Campus Bokhandeln — produktbeskrivning",
+          "url": "https://campusbokhandeln.se/b/9789127462342/rivstart-a1a2-textbok-tredje-upplagan"
+        }
+      ],
+      "notes": "Serie: Rivstart. Enspråkigt (svenska). Kapitelrubriker varierar mellan upplagor; använd bokens TOC för exakta titlar.",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "S0046P",
+          "courseTitle": "Swedish for International Students 1",
+          "category": "Course book",
+          "notes": "2023. Kapitel 1–3."
+        }
+      ]
+    },
+    "9781292401133": {
+      "id": "9781292401133",
+      "slug": "aima-global-4e",
+      "title": "Artificial Intelligence: A Modern Approach, Global Edition",
+      "subtitle": "",
+      "authors": [
+        "Stuart Russell",
+        "Peter Norvig"
+      ],
+      "authorDisplay": "Stuart Russell and Peter Norvig",
+      "publisher": "Pearson",
+      "year": 2021,
+      "edition": "4th (Global)",
+      "isbn": "9781292401133",
+      "isbn10": "",
+      "language": "en",
+      "pages": null,
+      "format": "",
+      "url": "https://www.pearson.com/en-gb/subject-catalog/p/artificial-intelligence-a-modern-approach-global-edition/P200000005340/9781292401133",
+      "coverUrl": "",
+      "summary": "The standard comprehensive AI textbook covering intelligent agents, search, knowledge representation, planning, uncertain reasoning, learning, and more.",
+      "whyRead": [
+        "The most widely adopted AI survey textbook (AIMA).",
+        "Covers search, knowledge, uncertainty, learning, NLP, vision, and robotics in one framework.",
+        "Strong for courses that need breadth before specialising.",
+        "Official site provides code, figures, and exercises."
+      ],
+      "audience": [
+        "Undergraduate and graduate AI survey courses",
+        "Readers who want a structured map of classical and modern AI"
+      ],
+      "prerequisites": [
+        "Introductory programming and discrete maths",
+        "Probability helpful for later parts"
+      ],
+      "agenda": [
+        "Learn the main paradigms of artificial intelligence in one coherent framework.",
+        "Connect search, logic, probability, and learning to practical agent design.",
+        "Use chapter exercises and projects as a map for applied AI coursework."
+      ],
+      "topics": [
+        "Intelligent agents",
+        "Search and games",
+        "Logic and knowledge representation",
+        "Planning",
+        "Uncertainty and Bayesian networks",
+        "Making decisions",
+        "Machine learning",
+        "Deep learning / NLP / robotics (selected chapters)"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Artificial Intelligence",
+          "items": [
+            "Introduction",
+            "Intelligent agents"
+          ]
+        },
+        {
+          "heading": "Problem-solving",
+          "items": [
+            "Solving problems by searching",
+            "Search in complex environments",
+            "Adversarial search and games",
+            "Constraint satisfaction problems"
+          ]
+        },
+        {
+          "heading": "Knowledge, reasoning, and planning",
+          "items": [
+            "Logical agents",
+            "First-order logic",
+            "Inference in first-order logic",
+            "Knowledge representation",
+            "Automated planning"
+          ]
+        },
+        {
+          "heading": "Uncertain knowledge and reasoning",
+          "items": [
+            "Quantifying uncertainty",
+            "Probabilistic reasoning",
+            "Probabilistic reasoning over time",
+            "Making simple decisions",
+            "Making complex decisions",
+            "Multiagent decision making"
+          ]
+        },
+        {
+          "heading": "Machine learning",
+          "items": [
+            "Learning from examples",
+            "Knowledge in learning",
+            "Learning probabilistic models",
+            "Deep learning",
+            "Reinforcement learning"
+          ]
+        },
+        {
+          "heading": "Communicating, perceiving, and acting",
+          "items": [
+            "Natural language processing",
+            "Deep learning for natural language processing",
+            "Computer vision",
+            "Robotics"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Follow the course syllabus chapters rather than reading cover-to-cover.",
+        "Use aima.cs.berkeley.edu for code, pseudocode, and exercises.",
+        "Treat Parts V–VI as optional depth for ML / perception modules."
+      ],
+      "editions": [],
+      "links": [
+        {
+          "label": "Pearson (Global Edition)",
+          "url": "https://www.pearson.com/en-gb/subject-catalog/p/artificial-intelligence-a-modern-approach-global-edition/P200000005340/9781292401133"
+        }
+      ],
+      "sources": [],
+      "notes": "",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D0034E",
+          "courseTitle": "Applied AI, Knowledge Management and Reasoning",
+          "category": "Course book",
+          "notes": "4th edition, Global Edition (2021)."
+        }
+      ]
+    },
+    "9780262035613": {
+      "id": "9780262035613",
+      "slug": "goodfellow-deep-learning",
+      "title": "Deep Learning",
+      "subtitle": "",
+      "authors": [
+        "I. Goodfellow",
+        "Y. Bengio",
+        "A. Courville"
+      ],
+      "authorDisplay": "I. Goodfellow, Y. Bengio and A. Courville",
+      "publisher": "MIT Press",
+      "year": 2016,
+      "edition": "1st",
+      "isbn": "9780262035613",
+      "isbn10": "",
+      "language": "en",
+      "pages": null,
+      "format": "",
+      "url": "https://www.deeplearningbook.org/",
+      "coverUrl": "",
+      "summary": "The canonical deep learning textbook covering mathematical foundations, modern deep architectures, and research topics. Free online edition available from the authors.",
+      "whyRead": [
+        "Authoritative free online textbook by Goodfellow, Bengio, and Courville.",
+        "Connects applied deep learning to underlying maths.",
+        "Useful as theory companion to code-first courses.",
+        "Remains available online at deeplearningbook.org."
+      ],
+      "audience": [
+        "Graduate students and practitioners entering deep learning",
+        "Readers who want mathematical depth beyond tutorials"
+      ],
+      "prerequisites": [
+        "Linear algebra, probability, and calculus",
+        "Basic machine learning concepts"
+      ],
+      "agenda": [
+        "Review linear algebra, probability, and numerical foundations for DL.",
+        "Study feedforward nets, regularization, optimization, CNNs, and sequence models.",
+        "Explore selected research chapters (autoencoders, representation learning, etc.)."
+      ],
+      "topics": [
+        "Applied math foundations",
+        "Deep feedforward networks",
+        "Regularization and optimization",
+        "CNNs",
+        "Sequence modeling",
+        "Practical methodology",
+        "Autoencoders and generative models"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Applied math and machine learning basics",
+          "items": [
+            "Linear algebra",
+            "Probability and information theory",
+            "Numerical computation",
+            "Machine learning basics"
+          ]
+        },
+        {
+          "heading": "Deep networks: modern practices",
+          "items": [
+            "Deep feedforward networks",
+            "Regularization for deep learning",
+            "Optimization for training deep models",
+            "Convolutional networks",
+            "Sequence modeling: recurrent and recursive nets",
+            "Practical methodology",
+            "Applications"
+          ]
+        },
+        {
+          "heading": "Deep learning research",
+          "items": [
+            "Linear factor models",
+            "Autoencoders",
+            "Representation learning",
+            "Structured probabilistic models for deep learning",
+            "Monte Carlo methods",
+            "Confronting the partition function",
+            "Approximate inference",
+            "Deep generative models"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Read Part I (applied maths) as needed, then Part II (deep networks).",
+        "Use Part III for research-oriented topics.",
+        "Prefer the official HTML book; there is no official free PDF."
+      ],
+      "editions": [],
+      "links": [
+        {
+          "label": "Free full text online (official; no PDF by contract)",
+          "url": "https://www.deeplearningbook.org/",
+          "kind": "free"
+        }
+      ],
+      "sources": [],
+      "notes": "",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D7046E",
+          "courseTitle": "Neural Networks and Learning Machines",
+          "category": "Course book",
+          "notes": "Online edition free at deeplearningbook.org. Hardcover ISBN 9780262035613."
+        },
+        {
+          "courseCode": "D7047E",
+          "courseTitle": "Advanced Deep Learning",
+          "category": "Book",
+          "notes": "Official online edition available free at deeplearningbook.org. Hardcover ISBN 9780262035613 (2016)."
+        }
+      ]
+    },
+    "9781107060838": {
+      "id": "9781107060838",
+      "slug": "neuronal-dynamics",
+      "title": "Neuronal Dynamics: From single neurons to networks and models of cognition",
+      "subtitle": "From single neurons to networks and models of cognition",
+      "authors": [
+        "Wulfram Gerstner",
+        "Werner M. Kistler",
+        "Richard Naud",
+        "Liam Paninski"
+      ],
+      "authorDisplay": "Wulfram Gerstner, Werner M. Kistler, Richard Naud, Liam Paninski",
+      "publisher": "Cambridge University Press",
+      "year": 2014,
+      "edition": "1st",
+      "isbn": "9781107060838",
+      "isbn10": "1107060834",
+      "language": "en",
+      "pages": null,
+      "format": "Hardback / paperback / free online HTML",
+      "url": "https://neuronaldynamics.epfl.ch/book.html",
+      "coverUrl": "",
+      "summary": "A textbook for advanced undergraduates and beginning graduate students in computational and theoretical neuroscience. It covers classical topics (Hodgkin–Huxley equations, Hopfield model) and modern methods (generalised linear models, decision theory), with step-by-step explanations aimed at readers with basic differential equations and probability. End-of-chapter summaries and classroom-tested exercises support courses and self-study. A free online edition is available from EPFL; print editions from Cambridge University Press (2014).",
+      "whyRead": [
+        "Connects single-neuron biophysics to networks and cognitive modelling — useful for neuromorphic / neural-dynamics courses.",
+        "Free online HTML edition lowers the barrier to reading the full text.",
+        "Balances mathematical foundations with worked examples and exercises.",
+        "Pointers to literature help deepen study beyond the course."
+      ],
+      "audience": [
+        "Advanced undergraduates and beginning graduate students in physics, CS, maths, and life sciences",
+        "Students in neuromorphic computing or computational neuroscience tracks"
+      ],
+      "prerequisites": [
+        "Basic differential equations",
+        "Basic probability",
+        "Introductory physics or neuroscience background helps but is not strictly required for the guided presentation"
+      ],
+      "agenda": [
+        "Understand what triggers spikes and how neurons encode information.",
+        "Work with classical neuron models (including Hodgkin–Huxley) and network models (including Hopfield).",
+        "Apply modern statistical and GLM approaches to neural data and dynamics.",
+        "Connect single-neuron dynamics to network and cognitive models."
+      ],
+      "topics": [
+        "Spiking neuron models",
+        "Hodgkin–Huxley dynamics",
+        "Synaptic plasticity",
+        "Network models and associative memory (Hopfield)",
+        "Generalised linear models for neurons",
+        "Neural coding and decoding",
+        "Decision theory in neuroscience"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "I. Foundations of Neuronal Dynamics",
+          "items": [
+            "1. Introduction",
+            "2. The Hodgkin–Huxley Model",
+            "3. Dendrites and Synapses",
+            "4. Dimensionality Reduction and Phase Plane Analysis"
+          ]
+        },
+        {
+          "heading": "II. Generalized Integrate-and-Fire Neurons",
+          "items": [
+            "5. Nonlinear Integrate-and-Fire Models",
+            "6. Adaptation and Firing Patterns",
+            "7. Variability of Spike Trains and Neural Codes",
+            "8. Noisy Input Models: Barrage of Spike Arrivals",
+            "9. Noisy Output: Escape Rate and Soft Threshold",
+            "10. Estimating Models",
+            "11. Encoding and Decoding with Stochastic Neuron Models"
+          ]
+        },
+        {
+          "heading": "III. Networks of Neurons and Population Activity",
+          "items": [
+            "12. Neuronal Populations",
+            "13. Continuity Equation and the Fokker–Planck Approach",
+            "14. The Integral-equation Approach",
+            "15. Fast Transients and Rate Models"
+          ]
+        },
+        {
+          "heading": "IV. Dynamics of Cognition",
+          "items": [
+            "16. Competing Populations and Decision Making",
+            "17. Memory and Attractor Dynamics",
+            "18. Cortical Field Models for Perception",
+            "19. Synaptic Plasticity and Learning",
+            "20. Outlook: Dynamics in Plastic Networks"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Prefer the free online edition for searchable reading: neuronaldynamics.epfl.ch.",
+        "Use chapter summaries and exercises for self-study or course homework.",
+        "Consult first-edition errata on the author site when working from print.",
+        "Follow literature pointers at chapter ends for research depth."
+      ],
+      "editions": [
+        {
+          "label": "Hardback",
+          "isbn": "9781107060838",
+          "year": 2014,
+          "notes": "Cambridge University Press; ISBN used in this hub."
+        },
+        {
+          "label": "Paperback",
+          "isbn": "9781107635197",
+          "year": 2014,
+          "notes": "Cambridge University Press paperback."
+        },
+        {
+          "label": "Free online HTML",
+          "isbn": "",
+          "year": 2014,
+          "notes": "Author-hosted online edition at EPFL."
+        }
+      ],
+      "links": [
+        {
+          "label": "About the book (EPFL)",
+          "url": "https://neuronaldynamics.epfl.ch/book.html",
+          "kind": "free"
+        },
+        {
+          "label": "Free full text online (EPFL)",
+          "url": "https://neuronaldynamics.epfl.ch/online/index.html",
+          "kind": "free"
+        },
+        {
+          "label": "Cambridge University Press",
+          "url": "https://www.cambridge.org/core/books/neuronal-dynamics/75375D510E4489C038B300D2AA852215",
+          "kind": "publisher"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Neuronal Dynamics — about the book (EPFL)",
+          "url": "https://neuronaldynamics.epfl.ch/book.html"
+        }
+      ],
+      "notes": "Published with Cambridge University Press in July 2014. Authors affiliated with EPFL / computational neuroscience communities; free online edition maintained at neuronaldynamics.epfl.ch.",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D7046E",
+          "courseTitle": "Neural Networks and Learning Machines",
+          "category": "Course book",
+          "notes": "Hardback ISBN 9781107060838; paperback ISBN 9781107635197. Free HTML edition at neuronaldynamics.epfl.ch."
+        }
+      ]
+    },
+    "9780134546926": {
+      "id": "9780134546926",
+      "slug": "lander-r-for-everyone-2e",
+      "title": "R for Everyone: Advanced Analytics and Graphics",
+      "subtitle": "",
+      "authors": [
+        "Jared P. Lander"
+      ],
+      "authorDisplay": "Jared P. Lander",
+      "publisher": "Addison-Wesley Professional / Pearson",
+      "year": 2017,
+      "edition": "2nd",
+      "isbn": "9780134546926",
+      "isbn10": "013454692X",
+      "language": "en",
+      "pages": 560,
+      "format": "Paperback / e-book",
+      "url": "https://www.informit.com/store/r-for-everyone-advanced-analytics-and-graphics-9780134546926",
+      "coverUrl": "",
+      "summary": "A practical tutorial for learning the R language for statistical programming and modelling, aimed at people who are new to R. Jared Lander focuses on the core functionality needed for most modern data tasks: installing R, the RStudio environment, data structures, import/manipulation, graphics, modelling (linear, GLM, nonlinear), clustering, and reporting with knitr, RMarkdown, and Shiny. The 2nd edition (2017) expands tidyverse tooling (dplyr, purrr, tidyr), caret, and interactive dashboards.",
+      "whyRead": [
+        "Designed for non-statisticians who need R quickly for real analytics work.",
+        "Strong coverage of tidyverse-era workflows (dplyr, purrr, reshaping) in the 2nd edition.",
+        "Goes from basics through modelling, clustering, and reproducible reporting in one book.",
+        "Useful companion for data-science programming courses that use R."
+      ],
+      "audience": [
+        "Programmers, analysts, and data scientists new to R",
+        "Students in data science / business analytics courses using R"
+      ],
+      "prerequisites": [
+        "No prior R experience required",
+        "Basic familiarity with data tables and statistics helps for later modelling chapters"
+      ],
+      "agenda": [
+        "Install R and learn the RStudio environment and packages.",
+        "Master vectors, data frames, import, and group manipulation (including dplyr).",
+        "Create statistical graphics and write functions / control flow.",
+        "Fit linear, generalised linear, and nonlinear models; diagnose and regularise them.",
+        "Apply clustering and caret-based model fitting.",
+        "Produce reproducible reports (knitr/RMarkdown) and Shiny dashboards."
+      ],
+      "topics": [
+        "R environment and packages",
+        "Data structures and import",
+        "ggplot2 graphics",
+        "dplyr / purrr / tidyverse reshaping",
+        "Probability and basic statistics",
+        "Linear and GLM models",
+        "Model diagnostics and regularisation",
+        "Time series and clustering",
+        "caret, knitr, RMarkdown, Shiny",
+        "Building R packages"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Getting started & data",
+          "items": [
+            "1. Getting R",
+            "2. The R Environment",
+            "3. R Packages",
+            "4. Basics of R",
+            "5. Advanced Data Structures",
+            "6. Reading Data into R",
+            "7. Statistical Graphics"
+          ]
+        },
+        {
+          "heading": "Programming & wrangling",
+          "items": [
+            "8. Writing R functions",
+            "9. Control Statements",
+            "10. Loops, the Un-R Way to Iterate",
+            "11. Group Manipulation",
+            "12. Faster Group Manipulation with dplyr",
+            "13. Iterating with purrr",
+            "14. Data Reshaping",
+            "15. Reshaping Data in the Tidyverse",
+            "16. Manipulating Strings"
+          ]
+        },
+        {
+          "heading": "Statistics & modelling",
+          "items": [
+            "17. Probability Distributions",
+            "18. Basic Statistics",
+            "19. Linear Models",
+            "20. Generalized Linear Models",
+            "21. Model Diagnostics",
+            "22. Regularization and Shrinkage",
+            "23. Nonlinear Models",
+            "24. Time Series and Autocorrelation",
+            "25. Clustering",
+            "26. Model Fitting with Caret"
+          ]
+        },
+        {
+          "heading": "Reporting & packages",
+          "items": [
+            "27. Reproducibility and Reports with knitr",
+            "28. Rich Documents with RMarkdown",
+            "29. Interactive Dashboards with Shiny",
+            "30. Building R Packages"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Work chapter by chapter with the downloadable code examples.",
+        "Use early chapters (1–7) for setup and graphics; jump to dplyr/tidyverse chapters when wrangling data.",
+        "Author site (jaredlander.com/r-for-everyone) has TOC, packages, data, and corrections.",
+        "Pair with course labs that require R for analytics assignments."
+      ],
+      "editions": [
+        {
+          "label": "2nd edition (print)",
+          "isbn": "9780134546926",
+          "year": 2017,
+          "notes": "Addison-Wesley Professional; published 8 June 2017; 560 pages."
+        },
+        {
+          "label": "2nd edition (e-book)",
+          "isbn": "9780134546971",
+          "year": 2017,
+          "notes": "InformIT / Pearson e-book ISBN."
+        }
+      ],
+      "links": [
+        {
+          "label": "InformIT / Pearson product page",
+          "url": "https://www.informit.com/store/r-for-everyone-advanced-analytics-and-graphics-9780134546926",
+          "kind": "publisher"
+        },
+        {
+          "label": "Author site — R for Everyone",
+          "url": "https://www.jaredlander.com/r-for-everyone/",
+          "kind": "free"
+        },
+        {
+          "label": "Table of contents (author)",
+          "url": "https://www.jaredlander.com/r-for-everyone/table-of-contents/",
+          "kind": "free"
+        }
+      ],
+      "sources": [
+        {
+          "label": "InformIT — R for Everyone, 2nd Edition",
+          "url": "https://www.informit.com/store/r-for-everyone-advanced-analytics-and-graphics-9780134546926"
+        },
+        {
+          "label": "Jared Lander — R for Everyone",
+          "url": "https://www.jaredlander.com/r-for-everyone/"
+        }
+      ],
+      "notes": "Part of the Addison-Wesley Data & Analytics Series. Author: Jared P. Lander (Lander Analytics / Columbia University adjunct).",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D7054E",
+          "courseTitle": "Data Science Programming",
+          "category": "Literature",
+          "notes": "2nd edition (2017)."
+        }
+      ]
+    },
+    "9781492041139": {
+      "id": "9781492041139",
+      "slug": "grus-ds-from-scratch-2e",
+      "title": "Data Science from Scratch: First Principles with Python",
+      "subtitle": "First Principles with Python",
+      "authors": [
+        "Joel Grus"
+      ],
+      "authorDisplay": "Joel Grus",
+      "publisher": "O'Reilly Media",
+      "year": 2019,
+      "edition": "2nd",
+      "isbn": "9781492041139",
+      "isbn10": "1492041130",
+      "language": "en",
+      "pages": 403,
+      "format": "Paperback / e-book",
+      "url": "https://www.oreilly.com/library/view/data-science-from/9781492041122/",
+      "coverUrl": "",
+      "summary": "Teaches data science by implementing core ideas and algorithms from scratch in Python (updated for Python 3.6 in the 2nd edition), rather than only calling library APIs. Covers Python basics, linear algebra, statistics, probability, data wrangling, classical ML models, neural nets / deep learning, NLP, networks, recommenders, SQL/MapReduce, and data ethics. Companion code is available on GitHub.",
+      "whyRead": [
+        "Builds intuition by coding algorithms yourself before relying on scikit-learn / TensorFlow.",
+        "Matches programming-for-data-science courses that want first-principles Python.",
+        "2nd edition adds deeper coverage of deep learning, statistics, and NLP.",
+        "Open companion repository supports labs and self-study."
+      ],
+      "audience": [
+        "Readers with some programming aptitude and comfort with maths",
+        "Students starting data science who want to understand underlying algorithms"
+      ],
+      "prerequisites": [
+        "Some programming experience (Python helpful but a crash course is included)",
+        "Willingness to engage with basic linear algebra, statistics, and probability"
+      ],
+      "agenda": [
+        "Get fluent enough in Python for data work.",
+        "Review linear algebra, statistics, probability, and gradient descent.",
+        "Collect, clean, and explore data.",
+        "Implement classical ML models from scratch (k-NN, Naïve Bayes, regression, trees, clustering).",
+        "Explore neural networks, deep learning, NLP, networks, and recommenders.",
+        "Touch databases/SQL, MapReduce, and data ethics."
+      ],
+      "topics": [
+        "Python for data science",
+        "Linear algebra, statistics, probability",
+        "Hypothesis testing and gradient descent",
+        "Data collection and wrangling",
+        "k-NN, Naïve Bayes, regression, decision trees",
+        "Neural networks and deep learning",
+        "Clustering, NLP, network analysis",
+        "Recommenders, SQL, MapReduce",
+        "Data ethics"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Foundations",
+          "items": [
+            "1. Introduction",
+            "2. A Crash Course in Python",
+            "3. Visualizing Data",
+            "4. Linear Algebra",
+            "5. Statistics",
+            "6. Probability",
+            "7. Hypothesis and Inference",
+            "8. Gradient Descent",
+            "9. Getting Data",
+            "10. Working with Data",
+            "11. Machine Learning"
+          ]
+        },
+        {
+          "heading": "Models & applications",
+          "items": [
+            "12. k-Nearest Neighbors",
+            "13. Naive Bayes",
+            "14. Simple Linear Regression",
+            "15. Multiple Regression",
+            "16. Logistic Regression",
+            "17. Decision Trees",
+            "18. Neural Networks",
+            "19. Deep Learning",
+            "20. Clustering",
+            "21. Natural Language Processing",
+            "22. Network Analysis",
+            "23. Recommender Systems",
+            "24. Databases and SQL",
+            "25. MapReduce",
+            "26. Data Ethics",
+            "27. Go Forth and Do Data Science"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Clone the joelgrus/data-science-from-scratch GitHub repo and run chapter code as you read.",
+        "Treat library wrappers as optional after you understand the scratch implementations.",
+        "Use chapters 2–11 as a foundations block before jumping into specific models."
+      ],
+      "editions": [
+        {
+          "label": "2nd edition",
+          "isbn": "9781492041139",
+          "year": 2019,
+          "notes": "O'Reilly; ~403 pages; Python 3.6+. Primary ISBN in this hub."
+        },
+        {
+          "label": "1st edition",
+          "isbn": "",
+          "year": 2015,
+          "notes": "Earlier edition; prefer 2nd edition for coursework."
+        }
+      ],
+      "links": [
+        {
+          "label": "O'Reilly book page",
+          "url": "https://www.oreilly.com/library/view/data-science-from/9781492041122/",
+          "kind": "publisher"
+        },
+        {
+          "label": "Companion code (GitHub)",
+          "url": "https://github.com/joelgrus/data-science-from-scratch",
+          "kind": "code"
+        }
+      ],
+      "sources": [
+        {
+          "label": "O'Reilly — Data Science from Scratch, 2nd Edition",
+          "url": "https://www.oreilly.com/library/view/data-science-from/9781492041122/"
+        },
+        {
+          "label": "joelgrus/data-science-from-scratch",
+          "url": "https://github.com/joelgrus/data-science-from-scratch"
+        }
+      ],
+      "notes": "Author: Joel Grus. Implements algorithms from scratch to explain principles behind common data-science tools.",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D7054E",
+          "courseTitle": "Data Science Programming",
+          "category": "Literature",
+          "notes": "2nd edition (2019)."
+        }
+      ]
+    },
+    "schmidhuber-dnn-overview": {
+      "id": "schmidhuber-dnn-overview",
+      "slug": "schmidhuber-dnn-overview",
+      "title": "Deep learning in neural networks: An overview",
+      "subtitle": "Neural Networks journal survey (2015)",
+      "authors": [
+        "Jürgen Schmidhuber"
+      ],
+      "authorDisplay": "Jürgen Schmidhuber",
+      "publisher": "Neural Networks (Elsevier)",
+      "year": 2015,
+      "edition": "Journal article",
+      "isbn": "",
+      "isbn10": "",
+      "language": "en",
+      "pages": 33,
+      "format": "Journal article / preprint PDF",
+      "url": "https://doi.org/10.1016/j.neunet.2014.09.003",
+      "coverUrl": "",
+      "summary": "A landmark historical survey of deep learning in artificial neural networks (including recurrent nets). Published in Neural Networks Vol. 61 (Jan 2015, pp. 85–117; online 2014; DOI 10.1016/j.neunet.2014.09.003), based on arXiv:1404.7828. Distinguishes shallow vs deep learners by credit-assignment path depth and reviews supervised learning (incl. backprop history), unsupervised learning, reinforcement learning & evolutionary methods, and compressed/indirect search for large networks. Won Neural Networks’ first Best Paper Award (2017).",
+      "whyRead": [
+        "Authoritative historical map of DL ideas long before the 2010s boom.",
+        "Clarifies CAP depth, vanishing gradients, LSTM, CNNs, and contest-winning lineages.",
+        "Free author page + arXiv preprint for course reading lists.",
+        "Useful complement to modern textbooks that skip early history."
+      ],
+      "audience": [
+        "ML / DL students and researchers",
+        "Anyone needing a citation-rich historical overview"
+      ],
+      "prerequisites": [
+        "Basic neural-net / ML vocabulary",
+        "Comfort reading survey papers with dense references"
+      ],
+      "agenda": [
+        "Define depth via credit assignment paths.",
+        "Trace supervised DL timeline (backprop, CNNs, LSTM, GPUs).",
+        "Review unsupervised pretraining and hierarchical representations.",
+        "Survey deep RL and evolutionary / compressed search."
+      ],
+      "topics": [
+        "Credit assignment paths (CAPs)",
+        "Backpropagation history",
+        "CNNs, max-pooling, GPU training",
+        "LSTM / deep RNNs",
+        "Autoencoders / DBNs",
+        "Deep reinforcement learning",
+        "Evolutionary and compressed NN search"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Sections",
+          "items": [
+            "1. Introduction to Deep Learning (DL) in Neural Networks (NNs)",
+            "2. Event-Oriented Notation for Activation Spreading in FNNs and RNNs",
+            "3. Depth of Credit Assignment Paths (CAPs) and of Problems",
+            "4. Recurring Themes of Deep Learning",
+            "5. Supervised NNs, Some Helped by Unsupervised NNs (timeline)",
+            "6. DL in FNNs and RNNs for Reinforcement Learning (RL)",
+            "7. Conclusion"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Read §§1–4 for conceptual framing; skim §5 timeline for historical landmarks.",
+        "Use as a bibliography gateway — follow citations of interest.",
+        "Pair with a modern DL textbook for algorithms and current practice."
+      ],
+      "editions": [
+        {
+          "label": "Neural Networks journal version",
+          "isbn": "",
+          "year": 2015,
+          "notes": "Vol. 61, pp. 85–117; DOI 10.1016/j.neunet.2014.09.003."
+        },
+        {
+          "label": "arXiv preprint IDSIA-03-14",
+          "isbn": "",
+          "year": 2014,
+          "notes": "arXiv:1404.7828 [cs.NE]; longer reference list (888 refs)."
+        }
+      ],
+      "links": [
+        {
+          "label": "Free full PDF (arXiv)",
+          "url": "https://arxiv.org/pdf/1404.7828",
+          "kind": "pdf"
+        },
+        {
+          "label": "Author overview page",
+          "url": "https://people.idsia.ch/~juergen/deep-learning-overview.html",
+          "kind": "free"
+        },
+        {
+          "label": "arXiv:1404.7828",
+          "url": "https://arxiv.org/abs/1404.7828",
+          "kind": "free"
+        },
+        {
+          "label": "DOI (publisher)",
+          "url": "https://doi.org/10.1016/j.neunet.2014.09.003",
+          "kind": "publisher"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Schmidhuber — Deep Learning Overview page",
+          "url": "https://people.idsia.ch/~juergen/deep-learning-overview.html"
+        },
+        {
+          "label": "DOI 10.1016/j.neunet.2014.09.003",
+          "url": "https://doi.org/10.1016/j.neunet.2014.09.003"
+        }
+      ],
+      "notes": "Article, not a book. Best Paper Award, Neural Networks (2017).",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D7047E",
+          "courseTitle": "Advanced Deep Learning",
+          "category": "Journal article",
+          "notes": "DOI 10.1016/j.neunet.2014.09.003"
+        }
+      ]
+    },
+    "stanford-ufldl-tutorial": {
+      "id": "stanford-ufldl-tutorial",
+      "slug": "stanford-ufldl-tutorial",
+      "title": "Deep Learning Tutorial (UFLDL)",
+      "subtitle": "Unsupervised Feature Learning and Deep Learning Tutorial",
+      "authors": [
+        "Andrew Ng",
+        "Jiquan Ngiam",
+        "Chuan Yu Foo",
+        "Yifan Mai",
+        "Caroline Suen",
+        "Adam Coates",
+        "Andrew Maas",
+        "Awni Hannun",
+        "Brody Huval",
+        "Tao Wang",
+        "Sameep Tandon"
+      ],
+      "authorDisplay": "Andrew Ng et al. (Stanford)",
+      "publisher": "Stanford University (UFLDL / OpenClassroom materials)",
+      "year": 2011,
+      "edition": "Online tutorial",
+      "isbn": "",
+      "isbn10": "",
+      "language": "en",
+      "pages": null,
+      "format": "Online tutorial + programming exercises (Octave/MATLAB)",
+      "url": "http://ufldl.stanford.edu/tutorial/",
+      "coverUrl": "",
+      "summary": "Stanford’s classic free tutorial on unsupervised feature learning and deep learning. Teaches sparse autoencoders, PCA/whitening, softmax regression, self-taught learning, stacked autoencoders, linear decoders, and convolutional nets with end-of-section programming exercises. Assumes familiarity with supervised learning, logistic regression, and gradient descent (e.g. Ng’s ML course sections II–IV).",
+      "whyRead": [
+        "Hands-on path from autoencoders to stacked / convolutional models.",
+        "Notation aligns with Andrew Ng’s ML course materials.",
+        "Still useful historically and for understanding early DL pedagogy.",
+        "Free starter code and community solutions available."
+      ],
+      "audience": [
+        "Students with basic ML who want to implement early deep-learning pipelines",
+        "Instructors seeking programming labs on autoencoders / CNNs"
+      ],
+      "prerequisites": [
+        "Supervised learning, logistic regression, gradient descent",
+        "Comfort with Octave/MATLAB (or porting to Python/NumPy)"
+      ],
+      "agenda": [
+        "Implement and visualise a sparse autoencoder.",
+        "Apply PCA / whitening preprocessing.",
+        "Train softmax and self-taught learning pipelines.",
+        "Stack autoencoders; extend to linear decoders and CNNs."
+      ],
+      "topics": [
+        "Sparse autoencoders",
+        "PCA and whitening",
+        "Softmax regression",
+        "Self-taught / unsupervised feature learning",
+        "Stacked sparse autoencoders",
+        "Linear decoders",
+        "Convolution and pooling"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Tutorial modules (with exercises)",
+          "items": [
+            "Sparse Autoencoder",
+            "Vectorized implementation / feature visualisation (MNIST)",
+            "Preprocessing: PCA & Whitening",
+            "Softmax Regression",
+            "Self-Taught Learning and Unsupervised Feature Learning",
+            "Building Deep Networks for Classification (Stacked Sparse Autoencoder)",
+            "Linear Decoders with Autoencoders",
+            "Working with Large Images (Convolution and Pooling / CNNs)"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Follow modules in order; complete each programming exercise before the next.",
+        "If ML basics are weak, finish logistic regression / gradient descent first.",
+        "Prefer http://ufldl.stanford.edu/tutorial/ ; older wiki URLs may redirect."
+      ],
+      "editions": [
+        {
+          "label": "Online tutorial (canonical)",
+          "isbn": "",
+          "year": 2011,
+          "notes": "ufldl.stanford.edu/tutorial — year approximate for early public materials."
+        },
+        {
+          "label": "Legacy wiki path",
+          "isbn": "",
+          "year": null,
+          "notes": "deeplearning.stanford.edu/wiki/.../UFLDL_Tutorial — often cited on syllabi."
+        }
+      ],
+      "links": [
+        {
+          "label": "Free full tutorial online",
+          "url": "http://ufldl.stanford.edu/tutorial/",
+          "kind": "free"
+        },
+        {
+          "label": "Legacy wiki URL (often listed on syllabi)",
+          "url": "http://deeplearning.stanford.edu/wiki/index.php/UFLDL_Tutorial",
+          "kind": "free"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Stanford UFLDL Tutorial",
+          "url": "http://ufldl.stanford.edu/tutorial/"
+        },
+        {
+          "label": "OECD.AI catalogue — tutorial overview",
+          "url": "https://oecd.ai/en/catalogue/tools/stanford-unsupervised-feature-learning-and-deep-learning-tutorial"
+        }
+      ],
+      "notes": "Online courseware, not a printed book. Exercise order confirmed via community solution repos mirroring the official sequence.",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D7047E",
+          "courseTitle": "Advanced Deep Learning",
+          "category": "Online tutorial",
+          "notes": "As listed on the official LTU literature PDF."
+        }
+      ]
+    },
+    "9789147134083": {
+      "id": "9789147134083",
+      "slug": "medicinsk-informatik",
+      "title": "Medicinsk informatik",
+      "subtitle": "",
+      "authors": [
+        "Göran Petersson",
+        "Martin Rydmark",
+        "Anders Thurin"
+      ],
+      "authorDisplay": "Göran Petersson, Martin Rydmark, Anders Thurin (red.)",
+      "publisher": "Liber",
+      "year": 2021,
+      "edition": "1st",
+      "isbn": "9789147134083",
+      "isbn10": "",
+      "language": "sv",
+      "pages": 456,
+      "format": "Häftad",
+      "url": "https://www.liber.se/produkt/medicinsk-informatik-24497",
+      "coverUrl": "",
+      "summary": "Svensk lärobok om kunskapsinnehållet i vårdens IT-system och hur digitalisering kan stödja kvalitet, forskning, utveckling, beslutsfattande och resursutnyttjande. Syftet är att ge vårdprofessionen förståelse för möjligheter och begränsningar så att de kan ställa krav på säkra, ändamålsenliga system. Liber 2021 (1:a uppl., 456 sidor, ca 31 kapitel) med många medförfattare från medicinsk informatikens bredd.",
+      "whyRead": [
+        "Modern svensk kursbok i medicinsk / hälsoinformatik (första större svenska boken på området på många år).",
+        "Riktar sig till både vårdprofession och de som bygger vårdens digitalisering.",
+        "Bred författarkrets (t.ex. textanalys, prehospital eHälsa).",
+        "Lämplig på grund- och avancerad nivå."
+      ],
+      "audience": [
+        "Läkare, sjuksköterskor och andra vårdprofessioner under utbildning",
+        "Yrkesverksamma inom vårdens digitalisering / e-hälsa"
+      ],
+      "prerequisites": [
+        "Grundläggande vård- eller IT-intresse",
+        "Ingen avancerad programmering krävs för huvudtexten"
+      ],
+      "agenda": [
+        "Förstå vad medicinsk informatik omfattar i vårdens IT.",
+        "Koppla digitalisering till kvalitet, beslutstöd och patientsäkerhet.",
+        "Se tillämpningar (t.ex. textanalys, prehospital eHälsa) i kapitelval.",
+        "Kunna ställa krav på system utifrån vårdprofessionens behov."
+      ],
+      "topics": [
+        "Vårdens IT-system och kunskapsinnehåll",
+        "Digitalisering, kvalitet och patientsäkerhet",
+        "Beslutsstöd och resursutnyttjande",
+        "Forskning och utveckling med hälsodata",
+        "eHälsa / tillämpningskapitel (t.ex. prehospital eHälsa, textanalys)"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Organisation",
+          "items": [
+            "Ca 31 kapitel av många medförfattare (se bokens innehållsförteckning / Liber smakprov)",
+            "Teman inkluderar vårdens IT, digitaliseringens möjligheter/begränsningar, beslutstöd och tillämpningar",
+            "Exempel på kapitel nämnda publikt: Textanalys (Dalianis & Velupillai); Prehospital eHälsa (Maurin Söderholm & Sjöqvist)"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Använd som kursbok: välj kapitel efter kursmodul snarare än att läsa linjärt.",
+        "Bläddra Liber smakprov för full kapitelista.",
+        "Kombinera med lokala journal-/IT-systemdemonstrationer i undervisningen."
+      ],
+      "editions": [
+        {
+          "label": "1:a upplagan",
+          "isbn": "9789147134083",
+          "year": 2021,
+          "notes": "Liber; utgiven 2021-01-08; 456 sidor."
+        }
+      ],
+      "links": [
+        {
+          "label": "Liber — produktsida",
+          "url": "https://www.liber.se/produkt/medicinsk-informatik-24497",
+          "kind": "publisher"
+        },
+        {
+          "label": "DASH — notis om boken (31 kapitel)",
+          "url": "https://dash.dsv.su.se/2021/02/25/ny-larobok-i-medicinsk-informatik-2021/",
+          "kind": "free"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Liber — Medicinsk informatik",
+          "url": "https://www.liber.se/produkt/medicinsk-informatik-24497"
+        },
+        {
+          "label": "DASH DSV — Ny lärobok i Medicinsk informatik 2021",
+          "url": "https://dash.dsv.su.se/2021/02/25/ny-larobok-i-medicinsk-informatik-2021/"
+        }
+      ],
+      "notes": "Redaktörer: Petersson, Rydmark, Thurin. Full kapitel-för-kapitel TOC finns i bok / förlagets smakprov; hubben listar struktur + publikt nämnda exempelkapitel.",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "M7016H",
+          "courseTitle": "Artificial Intelligence within the Healthcare System",
+          "category": "Book",
+          "notes": "Parts of this book are used; syllabus notes that selected material is translated into English for the course. Also: scientific articles and web materials (www.medtech4health.se)."
+        }
+      ]
+    },
+    "9780321321367": {
+      "id": "9780321321367",
+      "slug": "tan-intro-data-mining",
+      "title": "Introduction to Data Mining",
+      "subtitle": "",
+      "authors": [
+        "Pang-Ning Tan",
+        "Michael Steinbach",
+        "Vipin Kumar"
+      ],
+      "authorDisplay": "Pang-Ning Tan, Michael Steinbach, Vipin Kumar",
+      "publisher": "Addison-Wesley / Pearson",
+      "year": 2005,
+      "edition": "1st",
+      "isbn": "9780321321367",
+      "isbn10": "0321321367",
+      "language": "en",
+      "pages": null,
+      "format": "Hardcover / paperback",
+      "url": "https://www-users.cse.umn.edu/~kumar001/dmbook/firsted.php",
+      "coverUrl": "",
+      "summary": "A widely used introductory textbook on data mining covering data understanding, classification, association analysis, clustering, and anomaly detection. The first edition (Addison-Wesley, 2005) is the edition commonly listed with ISBN 9780321321367; a second edition appeared in 2018. Author resources include sample chapters, instructor materials, and errata.",
+      "whyRead": [
+        "Standard foundation for data-mining / advanced data-mining courses.",
+        "Clear algorithmic treatment of classification, association rules, clustering, and anomalies.",
+        "Sample chapters and teaching resources available from the authors’ site.",
+        "Pairs well with applied labs that use Weka, Python, or R."
+      ],
+      "audience": [
+        "Undergraduate and graduate students in CS / data science",
+        "Practitioners needing a structured overview of classical data-mining methods"
+      ],
+      "prerequisites": [
+        "Basic algorithms and data structures",
+        "Introductory probability/statistics",
+        "Programming experience for exercises"
+      ],
+      "agenda": [
+        "Understand data types, quality issues, and exploratory analysis.",
+        "Learn classification (decision trees and alternative techniques) and evaluation.",
+        "Apply association analysis (basic and advanced).",
+        "Study clustering algorithms and related issues.",
+        "Detect anomalies / outliers."
+      ],
+      "topics": [
+        "Data and exploratory analysis",
+        "Classification and model evaluation",
+        "Association rule mining",
+        "Cluster analysis",
+        "Anomaly detection",
+        "Dimensionality reduction / regression / optimisation (appendices)"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Main chapters (1st edition)",
+          "items": [
+            "1. Introduction",
+            "2. Data",
+            "3. Exploring Data",
+            "4. Classification: Basic Concepts, Decision Trees, and Model Evaluation",
+            "5. Classification: Alternative Techniques",
+            "6. Association Analysis: Basic Concepts and Algorithms",
+            "7. Association Analysis: Advanced Concepts",
+            "8. Cluster Analysis: Basic Concepts and Algorithms",
+            "9. Cluster Analysis: Additional Issues and Algorithms",
+            "10. Anomaly Detection"
+          ]
+        },
+        {
+          "heading": "Appendices (selected)",
+          "items": [
+            "Linear algebra",
+            "Dimensionality reduction (PCA, SVD, …)",
+            "Probability and statistics",
+            "Regression",
+            "Optimization"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Follow chapters 1–3 for data foundations, then 4–10 for core mining tasks.",
+        "Use author sample chapters (classification, association, clustering) as free previews.",
+        "Check the first-edition errata page; consider the 2018 2nd edition if the course updates the reading list."
+      ],
+      "editions": [
+        {
+          "label": "1st edition",
+          "isbn": "9780321321367",
+          "year": 2005,
+          "notes": "Addison-Wesley; ISBN used in this hub / LTU listing."
+        },
+        {
+          "label": "2nd edition",
+          "isbn": "9780133128901",
+          "year": 2018,
+          "notes": "Updated edition; confirm with examiner which edition the course expects."
+        }
+      ],
+      "links": [
+        {
+          "label": "Author site — First Edition",
+          "url": "https://www-users.cse.umn.edu/~kumar001/dmbook/firsted.php",
+          "kind": "free"
+        },
+        {
+          "label": "Library of Congress TOC",
+          "url": "https://catdir.loc.gov/catdir/toc/ecip0510/2005008721.html",
+          "kind": "free"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Introduction to Data Mining (First Edition) — author page",
+          "url": "https://www-users.cse.umn.edu/~kumar001/dmbook/firsted.php"
+        },
+        {
+          "label": "Library of Congress — table of contents",
+          "url": "https://catdir.loc.gov/catdir/toc/ecip0510/2005008721.html"
+        }
+      ],
+      "notes": "Authors: Pang-Ning Tan (Michigan State), Michael Steinbach and Vipin Kumar (University of Minnesota).",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D7043E",
+          "courseTitle": "Advanced Data Mining",
+          "category": "Course book",
+          "notes": "1st edition (2005). 2nd edition ISBN 9780133128901 (2018) also available."
+        }
+      ]
+    },
+    "9781498756754": {
+      "id": "9781498756754",
+      "slug": "iot-automation-arrowhead",
+      "title": "IoT Automation: Arrowhead Framework",
+      "subtitle": "Arrowhead Framework",
+      "authors": [
+        "Jerker Delsing (ed.)"
+      ],
+      "authorDisplay": "Jerker Delsing (ed.)",
+      "publisher": "CRC Press / Taylor & Francis",
+      "year": 2017,
+      "edition": "1st",
+      "isbn": "9781498756754",
+      "isbn10": "1498756751",
+      "language": "en",
+      "pages": 404,
+      "format": "Hardcover / paperback / e-book",
+      "url": "https://www.routledge.com/IoT-Automation-Arrowhead-Framework/Delsing/p/book/9781498756754",
+      "coverUrl": "",
+      "summary": "Edited volume presenting the Arrowhead Framework for service-level interoperability among IoT devices in industrial and societal automation. Uses SOA and local automation clouds to address real-time control, security, scalability, and engineering simplicity, with application chapters spanning energy, maintenance, complex systems, high security, and smart production. Editor Jerker Delsing (LTU / EISLAB) coordinated the large ARTEMIS Arrowhead project.",
+      "whyRead": [
+        "Primary reference for the Arrowhead approach taught/used around LTU industrial IoT.",
+        "Bridges architecture, core services, and industrial application case studies.",
+        "Emphasises collaborative automation and multi-SOA interoperability.",
+        "Useful for courses on IoT / CPS / system-of-systems automation."
+      ],
+      "audience": [
+        "Graduate students and engineers in industrial IoT / automation",
+        "System architects working with SOA and local clouds"
+      ],
+      "prerequisites": [
+        "Basic networking / distributed systems",
+        "Familiarity with industrial automation or IoT concepts helps"
+      ],
+      "agenda": [
+        "Motivate industrial/societal digitisation and local automation clouds.",
+        "Learn Arrowhead architecture and core systems/services.",
+        "Follow the cookbook for application system design.",
+        "Study domain chapters (energy, maintenance, security, smart production)."
+      ],
+      "topics": [
+        "Arrowhead Framework / SOA",
+        "Local automation clouds",
+        "IoT / CPS system of systems",
+        "Interoperability and security",
+        "Engineering of automation systems",
+        "Industrial application domains"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Chapters",
+          "items": [
+            "1. Towards industrial and societal automation and digitisation",
+            "2. Local automation clouds",
+            "3. The Arrowhead Framework architecture",
+            "4. Arrowhead Framework core systems and services",
+            "5. Application system and services: Design and implementation — A cookbook",
+            "6. Engineering of IoT automation systems",
+            "7. Application system design — Energy optimisation",
+            "8. Application system design — Maintenance",
+            "9. Application system design — Complex systems management and automation",
+            "10. Application system design — High security",
+            "11. Application system design — Smart production"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Read Ch. 1–5 for framework fundamentals before domain chapters.",
+        "Use the cookbook chapter when implementing services.",
+        "Pick application chapters matching project domain (energy, maintenance, etc.)."
+      ],
+      "editions": [
+        {
+          "label": "1st edition hardcover",
+          "isbn": "9781498756754",
+          "year": 2017,
+          "notes": "CRC Press; ~404 pages. ISBN used in this hub."
+        },
+        {
+          "label": "Paperback reprint",
+          "isbn": "9780367658144",
+          "year": null,
+          "notes": "Routledge paperback listing of the same 1st edition content."
+        }
+      ],
+      "links": [
+        {
+          "label": "Routledge / CRC Press product",
+          "url": "https://www.routledge.com/IoT-Automation-Arrowhead-Framework/Delsing/p/book/9781498756754",
+          "kind": "publisher"
+        },
+        {
+          "label": "Taylor & Francis — book page",
+          "url": "https://www.taylorfrancis.com/books/edit/10.1201/9781315367897/iot-automation-jerker-delsing",
+          "kind": "publisher"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Routledge — IoT Automation: Arrowhead Framework",
+          "url": "https://www.routledge.com/IoT-Automation-Arrowhead-Framework/Delsing/p/book/9781498756754"
+        }
+      ],
+      "notes": "Editor based at Luleå University of Technology (EISLAB). Arrowhead project: arrowhead.eu (historical).",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D7065E",
+          "courseTitle": "Embedded Intelligence at the Edge",
+          "category": "Book",
+          "notes": "Hardcover ISBN 9781498756754 (2017). Paperback reprint ISBN 9780367658144 also exists."
+        }
+      ]
+    },
+    "9780123749475": {
+      "id": "9780123749475",
+      "slug": "basic-neurochemistry",
+      "title": "Basic Neurochemistry: Principles of Molecular, Cellular, and Medical Neurobiology",
+      "subtitle": "Principles of Molecular, Cellular, and Medical Neurobiology",
+      "authors": [
+        "Scott Brady (ed.)",
+        "George Siegel (ed.)",
+        "R. Wayne Albers (ed.)",
+        "Donald L. Price (ed.)"
+      ],
+      "authorDisplay": "Scott Brady, George Siegel, R. Wayne Albers, Donald L. Price (eds.)",
+      "publisher": "Academic Press / Elsevier",
+      "year": 2012,
+      "edition": "8th",
+      "isbn": "9780123749475",
+      "isbn10": "0123749476",
+      "language": "en",
+      "pages": null,
+      "format": "Hardcover / e-book",
+      "url": "https://www.elsevier.com/books/basic-neurochemistry/brady/978-0-12-374947-5",
+      "coverUrl": "",
+      "summary": "The long-standing reference textbook on the biochemistry of the nervous system. The 8th edition (Academic Press/Elsevier, 2012) updates cellular and molecular neurochemistry and expands coverage of trafficking, stem cells, adult neurogenesis, regeneration, lipid messengers, and major neurodegenerative and psychiatric disorders. About 61 chapters with translational science boxes; companion website for the edition.",
+      "whyRead": [
+        "Standard postgraduate reference for neurochemistry / neurobiology courses (e.g. D7068E).",
+        "Spans molecular mechanisms to medical neuroscience in one volume.",
+        "Useful when connecting AI/neuromorphic interests to biological signalling.",
+        "Companion site and colour figures support teaching."
+      ],
+      "audience": [
+        "Medical, graduate, and postgraduate neuroscience students",
+        "Trainees in neurology / psychiatry / basic neuroscience"
+      ],
+      "prerequisites": [
+        "Undergraduate biochemistry and cell biology",
+        "Introductory neuroscience helpful"
+      ],
+      "agenda": [
+        "Review cell and membrane neurochemistry and transport.",
+        "Study intercellular signalling, synapses, and intracellular pathways.",
+        "Connect molecular mechanisms to neural systems and behaviour.",
+        "Survey neurochemistry of major neurological and psychiatric disorders."
+      ],
+      "topics": [
+        "Cellular neurochemistry and neural membranes",
+        "Synaptic transmission and signalling",
+        "Development, regeneration, stem cells",
+        "Energy metabolism and myelin",
+        "Learning, memory, sleep",
+        "Neurodegenerative and psychiatric disorders",
+        "Addiction, pain, sensory neurochemistry",
+        "Neuroimmunology"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Organisation (8th edition — thematic)",
+          "items": [
+            "Cellular neurochemistry and the neuron/glia microenvironment",
+            "Neural membranes, lipids, and transport",
+            "Intercellular signalling and synaptic transmission",
+            "Intracellular signalling and trafficking",
+            "Development, plasticity, regeneration, and stem cells",
+            "Energy metabolism, myelin, and circuit-level chemistry",
+            "Medical neurobiology: neurodegeneration, psychiatry, addiction, pain, sensory systems",
+            "Emerging topics (neuroimmunology, autism, sleep, learning & memory)"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Use as a reference: assign selected chapters matching lecture themes rather than reading cover-to-cover.",
+        "Pay attention to translational boxes linking basic and clinical neuroscience.",
+        "Companion site: elsevierdirect.com/companions/9780123749475 (edition resources)."
+      ],
+      "editions": [
+        {
+          "label": "8th edition",
+          "isbn": "9780123749475",
+          "year": 2012,
+          "notes": "Academic Press / Elsevier; ISBN used in this hub."
+        }
+      ],
+      "links": [
+        {
+          "label": "Elsevier / Academic Press product",
+          "url": "https://www.elsevier.com/books/basic-neurochemistry/brady/978-0-12-374947-5",
+          "kind": "publisher"
+        },
+        {
+          "label": "Elsevier Educate listing",
+          "url": "https://www.educate.elsevier.com/book/details/9780123749475",
+          "kind": "publisher"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Elsevier Educate — Basic Neurochemistry, 8th Edition",
+          "url": "https://www.educate.elsevier.com/book/details/9780123749475"
+        }
+      ],
+      "notes": "Edited multi-author reference. Chapter-level TOC has ~61 chapters; this hub lists thematic groupings for navigation.",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "D7068E",
+          "courseTitle": "Neurochemistry for AI",
+          "category": "Book",
+          "notes": "Syllabus: Brady et al.; Basic Neurochemistry, or equivalent book. ISBN is for the 8th edition (2011/2012). Corresponding sections in other neurochemistry texts are acceptable. Supplementary material via LTU Canvas."
+        }
+      ]
+    },
+    "9783030343712": {
+      "id": "9783030343712",
+      "slug": "szeliski-cv-2e",
+      "title": "Computer Vision: Algorithms and Applications",
+      "subtitle": "",
+      "authors": [
+        "Richard Szeliski"
+      ],
+      "authorDisplay": "Richard Szeliski",
+      "publisher": "Springer",
+      "year": 2022,
+      "edition": "2nd",
+      "isbn": "9783030343712",
+      "isbn10": "",
+      "language": "en",
+      "pages": null,
+      "format": "",
+      "url": "http://szeliski.org/Book/",
+      "coverUrl": "",
+      "summary": "A broad modern survey of computer vision algorithms and applications, from image formation and feature detection to recognition, 3D, and learning-based methods. Free PDF from the author.",
+      "whyRead": [
+        "Comprehensive modern computer vision survey with free author PDF.",
+        "Balances geometry, image processing, recognition, and applications.",
+        "Widely used as a graduate CV reference.",
+        "Electronic edition kept current on the author site."
+      ],
+      "audience": [
+        "Graduate computer vision students",
+        "Researchers needing a structured CV overview"
+      ],
+      "prerequisites": [
+        "Linear algebra and basic calculus",
+        "Introductory programming / image processing helps"
+      ],
+      "agenda": [
+        "Build intuition for the imaging pipeline and classical vision algorithms.",
+        "Connect geometric vision with modern recognition and learning approaches.",
+        "Use as a project reference for computer vision coursework."
+      ],
+      "topics": [
+        "Image formation and processing",
+        "Feature detection and matching",
+        "Segmentation",
+        "Structure from motion / stereo",
+        "Recognition and deep learning for vision"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Selected major parts",
+          "items": [
+            "Introduction",
+            "Image formation",
+            "Image processing",
+            "Feature detection and matching",
+            "Segmentation",
+            "Feature-based alignment",
+            "Structure from motion",
+            "Dense motion estimation",
+            "Image stitching",
+            "Computational photography",
+            "Stereo correspondence",
+            "3D reconstruction",
+            "Image-based rendering",
+            "Recognition",
+            "Deep learning for vision (expanded in 2nd ed.)"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Download the free PDF from szeliski.org/Book for personal use.",
+        "Use early chapters for foundations; later chapters by topic interest.",
+        "Combine with Hartley & Zisserman for deeper multi-view geometry."
+      ],
+      "editions": [],
+      "links": [
+        {
+          "label": "Author book site",
+          "url": "https://szeliski.org/Book/",
+          "kind": "free"
+        },
+        {
+          "label": "Free full PDF (author download)",
+          "url": "https://szeliski.org/Book/download.php",
+          "kind": "pdf"
+        },
+        {
+          "label": "Free PDF (author site)",
+          "url": "http://szeliski.org/Book/"
+        }
+      ],
+      "sources": [],
+      "notes": "",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "R7020E",
+          "courseTitle": "Computer Vision and Image Processing",
+          "category": "Book",
+          "notes": "2nd edition (2022). Free PDF available from the author site."
+        }
+      ]
+    },
+    "9783319544120": {
+      "id": "9783319544120",
+      "slug": "corke-rvc-2e",
+      "title": "Robotics, Vision and Control: Fundamental Algorithms in MATLAB",
+      "subtitle": "Fundamental Algorithms in MATLAB — Second, Completely Revised, Extended and Updated Edition",
+      "authors": [
+        "Peter Corke"
+      ],
+      "authorDisplay": "Peter Corke",
+      "publisher": "Springer",
+      "year": 2017,
+      "edition": "2nd",
+      "isbn": "9783319544120",
+      "isbn10": "3319544128",
+      "language": "en",
+      "pages": 693,
+      "format": "Softcover / e-book",
+      "url": "https://petercorke.com/rvc/",
+      "coverUrl": "",
+      "summary": "A practice-oriented textbook that teaches the fundamental algorithms of robotics, computer vision, and visual control using MATLAB and the author’s open Robotics Toolbox / Machine Vision Toolbox. The 2nd edition (Springer STAR, 2017) is a major update with expanded arm-robot, colour/vision, and visual-servoing material, weaving theory with short code examples so students can try algorithms on real problems.",
+      "whyRead": [
+        "Connects robotics and vision with runnable MATLAB examples — ideal for lab courses.",
+        "Maintained toolboxes let you reproduce figures and exercises from the book.",
+        "Covers mobile robots, manipulators, classical vision, and vision-based control in one narrative.",
+        "Author site provides edition notes, software links, and errata."
+      ],
+      "audience": [
+        "Students in robotics / mechatronics / computer vision courses",
+        "Engineers who want algorithm intuition with MATLAB tooling"
+      ],
+      "prerequisites": [
+        "Linear algebra and basic calculus",
+        "Introductory programming (MATLAB preferred)",
+        "Basic mechanics / signals helps for dynamics and control chapters"
+      ],
+      "agenda": [
+        "Represent pose, orientation, and motion in 2D/3D.",
+        "Model and localise mobile robots; plan navigation.",
+        "Solve arm kinematics, velocity, dynamics, and control.",
+        "Process images: formation, features, multi-view geometry basics.",
+        "Apply vision-based / visual-servoing control."
+      ],
+      "topics": [
+        "Pose and orientation representation",
+        "Mobile robot navigation and localisation",
+        "Manipulator kinematics, dynamics, control",
+        "Light, colour, image formation and processing",
+        "Feature extraction and multiple images",
+        "Visual servoing / vision-based control",
+        "MATLAB Robotics & Machine Vision Toolboxes"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "I. Foundations",
+          "items": [
+            "1. Introduction",
+            "2. Representing Position and Orientation",
+            "3. Time and Motion"
+          ]
+        },
+        {
+          "heading": "II. Mobile robots",
+          "items": [
+            "4. Mobile Robot Vehicles",
+            "5. Navigation",
+            "6. Localization"
+          ]
+        },
+        {
+          "heading": "III. Arm-type robots",
+          "items": [
+            "7. Robot Arm Kinematics",
+            "8. Manipulator Velocity",
+            "9. Dynamics and Control"
+          ]
+        },
+        {
+          "heading": "IV. Computer vision",
+          "items": [
+            "10. Light and Color",
+            "11. Image Formation",
+            "12. Images and Image Processing",
+            "13. Image Feature Extraction",
+            "14. Using Multiple Images"
+          ]
+        },
+        {
+          "heading": "V. Robotics, vision and control",
+          "items": [
+            "15. Vision-Based Control",
+            "16. Advanced Visual Servoing"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Install the Robotics Toolbox and Machine Vision Toolbox matching the edition (RTB 10.x / MVTB 4.x for the 2017 book).",
+        "Read a section, then run the short MATLAB examples before moving on.",
+        "Use Parts II–III for robotics courses; Parts IV–V for vision / visual control."
+      ],
+      "editions": [
+        {
+          "label": "2nd edition (2017, single volume)",
+          "isbn": "9783319544120",
+          "year": 2017,
+          "notes": "Springer Tracts in Advanced Robotics 118; e-book ISBN 9783319544137. Primary ISBN for R7020E listing."
+        },
+        {
+          "label": "2nd edition 2-volume set (2021)",
+          "isbn": "",
+          "year": 2021,
+          "notes": "Minor update split into Robotics & Control and Robotic Vision volumes."
+        },
+        {
+          "label": "1st edition (2011)",
+          "isbn": "9783642201431",
+          "year": 2011,
+          "notes": "Earlier Springer edition (also listed separately in this hub)."
+        }
+      ],
+      "links": [
+        {
+          "label": "Author — Robotics, Vision & Control",
+          "url": "https://petercorke.com/rvc/",
+          "kind": "free"
+        },
+        {
+          "label": "SpringerLink book page",
+          "url": "https://link.springer.com/book/10.1007/978-3-319-54413-7",
+          "kind": "publisher"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Peter Corke — RVC editions",
+          "url": "https://petercorke.com/rvc/"
+        },
+        {
+          "label": "Springer — Robotics, Vision and Control (2nd ed.)",
+          "url": "https://link.springer.com/book/10.1007/978-3-319-54413-7"
+        }
+      ],
+      "notes": "Author: Peter Corke. Companion open-source MATLAB toolboxes are central to the book’s teaching style.",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "R7020E",
+          "courseTitle": "Computer Vision and Image Processing",
+          "category": "Book",
+          "notes": "2nd edition (2017), as listed on the syllabus."
+        }
+      ]
+    },
+    "9780387008936": {
+      "id": "9780387008936",
+      "slug": "ma-invitation-3d-vision",
+      "title": "An Invitation to 3-D Vision: From Images to Geometric Models",
+      "subtitle": "From Images to Geometric Models",
+      "authors": [
+        "Yi Ma",
+        "Stefano Soatto",
+        "Jana Košecká",
+        "S. Shankar Sastry"
+      ],
+      "authorDisplay": "Yi Ma, Stefano Soatto, Jana Košecká, S. Shankar Sastry",
+      "publisher": "Springer",
+      "year": 2004,
+      "edition": "1st (2004 corrected printing)",
+      "isbn": "9780387008936",
+      "isbn10": "0387008934",
+      "language": "en",
+      "pages": null,
+      "format": "Hardcover / softcover / e-book",
+      "url": "https://link.springer.com/book/10.1007/978-0-387-21779-6",
+      "coverUrl": "",
+      "summary": "A self-contained graduate/advanced-undergraduate introduction to the geometry of reconstructing 3-D models from collections of 2-D images. Part of Springer’s Interdisciplinary Applied Mathematics series, it covers scene representation, image formation, two-view calibrated/uncalibrated reconstruction, multiple-view geometry of points and lines, symmetry-based reconstruction, step-by-step model building, and visual feedback, with exercises after each chapter.",
+      "whyRead": [
+        "Unified geometric framework for 3-D vision beyond a pure survey of algorithms.",
+        "Complements Hartley & Zisserman with a reconstruction-oriented narrative.",
+        "Suitable as a one- or two-semester course text in vision / robotics.",
+        "Drill, programming, and exploration exercises support labs."
+      ],
+      "audience": [
+        "Advanced undergraduates and introductory graduate students",
+        "Researchers in computer vision, robotics, and graphics"
+      ],
+      "prerequisites": [
+        "Advanced undergraduate linear algebra",
+        "Background in rigid-body motion / estimation helps but early chapters and appendices review essentials"
+      ],
+      "agenda": [
+        "Represent 3-D moving scenes and the image formation process.",
+        "Establish correspondence and reconstruct from two calibrated and uncalibrated views.",
+        "Estimate multiple motions and extend to multiple-view geometry of points and lines.",
+        "Use symmetry and step-by-step procedures to build geometric models.",
+        "Connect reconstruction to visual feedback / control ideas."
+      ],
+      "topics": [
+        "3-D scene representation and rigid motion",
+        "Image formation and primitives",
+        "Two-view calibrated / uncalibrated reconstruction",
+        "Multiple motions from two views",
+        "Multiple-view geometry of points and lines",
+        "Symmetry-based reconstruction",
+        "Building 3-D models from images",
+        "Visual feedback"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Chapters",
+          "items": [
+            "1. Introduction",
+            "2. Representation of a Three-Dimensional Moving Scene",
+            "3. Image Formation",
+            "4. Image Primitives and Correspondence",
+            "5. Reconstruction from Two Calibrated Views",
+            "6. Reconstruction from Two Uncalibrated Views",
+            "7. Estimation of Multiple Motions from Two Views",
+            "8. Multiple-View Geometry of Points and Lines",
+            "9. Extension to General Incidence Relations",
+            "10. Geometry and Reconstruction from Symmetry",
+            "11. Step-by-Step Building of a 3-D Model from Images",
+            "12. Visual Feedback"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Suggested one-semester path: early chapters through two-view reconstruction, then selected multiple-view chapters.",
+        "Work drill exercises for theory and programming exercises for algorithms.",
+        "Use alongside Hartley & Zisserman when a second geometric reference is useful."
+      ],
+      "editions": [
+        {
+          "label": "Hardcover",
+          "isbn": "9780387008936",
+          "year": 2003,
+          "notes": "Springer IAM series; published Nov 2003 / 2004 corrected printing. ISBN used in this hub."
+        },
+        {
+          "label": "e-book",
+          "isbn": "9780387217796",
+          "year": 2012,
+          "notes": "Springer e-book edition."
+        }
+      ],
+      "links": [
+        {
+          "label": "SpringerLink book page",
+          "url": "https://link.springer.com/book/10.1007/978-0-387-21779-6",
+          "kind": "publisher"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Springer — An Invitation to 3-D Vision",
+          "url": "https://link.springer.com/book/10.1007/978-0-387-21779-6"
+        }
+      ],
+      "notes": "Interdisciplinary Applied Mathematics, Vol. 26. Authors associated with UC Berkeley / Illinois / related vision groups at time of writing.",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "R7020E",
+          "courseTitle": "Computer Vision and Image Processing",
+          "category": "Book",
+          "notes": "Interdisciplinary Applied Mathematics series (2003/2004)."
+        }
+      ]
+    },
+    "9780521540513": {
+      "id": "9780521540513",
+      "slug": "hartley-zisserman-mvg-2e",
+      "title": "Multiple View Geometry in Computer Vision",
+      "subtitle": "",
+      "authors": [
+        "Richard Hartley",
+        "Andrew Zisserman"
+      ],
+      "authorDisplay": "Richard Hartley, Andrew Zisserman",
+      "publisher": "Cambridge University Press",
+      "year": 2004,
+      "edition": "2nd",
+      "isbn": "9780521540513",
+      "isbn10": "0521540518",
+      "language": "en",
+      "pages": 670,
+      "format": "Paperback",
+      "url": "https://www.robots.ox.ac.uk/~vgg/hzbook/",
+      "coverUrl": "",
+      "summary": "The standard advanced textbook on the geometry of multiple cameras and 3D reconstruction from images. The 2nd edition (Cambridge, 2004) develops projective geometry, camera models, two- and three-view geometry (fundamental matrix, trifocal tensor), and N-view methods including auto-calibration. Widely used in computer vision research and graduate courses; companion materials are hosted by the Oxford VGG.",
+      "whyRead": [
+        "Definitive reference for multi-view / structure-from-motion geometry.",
+        "Essential background for computer vision courses involving cameras and 3D.",
+        "Careful mathematical development with algorithms and evaluation.",
+        "Author site provides book resources and errata."
+      ],
+      "audience": [
+        "Graduate students and researchers in computer vision and robotics",
+        "Advanced undergraduates with strong maths background"
+      ],
+      "prerequisites": [
+        "Linear algebra (matrices, SVD, homogeneous coordinates)",
+        "Basic projective geometry helps",
+        "Familiarity with camera imaging models is useful"
+      ],
+      "agenda": [
+        "Learn 2D/3D projective geometry and estimation of transformations.",
+        "Model cameras and recover single-view geometry.",
+        "Master two-view geometry (epipolar geometry, fundamental matrix, reconstruction).",
+        "Study three-view geometry via the trifocal tensor.",
+        "Explore N-view methods and auto-calibration."
+      ],
+      "topics": [
+        "Projective geometry and transformations",
+        "Camera models and calibration",
+        "Epipolar geometry and the fundamental matrix",
+        "Structure from motion / 3D reconstruction",
+        "Homographies and planes",
+        "Trifocal tensor",
+        "N-view tensors and auto-calibration",
+        "Robust estimation and algorithm evaluation"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Background",
+          "items": [
+            "1. Introduction — a tour of multiple view geometry",
+            "2. Projective geometry and transformations of 2D",
+            "3. Projective geometry and transformations of 3D",
+            "4. Estimation — 2D projective transformations",
+            "5. Algorithm evaluation and error analysis"
+          ]
+        },
+        {
+          "heading": "I. Camera geometry and single view",
+          "items": [
+            "6. Camera models",
+            "7. Computation of the camera matrix P",
+            "8. More single view geometry"
+          ]
+        },
+        {
+          "heading": "II. Two-view geometry",
+          "items": [
+            "9. Epipolar geometry and the fundamental matrix",
+            "10. 3D reconstruction of cameras and structure",
+            "11. Computation of the fundamental matrix F",
+            "12. Structure computation",
+            "13. Scene planes and homographies",
+            "14. Affine epipolar geometry"
+          ]
+        },
+        {
+          "heading": "III–IV. Three-view & N-view",
+          "items": [
+            "15. The trifocal tensor",
+            "16. Computation of the trifocal tensor T",
+            "17. N-linearities and multiple view tensors",
+            "18. N-view computational methods",
+            "19. Auto-calibration",
+            "20. Duality",
+            "21. Chirality",
+            "22. Degenerate configurations"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Start with the introductory tour (Ch. 1) then Part 0 for projective geometry if needed.",
+        "Prioritise Parts I–II for most computer-vision coursework; Parts III–IV for research depth.",
+        "Use the Oxford VGG book page for errata and related resources."
+      ],
+      "editions": [
+        {
+          "label": "2nd edition (paperback)",
+          "isbn": "9780521540513",
+          "year": 2004,
+          "notes": "Cambridge University Press; ~670 pages. ISBN used in this hub."
+        },
+        {
+          "label": "1st edition",
+          "isbn": "",
+          "year": 2000,
+          "notes": "Superseded by the 2nd edition for most courses."
+        }
+      ],
+      "links": [
+        {
+          "label": "Oxford VGG — book site",
+          "url": "https://www.robots.ox.ac.uk/~vgg/hzbook/",
+          "kind": "free"
+        },
+        {
+          "label": "Cambridge University Press",
+          "url": "https://www.cambridge.org/core/books/multiple-view-geometry-in-computer-vision/0B6F289C78B2B23F596CAA76D3D43F7A",
+          "kind": "publisher"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Cambridge — Multiple View Geometry (2nd ed.)",
+          "url": "https://www.cambridge.org/us/universitypress/subjects/computer-science/computer-graphics-image-processing-and-robotics/multiple-view-geometry-computer-vision-2nd-edition"
+        },
+        {
+          "label": "Hartley & Zisserman book page (Oxford VGG)",
+          "url": "https://www.robots.ox.ac.uk/~vgg/hzbook/"
+        }
+      ],
+      "notes": "Authors: Richard Hartley (ANU) and Andrew Zisserman (University of Oxford). Often abbreviated “HZ” in vision literature.",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "R7020E",
+          "courseTitle": "Computer Vision and Image Processing",
+          "category": "Book",
+          "notes": "2nd edition (2004)."
+        }
+      ]
+    },
+    "9780393667813": {
+      "id": "9780393667813",
+      "slug": "gazzaniga-cognitive-neuroscience",
+      "title": "Cognitive Neuroscience: The Biology of the Mind",
+      "subtitle": "The Biology of the Mind",
+      "authors": [
+        "Michael S. Gazzaniga",
+        "Richard B. Ivry",
+        "George R. Mangun"
+      ],
+      "authorDisplay": "Michael S. Gazzaniga, Richard B. Ivry, George R. Mangun",
+      "publisher": "W. W. Norton & Company",
+      "year": 2018,
+      "edition": "5th (International Student Edition)",
+      "isbn": "9780393667813",
+      "isbn10": "0393667812",
+      "language": "en",
+      "pages": 655,
+      "format": "Paperback / hardcover variants",
+      "url": "https://seagull.wwnorton.com/cognitiveneuroscience",
+      "coverUrl": "",
+      "summary": "A leading undergraduate textbook in cognitive neuroscience by Gazzaniga, Ivry, and Mangun. The 5th edition (Norton; International Student Edition ISBN 9780393667813) surveys the history and methods of the field, core processes (perception, attention, memory, language, emotion, action), and control processes (cognitive control, social cognition, consciousness), with clinical links and updated ‘Hot Science’ material.",
+      "whyRead": [
+        "Gold-standard survey text for human cognitive neuroscience courses (e.g. P7002H).",
+        "Balances systems neuroscience with cognitive theory and clinical lessons.",
+        "Clear chapter structure with take-home messages and anatomical orientation aids.",
+        "Authors are founding figures / active researchers in the field."
+      ],
+      "audience": [
+        "Undergraduate psychology / neuroscience / cognitive science students",
+        "Graduate students needing a structured overview of cognitive neuroscience"
+      ],
+      "prerequisites": [
+        "Introductory psychology or biology helpful",
+        "No advanced maths required for the main narrative"
+      ],
+      "agenda": [
+        "Learn nervous-system structure/function and cognitive neuroscience methods.",
+        "Study hemispheric specialisation, sensation/perception, and object recognition.",
+        "Cover attention, action, memory, emotion, and language.",
+        "Explore cognitive control, social cognition, and consciousness."
+      ],
+      "topics": [
+        "History and methods of cognitive neuroscience",
+        "Nervous system structure and function",
+        "Hemispheric specialisation",
+        "Sensation, perception, object recognition",
+        "Attention and action",
+        "Memory, emotion, language",
+        "Cognitive control and social cognition",
+        "Consciousness"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Part I — Background and methods",
+          "items": [
+            "1. A Brief History of Cognitive Neuroscience",
+            "2. Structure and Function of the Nervous System",
+            "3. Methods of Cognitive Neuroscience"
+          ]
+        },
+        {
+          "heading": "Part II — Core processes",
+          "items": [
+            "4. Hemispheric Specialization",
+            "5. Sensation and Perception",
+            "6. Object Recognition",
+            "7. Attention",
+            "8. Action",
+            "9. Memory",
+            "10. Emotion",
+            "11. Language"
+          ]
+        },
+        {
+          "heading": "Part III — Control processes",
+          "items": [
+            "12. Cognitive Control",
+            "13. Social Cognition",
+            "14. The Consciousness Problem"
+          ]
+        }
+      ],
+      "howToUse": [
+        "Use Part I for methods orientation, then assign Part II chapters to match lecture topics.",
+        "Part III suits later modules on executive function, social brain, and consciousness.",
+        "Norton digital resources / companion sites support instructors (edition-dependent)."
+      ],
+      "editions": [
+        {
+          "label": "5th International Student Edition",
+          "isbn": "9780393667813",
+          "year": 2018,
+          "notes": "W. W. Norton; ISBN used in this hub (~655 pages)."
+        },
+        {
+          "label": "5th edition (US hardcover variant)",
+          "isbn": "9780393603170",
+          "year": 2019,
+          "notes": "Related US listing; confirm packaging with bookstore."
+        }
+      ],
+      "links": [
+        {
+          "label": "Norton — Cognitive Neuroscience (publisher resources)",
+          "url": "https://seagull.wwnorton.com/cognitiveneuroscience",
+          "kind": "publisher"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Wiley Direct AU — 5th ISE listing (TOC)",
+          "url": "https://www.wileydirect.com.au/blog/buy/cognitive-neuroscience-international-student-edition/"
+        },
+        {
+          "label": "Google Books — Fifth International Student Edition",
+          "url": "https://books.google.com/books/about/Cognitive_Neuroscience.html?id=1mSbDwAAQBAJ"
+        }
+      ],
+      "notes": "A later 6th edition exists with additional co-authors; this hub entry matches the 5th ISE ISBN listed for the programme.",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "P7002H",
+          "courseTitle": "Human Cognitive Neuroscience",
+          "category": "Book",
+          "notes": "5th edition (2019), International Student Edition as listed on the syllabus. US hardcover ISBN is 9780393603170. Complementary materials may be added by the teacher."
+        }
+      ]
+    },
+    "9783642201431": {
+      "id": "9783642201431",
+      "slug": "corke-rvc-1e",
+      "title": "Robotics, Vision and Control: Fundamental Algorithms in MATLAB",
+      "subtitle": "Fundamental Algorithms in MATLAB (First Edition)",
+      "authors": [
+        "Peter Corke"
+      ],
+      "authorDisplay": "Peter Corke",
+      "publisher": "Springer",
+      "year": 2011,
+      "edition": "1st",
+      "isbn": "9783642201431",
+      "isbn10": "3642201431",
+      "language": "en",
+      "pages": null,
+      "format": "Softcover / e-book",
+      "url": "https://petercorke.com/rvc/",
+      "coverUrl": "",
+      "summary": "First edition (2011) of Peter Corke’s MATLAB-centred introduction to robotics, vision, and control, based on the Robotics and Machine Vision Toolboxes. Largely superseded for new courses by the expanded 2nd edition (2017, ISBN 9783319544120), but still appears on some reading lists (e.g. R7010E).",
+      "whyRead": [
+        "Same author/toolbox approach as the 2nd edition if that is what your course specifies.",
+        "Still useful historically; prefer 2nd edition unless the syllabus pins this ISBN."
+      ],
+      "audience": [
+        "Robotics / vision students whose syllabus lists the 2011 edition"
+      ],
+      "prerequisites": [
+        "Linear algebra and basic programming (MATLAB)",
+        "Introductory mechanics helpful"
+      ],
+      "agenda": [
+        "Learn pose, mobile robots, arm kinematics, and basic vision with MATLAB toolboxes.",
+        "Compare with the 2nd edition chapter list if migrating between editions."
+      ],
+      "topics": [
+        "Robotics foundations",
+        "Mobile robots and manipulators",
+        "Computer vision basics",
+        "Vision-based control (introductory)"
+      ],
+      "tableOfContents": [
+        {
+          "heading": "Note",
+          "items": [
+            "Structure parallels the later 2nd edition (Foundations → Mobile robots → Arms → Vision → Visual control) with less expanded material.",
+            "See entry 9783319544120 for the detailed 2nd-edition chapter list."
+          ]
+        }
+      ],
+      "howToUse": [
+        "Confirm with the examiner whether the course expects 1st or 2nd edition.",
+        "Use matching older toolbox versions if following 1st-edition code listings.",
+        "Prefer the 2017 edition page on petercorke.com/rvc for current software."
+      ],
+      "editions": [
+        {
+          "label": "1st edition",
+          "isbn": "9783642201431",
+          "year": 2011,
+          "notes": "Springer; ISBN listed for R7010E in this hub."
+        },
+        {
+          "label": "2nd edition (recommended update)",
+          "isbn": "9783319544120",
+          "year": 2017,
+          "notes": "See separate literature entry."
+        }
+      ],
+      "links": [
+        {
+          "label": "Author — RVC editions",
+          "url": "https://petercorke.com/rvc/",
+          "kind": "free"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Peter Corke — Robotics, Vision & Control",
+          "url": "https://petercorke.com/rvc/"
+        }
+      ],
+      "notes": "Companion to the fuller 2nd-edition entry (9783319544120).",
+      "status": "detailed",
+      "usedIn": [
+        {
+          "courseCode": "R7010E",
+          "courseTitle": "Robotics",
+          "category": "Book",
+          "notes": "Syllabus lists Springer, 2013 (corrected second printing of the 1st edition). Softback ISBN 978-3-642-20143-1. Later editions (2017, 2023) also exist."
+        }
+      ]
+    }
+  }
+}

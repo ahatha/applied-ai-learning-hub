@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
   <script>
     (function () {
       try {
@@ -25,50 +26,49 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/components.css?v=20260721j">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
     .calendar-page {
-      --cal-text: #20242b;
-      --cal-muted: #666;
-      --cal-border: #ccc;
-      --cal-accent: #0d6efd;
-      --period-1: #d8ecff;
-      --period-2: #e7dcff;
-      --period-3: #dff3e5;
-      --period-4: #fff0c9;
-      --exam: #f7c9c9;
-      --reexam: #f2b5dc;
-      --orientation: #d9e2f2;
-      --reading-day: #cceef2;
-      --special-day: #f7df9d;
-      --saturday: #ececec;
-      --weekend: rgba(255, 0, 0, 0.1);
-      --holiday: #c9b8b8;
+      --cal-text: var(--text);
+      --cal-muted: var(--text-muted);
+      --cal-border: var(--border);
+      --cal-accent: var(--accent);
+      --cal-bg: var(--bg-elevated);
+      --cal-bg-muted: var(--bg-muted);
+      --period-1: color-mix(in srgb, var(--accent) 18%, var(--cal-bg));
+      --period-2: color-mix(in srgb, var(--focus) 16%, var(--cal-bg));
+      --period-3: color-mix(in srgb, var(--success) 16%, var(--cal-bg));
+      --period-4: color-mix(in srgb, var(--warm) 20%, var(--cal-bg));
+      --exam: color-mix(in srgb, var(--danger) 16%, var(--cal-bg));
+      --reexam: color-mix(in srgb, var(--danger) 26%, var(--cal-bg));
+      --orientation: color-mix(in srgb, var(--focus) 10%, var(--cal-bg));
+      --reading-day: color-mix(in srgb, var(--accent) 10%, var(--cal-bg));
+      --special-day: color-mix(in srgb, var(--warning) 22%, var(--cal-bg));
+      --saturday: var(--cal-bg-muted);
+      --weekend: color-mix(in srgb, var(--danger) 9%, var(--cal-bg));
+      --holiday: color-mix(in srgb, var(--text-muted) 22%, var(--cal-bg));
     }
 
-    .calendar-page .page-title {
-      text-align: center;
-      margin: 0 0 6px;
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
-    }
-
-    .calendar-page .subtitle {
-      text-align: center;
-      color: var(--text-muted, var(--cal-muted));
-      margin-bottom: 16px;
+    .calendar-shell {
+      margin-top: var(--space-4);
+      padding: var(--space-5);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-elevated);
+      box-shadow: var(--shadow);
     }
 
     .calendar-page .error-box {
       max-width: 920px;
       margin: 0 auto 18px;
       padding: 14px 16px;
-      border: 1px solid #f1aeb5;
+      border: 1px solid color-mix(in srgb, var(--danger) 45%, var(--border));
       border-radius: 8px;
-      background: #f8d7da;
-      color: #842029;
+      background: color-mix(in srgb, var(--danger) 15%, var(--cal-bg));
+      color: var(--danger);
       font-size: 14px;
       display: none;
     }
@@ -77,18 +77,27 @@
 
     .calendar-page .nav-tabs {
       flex-wrap: wrap;
-      margin-top: 8px;
+      margin-top: 0;
       margin-bottom: 20px;
+      border-bottom-color: var(--cal-border);
     }
 
     .calendar-page .nav-tabs .nav-link {
       color: var(--cal-accent);
       font-weight: 500;
+      border-color: transparent;
+    }
+
+    .calendar-page .nav-tabs .nav-link:hover {
+      border-color: var(--cal-border);
+      isolation: isolate;
     }
 
     .calendar-page .nav-tabs .nav-link.active {
-      color: #495057;
+      color: var(--cal-text);
       font-weight: 600;
+      background-color: var(--cal-bg);
+      border-color: var(--cal-border) var(--cal-border) var(--cal-bg);
     }
 
     .calendar-page .summary {
@@ -97,7 +106,7 @@
       display: grid;
       grid-template-columns: repeat(4, minmax(160px, 1fr));
       border: 1px solid var(--cal-border);
-      background: #fff;
+      background: var(--cal-bg);
       color: var(--cal-text);
     }
 
@@ -112,14 +121,14 @@
 
     .calendar-page .summary-card strong {
       display: block;
-      background: #f0f0f0;
+      background: var(--cal-bg-muted);
       margin: -8px -8px 8px;
       padding: 8px;
     }
 
     .calendar-page .summary-card span {
       display: block;
-      color: #555;
+      color: var(--cal-muted);
       font-size: 13px;
       line-height: 1.35;
     }
@@ -138,9 +147,9 @@
       padding: 10px;
       border: 1px solid var(--cal-border);
       border-radius: 8px;
-      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow);
       text-align: center;
-      background: #fff;
+      background: var(--cal-bg);
       color: var(--cal-text);
       overflow: visible;
     }
@@ -172,12 +181,12 @@
       padding: 5px 0;
       font-size: 13px;
       font-weight: 700;
-      color: #555;
+      color: var(--cal-muted);
     }
 
     .calendar-page .weekdays .weeknum-head {
       font-size: 11px;
-      color: #888;
+      color: var(--cal-muted);
       padding: 5px 0;
     }
 
@@ -187,8 +196,8 @@
       justify-content: center;
       font-size: 11px;
       font-weight: 700;
-      color: #888;
-      background: #f7f7f7;
+      color: var(--cal-muted);
+      background: var(--cal-bg-muted);
       line-height: 1;
       padding: 0;
     }
@@ -205,12 +214,12 @@
       justify-content: flex-start;
       overflow: hidden;
       font-weight: bold;
-      background: #fff;
+      background: var(--cal-bg);
       color: var(--cal-text);
     }
 
     .calendar-page .day.empty {
-      background: #fff;
+      background: var(--cal-bg);
       aspect-ratio: 1 / 1;
     }
 
@@ -233,7 +242,7 @@
       font-size: 11px;
       line-height: 1.15;
       font-weight: 600;
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 1px solid color-mix(in srgb, var(--cal-text) 12%, transparent);
       word-break: break-word;
       overflow-wrap: anywhere;
       overflow: hidden;
@@ -279,14 +288,14 @@
       height: 20px;
       margin-right: 8px;
       border-radius: 4px;
-      border: 1px solid rgba(0, 0, 0, 0.15);
+      border: 1px solid color-mix(in srgb, var(--cal-text) 18%, transparent);
       flex: 0 0 auto;
     }
 
     .calendar-page .note,
     .calendar-page .source-links {
       font-size: 13px;
-      color: var(--text-muted, var(--cal-muted));
+      color: var(--cal-muted);
       margin-top: 10px;
     }
 
@@ -346,6 +355,14 @@
         page-break-inside: avoid;
       }
     }
+
+    /* Header icon and calendar page-header — match index.html's design language. */
+    .theme-toggle__icon { display: none; }
+    [data-theme="light"] .theme-toggle__icon--light,
+    [data-theme="dark"] .theme-toggle__icon--dark { display: inline-block; }
+
+    .page-header .eyebrow i { margin-right: 0.4rem; }
+    .site-footer__links a i { margin-right: 0.35rem; color: var(--accent); }
   </style>
 </head>
 <body>
@@ -360,47 +377,55 @@
         <span class="brand__mark" aria-hidden="true">AI</span>
         <span class="brand__text">Applied AI Programme Hub<small>LTU Applied AI · 2026–2028</small></span>
       </a>
-      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">◐</button>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">
+        <i class="fa-solid fa-sun theme-toggle__icon theme-toggle__icon--light" aria-hidden="true"></i>
+        <i class="fa-solid fa-moon theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true"></i>
+      </button>
     </div>
   </header>
 
   <main id="main" class="site-main">
     <div class="container calendar-page">
-      <h1 class="page-title">LTU Academic Year Calendars</h1>
-      <p class="subtitle">Study periods, examinations, re-examinations, reading days and special days</p>
+      <header class="page-header">
+        <p class="eyebrow"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Luleå University of Technology</p>
+        <h1>LTU Academic Year Calendars</h1>
+        <p class="lead">Study periods, examinations, re-examinations, reading days and special days for 2026–2027 and 2027–2028.</p>
+      </header>
 
-      <div id="load-error" class="error-box" role="alert"></div>
+      <div class="calendar-shell">
+        <div id="load-error" class="error-box" role="alert"></div>
 
-      <ul class="nav nav-tabs" id="yearTabs" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="tab-2026-2027" data-bs-toggle="tab"
-            data-bs-target="#panel-2026-2027" type="button" role="tab"
-            aria-controls="panel-2026-2027" aria-selected="true">2026–2027</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="tab-2027-2028" data-bs-toggle="tab"
-            data-bs-target="#panel-2027-2028" type="button" role="tab"
-            aria-controls="panel-2027-2028" aria-selected="false">2027–2028</button>
-        </li>
-      </ul>
+        <ul class="nav nav-tabs" id="yearTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="tab-2026-2027" data-bs-toggle="tab"
+              data-bs-target="#panel-2026-2027" type="button" role="tab"
+              aria-controls="panel-2026-2027" aria-selected="true">2026–2027</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-2027-2028" data-bs-toggle="tab"
+              data-bs-target="#panel-2027-2028" type="button" role="tab"
+              aria-controls="panel-2027-2028" aria-selected="false">2027–2028</button>
+          </li>
+        </ul>
 
-      <div class="tab-content" id="yearTabContent">
-        <div class="tab-pane fade show active year-section" id="panel-2026-2027" role="tabpanel"
-          aria-labelledby="tab-2026-2027" tabindex="0">
-          <div id="summary-2026-2027" class="summary"></div>
-          <div id="calendar-2026-2027" class="calendar"></div>
-          <div id="legend-2026-2027" class="legend"></div>
-          <div id="source-2026-2027" class="source-links"></div>
-          <p class="note">Canvas and TimeEdit are authoritative for course-specific schedules.</p>
-        </div>
+        <div class="tab-content" id="yearTabContent">
+          <div class="tab-pane fade show active year-section" id="panel-2026-2027" role="tabpanel"
+            aria-labelledby="tab-2026-2027" tabindex="0">
+            <div id="summary-2026-2027" class="summary"></div>
+            <div id="calendar-2026-2027" class="calendar"></div>
+            <div id="legend-2026-2027" class="legend"></div>
+            <div id="source-2026-2027" class="source-links"></div>
+            <p class="note">Canvas and TimeEdit are authoritative for course-specific schedules.</p>
+          </div>
 
-        <div class="tab-pane fade year-section" id="panel-2027-2028" role="tabpanel"
-          aria-labelledby="tab-2027-2028" tabindex="0">
-          <div id="summary-2027-2028" class="summary"></div>
-          <div id="calendar-2027-2028" class="calendar"></div>
-          <div id="legend-2027-2028" class="legend"></div>
-          <div id="source-2027-2028" class="source-links"></div>
-          <p class="note">Canvas and TimeEdit are authoritative for course-specific schedules.</p>
+          <div class="tab-pane fade year-section" id="panel-2027-2028" role="tabpanel"
+            aria-labelledby="tab-2027-2028" tabindex="0">
+            <div id="summary-2027-2028" class="summary"></div>
+            <div id="calendar-2027-2028" class="calendar"></div>
+            <div id="legend-2027-2028" class="legend"></div>
+            <div id="source-2027-2028" class="source-links"></div>
+            <p class="note">Canvas and TimeEdit are authoritative for course-specific schedules.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -410,10 +435,10 @@
     <div class="container">
       <p>Personal learning hub for the LTU Master Programme in Applied AI. Not an official website of Luleå University of Technology.</p>
       <p class="site-footer__links">
-        <a href="index.html">Programme explorer</a>
-        <a href="academic-calendar.html">Academic calendar</a>
-        <a href="https://github.com/ahatha/applied-ai-learning-hub" rel="noopener noreferrer" target="_blank">GitHub repository</a>
-        <a href="https://www.ltu.se/en/education/programme/tmdia-master-programme-in-applied-ai" rel="noopener noreferrer" target="_blank">Official LTU programme page</a>
+        <a href="index.html"><i class="fa-solid fa-sitemap" aria-hidden="true"></i> Programme explorer</a>
+        <a href="academic-calendar.html"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Academic calendar</a>
+        <a href="https://github.com/ahatha/applied-ai-learning-hub" rel="noopener noreferrer" target="_blank"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub repository</a>
+        <a href="https://www.ltu.se/en/education/programme/tmdia-master-programme-in-applied-ai" rel="noopener noreferrer" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Official LTU programme page</a>
       </p>
     </div>
   </footer>

@@ -8,19 +8,337 @@
     return window.AailhData;
   }
 
+  function normalizeIsbnDigits(value) {
+    return String(value || "").replace(/[^0-9Xx]/g, "");
+  }
+
+  /** Cover from explicit URL, else Open Library ISBN cover (internet). */
+  function literatureCoverUrl(book) {
+    if (!book) return "";
+    if (book.coverUrl) return String(book.coverUrl).trim();
+    var isbn = normalizeIsbnDigits(book.isbn || book.literatureId || "");
+    if (isbn.length === 10 || isbn.length === 13) {
+      return "https://covers.openlibrary.org/b/isbn/" + encodeURIComponent(isbn) + "-L.jpg?default=false";
+    }
+    return "";
+  }
+
+  function literatureBookCardHtml(book, options) {
+    options = options || {};
+    var esc = D().escapeHtml.bind(D());
+    var detailHref = book.literatureId
+      ? D().resolvePageLink("literature/" + encodeURIComponent(book.literatureId) + ".html")
+      : "";
+    var href = detailHref || book.url || "";
+    var cover = literatureCoverUrl(book);
+    var title = book.title || "Untitled";
+    var tag = href ? "a" : "article";
+    var linkAttrs = href
+      ? ' href="' +
+        esc(href) +
+        '"' +
+        (detailHref
+          ? ""
+          : ' rel="noopener noreferrer" target="_blank"') +
+        ' class="literature-book literature-book--link"'
+      : ' class="literature-book"';
+    var coverInner = cover
+      ? '<img class="literature-book__cover" src="' +
+        esc(cover) +
+        '" alt="" loading="lazy" decoding="async" onerror="this.onerror=null;var w=this.parentElement;this.remove();if(w)w.classList.add(\'is-fallback\');" />'
+      : "";
+    var categoryCaption =
+      options.showCategory && book.category
+        ? '<p class="literature-book__caption">' + esc(book.category) + "</p>"
+        : "";
+    return (
+      "<" +
+      tag +
+      linkAttrs +
+      ">" +
+      categoryCaption +
+      '<div class="literature-book__cover-wrap' +
+      (cover ? "" : " is-fallback") +
+      '">' +
+      coverInner +
+      '<div class="literature-book__fallback" aria-hidden="true"><i class="fa-solid fa-book"></i></div>' +
+      "</div>" +
+      '<div class="literature-book__meta">' +
+      "<h4>" +
+      esc(title) +
+      "</h4>" +
+      (book.author
+        ? '<p class="literature-book__byline">' + esc(book.author) + "</p>"
+        : "") +
+      (book.isbn
+        ? '<p class="literature-book__isbn">' + esc(book.isbn) + "</p>"
+        : "") +
+      "</div>" +
+      "</" +
+      tag +
+      ">"
+    );
+  }
+
+  /** Keep syllabus order; merge consecutive books that share a category. */
+  function groupLiteratureByCategory(lit) {
+    var groups = [];
+    (lit || []).forEach(function (book) {
+      var category = String(book.category || "").trim();
+      var last = groups[groups.length - 1];
+      if (last && last.category === category) {
+        last.books.push(book);
+      } else {
+        groups.push({ category: category, books: [book] });
+      }
+    });
+    return groups;
+  }
+
+  function literatureGridItemsHtml(books, showCategory) {
+    return books
+      .map(function (book) {
+        return (
+          '<div class="literature-book-grid__item" role="listitem">' +
+          literatureBookCardHtml(book, { showCategory: !!showCategory }) +
+          "</div>"
+        );
+      })
+      .join("");
+  }
+
+  function literatureGroupsHtml(lit) {
+    var esc = D().escapeHtml.bind(D());
+    var parts = [];
+    var pendingSingles = [];
+
+    function flushSingles() {
+      if (!pendingSingles.length) return;
+      parts.push(
+        '<div class="literature-book-group literature-book-group--flow">' +
+          '<div class="literature-book-grid" role="list">' +
+          literatureGridItemsHtml(pendingSingles, true) +
+          "</div></div>"
+      );
+      pendingSingles = [];
+    }
+
+    groupLiteratureByCategory(lit).forEach(function (group) {
+      var isSharedChoice = group.books.length > 1 && group.category;
+      if (isSharedChoice) {
+        flushSingles();
+        parts.push(
+          '<div class="literature-book-group literature-book-group--multi">' +
+            '<p class="literature-book-group__label">' +
+            esc(group.category) +
+            "</p>" +
+            '<div class="literature-book-grid" role="list">' +
+            literatureGridItemsHtml(group.books, false) +
+            "</div></div>"
+        );
+      } else {
+        group.books.forEach(function (book) {
+          pendingSingles.push(book);
+        });
+      }
+    });
+    flushSingles();
+
+    return '<div class="literature-book-groups">' + parts.join("") + "</div>";
+  }
+
+  /** Compact LTU person card (local copy so course hub works even if data-loader cache is stale). */
+  function contactInitials(name) {
+    var parts = String(name || "")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+    if (!parts.length) return "?";
+    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+    return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+  }
+
+  function contactCardHtml(person, options) {
+    if (D() && typeof D().contactCardHtml === "function") {
+      return D().contactCardHtml(person, options);
+    }
+    options = options || {};
+    if (!person || !person.name) return "";
+    var esc = D()
+      ? D().escapeHtml.bind(D())
+      : function (v) {
+          return String(v == null ? "" : v)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        };
+    var name = String(person.name || "").trim();
+    var role = String(person.role || "").trim();
+    role = role
+      .replace(/\s*[\/|]\s*Examiner\b/gi, "")
+      .replace(/,\s*Examiner\b/gi, "")
+      .replace(/\bExaminer\b/gi, "")
+      .replace(/\s{2,}/g, " ")
+      .replace(/^[\s,\/|-]+|[\s,\/|-]+$/g, "")
+      .trim();
+    var email = String(person.email || "").trim();
+    var phone = String(person.phone || "").trim();
+    var profileUrl = String(person.profileUrl || "").trim();
+    var photoUrl = String(person.photoUrl || person.imageUrl || "").trim();
+    if (/dummy\.svg|bakgrundsbild/i.test(photoUrl)) photoUrl = "";
+    var date = String(person.date || "").trim();
+    var label = String(options.label || "").trim();
+    var extraClass = options.className ? " " + options.className : "";
+    var initials = contactInitials(name);
+    var nameInner = esc(name);
+    if (profileUrl) {
+      nameInner =
+        '<a class="contact-card__name-link" href="' +
+        esc(profileUrl) +
+        '" rel="noopener noreferrer" target="_blank">' +
+        nameInner +
+        "</a>";
+    }
+    var metaParts = [];
+    if (email) {
+      metaParts.push(
+        '<a class="contact-card__meta-item" href="mailto:' +
+          esc(email) +
+          '"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>' +
+          esc(email) +
+          "</span></a>"
+      );
+    }
+    if (phone) {
+      metaParts.push(
+        '<a class="contact-card__meta-item" href="tel:' +
+          esc(phone.replace(/\s+/g, "")) +
+          '"><i class="fa-solid fa-phone" aria-hidden="true"></i><span>' +
+          esc(phone) +
+          "</span></a>"
+      );
+    }
+    if (profileUrl) {
+      metaParts.push(
+        '<a class="contact-card__meta-item" href="' +
+          esc(profileUrl) +
+          '" rel="noopener noreferrer" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span>LTU profile</span></a>'
+      );
+    }
+    if (date) {
+      metaParts.push(
+        '<span class="contact-card__meta-item contact-card__meta-item--muted"><i class="fa-solid fa-calendar-day" aria-hidden="true"></i><time datetime="' +
+          esc(date) +
+          '">' +
+          esc(date) +
+          "</time></span>"
+      );
+    }
+    var photoHtml =
+      '<div class="contact-card__photo' +
+      (photoUrl ? "" : " is-fallback") +
+      '" aria-hidden="true">' +
+      (photoUrl
+        ? '<img class="contact-card__photo-img" src="' +
+          esc(photoUrl) +
+          '" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;var p=this.parentElement;this.remove();if(p)p.classList.add(\'is-fallback\');" />'
+        : "") +
+      '<span class="contact-card__initials">' +
+      esc(initials) +
+      "</span></div>";
+    return (
+      '<article class="contact-card contact-card--id' +
+      extraClass +
+      '">' +
+      '<header class="contact-card__band">' +
+      '<span class="contact-card__org">LTU</span>' +
+      (label
+        ? '<span class="contact-card__label">' + esc(label) + "</span>"
+        : '<span class="contact-card__label">Examiner</span>') +
+      "</header>" +
+      '<div class="contact-card__body">' +
+      photoHtml +
+      '<div class="contact-card__identity">' +
+      '<p class="contact-card__name">' +
+      nameInner +
+      "</p>" +
+      (role ? '<p class="contact-card__role">' + esc(role) + "</p>" : "") +
+      "</div>" +
+      "</div>" +
+      (metaParts.length ? '<div class="contact-card__meta">' + metaParts.join("") + "</div>" : "") +
+      '<footer class="contact-card__strip" aria-hidden="true"></footer>' +
+      "</article>"
+    );
+  }
+
+  function contactCardGridHtml(people, options) {
+    if (D() && typeof D().contactCardGridHtml === "function") {
+      return D().contactCardGridHtml(people, options);
+    }
+    var list = (people || []).filter(function (p) {
+      return p && p.name;
+    });
+    if (!list.length) return "";
+    return (
+      '<div class="contact-card-grid">' +
+      list
+        .map(function (person) {
+          return contactCardHtml(person, options);
+        })
+        .join("") +
+      "</div>"
+    );
+  }
+
+  function parsePersonByline(by) {
+    if (D() && typeof D().parsePersonByline === "function") {
+      return D().parsePersonByline(by);
+    }
+    by = String(by || "")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (!by) return { name: "", role: "" };
+    var titled = by.match(
+      /^(Director of Undergraduate Studies|Head of|Dean of|Professor)\s+(.+)$/i
+    );
+    if (titled) {
+      var rest = titled[2];
+      var comma = rest.indexOf(",");
+      if (comma > 0) {
+        return {
+          name: rest.slice(0, comma).trim(),
+          role: (titled[1] + ", " + rest.slice(comma + 1).trim()).replace(/^,\s*/, "")
+        };
+      }
+      return { name: rest.trim(), role: titled[1] };
+    }
+    var idx = by.indexOf(",");
+    if (idx > 0) {
+      var left = by.slice(0, idx).trim();
+      var right = by.slice(idx + 1).trim();
+      if (left.split(/\s+/).length >= 2 && left.split(/\s+/).length <= 5) {
+        return { name: left, role: right };
+      }
+    }
+    return { name: by, role: "" };
+  }
+
   function setHtml(el, html) {
     if (el) {
       el.innerHTML = html;
     }
   }
 
-  function zone(label, className, body) {
+  function zone(id, label, className, body) {
     return (
-      '<section class="content-zone content-zone--course ' +
+      '<section id="' +
+      D().escapeHtml(id) +
+      '" class="content-zone content-zone--course ' +
       className +
-      '"><p class="zone-label"><span class="sr-only">Content origin: </span>' +
+      '" aria-label="' +
       D().escapeHtml(label) +
-      "</p>" +
+      '">' +
       body +
       "</section>"
     );
@@ -61,18 +379,106 @@
     );
   }
 
-  function sectionHead(kicker, title) {
+  function sectionHead(kicker, title, iconClass) {
+    var icon = iconClass
+      ? '<span class="course-section-head__icon" aria-hidden="true"><i class="' +
+        D().escapeHtml(iconClass) +
+        '"></i></span>'
+      : "";
     return (
-      '<header class="course-section-head"><p class="course-section-head__kicker">' +
+      '<header class="course-section-head">' +
+      icon +
+      '<div><p class="course-section-head__kicker">' +
       D().escapeHtml(kicker) +
       "</p><h2>" +
       D().escapeHtml(title) +
-      "</h2></header>"
+      "</h2></div></header>"
+    );
+  }
+
+  function quickNavHtml() {
+    var items = [
+      ["syllabus", "fa-solid fa-book-open-reader", "Syllabus"],
+      ["examination", "fa-solid fa-clipboard-check", "Examination"],
+      ["literature", "fa-solid fa-book", "Literature"],
+      ["links", "fa-solid fa-address-card", "Contacts"]
+    ];
+    return (
+      '<nav class="course-quick-nav" aria-label="Course hub sections">' +
+      items
+        .map(function (item) {
+          return (
+            '<a href="#' +
+            item[0] +
+            '"><i class="' +
+            item[1] +
+            '" aria-hidden="true"></i> ' +
+            item[2] +
+            "</a>"
+          );
+        })
+        .join("") +
+      "</nav>"
     );
   }
 
   function subHead(title) {
     return '<h3 class="course-subhead">' + D().escapeHtml(title) + "</h3>";
+  }
+
+  function syllabusAttributionHtml(meta, knownContacts) {
+    var lastRevised = meta && meta.lastRevised ? meta.lastRevised : null;
+    var established = meta && meta.syllabusEstablished ? meta.syllabusEstablished : null;
+    if (!lastRevised && !established) {
+      return "";
+    }
+
+    function cardFromEntry(entry, label) {
+      if (!entry) return "";
+      var by = typeof entry === "string" ? entry : entry.by || "";
+      var date = typeof entry === "string" ? "" : entry.date || "";
+      var parsed = parsePersonByline(by);
+      if (!parsed.name) return "";
+      var person = {
+        name: parsed.name,
+        role: (typeof entry === "object" && entry.role) || "",
+        date: date,
+        email: typeof entry === "object" ? entry.email || "" : "",
+        phone: typeof entry === "object" ? entry.phone || "" : "",
+        profileUrl: typeof entry === "object" ? entry.profileUrl || "" : "",
+        photoUrl: typeof entry === "object" ? entry.photoUrl || "" : ""
+      };
+      var needle = parsed.name.toLowerCase();
+      (knownContacts || []).some(function (c) {
+        if (!c || !c.name) return false;
+        if (String(c.name).toLowerCase() !== needle) return false;
+        if (!person.email && c.email) person.email = c.email;
+        if (!person.phone && c.phone) person.phone = c.phone;
+        if (!person.profileUrl && c.profileUrl) person.profileUrl = c.profileUrl;
+        if (!person.photoUrl && c.photoUrl) person.photoUrl = c.photoUrl;
+        if (!person.role && c.role) person.role = c.role;
+        return true;
+      });
+      if (!person.role && parsed.role) person.role = parsed.role;
+      return contactCardHtml(person, {
+        label: label,
+        className: "contact-card--attribution"
+      });
+    }
+
+    var cards =
+      cardFromEntry(lastRevised, "Last revised") +
+      cardFromEntry(established, "Syllabus established");
+
+    if (!cards) {
+      return "";
+    }
+
+    return (
+      '<div class="contact-card-grid contact-card-grid--attribution" aria-label="Syllabus revision">' +
+      cards +
+      "</div>"
+    );
   }
 
   /**
@@ -120,14 +526,6 @@
     var details =
       detailsData && detailsData.courses ? detailsData.courses[course.code] || null : null;
 
-    var sourcesData = await D().loadJson("data/sources.json");
-    var source =
-      sourcesData && sourcesData.sources
-        ? sourcesData.sources.find(function (s) {
-            return s.id === "ltu-syllabus-2026-2027";
-          })
-        : null;
-
     var periodLabel =
       course.studyPeriod == null ? "—" : "Study period " + course.studyPeriod;
 
@@ -148,9 +546,6 @@
     var gradeScale = course.gradeScale || meta.gradeScale || "";
     var selection = course.selection || meta.selection || "";
     var offeredBy = course.offeredBy || meta.offeredBy || "";
-    var aimText = syl.aim || course.syllabusAim || "";
-    var detailsStatus =
-      meta.verificationStatus || course.detailsVerificationStatus || "awaiting";
 
     var offering = course.offeringDetails || null;
     var offeringHtml = "";
@@ -187,56 +582,30 @@
         if (!existing.email && detailContact.email) {
           existing.email = detailContact.email;
         }
+        if (!existing.photoUrl && detailContact.photoUrl) {
+          existing.photoUrl = detailContact.photoUrl;
+        }
       } else {
         contacts.push({
           name: detailContact.name,
           role: detailContact.role || "Listed course contact",
           profileUrl: detailContact.profileUrl || "",
           phone: detailContact.phone || "",
-          email: detailContact.email || ""
+          email: detailContact.email || "",
+          photoUrl: detailContact.photoUrl || ""
         });
       }
     }
 
-    var contactsHtml = contacts.length
-      ? '<div class="contact-card-grid">' +
-        contacts
-          .map(function (contact) {
-            var name = D().escapeHtml(contact.name);
-            var role = D().escapeHtml(contact.role || "Listed course contact");
-            var body =
-              '<p class="contact-card__role"><span class="badge badge--role">' +
-              role +
-              "</span></p><h3>" +
-              name +
-              "</h3>";
-            if (contact.email) {
-              body +=
-                '<p class="contact-card__line"><span class="fact-chip__label">Email</span> <a href="mailto:' +
-                D().escapeHtml(contact.email) +
-                '">' +
-                D().escapeHtml(contact.email) +
-                "</a></p>";
-            }
-            if (contact.phone) {
-              body +=
-                '<p class="contact-card__line"><span class="fact-chip__label">Phone</span> <a href="tel:' +
-                D().escapeHtml(String(contact.phone).replace(/\s+/g, "")) +
-                '">' +
-                D().escapeHtml(contact.phone) +
-                "</a></p>";
-            }
-            if (contact.profileUrl) {
-              body +=
-                '<a class="action-chip action-chip--ghost" href="' +
-                D().escapeHtml(contact.profileUrl) +
-                '" rel="noopener noreferrer" target="_blank">Public profile</a>';
-            }
-            return '<article class="contact-card">' + body + "</article>";
-          })
-          .join("") +
-        "</div>"
-      : "<p>No course contacts listed for this course yet.</p>";
+    var examinersHtml = contacts.length ? contactCardGridHtml(contacts) : "";
+    var attributionHtml = syllabusAttributionHtml(meta, contacts);
+    var contactsHtml =
+      examinersHtml || attributionHtml
+        ? '<div class="contact-section-stacks">' +
+          examinersHtml +
+          attributionHtml +
+          "</div>"
+        : "<p>No course contacts listed for this course yet.</p>";
 
     var actionsHtml =
       '<div class="action-chip-row">' +
@@ -267,47 +636,33 @@
       (course.role === "optional-non-degree"
         ? '<span class="badge badge--warning">Outside 120 ECTS</span>'
         : "") +
-      '<span class="personal-status"><span class="personal-status__label">My status</span>' +
-      D().statusBadge(course.myStatus) +
-      "</span>" +
-      D().statusBadge(course.scheduleConfidence) +
       "</div>";
 
-    var officialFacts =
-      sectionHead("Catalogue", "Official LTU facts") +
-      '<div class="fact-chip-grid">' +
-      plainChip("Course code", course.code, "teal") +
-      plainChip("ECTS", String(course.ects), "teal") +
-      plainChip("Level", course.level || "—", "neutral") +
-      plainChip("Subject", subject || "— empty tag", subject ? "teal" : "empty") +
-      plainChip(
-        "Subject group (SCB)",
-        subjectGroup || "— empty tag",
-        subjectGroup ? "neutral" : "empty"
-      ) +
-      plainChip(
-        "Main field of study",
-        mainFieldOfStudy || "— empty tag",
-        mainFieldOfStudy ? "neutral" : "empty"
-      ) +
-      plainChip("Grade scale", gradeScale || "— empty tag", gradeScale ? "warm" : "empty") +
-      plainChip("Selection", selection || "— empty tag", selection ? "warm" : "empty") +
-      plainChip("Course offered by", offeredBy || "— empty tag", offeredBy ? "teal" : "empty") +
-      plainChip("Programme role", D().formatStatus(course.role), "teal") +
-      "</div>" +
-      (course.summary
-        ? '<p class="course-summary">' + D().escapeHtml(course.summary) + "</p>"
-        : "") +
-      offeringHtml;
+    function factRow(label, value) {
+      return (
+        "<tr><th scope=\"row\">" +
+        D().escapeHtml(label) +
+        "</th><td>" +
+        D().escapeHtml(value) +
+        "</td></tr>"
+      );
+    }
 
-    var scheduleHtml =
-      sectionHead("Timing", "Schedule and status") +
-      '<div class="fact-chip-grid">' +
-      plainChip("Academic year", course.academicYear || "—", "teal") +
-      plainChip("Period", periodLabel, "warm") +
-      chip("My status", D().statusBadge(course.myStatus), "neutral") +
-      chip("Schedule confidence", D().statusBadge(course.scheduleConfidence), "neutral") +
-      plainChip("Source status", D().formatStatus(course.verificationStatus), "neutral") +
+    var heroFactsHtml =
+      '<div class="course-hero__facts" aria-label="Course facts">' +
+      '<table class="course-facts-table">' +
+      "<tbody>" +
+      factRow("Academic year", course.academicYear || "—") +
+      factRow("Period", periodLabel) +
+      factRow("Subject", subject || "—") +
+      factRow("Subject group (SCB)", subjectGroup || "—") +
+      factRow("Main field of study", mainFieldOfStudy || "—") +
+      factRow("Grade scale", gradeScale || "—") +
+      factRow("Selection", selection || "—") +
+      factRow("Course offered by", offeredBy || "—") +
+      factRow("Source status", D().formatStatus(course.verificationStatus) || "—") +
+      "</tbody></table>" +
+      offeringHtml +
       "</div>";
 
     function emptyTag(label) {
@@ -318,202 +673,165 @@
       );
     }
 
-    var syllabusDetailsHtml;
-    if (!details) {
-      syllabusDetailsHtml =
-        sectionHead("Syllabus", "Syllabus and literature details") +
-        emptyPersonal("No enriched course-details entry yet for this course.");
-    } else {
-      var contentsHtml =
-        Array.isArray(syl.contents) && syl.contents.length
-          ? '<ol class="detail-list detail-list--rich">' +
-            syl.contents
-              .map(function (item, index) {
-                return (
-                  "<li><span class=\"detail-list__index\">" +
-                  (index + 1) +
-                  "</span><span>" +
-                  D().escapeHtml(item) +
-                  "</span></li>"
-                );
-              })
-              .join("") +
-            "</ol>"
-          : emptyTag("Contents");
+    function bulletListHtml(items) {
+      if (!Array.isArray(items) || !items.length) return "";
+      return (
+        '<ul class="detail-list syllabus-bullets">' +
+        items
+          .map(function (item) {
+            return "<li>" + D().escapeHtml(item) + "</li>";
+          })
+          .join("") +
+        "</ul>"
+      );
+    }
 
-      var entryItems = [];
-      if (Array.isArray(syl.entryRequirements)) {
-        entryItems = syl.entryRequirements;
-      } else if (typeof syl.entryRequirements === "string" && syl.entryRequirements.trim()) {
-        entryItems = [syl.entryRequirements.trim()];
+    function structuredBlockHtml(block, emptyLabel) {
+      if (!block) return emptyTag(emptyLabel);
+      if (typeof block === "string") {
+        return block.trim()
+          ? "<p>" + D().escapeHtml(block.trim()) + "</p>"
+          : emptyTag(emptyLabel);
+      }
+      if (Array.isArray(block)) {
+        return block.length ? bulletListHtml(block) : emptyTag(emptyLabel);
       }
 
-      var entryRequirementsHtml =
-        entryItems.length
-          ? '<ol class="detail-list detail-list--rich">' +
-            entryItems
-              .map(function (item, index) {
-                return (
-                  "<li><span class=\"detail-list__index\">" +
-                  (index + 1) +
-                  "</span><span>" +
-                  D().escapeHtml(item) +
-                  "</span></li>"
-                );
-              })
-              .join("") +
-            "</ol>"
-          : emptyTag("Entry requirements");
+      var html = "";
+      if (block.intro) {
+        html += '<p class="syllabus-block__intro">' + D().escapeHtml(block.intro) + "</p>";
+      }
+      if (Array.isArray(block.sections) && block.sections.length) {
+        html += block.sections
+          .map(function (section) {
+            var part = '<div class="syllabus-block__section">';
+            if (section.heading) {
+              part +=
+                '<h4 class="syllabus-block__heading">' +
+                D().escapeHtml(section.heading) +
+                "</h4>";
+            }
+            if (section.intro) {
+              part +=
+                '<p class="syllabus-block__intro">' +
+                D().escapeHtml(section.intro) +
+                "</p>";
+            }
+            part += bulletListHtml(section.items || []);
+            part += "</div>";
+            return part;
+          })
+          .join("");
+      } else {
+        html += bulletListHtml(block.items || []);
+      }
 
-      var modulesHtml =
-        Array.isArray(exam.modules) && exam.modules.length
-          ? '<div class="exam-module-grid">' +
-            exam.modules
-              .map(function (mod) {
-                var typeClass =
-                  String(mod.type || "")
-                    .toLowerCase()
-                    .indexOf("mandatory") !== -1
-                    ? "badge--mandatory"
-                    : "badge--module";
-                return (
-                  '<article class="exam-module-card">' +
-                  '<div class="exam-module-card__top">' +
-                  '<span class="badge badge--module-code">' +
-                  D().escapeHtml(mod.code || "—") +
-                  "</span>" +
-                  '<span class="badge ' +
-                  typeClass +
-                  '">' +
-                  D().escapeHtml(mod.type || "Module") +
-                  "</span></div>" +
-                  "<h4>" +
-                  D().escapeHtml(mod.name || "Module") +
-                  "</h4>" +
-                  '<div class="exam-module-card__meta">' +
-                  '<span class="badge badge--ects">' +
-                  D().escapeHtml(String(mod.credits != null ? mod.credits : "—")) +
-                  " cr</span>" +
-                  '<span class="badge badge--grade">' +
-                  D().escapeHtml(mod.gradeScale || "—") +
-                  "</span>" +
-                  (mod.fromPeriod
-                    ? '<span class="badge badge--module">From ' +
-                      D().escapeHtml(mod.fromPeriod) +
-                      "</span>"
-                    : "") +
-                  "</div></article>"
-                );
-              })
-              .join("") +
-            "</div>"
-          : emptyTag("Examination modules");
+      return html || emptyTag(emptyLabel);
+    }
 
-      var litHtml =
-        lit.length === 0
-          ? emptyTag("Literature")
-          : '<div class="literature-grid">' +
-            lit
-              .map(function (book) {
-                return (
-                  '<article class="literature-card">' +
-                  '<p class="literature-card__category"><span class="badge badge--literature">' +
-                  D().escapeHtml(book.category || "Literature") +
-                  "</span></p>" +
-                  "<h4>" +
-                  (book.title
-                    ? D().escapeHtml(book.title)
-                    : "<em>title — empty tag</em>") +
-                  "</h4>" +
-                  '<p class="literature-card__byline">' +
-                  (book.author
-                    ? D().escapeHtml(book.author)
-                    : "<em>author — empty</em>") +
-                  "</p>" +
-                  '<p class="muted">' +
-                  (book.publisher
-                    ? D().escapeHtml(book.publisher)
-                    : "<em>publisher — empty</em>") +
-                  "</p>" +
-                  (book.isbn
-                    ? '<p class="literature-card__isbn"><span class="badge badge--isbn">ISBN</span> ' +
-                      D().escapeHtml(book.isbn) +
-                      "</p>"
-                    : '<p class="muted"><em>isbn — empty tag</em></p>') +
-                  (book.notes
-                    ? '<p class="literature-card__notes">' + D().escapeHtml(book.notes) + "</p>"
-                    : "") +
-                  (book.url
-                    ? '<a class="action-chip action-chip--ghost" href="' +
-                      D().escapeHtml(book.url) +
-                      '" rel="noopener noreferrer" target="_blank">Open link</a>'
-                    : "") +
-                  "</article>"
-                );
-              })
-              .join("") +
-            "</div>";
+    var syllabusDetailsHtml;
+    var examinationBodyHtml;
+    var literatureBodyHtml;
+    if (!details) {
+      syllabusDetailsHtml =
+        sectionHead("Syllabus", "Syllabus details", "fa-solid fa-book-open-reader") +
+        emptyPersonal("No enriched course-details entry yet for this course.");
+      examinationBodyHtml = emptyTag("Examination modules");
+      literatureBodyHtml = emptyTag("Literature");
+    } else {
+      var modulesHtml;
+      if (Array.isArray(exam.modules) && exam.modules.length) {
+        var creditTotal = exam.modules.reduce(function (sum, mod) {
+          var n = Number(mod.credits);
+          return sum + (Number.isFinite(n) ? n : 0);
+        }, 0);
+        var creditTotalLabel = Number.isInteger(creditTotal)
+          ? String(creditTotal)
+          : String(Math.round(creditTotal * 10) / 10);
+
+        modulesHtml =
+          '<div class="exam-table-wrap">' +
+          '<table class="exam-modules-table">' +
+          "<thead><tr>" +
+          "<th scope=\"col\">Code</th>" +
+          "<th scope=\"col\">Module</th>" +
+          "<th scope=\"col\">Credits</th>" +
+          "<th scope=\"col\">Grade scale</th>" +
+          "<th scope=\"col\">Type</th>" +
+          "<th scope=\"col\">From</th>" +
+          "</tr></thead><tbody>" +
+          exam.modules
+            .map(function (mod) {
+              return (
+                "<tr>" +
+                "<td>" +
+                D().escapeHtml(mod.code || "—") +
+                "</td>" +
+                "<td>" +
+                D().escapeHtml(mod.name || "Module") +
+                "</td>" +
+                "<td>" +
+                D().escapeHtml(String(mod.credits != null ? mod.credits : "—")) +
+                "</td>" +
+                "<td>" +
+                D().escapeHtml(mod.gradeScale || "—") +
+                "</td>" +
+                "<td>" +
+                D().escapeHtml(mod.type || "—") +
+                "</td>" +
+                "<td>" +
+                D().escapeHtml(mod.fromPeriod || "—") +
+                "</td>" +
+                "</tr>"
+              );
+            })
+            .join("") +
+          "</tbody>" +
+          "<tfoot><tr>" +
+          '<th scope="row" colspan="2">Total credits</th>' +
+          "<td>" +
+          D().escapeHtml(creditTotalLabel) +
+          "</td>" +
+          '<td colspan="3"></td>' +
+          "</tr></tfoot>" +
+          "</table></div>";
+      } else {
+        modulesHtml = emptyTag("Examination modules");
+      }
+
+      examinationBodyHtml = modulesHtml;
+      literatureBodyHtml =
+        lit.length === 0 ? emptyTag("Literature") : literatureGroupsHtml(lit);
 
       syllabusDetailsHtml =
-        sectionHead("Syllabus", "Syllabus and literature details") +
-        '<p class="callout callout--compact">Verify against official LTU syllabus and literature PDFs before relying on this content.</p>' +
-        '<div class="fact-chip-grid fact-chip-grid--tight">' +
-        chip("Details status", D().statusBadge(detailsStatus), "neutral") +
+        sectionHead("Syllabus", "Syllabus details", "fa-solid fa-book-open-reader") +
+        '<div class="course-block">' +
+        subHead("Entry requirements") +
+        structuredBlockHtml(syl.entryRequirements, "Entry requirements") +
         "</div>" +
         '<div class="course-block">' +
-        subHead("Course aim") +
-        (aimText ? "<p>" + D().escapeHtml(aimText) + "</p>" : emptyTag("Aim")) +
+        subHead("Course Aim") +
+        structuredBlockHtml(syl.aim || course.syllabusAim, "Course Aim") +
         "</div>" +
         '<div class="course-block">' +
-        subHead("Syllabus contents") +
-        contentsHtml +
+        subHead("Contents") +
+        structuredBlockHtml(syl.contents, "Contents") +
         "</div>" +
         '<div class="course-block">' +
         subHead("Realization") +
-        (syl.realization ? "<p>" + D().escapeHtml(syl.realization) + "</p>" : emptyTag("Realization")) +
-        "</div>" +
-        '<div class="course-block">' +
-        subHead("Entry requirements") +
-        entryRequirementsHtml +
-        "</div>" +
-        '<div class="course-block">' +
-        subHead("Examination") +
-        (exam.description
-          ? "<p>" + D().escapeHtml(exam.description) + "</p>"
-          : emptyTag("Examination description")) +
-        subHead("Examination modules") +
-        modulesHtml +
-        "</div>" +
-        '<div class="course-block">' +
-        subHead("Literature") +
-        litHtml +
-        "</div>" +
-        (details.fillNotes
-          ? '<p class="muted course-fill-notes">' + D().escapeHtml(details.fillNotes) + "</p>"
-          : "");
+        structuredBlockHtml(syl.realization, "Realization") +
+        "</div>";
     }
 
-    var sourceHtml = source
-      ? '<div class="source-card"><p class="source-card__label">Primary source</p><p><strong>' +
-        D().escapeHtml(source.sourceTitle) +
-        "</strong></p><p class=\"muted\">" +
-        D().escapeHtml(source.sourceReference) +
-        " · Decision " +
-        D().escapeHtml(source.sourceDate) +
-        " · Verified " +
-        D().escapeHtml(source.verifiedDate) +
-        "</p></div>"
-      : "<p>Official source metadata unavailable.</p>";
+    var examinationHtml =
+      sectionHead("Examination", "Examination modules", "fa-solid fa-clipboard-check") +
+      examinationBodyHtml;
+
+    var literatureHtml =
+      sectionHead("Literature", "Course literature", "fa-solid fa-book") + literatureBodyHtml;
 
     var linksHtml =
-      sectionHead("Links", "Official links and public profiles") +
-      actionsHtml +
-      subHead("Listed course contacts") +
-      '<p class="callout callout--compact">Course contacts may change. Verify through the current official LTU course page.</p>' +
-      contactsHtml +
-      subHead("Source") +
-      sourceHtml +
-      '<div class="callout callout--warning"><p>This page paraphrases public LTU course information and does not reproduce restricted course materials. Official details should be verified through university sources.</p></div>';
+      sectionHead("Contacts", "Course contacts", "fa-solid fa-address-card") + contactsHtml;
 
     setHtml(
       host,
@@ -535,16 +853,29 @@
         (course.summary
           ? '<p class="course-hero__lead">' + D().escapeHtml(course.summary) + "</p>"
           : "") +
+        heroFactsHtml +
         actionsHtml +
         "</header>" +
-        zone("Official LTU information", "content-zone--official", officialFacts) +
+        quickNavHtml() +
         zone(
-          "Official LTU information",
+          "syllabus",
+          "Syllabus",
           "content-zone--official content-zone--syllabus",
           syllabusDetailsHtml
         ) +
-        zone("Official LTU information", "content-zone--official content-zone--schedule", scheduleHtml) +
-        zone("Official LTU information", "content-zone--official content-zone--links", linksHtml) +
+        zone(
+          "examination",
+          "Examination",
+          "content-zone--official content-zone--examination",
+          examinationHtml
+        ) +
+        zone(
+          "literature",
+          "Literature",
+          "content-zone--official content-zone--literature",
+          literatureHtml
+        ) +
+        zone("links", "Contacts", "content-zone--official content-zone--links", linksHtml) +
         '<p class="course-updated"><em>Last updated: ' +
         D().escapeHtml(course.lastUpdated || "—") +
         "</em></p></div>"
