@@ -8,21 +8,33 @@
   "programmeCode": "TMDIA",
   "institution": "Luleå University of Technology",
   "enrollmentSemester": "Autumn 2026",
+  "intakeLabel": "Master's Programmes Autumn Semester 2026",
   "startDate": "2026-08-31",
+  "startWeekLabel": "v. 36 2026",
   "endDate": "2028-06-03",
   "durationYears": 2,
   "delivery": {
     "mode": "Internet-based distance education",
     "studyPace": "100%",
-    "instructionalTime": "Daytime",
+    "instructionalTime": "Day-time",
+    "formOfStudy": "Day-time 100%",
     "language": "English",
     "location": "Varied",
     "compulsoryGatheringsFirstSemester": 0,
     "gatheringNote": "No compulsory gatherings"
   },
+  "degree": {
+    "name": "Degree of Master of Science (120 credits)",
+    "major": "Computer Science and Engineering with specialisation Applied AI"
+  },
   "admissionCycle": {
     "applicationCode": "LTU-97393",
     "numberOfPlaces": 30,
+    "lastApplicationDate": "2026-01-15",
+    "selectionGroup": "Academic: 100%",
+    "selection": "The selection procedure is based on academic qualifications, quality and quantity aspects.",
+    "entryRequirements": "Academic degree of at least 180 higher education credits, of which at least 7.5 ECTS must include courses in programming and 22.5 ECTS in mathematics. The mathematics skills must include Calculus, Linear Algebra and one course in either Logic or in Statistics. Proficiency in English equivalent to Swedish upper secondary course English 6/level 2.",
+    "tuitionFeesNote": "Information for non-EU/EEA students",
     "cycleLabel": "Admission-cycle information for the Autumn 2026 intake",
     "note": "Application code and number of places are cycle-specific and may change in future intakes."
   },
@@ -33,6 +45,33 @@
     "thesisEcts": 30,
     "courseworkEcts": 90
   },
+  "subjectSegments": [
+    {
+      "id": "computer-science-and-engineering",
+      "label": "Computer Science and Engineering",
+      "ects": 82.5,
+      "countsTowardDegree": true
+    },
+    {
+      "id": "selective",
+      "label": "Selective courses",
+      "ects": 15,
+      "countsTowardDegree": true,
+      "note": "Choose 15 ECTS from the elective options. Optional Swedish (3 ECTS) is outside the degree and excluded here."
+    },
+    {
+      "id": "computer-science",
+      "label": "Computer Science",
+      "ects": 15,
+      "countsTowardDegree": true
+    },
+    {
+      "id": "entrepreneurship",
+      "label": "Entrepreneurship",
+      "ects": 7.5,
+      "countsTowardDegree": true
+    }
+  ],
   "officialLinks": [
     {
       "id": "official-programme",

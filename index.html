@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/components.css?v=20260721p">
   <link rel="stylesheet" href="assets/css/responsive.css">
-  <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/home.css?v=20260721ae">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -71,9 +71,6 @@
       <div class="container">
         <p class="home-hero__badge"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Luleå University of Technology</p>
         <h1 id="programme-title" class="home-hero__title">Master Programme in <span class="accent-text">Applied Artificial Intelligence</span></h1>
-        <p class="home-hero__lead" id="programme-dates">
-          31 August 2026 – 6 June 2028 · Distance, full-time, daytime · English
-        </p>
 
         <div class="home-hero__actions">
           <a class="btn btn--primary" href="academic-calendar.html">
@@ -84,11 +81,53 @@
           </a>
         </div>
 
-        <div id="programme-composition" class="ects-row home-hero__stats" aria-label="Programme composition">
-          <div class="ects-row__item"><strong>120</strong><span>ECTS total</span></div>
-          <div class="ects-row__item"><strong>75</strong><span>compulsory</span></div>
-          <div class="ects-row__item"><strong>15</strong><span>elective</span></div>
-          <div class="ects-row__item"><strong>30</strong><span>thesis</span></div>
+        <div class="home-hero__facts-layout">
+          <div id="programme-composition" class="home-hero__facts" aria-label="Programme facts">
+            <table class="course-facts-table">
+              <tbody>
+                <tr><th scope="row">Intake</th><td>Master's Programmes Autumn Semester 2026</td></tr>
+                <tr><th scope="row">Programme code</th><td>TMDIA</td></tr>
+                <tr><th scope="row">Period</th><td>Start date 2026-08-31, v. 36 2026</td></tr>
+                <tr><th scope="row">End date</th><td>2028-06-03</td></tr>
+                <tr><th scope="row">Language</th><td>English</td></tr>
+                <tr><th scope="row">Degree</th><td><span class="home-hero__degree-line">Degree of Master of Science (120 credits)</span><span class="home-hero__degree-line">Computer Science and Engineering with specialisation Applied AI</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <aside id="programme-scope-pie" class="home-hero__pie" aria-label="Degree composition">
+            <p class="home-hero__pie-kicker">Degree scope</p>
+            <div class="home-hero__pie-visual">
+              <div class="home-hero__pie-chart" style="--compulsory: 62.5; --elective: 12.5; --thesis: 25;" role="img" aria-label="120 ECTS: 75 compulsory, 15 elective, 30 thesis"></div>
+              <p class="home-hero__pie-total"><strong>120</strong> ECTS</p>
+            </div>
+            <ul class="home-hero__pie-legend">
+              <li><span class="home-hero__pie-swatch is-compulsory" aria-hidden="true"></span> 75 compulsory</li>
+              <li><span class="home-hero__pie-swatch is-elective" aria-hidden="true"></span> 15 elective</li>
+              <li><span class="home-hero__pie-swatch is-thesis" aria-hidden="true"></span> 30 thesis</li>
+            </ul>
+          </aside>
+          <aside id="programme-overview" class="home-hero__pie home-hero__overview" aria-label="Programme overview">
+            <p class="home-hero__pie-kicker">Programme overview</p>
+            <div class="home-hero__stack" role="img" aria-label="120 ECTS by subject area">
+              <div class="home-hero__stack-seg is-cse" style="flex-grow: 82.5">
+                <span class="home-hero__stack-label">Computer Science and Engineering</span>
+                <strong class="home-hero__stack-ects">82.5 cr</strong>
+              </div>
+              <div class="home-hero__stack-seg is-selective" style="flex-grow: 15">
+                <span class="home-hero__stack-label">Selective courses</span>
+                <strong class="home-hero__stack-ects">15 cr</strong>
+              </div>
+              <div class="home-hero__stack-seg is-cs" style="flex-grow: 15">
+                <span class="home-hero__stack-label">Computer Science</span>
+                <strong class="home-hero__stack-ects">15 cr</strong>
+              </div>
+              <div class="home-hero__stack-seg is-entrepreneurship" style="flex-grow: 7.5">
+                <span class="home-hero__stack-label">Entrepreneurship</span>
+                <strong class="home-hero__stack-ects">7.5 cr</strong>
+              </div>
+            </div>
+            <p class="home-hero__stack-total"><strong>120</strong> ECTS degree total</p>
+          </aside>
         </div>
       </div>
     </section>
@@ -128,7 +167,7 @@
 
   <script src="assets/js/theme.js" defer></script>
   <script src="assets/js/data-loader.js?v=20260721p" defer></script>
-  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/main.js?v=20260721ae" defer></script>
   <script src="assets/js/explorer.js" defer></script>
 </body>
 </html>

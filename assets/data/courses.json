@@ -54,7 +54,8 @@
       "selection": "The selection is based on 1-165 credits.",
       "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
       "syllabusAim": "After completion of the course, the student should be able to: demonstrate knowledge in designing object-oriented programs and capacity to plan and carry out advanced tasks in the form of implementation of programs designed to solve specific machine learning problems; demonstrate the ability to use data structures, algorithms and tools available in state-of-the-art machine learning libraries to solve problems in a modern object-oriented language; demonstrate the ability to critically analyze and evaluate technical solutions in the form of existing programs for machine learning, as well as predict and evaluate sequences of events in these.",
-      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026"
+      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026",
+      "subjectSegment": "computer-science-and-engineering"
     },
     {
       "id": "D7062E",
@@ -105,7 +106,8 @@
       "selection": "The selection is based on 30-285 credits",
       "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
       "syllabusAim": "After completion of the course, the student should be able to: define the area of Artificial Intelligence (in particular, with relation to control theory and computer science), and shortly describe its major fields; list a minimum of three existing tools implementing AI methods, and describe their basic characteristics; given two existing tools implementing AI methods, compare them with respect to their basic characteristics. In-depth understanding of the basic methods and theories used in AI and pattern recognition. Given a real-life applied AI problem: categorize the problem, list appropriate AI methods, describe methods in their own words, and apply one appropriate AI method. Understanding of appearance-based recognition approaches for robotic applications.",
-      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026"
+      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026",
+      "subjectSegment": "computer-science-and-engineering"
     },
     {
       "id": "S0046P",
@@ -164,7 +166,8 @@
       "selection": "The selection is based on final school grades or Swedish Scholastic Aptitude Test.",
       "offeredBy": "Department of Health, Education and Technology",
       "syllabusAim": "After finished course, the student is to have gained basic language skills: handle everyday language situations to present themselves and their background in Swedish; read and understand simple Swedish texts; make use of basic knowledge about the structure of the Swedish language.",
-      "detailsVerificationStatus": "filled-from-public-syllabus"
+      "detailsVerificationStatus": "filled-from-public-syllabus",
+      "subjectSegment": "selective"
     },
     {
       "id": "D0034E",
@@ -215,7 +218,8 @@
       "selection": "The selection is based on 1-165 credits.",
       "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
       "syllabusAim": "The course covers the fundamentals of models and computation methods of Artificial Intelligence. After the course the student should be able to demonstrate knowledge of the disciplinary foundation and proven experience in the design and analysis of AI systems; understand methods and theories in AI; apply AI methods for practical tasks; and evaluate the performance of different AI models in different problem setups and quality characteristics.",
-      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026"
+      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026",
+      "subjectSegment": "computer-science-and-engineering"
     },
     {
       "id": "E7010N",
@@ -262,7 +266,8 @@
       "subject": "",
       "gradeScale": "",
       "syllabusAim": "Describe concepts and theories related to the analysis, evaluation, and implementation of AI technology business opportunities in organizations. Explain and qualitatively assess the probability of a successful AI application. Argue about the different characteristics of AI-based business models.",
-      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs",
+      "subjectSegment": "entrepreneurship"
     },
     {
       "id": "D7046E",
@@ -330,7 +335,8 @@
       "selection": "The selection is based on 30-285 credits",
       "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
       "syllabusAim": "After completion of the course, the student should be able to describe and differentiate AI, machine learning, artificial neural networks, and neuromorphic engineering; describe formal neuron models and architectures (spiking, feedforward, convolutional, recurrent); train, validate and test networks with supervised and unsupervised methods; evaluate strengths and weaknesses versus other ML methods; give examples of learning machines and neuromorphic systems including ethical considerations; develop and evaluate a neural network model for an engineering problem; and formulate and implement derivations of basic neural network concepts.",
-      "detailsVerificationStatus": "filled-from-public-syllabus-spring-2027"
+      "detailsVerificationStatus": "filled-from-public-syllabus-spring-2027",
+      "subjectSegment": "computer-science-and-engineering"
     },
     {
       "id": "D7054E",
@@ -377,7 +383,8 @@
       "subject": "",
       "gradeScale": "",
       "syllabusAim": "Explain why and how we program. Install the programming language, together with its packages & libraries. Learn how to retrieving, processing, and visualizing Data with data science programming languages. Solve business problems using data science programming languages.",
-      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs",
+      "subjectSegment": "computer-science-and-engineering"
     },
     {
       "id": "D7047E",
@@ -432,7 +439,8 @@
       "subject": "",
       "gradeScale": "",
       "syllabusAim": "Master advanced concepts in deep neural networks and be able to implement, train, and evaluate complex deep learning architectures for various data modalities.",
-      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs",
+      "subjectSegment": "computer-science"
     },
     {
       "id": "M7016H",
@@ -479,7 +487,8 @@
       "subject": "",
       "gradeScale": "",
       "syllabusAim": "Understand and apply AI methods specifically tailored to healthcare challenges, including medical data analysis, diagnostics support, and ethical considerations in medical AI.",
-      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs",
+      "subjectSegment": "computer-science-and-engineering"
     },
     {
       "id": "D7043E",
@@ -530,7 +539,8 @@
       "selection": "The selection is based on 30-285 credits",
       "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
       "syllabusAim": "Develop knowledge and skills in Advanced Data Mining: use advanced data mining concepts and techniques; explain how they work and how they are or should be used in organizations; evaluate results of applying those concepts and techniques; analyze and reflect on the relationship between techniques, dataset, problem or opportunity, and tools and technology used.",
-      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026"
+      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026",
+      "subjectSegment": "computer-science-and-engineering"
     },
     {
       "id": "D7041E",
@@ -581,7 +591,8 @@
       "selection": "The selection is based on 30-285 credits",
       "offeredBy": "Department of Computer Science, Electrical and Space Engineering",
       "syllabusAim": "The course covers concepts, models and computation methods for programs and systems that can autonomously learn and generalise new knowledge and feature self-awareness. Students should demonstrate knowledge of AI system design and analysis; in-depth AI methods and theories; develop learning techniques aligned with human needs and sustainable development; identify, formulate, design and implement learning components; critically evaluate and compare AI models; and model, predict and evaluate events with limited information.",
-      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026"
+      "detailsVerificationStatus": "filled-from-public-syllabus-autumn-2026",
+      "subjectSegment": "computer-science"
     },
     {
       "id": "D7065E",
@@ -628,7 +639,8 @@
       "subject": "",
       "gradeScale": "",
       "syllabusAim": "Deploy intelligent algorithms onto resource-constrained embedded devices (edge computing) and handle data communication requirements.",
-      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs",
+      "subjectSegment": "selective"
     },
     {
       "id": "D7068E",
@@ -675,7 +687,8 @@
       "subject": "",
       "gradeScale": "",
       "syllabusAim": "Explain the basic cellular neurochemistry of the brain. Identify neurotransmitter systems and explain mechanisms behind membrane and action potentials, chemical signal transmission, and receptor-mediated response.",
-      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs",
+      "subjectSegment": "selective"
     },
     {
       "id": "R7020E",
@@ -731,7 +744,8 @@
       "subject": "",
       "gradeScale": "",
       "syllabusAim": "Apply computer vision and image processing algorithms to solve real-world problems. Propose, supervise and complete a project in computer vision.",
-      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs",
+      "subjectSegment": "selective"
     },
     {
       "id": "D7064E",
@@ -787,7 +801,8 @@
       "subject": "",
       "gradeScale": "",
       "syllabusAim": "Deepen knowledge in neuromorphic technologies and spiking neural networks with applications to energy-efficient, robust, and adaptive systems.",
-      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs",
+      "subjectSegment": "selective"
     },
     {
       "id": "P7002H",
@@ -834,7 +849,8 @@
       "subject": "",
       "gradeScale": "",
       "syllabusAim": "Identify the functional and anatomical organization of the human nervous system. Characterise core cognitive functions and their underlying brain processes. Evaluate different neuroscientific techniques.",
-      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs",
+      "subjectSegment": "selective"
     },
     {
       "id": "R7010E",
@@ -881,7 +897,8 @@
       "subject": "",
       "gradeScale": "",
       "syllabusAim": "Understand and apply principles of robotics, including modeling, kinematics, dynamics, and control within an industrial or research context.",
-      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs",
+      "subjectSegment": "selective"
     },
     {
       "id": "X7013E",
@@ -928,7 +945,8 @@
       "subject": "",
       "gradeScale": "",
       "syllabusAim": "Formulate a relevant problem for investigation. Apply knowledge and proficiency to a complex development project or research project. Locate and critically review information. Plan, structure and execute a project within research.",
-      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs"
+      "detailsVerificationStatus": "partial-draft-awaiting-syllabus-and-literature-pdfs",
+      "subjectSegment": "computer-science-and-engineering"
     }
   ]
 }

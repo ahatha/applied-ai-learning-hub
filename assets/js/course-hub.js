@@ -481,6 +481,207 @@
     );
   }
 
+  function periodSortKey(period) {
+    var match = String(period == null ? "" : period).match(/^(\d+)/);
+    return match ? Number(match[1]) : 99;
+  }
+
+  function periodNavLabel(period) {
+    var value = String(period == null ? "" : period).trim();
+    if (!value || value === "?") return "Unscheduled";
+    if (/^\d+$/.test(value)) return "Period " + value;
+    return "Periods " + value.replace(/-/g, "–");
+  }
+
+  function roleNavClass(role) {
+    var map = {
+      compulsory: "is-compulsory",
+      "elective-option": "is-elective",
+      "optional-non-degree": "is-optional",
+      thesis: "is-thesis"
+    };
+    return map[role] || "is-other";
+  }
+
+  /**
+   * Left programme menu: Year → Study period → courses.
+   * @param {object[]} courses
+   * @param {string} activeCode
+   * @returns {string}
+   */
+  function courseSideNavHtml(courses, activeCode) {
+    activeCode = String(activeCode || "").toUpperCase();
+    var grouped = {};
+    (courses || [])
+      .slice()
+      .sort(function (a, b) {
+        return (Number(a.order) || 0) - (Number(b.order) || 0);
+      })
+      .forEach(function (course) {
+        var year = String(course.yearOfStudy != null ? course.yearOfStudy : "?");
+        var period = String(course.studyPeriod != null ? course.studyPeriod : "?");
+        if (!grouped[year]) grouped[year] = {};
+        if (!grouped[year][period]) grouped[year][period] = [];
+        grouped[year][period].push(course);
+      });
+
+    var yearKeys = Object.keys(grouped).sort(function (a, b) {
+      return periodSortKey(a) - periodSortKey(b);
+    });
+
+    if (!yearKeys.length) {
+      return "";
+    }
+
+    var yearsHtml = yearKeys
+      .map(function (year) {
+        var periods = grouped[year];
+        var periodKeys = Object.keys(periods).sort(function (a, b) {
+          return periodSortKey(a) - periodSortKey(b);
+        });
+        var yearHasActive = periodKeys.some(function (period) {
+          return periods[period].some(function (course) {
+            return String(course.code || "").toUpperCase() === activeCode;
+          });
+        });
+        var yearOpen = yearHasActive || (!activeCode && year === yearKeys[0]);
+
+        var periodsHtml = periodKeys
+          .map(function (period) {
+            var list = periods[period];
+            var periodHasActive = list.some(function (course) {
+              return String(course.code || "").toUpperCase() === activeCode;
+            });
+            var periodOpen =
+              periodHasActive || (!activeCode && yearOpen && period === periodKeys[0]);
+            var items = list
+              .map(function (course) {
+                var code = String(course.code || "").toUpperCase();
+                var isActive = !!activeCode && code === activeCode;
+                var href = D().courseHubUrl(course.code || course.id);
+                return (
+                  '<li><a class="course-side-nav__link ' +
+                  roleNavClass(course.role) +
+                  (isActive ? " is-active" : "") +
+                  '" href="' +
+                  D().escapeHtml(href) +
+                  '"' +
+                  (isActive ? ' aria-current="page"' : "") +
+                  ">" +
+                  '<span class="course-side-nav__code">' +
+                  D().escapeHtml(code) +
+                  "</span>" +
+                  '<span class="course-side-nav__title">' +
+                  D().escapeHtml(course.title || "Untitled") +
+                  "</span>" +
+                  '<span class="course-side-nav__meta">' +
+                  D().escapeHtml(String(course.ects != null ? course.ects : "—")) +
+                  " ECTS</span>" +
+                  "</a></li>"
+                );
+              })
+              .join("");
+
+            return (
+              '<details class="course-side-nav__period"' +
+              (periodOpen ? " open" : "") +
+              ">" +
+              "<summary>" +
+              D().escapeHtml(periodNavLabel(period)) +
+              ' <span class="course-side-nav__count">' +
+              list.length +
+              "</span></summary>" +
+              '<ul class="course-side-nav__list">' +
+              items +
+              "</ul></details>"
+            );
+          })
+          .join("");
+
+        return (
+          '<details class="course-side-nav__year"' +
+          (yearOpen ? " open" : "") +
+          ">" +
+          "<summary>Year " +
+          D().escapeHtml(year) +
+          "</summary>" +
+          periodsHtml +
+          "</details>"
+        );
+      })
+      .join("");
+
+    return (
+      '<aside id="course-side-nav" class="course-side-nav" aria-label="Programme courses">' +
+      '<div class="course-side-nav__head">' +
+      '<button type="button" class="course-side-nav__close" data-course-nav-close aria-label="Close course menu">' +
+      '<i class="fa-solid fa-xmark" aria-hidden="true"></i>' +
+      "</button>" +
+      '<p class="course-side-nav__eyebrow">Programme</p>' +
+      "<h2>Courses</h2>" +
+      '<p class="course-side-nav__hint">Browse by year and study period</p>' +
+      '<a class="course-side-nav__home" href="../index.html"><i class="fa-solid fa-sitemap" aria-hidden="true"></i> Programme explorer</a>' +
+      "</div>" +
+      '<nav class="course-side-nav__tree" aria-label="Course list">' +
+      yearsHtml +
+      "</nav>" +
+      "</aside>"
+    );
+  }
+
+  function bindCourseSideNav(root) {
+    if (!root) return;
+    var layout = root.querySelector(".course-hub-layout");
+    var openBtn = root.querySelector("[data-course-nav-open]");
+    var closeBtn = root.querySelector("[data-course-nav-close]");
+    var backdrop = root.querySelector("[data-course-nav-backdrop]");
+    if (!layout) return;
+
+    function setOpen(open) {
+      layout.classList.toggle("is-nav-open", open);
+      if (openBtn) openBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    if (openBtn) {
+      openBtn.addEventListener("click", function () {
+        setOpen(true);
+      });
+    }
+    if (closeBtn) {
+      closeBtn.addEventListener("click", function () {
+        setOpen(false);
+      });
+    }
+    if (backdrop) {
+      backdrop.addEventListener("click", function () {
+        setOpen(false);
+      });
+    }
+    document.addEventListener("keydown", function onKey(event) {
+      if (event.key === "Escape") setOpen(false);
+    });
+  }
+
+  function courseHubLayoutHtml(courses, activeCode, mainHtml) {
+    var nav = courseSideNavHtml(courses, activeCode);
+    if (!nav) {
+      return mainHtml;
+    }
+    return (
+      '<div class="course-hub-layout">' +
+      '<div class="course-side-nav__toolbar">' +
+      '<button type="button" class="course-side-nav__open" data-course-nav-open aria-controls="course-side-nav" aria-expanded="false">' +
+      '<i class="fa-solid fa-bars" aria-hidden="true"></i> Courses' +
+      "</button>" +
+      "</div>" +
+      '<button type="button" class="course-side-nav__backdrop" data-course-nav-backdrop aria-label="Close course menu"></button>' +
+      nav +
+      '<div class="course-hub-layout__main">' +
+      mainHtml +
+      "</div></div>"
+    );
+  }
+
   /**
    * @returns {string}
    */
@@ -496,26 +697,33 @@
     }
 
     var code = getCourseCode();
+    var coursesData = await D().loadJson("data/courses.json");
+    var courses = coursesData && coursesData.courses ? coursesData.courses : [];
+
+    function paint(mainHtml, activeCode) {
+      host.classList.add("container--course-hub");
+      setHtml(host, courseHubLayoutHtml(courses, activeCode || "", mainHtml));
+      bindCourseSideNav(host);
+    }
+
     if (!code) {
-      setHtml(
-        host,
-        '<div class="empty-state"><p>Select a course from the <a href="../index.html">programme explorer</a>. Example: <code>course.html?code=D0036E</code>.</p></div>'
+      paint(
+        '<div class="course-hub"><div class="empty-state"><p>Select a course from the left menu. Example: <code>course.html?code=D0036E</code>.</p></div></div>',
+        ""
       );
       return;
     }
 
-    var coursesData = await D().loadJson("data/courses.json");
-    var courses = coursesData && coursesData.courses ? coursesData.courses : [];
     var course = courses.find(function (item) {
       return String(item.code).toUpperCase() === code || String(item.id).toUpperCase() === code;
     });
 
     if (!course) {
-      setHtml(
-        host,
-        '<div class="empty-state"><p>Course “' +
+      paint(
+        '<div class="course-hub"><div class="empty-state"><p>Course “' +
           D().escapeHtml(code) +
-          '” was not found. Return to the <a href="../index.html">programme explorer</a>.</p></div>'
+          '” was not found. Choose another course from the left menu or return to the <a href="../index.html">programme explorer</a>.</p></div></div>',
+        ""
       );
       return;
     }
@@ -654,6 +862,17 @@
       "<tbody>" +
       factRow("Academic year", course.academicYear || "—") +
       factRow("Period", periodLabel) +
+      factRow(
+        "Programme segment",
+        ({
+          "computer-science-and-engineering": "Computer Science and Engineering",
+          selective: "Selective courses",
+          "computer-science": "Computer Science",
+          entrepreneurship: "Entrepreneurship"
+        })[course.subjectSegment] ||
+          D().formatStatus(course.subjectSegment) ||
+          "—"
+      ) +
       factRow("Subject", subject || "—") +
       factRow("Subject group (SCB)", subjectGroup || "—") +
       factRow("Main field of study", mainFieldOfStudy || "—") +
@@ -833,53 +1052,53 @@
     var linksHtml =
       sectionHead("Contacts", "Course contacts", "fa-solid fa-address-card") + contactsHtml;
 
-    setHtml(
-      host,
+    var mainHtml =
       '<div class="course-hub">' +
-        '<nav aria-label="Breadcrumb"><ol class="breadcrumb">' +
-        '<li><a href="../index.html">Home</a></li>' +
-        '<li aria-current="page">' +
-        D().escapeHtml(course.code) +
-        "</li></ol></nav>" +
-        '<header class="course-hero">' +
-        '<p class="course-hero__eyebrow">Official course hub</p>' +
-        '<p class="course-hero__code"><span class="course-code-chip">' +
-        D().escapeHtml(course.code) +
-        "</span></p>" +
-        "<h1>" +
-        D().escapeHtml(course.title) +
-        "</h1>" +
-        heroBadges +
-        (course.summary
-          ? '<p class="course-hero__lead">' + D().escapeHtml(course.summary) + "</p>"
-          : "") +
-        heroFactsHtml +
-        actionsHtml +
-        "</header>" +
-        quickNavHtml() +
-        zone(
-          "syllabus",
-          "Syllabus",
-          "content-zone--official content-zone--syllabus",
-          syllabusDetailsHtml
-        ) +
-        zone(
-          "examination",
-          "Examination",
-          "content-zone--official content-zone--examination",
-          examinationHtml
-        ) +
-        zone(
-          "literature",
-          "Literature",
-          "content-zone--official content-zone--literature",
-          literatureHtml
-        ) +
-        zone("links", "Contacts", "content-zone--official content-zone--links", linksHtml) +
-        '<p class="course-updated"><em>Last updated: ' +
-        D().escapeHtml(course.lastUpdated || "—") +
-        "</em></p></div>"
-    );
+      '<nav aria-label="Breadcrumb"><ol class="breadcrumb">' +
+      '<li><a href="../index.html">Home</a></li>' +
+      '<li aria-current="page">' +
+      D().escapeHtml(course.code) +
+      "</li></ol></nav>" +
+      '<header class="course-hero">' +
+      '<p class="course-hero__eyebrow">Official course hub</p>' +
+      '<p class="course-hero__code"><span class="course-code-chip">' +
+      D().escapeHtml(course.code) +
+      "</span></p>" +
+      "<h1>" +
+      D().escapeHtml(course.title) +
+      "</h1>" +
+      heroBadges +
+      (course.summary
+        ? '<p class="course-hero__lead">' + D().escapeHtml(course.summary) + "</p>"
+        : "") +
+      heroFactsHtml +
+      actionsHtml +
+      "</header>" +
+      quickNavHtml() +
+      zone(
+        "syllabus",
+        "Syllabus",
+        "content-zone--official content-zone--syllabus",
+        syllabusDetailsHtml
+      ) +
+      zone(
+        "examination",
+        "Examination",
+        "content-zone--official content-zone--examination",
+        examinationHtml
+      ) +
+      zone(
+        "literature",
+        "Literature",
+        "content-zone--official content-zone--literature",
+        literatureHtml
+      ) +
+      zone("links", "Contacts", "content-zone--official content-zone--links", linksHtml) +
+      '<p class="course-updated"><em>Last updated: ' +
+      D().escapeHtml(course.lastUpdated || "—") +
+      "</em></p></div>";
+
+    paint(mainHtml, course.code);
   }
 
   document.addEventListener("DOMContentLoaded", function () {

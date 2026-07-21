@@ -85,13 +85,6 @@
   color: transparent;
 }
 
-.home-hero__lead {
-  max-width: 44rem;
-  margin: 0 0 var(--space-6);
-  font-size: 1.2rem;
-  color: var(--text-muted);
-}
-
 .home-hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -108,62 +101,257 @@
   margin-right: 0.4rem;
 }
 
-/* ECTS stat cards — markup is JS-driven and unchanged; this only restyles it. */
-.home-hero__stats.ects-row {
-  gap: var(--space-4);
+.home-hero__facts-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: var(--space-5);
+  align-items: stretch;
+  max-width: 72rem;
 }
 
-.home-hero__stats .ects-row__item {
-  position: relative;
-  padding: 2.9rem 1rem 1.35rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+.home-hero__facts {
+  margin: 0;
+  padding: var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--border));
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--bg-elevated) 70%, transparent);
 }
 
-.home-hero__stats .ects-row__item:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
-  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.14);
+.home-hero__facts .course-facts-table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: 0.92rem;
 }
 
-.home-hero__stats .ects-row__item strong {
-  font-size: 1.6rem;
+.home-hero__facts .course-facts-table th,
+.home-hero__facts .course-facts-table td {
+  padding: 0.4rem 0.75rem;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
 }
 
-.home-hero__stats .ects-row__item::before {
-  content: "";
-  position: absolute;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
+.home-hero__facts .course-facts-table tr:last-child th,
+.home-hero__facts .course-facts-table tr:last-child td {
+  border-bottom: none;
+}
+
+.home-hero__facts .course-facts-table th {
+  width: 11.5rem;
+  max-width: 42%;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.home-hero__facts .course-facts-table td {
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.home-hero__degree-line {
+  display: block;
+}
+
+.home-hero__degree-line + .home-hero__degree-line {
+  margin-top: 0.2rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.home-hero__pie {
+  box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  background: var(--accent-soft);
+  min-width: 12.5rem;
+  max-width: 16rem;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--border));
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--bg-elevated) 70%, transparent);
+  text-align: center;
+}
+
+.home-hero__overview {
+  align-items: stretch;
+  text-align: left;
+  min-width: 15rem;
+  max-width: 18rem;
+}
+
+.home-hero__pie-kicker {
+  margin: 0 0 var(--space-3);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--accent);
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  font-size: 1rem;
+  align-self: flex-start;
 }
 
-.home-hero__stats .ects-row__item:nth-child(1)::before {
-  content: "\f19d"; /* graduation-cap */
+.home-hero__pie-visual {
+  position: relative;
+  width: 8.5rem;
+  height: 8.5rem;
+  margin: 0 0 var(--space-4);
 }
 
-.home-hero__stats .ects-row__item:nth-child(2)::before {
-  content: "\f0ae"; /* tasks */
+.home-hero__pie-chart {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--accent) 0 calc(var(--compulsory, 0) * 1%),
+    var(--warm) calc(var(--compulsory, 0) * 1%)
+      calc((var(--compulsory, 0) + var(--elective, 0)) * 1%),
+    #5b4b8a calc((var(--compulsory, 0) + var(--elective, 0)) * 1%) 100%
+  );
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--border) 70%, transparent);
 }
 
-.home-hero__stats .ects-row__item:nth-child(3)::before {
-  content: "\f074"; /* shuffle */
+.home-hero__pie-chart::after {
+  content: "";
+  position: absolute;
+  inset: 1.55rem;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--border) 55%, transparent);
 }
 
-.home-hero__stats .ects-row__item:nth-child(4)::before {
-  content: "\f304"; /* pen */
+.home-hero__pie-total {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.home-hero__pie-total strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.home-hero__pie-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+  width: 100%;
+  text-align: left;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.home-hero__pie-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.home-hero__pie-swatch {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 2px;
+  flex: 0 0 auto;
+}
+
+.home-hero__pie-swatch.is-compulsory {
+  background: var(--accent);
+}
+
+.home-hero__pie-swatch.is-elective {
+  background: var(--warm);
+}
+
+.home-hero__pie-swatch.is-thesis {
+  background: #5b4b8a;
+}
+
+.home-hero__stack {
+  display: flex;
+  flex-direction: column;
+  height: 15rem;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, var(--warm));
+}
+
+.home-hero__stack-seg {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: 1.75rem;
+  padding: 0.35rem 0.65rem;
+  color: #1a1208;
+  flex-shrink: 1;
+}
+
+.home-hero__stack-seg.is-cse {
+  background: color-mix(in srgb, var(--warm) 82%, #8a3b12);
+  color: #fff8f2;
+}
+
+.home-hero__stack-seg.is-selective {
+  background: color-mix(in srgb, var(--warm) 55%, #f0c48a);
+}
+
+.home-hero__stack-seg.is-cs {
+  background: color-mix(in srgb, var(--warm) 35%, #f6d9a8);
+}
+
+.home-hero__stack-seg.is-entrepreneurship {
+  background: color-mix(in srgb, #f6e7b8 80%, var(--warm));
+}
+
+.home-hero__stack-label {
+  font-size: 0.72rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.home-hero__stack-ects {
+  flex: 0 0 auto;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.home-hero__stack-total {
+  margin: var(--space-3) 0 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.home-hero__stack-total strong {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--text);
+  margin-right: 0.25rem;
 }
 
 /* ---------- Explorer section header ---------- */
@@ -251,20 +439,25 @@
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 900px) {
-  .home-hero__stats.ects-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 700px) {
   .home-hero__actions {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .home-hero__stats.ects-row {
+  .home-hero__facts-layout {
     grid-template-columns: 1fr;
+  }
+
+  .home-hero__pie,
+  .home-hero__overview {
+    max-width: 18rem;
+    justify-self: start;
+  }
+
+  .home-hero__facts .course-facts-table th {
+    width: 8.5rem;
+    white-space: normal;
   }
 
   .home-section-head {
