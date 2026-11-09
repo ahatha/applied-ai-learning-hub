@@ -839,6 +839,56 @@
   color: var(--text-muted);
 }
 
+.course-notes .themegrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+  margin: 22px 0;
+}
+
+.course-notes .theme {
+  border: 1px solid var(--notes-line);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  background: var(--notes-paper);
+}
+
+.course-notes .theme .n {
+  font: 700 11px/1.4 var(--font-sans);
+  letter-spacing: 0.12em;
+  color: var(--notes-muted);
+}
+
+.course-notes .theme h3 {
+  font-size: 1.05rem;
+  margin: 5px 0 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--notes-ink);
+}
+
+.course-notes .theme p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.course-notes .theme.wide {
+  grid-column: 1 / -1;
+  background: var(--notes-light);
+}
+
+@media (max-width: 550px) {
+  .course-notes .themegrid {
+    grid-template-columns: 1fr;
+  }
+
+  .course-notes .theme.wide {
+    grid-column: auto;
+  }
+}
+
 .topics-phase {
   margin-bottom: var(--space-7);
 }

@@ -1,7 +1,7 @@
 (function () {
-  function defaultLessons(homeHref) {
+  function defaultLessons(homeHref, courseCode) {
     return [
-      { id: "home", href: homeHref, label: "D0034E" },
+      { id: "home", href: homeHref, label: courseCode },
       { id: "lesson1", href: "lesson1.html", label: "Lesson 1" },
       { id: "lesson2", href: "lesson2.html", label: "Lesson 2" },
       { id: "lesson3", href: "lesson3.html", label: "Lesson 3" }
@@ -14,14 +14,15 @@
 
     var active = host.getAttribute("data-active") || "lesson1";
     var homeHref = host.getAttribute("data-home-href") || "../index.html";
+    var courseCode = host.getAttribute("data-course") || "Course";
     var lessons;
 
     try {
       lessons = host.hasAttribute("data-lessons")
         ? JSON.parse(host.getAttribute("data-lessons"))
-        : defaultLessons(homeHref);
+        : defaultLessons(homeHref, courseCode);
     } catch (e) {
-      lessons = defaultLessons(homeHref);
+      lessons = defaultLessons(homeHref, courseCode);
     }
 
     var html = '<div class="lesson-subnav__inner">';
