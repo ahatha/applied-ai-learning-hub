@@ -1,11 +1,32 @@
 /* Applied AI Learning Hub — design tokens and base styles */
 
-:root {
-  color-scheme: light;
-
+:root,
+html[data-font="plex"] {
   --font-sans: "IBM Plex Sans", "Segoe UI", Candara, "DejaVu Sans", sans-serif;
   --font-serif: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --font-mono: "IBM Plex Mono", "Consolas", "Courier New", monospace;
+}
+
+html[data-font="literata"] {
+  --font-sans: "Source Sans 3", "Segoe UI", Candara, "DejaVu Sans", sans-serif;
+  --font-serif: "Literata", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-mono: "IBM Plex Mono", "Consolas", "Courier New", monospace;
+}
+
+html[data-font="lora"] {
+  --font-sans: "Figtree", "Segoe UI", Candara, "DejaVu Sans", sans-serif;
+  --font-serif: "Lora", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-mono: "IBM Plex Mono", "Consolas", "Courier New", monospace;
+}
+
+html[data-font="newsreader"] {
+  --font-sans: "Manrope", "Segoe UI", Candara, "DejaVu Sans", sans-serif;
+  --font-serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-mono: "IBM Plex Mono", "Consolas", "Courier New", monospace;
+}
+
+:root {
+  color-scheme: light;
 
   --bg: #f4f6f8;
   --bg-elevated: #ffffff;
@@ -189,6 +210,31 @@ a:hover {
   font-weight: 500;
   font-size: 0.75rem;
   color: var(--text-muted);
+}
+
+.header-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.font-select {
+  height: 2.75rem;
+  max-width: 11.5rem;
+  padding: 0 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.font-select:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
 }
 
 .theme-toggle {
@@ -463,6 +509,8 @@ pre code {
 @media print {
   .site-header,
   .theme-toggle,
+  .font-select,
+  .header-controls,
   .site-footer,
   .filters,
   .hero__actions {

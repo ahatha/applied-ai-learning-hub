@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-asset-base="../../../assets/" data-path-depth="3">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 1 — Introduction | D0034E | Applied AI Programme Hub</title>
+  <meta name="description" content="Lesson 1 study notes for D0034E Applied AI, Knowledge Management and Reasoning.">
+  <meta name="theme-color" content="#0f6b63">
+  <link rel="icon" href="../../../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("aailh-theme");
+        var theme = stored === "light" || stored === "dark"
+          ? stored
+          : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+        var font = localStorage.getItem("aailh-font");
+        if (font === "plex" || font === "literata" || font === "lora" || font === "newsreader") {
+          document.documentElement.setAttribute("data-font", font);
+        }
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/components.css">
+  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../../assets/css/course-notes.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container site-header__inner site-header__inner--simple">
+      <a class="brand" href="../../../index.html">
+        <span class="brand__mark" aria-hidden="true">AI</span>
+        <span class="brand__text">Applied AI Programme Hub<small>LTU Applied AI · 2026–2028</small></span>
+      </a>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">
+        <i class="fa-solid fa-sun theme-toggle__icon theme-toggle__icon--light" aria-hidden="true"></i>
+        <i class="fa-solid fa-moon theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <nav id="lesson-nav" data-active="lesson1" data-home-href="../index.html"></nav>
+
+  <main id="main" class="site-main">
+    <div class="course-notes" id="top">
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="brand">D0034E</div>
+          <div class="sub">Applied AI: Knowledge Management and Reasoning</div>
+          <nav>
+            <a href="#opening">1. Opening and course staff</a><a href="#organisation">2. Course organisation</a><a href="#assessment">3. Labs and assessments</a><a href="#progression">4. The four practical stages</a><a href="#intelligence">5. What is artificial intelligence?</a><a href="#capabilities">6. Capabilities of intelligence</a><a href="#agents">7. The concept of an agent</a><a href="#approaches">8. Two approaches to AI</a><a href="#expert">9. Expert systems</a><a href="#semantic">10. Semantic Web</a><a href="#industry">11. Knowledge graphs in industry</a><a href="#llms">12. How LLMs work</a><a href="#limits">13. Intelligence and its limits</a><a href="#hybrid">14. Hybrid and neuro-symbolic AI</a><a href="#closing">15. Closing perspective</a>
+          </nav>
+        </aside>
+        <article class="notes-article">
+<header><div class="eyebrow">Luleå University of Technology · D0034E</div><h1>Lesson 1: Introduction</h1><p class="lead">Applied AI — Knowledge Management and Reasoning</p><div class="meta">Course introduction · Organisation and assessment · Intelligent agents · Symbolic and neural approaches · Knowledge graphs · Large language models · Hybrid AI</div></header>
+
+<section id="opening"><div class="sectionnum">01</div><h2>Opening and course staff</h2>
+<p>The course opens with a welcome to students attending in the classroom and remotely through Zoom. Lectures are intended to be recorded so that students who cannot attend live can follow the material afterwards. The course is <strong>D0034E, Applied AI: Knowledge Management and Reasoning</strong>.</p>
+<h3>Professor Evgeny</h3>
+<p>The course's principal lecturer, Evgeny, is a professor at Luleå University of Technology (LTU) and head of its Computer Science group. He introduces his international academic background as an illustration of the possibilities offered by a research career.</p>
+<p>He grew up in Krasnoyarsk in Siberia, Russia, an industrial city of approximately one million inhabitants, where he completed his bachelor's studies. In 1998 he moved to Europe on a scholarship to study telecommunications at <strong>EPFL in Lausanne, Switzerland</strong>. After a year, he began his doctoral path at <strong>KTH, the Royal Institute of Technology</strong>, Stockholm, where he obtained a licentiate degree. He subsequently worked at the <strong>University of Basel</strong> in Switzerland, whose academic history includes figures such as Erasmus and members of the Bernoulli family. After a postdoctoral period of approximately one and a half years at <strong>RWTH Aachen</strong> in Germany, he joined LTU in 2007. He progressed from senior lecturer to docent and full professor.</p>
+<p>He presents an academic career as international, stimulating and rich in opportunities to encounter people and ideas, but also demanding: researchers must take responsibility for the direction of their work, interests and career.</p>
+<p>Evgeny is also an adjunct professor at <strong>La Trobe University, Melbourne</strong>. The two universities share the abbreviation LTU, which led to the informal name <em>LTU squared</em> for their collaboration. He works with colleagues at the <strong>Centre for Data Analytics and Cognition</strong> on research connected to reasoning in AI, and mentions the possibility of future internships through the collaboration.</p>
+<p>His other role is as a guest researcher at <strong>Ericsson Research</strong>, working with a hybrid AI group. One application is <strong>zero-touch management of communication networks</strong>: many different devices, functions and services must cooperate and be optimised for reliable network operation. The area also offers potential master's thesis topics.</p>
+<h3>Other teachers</h3>
+<p><strong>Chenwei Yang</strong>, a senior lecturer in the Computer Science group, teaches the second theory module. His part concerns the Semantic Web, knowledge graphs, ontologies and ways of formally modelling knowledge. Chenwei briefly introduces his contribution during the opening class.</p>
+<p>Two PhD students, <strong>Måns and Otto</strong>, serve as teaching assistants. Måns belongs to the professor's group and Otto to a neighbouring group. They help students with practical work and participate in lab assessment.</p>
+</section>
+<section id="organisation"><div class="sectionnum">02</div><h2>How the course is organised</h2>
+<p>The course uses an alternating <strong>theory-week and practice-week</strong> structure. The lecturer has used this arrangement for several years and emphasises that students should organise their work around it rather than expect a conventional sequence of lectures every week.</p>
+<table><thead><tr><th>Theory week</th><th>Practice week</th></tr></thead><tbody><tr><td>Attend lectures with Evgeny or Chenwei; read the course material; watch lecture recordings; study concepts; complete a Canvas quiz.</td><td>Concentrate on implementing the corresponding lab. Normally includes an introductory class and an assessment opportunity, rather than substantial new theory.</td></tr><tr><td>Knowledge development and conceptual understanding.</td><td>Programming, experimentation, completing the report and demonstrating individual understanding.</td></tr></tbody></table>
+<p>The practical assignments are substantial and can require considerable time. Although practice weeks are intended to create space for lab work, students also have other courses; beginning an assignment early is therefore encouraged.</p>
+<h3>Learning material and Canvas</h3>
+<p>A classical artificial intelligence textbook is used as a course reference. The lecturer notes that AI is developing quickly, so newer editions contain more recent developments. At the same time, established foundations such as logic, reasoning and knowledge representation remain valid in older editions. Students may therefore still obtain valuable material from earlier versions.</p>
+<p><strong>Canvas</strong> is the central place for reading instructions, lecture slides and PDFs, recordings, quizzes, lab descriptions and course information. The room is populated progressively, and students should check it regularly. The lecturer intends to record the classes; students are welcome to remind him if recording has not been started.</p>
+<h3>Questions and communication</h3>
+<p>Questions should preferably be asked using <strong>Canvas Discussions</strong>, so that classmates can benefit from the answers rather than receiving the same explanation privately. Anonymous participation is possible. The class discusses email as an alternative, but the lecturer strongly favours the shared discussion channel because of the volume of email he receives and the wider usefulness of public answers.</p>
+<p>Discord had previously been popular for course communication, particularly for its informal and anonymous style, but its use was discouraged due to GDPR-related institutional concerns. The course therefore uses Canvas Discussions.</p>
+<h3>Quizzes</h3>
+<p>At the end of a theory week, students complete a Canvas quiz. The lecturer describes the usual schedule as publication on <strong>Wednesday night</strong> and a deadline on <strong>Friday night</strong>. The Friday deadline was chosen to avoid making students feel compelled to work on quizzes during the weekend. When asked about the number of attempts, he says that earlier quizzes had one attempt but that he will verify the current arrangement.</p>
+</section>
+<section id="assessment"><div class="sectionnum">03</div><h2>Programming assignments and individual assessments</h2>
+<p>All practical assignments require programming. <strong>Python</strong> is the main language, with additional work involving <strong>RDF</strong> for knowledge representation, <strong>SPARQL</strong> for querying knowledge graphs, and a small amount of web programming. SPARQL has similarities to SQL in its role as a query language, although it is designed for graph-structured information.</p>
+<p>Each lab is intended to result in a reasonably self-contained piece of software. Students implement the necessary functionality, respond to the questions in the lab material and submit a report. <strong>Submission of the report alone does not complete the lab assessment.</strong></p>
+<h3>Use of generative AI</h3>
+<p>The course does not attempt to prohibit the use of generative AI for writing code. The lecturer explains that such tools are already widely used and that prohibiting them would not provide a reliable measure of learning. Instead, students are <strong>allowed and encouraged</strong> to use generative AI for appropriate parts of development, while being responsible for understanding the resulting implementation.</p>
+<p>This leads to a distinction between <em>what has been submitted</em> and <em>what the student actually understands</em>. The course addresses that distinction through an <strong>individual verbal assessment</strong>.</p>
+<h3>What an individual assessment involves</h3>
+<ul><li>Students may collaborate in groups, share experiences and discuss the implementation. The professor does not impose a fixed group-size restriction.</li><li>Every student is assessed individually, even when the lab was developed collaboratively.</li><li>The student must be able to explain the full implementation rather than only the part they personally wrote.</li><li>An assessor may select an arbitrary location in the submitted source code and ask what that code does.</li><li>Students should be ready to explain the overall program architecture and answer conceptual questions from the assignment.</li><li>Saying that a particular component was written by another group member is not sufficient.</li></ul>
+<p>The aim is to make the practical assignments genuinely educational: using an AI coding assistant is compatible with the course, but understanding the mechanisms and design remains the student's responsibility.</p>
+<p>A student asks whether they need to book a teaching-assistant appointment for the first lab. The lecturer says that Måns will distribute the procedure separately.</p>
+<h3>Final assessment structure</h3>
+<p>The course has <strong>two examination components: labs and quizzes</strong>. The professor presents the relationship between them and the final grade on the course material available in Canvas. He does not state the complete grading rule verbally during this class.</p>
+<p>The schedule also includes a practical assignment around the Christmas break, extending into January, and a final period devoted to assessment sessions. That final period is intended to allow students to clear outstanding assessments and lab backlog.</p>
+</section>
+<section id="progression"><div class="sectionnum">04</div><h2>Progression through the practical work</h2>
+<p>The labs are arranged to move from elementary, formally specified reasoning to more sophisticated implementations that connect knowledge graphs and large language models. Each stage provides skills needed at the next stage.</p>
+<h3>Stage 1 — Logical agents and propositional reasoning</h3>
+<p>The first theory module introduces <strong>logical agents</strong>, <strong>propositional logic</strong>, <strong>knowledge representation</strong>, <strong>knowledge bases</strong> and <strong>inference</strong>. Students may already have encountered propositional logic in earlier studies, but the material is revisited specifically as a foundation of AI. The course also gives a glimpse of higher-order logics.</p>
+<p>The first lab is already published at the start of the course. It is adapted from textbook material and uses a <strong>virtual world</strong> in which agents navigate towards goals, accumulate knowledge about their environment and reason about the next action to take. Students work in a <strong>Jupyter notebook</strong> with explanatory material and incomplete sections of functionality to implement.</p>
+<p>The lab connects an agent's goals, knowledge base and logical inference with the decisions needed to move through its virtual environment. Although it is expected to be completed during the associated practice week, the lecturer recognises that some students may need more time.</p>
+<h3>Stage 2 — Ontologies, knowledge graphs and Semantic Web reasoning</h3>
+<p>In the second theory module, led by Chenwei, the course turns to techniques created under the Semantic Web framework. Students learn how to describe the world through <strong>formal concepts, relationships and ontologies</strong>, work with graph-based knowledge representations, submit queries, retrieve information and infer new facts from existing facts.</p>
+<p>This module brings students closer to knowledge-management technologies already used in modern industrial settings, where heterogeneous entities and their capabilities must be described consistently.</p>
+<h3>Stage 3 — Local large language models and retrieval</h3>
+<p>A later practical stage asks students to work with an <strong>LLM running locally</strong> on their own computers. The lecturer has selected essential assignments from a larger series of labs and intends to use a model small enough to be practical on student hardware.</p>
+<p>Students develop two capabilities: <strong>a basic chatbot</strong> and <strong>a chatbot using retrieval-augmented generation (RAG)</strong>. The first demonstrates conversational functionality based on a language model; the second demonstrates how additional information-retrieval mechanisms can make the system more capable.</p>
+<p>The exercise is meant to show how the apparent reasoning capacity of a conversational system changes when additional mechanisms support the core model, including retaining information, drawing on accessible facts and constructing responses from context. The lecturer says that these LLM assignments will be made available as the course progresses.</p>
+<h3>Stage 4 — Hybrid LLM and knowledge-graph reasoning</h3>
+<p>The final practical goal is to combine <strong>LLM-based processing</strong> with <strong>knowledge-graph-based reasoning</strong> in one hybrid system. This depends on skills developed in both the symbolic and neural stages: a graph representation of knowledge and an LLM that can interact with it.</p>
+<p>The lecturer recommends implementing a custom front end to the knowledge graph, potentially using Python libraries and generative AI tools to accelerate development. In his experience, a purpose-built graph interface is often simpler to connect to an LLM than an existing general-purpose ontology management system.</p>
+<p>Such a front end can expose an <strong>API</strong> through which information generated or processed by an LLM can be entered into a knowledge graph. He describes rapid prototyping with coding assistants, including Codex, as a practical means of building these interfaces. The purpose is not only to produce usable software but also to understand the interface between the language model and the formal knowledge representation.</p>
+<div class="diagram"><div class="stages"><span class="stage">Propositional logic<br>and agents</span><span class="arrow">→</span><span class="stage">Ontologies<br>and knowledge graphs</span><span class="arrow">→</span><span class="stage">Local LLM<br>and RAG</span><span class="arrow">→</span><span class="stage">Hybrid<br>reasoning system</span></div></div>
+</section>
+<section id="intelligence"><div class="sectionnum">05</div><h2>What is artificial intelligence?</h2>
+<p>Before moving into technical content, the lecturer asks students what comes to mind when they hear the term <em>artificial intelligence</em>. Contributions from the classroom and Zoom chat include machine learning, reinforcement learning, neural networks, autonomy, natural language processing, machine vision, robotics, memory, decision-making, problem solving, complex reasoning, self-improvement and the ability to perform repeated tasks without human intervention.</p>
+<p>He refines the question: rather than naming techniques or products, <strong>which functions of human intelligence are we trying to implement artificially?</strong> This distinction is important because tools such as neural networks are methods; goal-directed action, reasoning, learning and knowledge use are among the functionalities those methods seek to produce.</p>
+<h3>The origin of the field</h3>
+<p>In this course, artificial intelligence is approached as an attempt to recreate aspects of intelligent human behaviour using computers. Imagining artificial beings with intelligence is an old human ambition, extending far earlier than modern computers. However, the modern research field emerged in the 1950s. The professor highlights the <strong>1956 Dartmouth seminar</strong> and figures including <strong>John McCarthy, Marvin Minsky and Allen Newell</strong> in the establishment and naming of the field.</p>
+<p>AI is therefore not a discipline created by the recent appearance of chatbots. It has decades of accumulated methods and theoretical foundations, even though public attention increasingly associates it with generative AI and ChatGPT.</p>
+</section>
+<section id="capabilities"><div class="sectionnum">06</div><h2>Capabilities that constitute intelligent behaviour</h2>
+<h3>Goal-directed action</h3><p>Much human behaviour is organised around goals. Rather than selecting actions randomly, we choose and plan actions that increase the likelihood of achieving a desired result. An intelligent system must therefore be able to relate a goal to possible actions and select how to proceed.</p>
+<h3>Abstraction</h3><p>Human intelligence can ignore large amounts of irrelevant detail without losing the connection to the actual environment. A <strong>map</strong> is not the physical terrain, but it represents important structures of that terrain in a simplified form. <strong>Sketches</strong> similarly omit details while preserving features necessary for recognition or reasoning. The difficult part is not simply removing details: it is using the abstract representation and still relating it correctly to the real world.</p>
+<h3>Mapping the world to symbols and categories</h3><p>Intelligence also involves converting experience of physical objects and events into <strong>symbols and categories</strong>. People recognise that different objects share attributes, assign them a common name and use the category in subsequent reasoning. This involves learning categories from a limited number of observations and deciding what properties are relevant.</p>
+<p>Representation may take the form of written language, pictures, sketches or other symbols. The lecturer associates this aspect of intelligent behaviour especially with machine learning and neural networks: learning a useful representation from observations is one of their major strengths.</p>
+<h3>Interaction with and adaptation to the environment</h3><p>Intelligent behaviour is not an isolated deterministic sequence that can be specified once and then applied independently of the world. The environment changes what the agent knows and what it should do next. The agent may also change the environment, creating new conditions for its subsequent decisions. This feedback makes intelligent behaviour iterative.</p>
+<h3>Managing extensive knowledge</h3><p>Even apparently simple skills rely on very large amounts of background knowledge. Consider <strong>writing on paper with a pen</strong> or <strong>hammering a nail</strong>. To describe every step of either task, one would need knowledge about the objects involved, how they are held, the order of movements, the effects of actions and the conditions under which those actions succeed.</p>
+<p>In everyday life, much of this knowledge is used automatically: actions may become habits or reflex-like routines and are not consciously analysed every time. Nevertheless, the information is available to support adaptation, alternative uses of tools and reasoning in new situations. A significant part of intelligence lies in organising and using that extensive knowledge.</p>
+<h3>Learning and self-improvement</h3><p>People acquire knowledge from experience and continuously adjust their behaviour. The lecturer links this ongoing reflection and learning with the historical philosophical discussion of human thought, including René Descartes. Learning is not a single initial training step; in biological intelligence it is part of a continual interaction between the individual and the environment.</p>
+<div class="diagram"><div class="stages"><span class="stage">Perceive</span><span class="arrow">→</span><span class="stage">Process and conceptualise</span><span class="arrow">→</span><span class="stage">Plan</span><span class="arrow">→</span><span class="stage">Act</span><span class="arrow">↺</span></div><small>Actions affect the environment, producing new perceptions and further decisions.</small></div>
+<p>The lecture is not claiming that every ability described here will be implemented in this one course. The purpose of the discussion is to establish a broader picture of the kinds of functionality that AI research seeks to explain and reproduce.</p>
+</section>
+<section id="agents"><div class="sectionnum">07</div><h2>The concept of an intelligent agent</h2>
+<p>Students are asked what <em>agent</em> means to them. Current uses of the term often refer to generative AI systems in which one program delegates tasks to several specialised agents, as in coding assistants and tool-using LLM workflows. The lecturer stresses that the classical AI definition is <strong>much broader and older</strong>.</p>
+<div class="inset"><p><strong>Agent:</strong> anything capable of perceiving the environment in which it is situated through sensors and acting on that environment through actuators.</p></div>
+<p>The definition is intentionally abstract. A physical robot might use cameras, microphones and other sensors to perceive its surroundings, then motors or other physical actuators to move and interact with objects. But the environment need not be physical.</p>
+<p>The <strong>World Wide Web</strong>, with its pages and stored information, can also be an environment. A program that browses information and performs actions in that environment can be considered an agent. An agent is therefore defined by its relationship to an environment, perception and action, not by whether it has wheels, arms, a chatbot interface or a large language model.</p>
+<p>The course will examine specific types of agents and different kinds of environments in the next lecture, including how their structure and behaviour depend on what they can perceive and what changes they can make.</p>
+<div class="diagram"><div class="stages"><span class="stage">Environment</span><span class="arrow">→</span><span class="stage">Sensors / perception</span><span class="arrow">→</span><span class="stage">Agent</span><span class="arrow">→</span><span class="stage">Actuators / actions</span><span class="arrow">→</span><span class="stage">Environment</span></div></div>
+</section>
+<section id="approaches"><div class="sectionnum">08</div><h2>Two approaches to artificial intelligence</h2>
+<p>The lecturer divides AI into two major historical and methodological traditions: <strong>symbolic AI</strong> and <strong>connectionist or neural AI</strong>. The students' initial answers tend to mention machine learning and neural networks, while symbolic reasoning is much less prominent. That imbalance reflects contemporary public attention rather than the historical importance of symbolic AI.</p>
+<h3>Symbolic AI</h3><p>Symbolic AI starts with the idea that knowledge about a domain can be described in a <strong>formal representation</strong>. Reasoning then applies <strong>logic and explicitly stated rules</strong> to those representations to obtain conclusions. The rules describe relevant regularities or relationships in the world and make it possible to trace how conclusions arise.</p><p>It was the earlier practical research tradition and is sometimes called <strong>GOFAI</strong>, or <em>Good Old-Fashioned Artificial Intelligence</em>. Its strengths include explicit organisation of knowledge and the possibility of explaining why a conclusion follows from a set of statements.</p>
+<h3>Connectionist AI</h3><p>Connectionist AI instead attempts to model intelligent functions through architectures inspired by the processing that occurs in biological brains. Its principal technology is the <strong>artificial neural network</strong>. Rather than relying exclusively on hand-written rules, a neural network learns patterns from training data.</p><p>The lecturer notes that early neural architectures produced limited practical results, which helped symbolic systems dominate early developments. The later growth of neural networks depended on the ability to train larger models successfully, especially through the <strong>backpropagation</strong> algorithm, which dates back several decades, and advancements in large-scale applications such as image classification.</p><p>A further decisive development was the <strong>transformer architecture</strong>, introduced in 2017. Transformers underpin the contemporary large language models that have made neural AI so visible.</p>
+<table><thead><tr><th>Symbolic approach</th><th>Connectionist approach</th></tr></thead><tbody><tr><td>Knowledge explicitly represented as facts, concepts, rules and relationships.</td><td>Patterns represented in trained networks and their numerical parameters.</td></tr><tr><td>Derivation of conclusions through logical inference.</td><td>Learned transformations and predictions based on training and context.</td></tr><tr><td>Historically associated with expert systems, logical agents and Semantic Web technologies.</td><td>Historically associated with neural networks and, more recently, transformers and LLMs.</td></tr><tr><td>Can make reasoning steps and sources of facts traceable.</td><td>Can extract complex patterns from very large collections of examples.</td></tr></tbody></table>
+<p>These traditions are not mutually exclusive. A central theme of the lecture is that modern systems increasingly combine explicit knowledge with learned models.</p>
+</section>
+<section id="expert"><div class="sectionnum">09</div><h2>Expert systems: an early practical form of symbolic AI</h2>
+<p>One important application of symbolic AI was the <strong>expert system</strong>. An expert system aims to reproduce aspects of a specialist's reasoning by formally recording knowledge of a particular domain together with the rules for drawing conclusions from it.</p>
+<p>The lecturer uses <strong>medical diagnosis</strong> as an example. Specialists can be consulted to identify relevant symptoms, facts and rules that connect observed conditions to possible diagnoses. Once recorded in the system, those rules can be applied to a given set of symptoms to support automatic diagnostic reasoning.</p>
+<p>This illustrates both the method and the appeal of early symbolic AI: human expertise is converted into explicit statements, and the system follows known reasoning rules. It also reveals why building a sufficiently complete knowledge representation for a real domain can be challenging.</p>
+</section>
+<section id="semantic"><div class="sectionnum">10</div><h2>The Semantic Web and the representation of knowledge</h2>
+<h3>Why interoperability became important</h3>
+<p>During the late 1990s and early 2000s, the rapid growth of the World Wide Web, industrial automation and interconnected software made a new problem prominent. Increasingly complex environments contained many different devices, programs and services. These components had to exchange information and operate together, even when they were created by different organisations or based on different technologies.</p>
+<p>For such integration to be intelligent, systems need more than a network connection. They need structured descriptions of <strong>what each component is and what it is capable of doing</strong>. With this information a system can determine whether a service meets a requirement, whether one component can cooperate with another and what conclusions follow from their descriptions.</p>
+<h3>Semantic Web technologies</h3>
+<p>The <strong>Semantic Web</strong> emerged as a framework of techniques for formally describing heterogeneous objects, their properties and their relationships, and for reasoning over those descriptions. Its methods include the <strong>Resource Description Framework (RDF)</strong> and the graph query language <strong>SPARQL</strong>. Ontologies provide formal models of the concepts and relationships in a domain.</p>
+<p>Information can be organised as a <strong>knowledge graph</strong>, consisting of interconnected entities and relations. A knowledge base then supports querying, retrieval of stated facts and inference of additional facts using its representation and reasoning rules.</p>
+<h3>The original vision and its limitations</h3>
+<p>The original Semantic Web vision aimed very high: to describe the knowledge and capabilities of vast numbers of objects and services, develop ontologies for many domains and enable reasoning and interoperability on a web-wide scale.</p>
+<p>According to the lecturer, this broad vision did not achieve its intended universal form. A central difficulty was <strong>computational scale</strong>. Real domains can demand enormous knowledge graphs with millions or billions of nodes and edges. Navigating them and deriving conclusions quickly enough is computationally demanding. The size of the representation and the time required for inference became major obstacles.</p>
+<p>Nevertheless, this was not the end of the technology. RDF, ontologies, graph queries and reasoning methods continue to be used in practical systems. The earlier ambition of a universal Web-scale reasoner may have fallen short, but the underlying methods remain valuable and are receiving renewed attention in hybrid AI.</p>
+<h3>Explainability and transparency</h3>
+<p>A central advantage of formal knowledge representation is <strong>traceability</strong>. When the facts and logical rules are explicitly represented, a conclusion can be connected to the knowledge and reasoning steps that produced it. Such transparency is particularly valuable where it matters to understand not just <em>what</em> a system has decided, but <em>why</em>.</p>
+</section>
+<section id="industry"><div class="sectionnum">11</div><h2>Knowledge graphs in communication networks</h2>
+<p>The lecturer connects the Semantic Web discussion with his work at Ericsson Research. A mobile communication network contains many kinds of physical and software resources: base stations, functional units, services, schedulers, capacity-planning functions and other interconnected components.</p>
+<p>These are heterogeneous systems whose dependencies and capabilities must be understood to maintain reliable network operation. In the application he describes, individual resources and functions have <strong>formal representations in RDF knowledge graphs</strong>.</p>
+<p>The graph can be used to investigate whether two base stations or components are compatible, which resources depend on one another and what might happen when one component fails. If a functional unit develops a fault, its connections in the graph help establish which other functions may be affected. These relationships support <strong>fault impact analysis and root-cause analysis</strong>.</p>
+<p>This is an example of symbolic AI providing concrete value even without solving the universal Semantic Web vision. It also motivates hybrid solutions in which neural components help process information while the graph retains explicit descriptions and relationships.</p>
+</section>
+<section id="llms"><div class="sectionnum">12</div><h2>How large language models work</h2>
+<h3>A question about intelligence</h3>
+<p>The professor asks the class whether large language models are truly intelligent. One student suggests that an LLM has no intelligence of its own, while another points to the restriction imposed by its context. The professor treats both as useful starting points, while arguing that the answer is more nuanced.</p>
+<p>At the level of its core operation, the language model performs a surprisingly straightforward task: <strong>predict the next token in a sequence</strong>. However, the ability to make useful predictions across a wide range of contexts requires recognising many kinds of patterns, and the resulting functionality can be highly capable.</p>
+<h3>Why next-word prediction is not trivial</h3>
+<p>The class considers incomplete sentences and how naturally people predict an appropriate continuation. Some predictions are determined mainly by <strong>grammar</strong>, others by the <strong>meaning and surrounding context</strong>, and still others by broader knowledge. Choosing the next word therefore involves more than simply looking at the last few characters. Even a task that sounds simple can depend on complicated information.</p>
+<h3>Training and representations</h3>
+<p>Large language models are trained on extensive collections of text produced by different authors and in different genres. Similar objects, phenomena and ideas can be described through many different words, grammatical constructions and styles. The model learns statistical structures connecting these different ways of expressing information.</p>
+<p>The lecturer describes text as a sequence of words or, more precisely, <strong>tokens represented mathematically using vectors and embeddings</strong>. Attention-based neural networks, particularly transformers, analyse patterns across the tokens in the available <strong>context window</strong>. Based on the pattern and context, the network predicts a next token. That token is added to the sequence, and the process repeats.</p>
+<div class="diagram"><div class="stages"><span class="stage">Text / tokens</span><span class="arrow">→</span><span class="stage">Vector embeddings</span><span class="arrow">→</span><span class="stage">Context and attention</span><span class="arrow">→</span><span class="stage">Next-token prediction</span><span class="arrow">↺</span></div><small>The generated token becomes part of the subsequent context.</small></div>
+<p>The algorithmic objective is narrow, but what the model has learned through exposure to massive quantities of written language makes this mechanism powerful. Human-written text contains knowledge accumulated over centuries, expressed through the language and intellectual work of many people.</p>
+<h3>Extending the basic model</h3>
+<p>A basic chatbot demonstrates one level of functionality. Additional tools can make the system more capable. The professor specifically mentions <strong>memory</strong> and <strong>retrieval-augmented generation</strong> as mechanisms that help a model access relevant information, maintain useful associations and support interactions that appear increasingly reasoned.</p>
+<p>He also observes that many different tasks, including some mathematical and image-related problems, can be expressed in forms compatible with prediction over sequences of tokens. This contributes to the broad range of applications possible with language-model architectures.</p>
+</section>
+<section id="limits"><div class="sectionnum">13</div><h2>Intelligence, capability and unresolved challenges</h2>
+<p>The fact that an LLM predicts tokens does not settle the question of whether the resulting system displays intelligence. The lecturer distinguishes between the <strong>simplicity of the core computational task</strong> and the <strong>sophistication of the behaviour enabled by the learned information and surrounding tools</strong>.</p>
+<p>Current applications built on LLMs can perform advanced functions, and it is reasonable to describe many of those functions as intelligent. Yet debate remains about whether such systems are approaching <strong>artificial general intelligence</strong>.</p>
+<p>He highlights continuing differences between artificial systems and biological intelligence. One is <strong>energy efficiency</strong>: biological systems can perform complex functions using comparatively little energy. Another is the ability to <strong>learn from very few examples</strong>, which humans often do with considerable flexibility. These remain areas where AI development has important work ahead.</p>
+<p>The broader lesson is to evaluate an AI system by the capabilities it demonstrates and the mechanisms that make those capabilities possible, rather than assuming that a single modelling technique completely explains intelligence.</p>
+</section>
+<section id="hybrid"><div class="sectionnum">14</div><h2>Hybrid AI and neuro-symbolic approaches</h2>
+<p>Hybrid AI combines methods from the symbolic and neural traditions. The lecturer also refers to the term <strong>neuro-symbolic AI</strong>, which emphasises the attempt to bring together artificial neural networks and formal representations of knowledge.</p>
+<p>In the setting of contemporary systems, hybrid AI often means integrating a <strong>large language model or other foundation model</strong> with a <strong>knowledge graph</strong> and associated symbolic reasoning capabilities. The goal is to benefit both from neural models' flexibility in processing language and patterns and from the explicit structures, relationships and logical reasoning offered by symbolic representations.</p>
+<p>Explainability and transparency are important motivations for this combination. A knowledge graph can make relevant facts and connections inspectable, while an LLM can assist in interpreting requests, processing information and interacting with the structured representation.</p>
+<h3>Vector symbolic architectures</h3>
+<p>The professor briefly introduces his own work on <strong>vector symbolic architectures</strong>. These are approaches for constructing and composing complex representations, including graph-like structures, directly in vector form, without necessarily requiring neural-network learning for each new composition.</p>
+<p>He uses a simple mental example: a person knows the concepts <em>red</em> and <em>apple</em> and can combine them into the concept of a <em>red apple</em>, even without having previously encountered that exact combination. Human thought can form such conceptual combinations readily. Vector symbolic architectures investigate computational mechanisms that support related operations on representations.</p>
+<p>This research sits between the two historical approaches: it uses mathematical vectors while remaining concerned with structured, compositional and symbolic information.</p>
+<h3>The course's hybrid objective</h3>
+<p>The final lab aims to make these ideas concrete. Students begin with formal logic-based agents, develop ontological and graph-based representations, become familiar with local LLM systems and retrieval, and finally connect language-model functionality to a knowledge graph. The course therefore introduces methods from both AI traditions and demonstrates how they can operate together in a usable software system.</p>
+</section>
+<section id="closing"><div class="sectionnum">15</div><h2>Closing perspective</h2>
+<p>Artificial intelligence has developed through at least two important approaches. The <strong>symbolic tradition</strong> represents knowledge explicitly and applies rules to draw conclusions. The <strong>connectionist tradition</strong> builds and trains neural networks capable of learning complex patterns from data. Neither the long history of symbolic methods nor the recent success of neural methods should be overlooked.</p>
+<p>Modern AI tools increasingly bring these approaches together. Neural systems can process language and other complex inputs; symbolic systems can give facts and relationships formal structure and make some reasoning processes traceable. Combining them opens possibilities for more capable software, especially where information is heterogeneous and decisions need to be understood.</p>
+<p>The course follows this development in its teaching and practical work: from propositional knowledge and logical agents, through Semantic Web techniques and knowledge graphs, to local LLMs, retrieval and hybrid reasoning systems. The professor closes by inviting students interested in related research and projects beyond the course to contact him.</p>
+</section>
+<div class="footer">D0034E · Lesson 1 · Introduction</div>
+        </article>
+        <aside id="lesson-reading" data-reading="theory-1"></aside>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="site-footer site-footer--compact">
+    <div class="container">
+      <p>Personal learning hub for the LTU Master Programme in Applied AI. Not an official website of Luleå University of Technology.</p>
+      <p class="site-footer__links">
+        <a href="../../../index.html"><i class="fa-solid fa-sitemap" aria-hidden="true"></i> Programme explorer</a>
+        <a href="../../course.html?code=D0034E"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Course hub</a>
+        <a href="../index.html"><i class="fa-solid fa-list" aria-hidden="true"></i> Notes home</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../../../assets/js/theme.js" defer></script>
+  <script src="../../../assets/js/course-notes-nav.js" defer></script>
+  <script src="../../../assets/js/course-notes-reading.js" defer></script>
+</body>
+</html>
+
+

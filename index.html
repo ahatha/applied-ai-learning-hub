@@ -27,15 +27,19 @@
           ? stored
           : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
         document.documentElement.setAttribute("data-theme", theme);
+        var font = localStorage.getItem("aailh-font");
+        if (font === "plex" || font === "literata" || font === "lora" || font === "newsreader") {
+          document.documentElement.setAttribute("data-font", font);
+        }
       } catch (e) {
         document.documentElement.setAttribute("data-theme", "light");
       }
     })();
   </script>
   <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/components.css?v=20260721ba">
+  <link rel="stylesheet" href="assets/css/components.css?v=20260722b">
   <link rel="stylesheet" href="assets/css/responsive.css?v=20260721a">
-  <link rel="stylesheet" href="assets/css/home.css?v=20260721bm">
+  <link rel="stylesheet" href="assets/css/home.css?v=20260722d">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -146,7 +150,7 @@
             <span class="home-section-head__icon" aria-hidden="true"><i class="fa-solid fa-route"></i></span>
             <div>
               <h2 id="journey-title" class="section-title">Programme journey</h2>
-              <p class="home-section-head__desc">A Gantt view of years, semesters, study periods, and exams across the programme.</p>
+              <p class="home-section-head__desc">Follow the academic year on a Gantt timeline — years, semesters, study periods, and exams, with where you are now.</p>
             </div>
           </div>
           <div id="programme-timeline-tabs" class="home-section-head__tabs"></div>
@@ -166,7 +170,7 @@
             <span class="home-section-head__icon" aria-hidden="true"><i class="fa-solid fa-share-nodes"></i></span>
             <div>
               <h2 id="explorer-title" class="section-title">Programme explorer</h2>
-              <p class="home-section-head__desc">Browse by year, semester and study period — every course links straight to its hub.</p>
+              <p class="home-section-head__desc">Browse one year at a time, then open a semester and study period — every course links straight to its hub.</p>
             </div>
           </div>
           <div id="programme-year-tabs" class="home-section-head__tabs"></div>
@@ -199,7 +203,7 @@
   <script src="assets/js/theme.js" defer></script>
   <script src="assets/js/data-loader.js?v=20260721ad" defer></script>
   <script src="assets/js/main.js?v=20260721am" defer></script>
-  <script src="assets/js/explorer.js?v=20260721q" defer></script>
-  <script src="assets/js/programme-timeline.js?v=20260721z" defer></script>
+  <script src="assets/js/explorer.js?v=20260722b" defer></script>
+  <script src="assets/js/programme-timeline.js?v=20260722d" defer></script>
 </body>
 </html>

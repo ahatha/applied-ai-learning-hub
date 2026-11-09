@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-asset-base="../../../assets/" data-path-depth="3">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 2 — Logical Agents and Propositional Reasoning | D0034E | Applied AI Programme Hub</title>
+  <meta name="description" content="Lesson 2 study notes for D0034E Applied AI, Knowledge Management and Reasoning.">
+  <meta name="theme-color" content="#0f6b63">
+  <link rel="icon" href="../../../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("aailh-theme");
+        var theme = stored === "light" || stored === "dark"
+          ? stored
+          : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+        var font = localStorage.getItem("aailh-font");
+        if (font === "plex" || font === "literata" || font === "lora" || font === "newsreader") {
+          document.documentElement.setAttribute("data-font", font);
+        }
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/components.css">
+  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../../assets/css/course-notes.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container site-header__inner site-header__inner--simple">
+      <a class="brand" href="../../../index.html">
+        <span class="brand__mark" aria-hidden="true">AI</span>
+        <span class="brand__text">Applied AI Programme Hub<small>LTU Applied AI · 2026–2028</small></span>
+      </a>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">
+        <i class="fa-solid fa-sun theme-toggle__icon theme-toggle__icon--light" aria-hidden="true"></i>
+        <i class="fa-solid fa-moon theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <nav id="lesson-nav" data-active="lesson2" data-home-href="../index.html"></nav>
+
+  <main id="main" class="site-main">
+    <div class="course-notes" id="top">
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="brand">D0034E</div>
+          <div class="sub">Applied AI: Knowledge Management and Reasoning</div>
+          <nav>
+            <a href="#purpose">1. Lesson purpose</a><a href="#distributed">2. Why autonomous software?</a><a href="#agent">3. Agents and task descriptions</a><a href="#logical-agent">4. What makes an agent logical?</a><a href="#propositional">5. Propositional logic</a><a href="#models">6. Worlds, models and meaning</a><a href="#connectives">7. Logical connectives</a><a href="#entailment">8. Entailment and equivalence</a><a href="#example">9. The poison-world example</a><a href="#model-checking">10. Model checking</a><a href="#takeaways">11. Key ideas and quiz focus</a><a href="#next">12. Where the lecture goes next</a>
+          </nav>
+        </aside>
+        <article class="notes-article">
+<header><div class="eyebrow">Luleå University of Technology · D0034E</div><h1>Lesson 2: Logical Agents and Propositional Reasoning</h1><p class="lead">How an agent can represent what it knows with logical sentences and use those sentences to justify what it believes about its environment.</p><div class="meta">Autonomous software · Agents and environments · Knowledge bases · Propositional semantics · Models · Entailment · Model checking</div></header>
+
+
+<section id="purpose"><div class="sectionnum">01</div><h2>What this lesson is about</h2>
+<p>This is the course’s first technical lecture. It looks at reasoning as a way to represent knowledge and make decisions. The focus is a <strong>logical agent</strong>: software that describes relevant facts about its world using symbols, stores those facts and rules in a knowledge base, and checks whether a possible conclusion follows from what it knows.</p>
+<p>The lecture moves from a practical need—software operating amid changing devices and contexts—to a small, formal example. Propositional logic keeps the example simple enough that we can enumerate possible worlds and see exactly why a conclusion is justified.</p>
+<div class="diagram"><div class="flow"><span class="box">Observe the environment</span><span class="arrow">→</span><span class="box">Represent facts and rules</span><span class="arrow">→</span><span class="box">Check a conclusion</span><span class="arrow">→</span><span class="box">Choose an action</span></div></div>
+</section>
+
+<section id="distributed"><div class="sectionnum">02</div><h2>Why autonomous software?</h2>
+<p>Modern computing systems combine many devices and software components. In a large, open distributed system, devices can move, change their properties, appear or disappear, and encounter contexts that were not fully known when the software was written. Components may also need to cooperate and provide services to one another.</p>
+<p>A conventional program often has its knowledge encoded inside data structures and its behaviour encoded in the program logic. When the situation changes, adapting the system may require changing and redeploying code. The lecture’s motivation for agent-oriented software is to state a goal and let a system use the information it has to decide how to pursue it.</p>
+<h3>Separate knowledge from the reasoning mechanism</h3>
+<p>A useful design idea is to keep the <strong>domain knowledge</strong>—facts about a particular environment—separate from the <strong>inference mechanism</strong> that works with those facts. A general reasoning engine can then be reused with different knowledge bases. The system can also derive a fact that was not explicitly stored, provided it follows from the stored facts and rules.</p>
+<p>This is the role of inference in the lecture: it lets the system extend or update the knowledge it can use, instead of merely executing a fixed list of steps. A real system still needs a way to acquire reliable information and to represent its domain correctly.</p>
+<div class="inset"><p><strong>Core motivation:</strong> when the environment is dynamic and not completely known in advance, the software needs a representation of what it knows and a way to reason from that knowledge.</p></div>
+</section>
+
+<section id="agent"><div class="sectionnum">03</div><h2>Agents, environments and task descriptions</h2>
+<p>An <strong>agent</strong> is a software system situated in an environment. It receives information through sensors and affects the environment through actions or actuators. The term is used in several fields, but here it is a programming abstraction: it lets us focus on the agent’s intelligent functionality while treating the basic interaction with the environment as part of the setup.</p>
+<div class="diagram"><div class="flow"><span class="box">Environment</span><span class="arrow">→</span><span class="box">Sensors · percepts</span><span class="arrow">→</span><span class="box">Agent</span><span class="arrow">→</span><span class="box">Actions · actuators</span><span class="arrow">→</span><span class="box">Environment changes</span></div></div>
+<p>To describe an agent problem in a way that supports reasoning, the lecture identifies four things to formalise:</p>
+<table><thead><tr><th>Part of the task</th><th>What it describes</th><th>Lecture example</th></tr></thead><tbody>
+<tr><td>Percepts</td><td>The information the agent receives from its sensors at a particular moment.</td><td>A taxi driver perceives roads, traffic signs and pedestrians; a toy agent may receive a simple binary signal.</td></tr>
+<tr><td>Actions / actuators</td><td>The choices the agent can make and the mechanisms by which those choices affect the environment.</td><td>A vehicle changes speed or direction; the toy agent selects a move.</td></tr>
+<tr><td>Environment</td><td>The world in which the agent operates, including relevant objects, properties and relationships.</td><td>Roads and traffic for a taxi; cells and possible hazards for the toy world.</td></tr>
+<tr><td>Performance measure</td><td>The criterion used to judge whether the agent is doing well.</td><td>For a taxi agent, safely delivering passengers is an example of a desired outcome.</td></tr>
+</tbody></table>
+<p>In real applications, sensor readings and actions can be complex: a camera produces an image, for example, rather than one simple true-or-false value. The lecture deliberately begins with a simplified representation in which each selected feature can be represented by a binary variable. This makes the reasoning mechanics easier to study.</p>
+<h3>The transition model may be unknown</h3>
+<p>An action can change the environment. A <strong>transition model</strong> describes what happens when an action is performed in a particular situation. In an unfamiliar or changing environment, the agent may not know all valid actions or their outcomes in advance. It must gather information by interacting with the environment and use the resulting facts to assess what it can safely do.</p>
+</section>
+
+<section id="logical-agent"><div class="sectionnum">04</div><h2>What makes an agent logical?</h2>
+<p>A logical agent uses an explicitly represented body of knowledge and a formal inference process. In this lesson, the representation is propositional logic. The agent stores sentences in a <strong>knowledge base</strong> (KB), including observations and rules that describe the environment.</p>
+<ol><li><strong>Represent:</strong> use symbols to stand for meaningful facts or properties.</li><li><strong>Observe:</strong> add facts reported by the agent’s percepts.</li><li><strong>Reason:</strong> check what follows from the knowledge base.</li><li><strong>Act:</strong> use supported conclusions when deciding what to do next.</li></ol>
+<p>The logical agent does not treat every possible claim as known. If the knowledge base does not establish a fact, the agent may need to test a hypothesis against all worlds that remain consistent with what it knows. That distinction—between “not known to be true” and “known to be false”—matters in the example later in the lesson.</p>
+<p>For this first model, the agent’s sensors and actions are simplified into binary variables. This is an introductory abstraction; it does not mean real-world perception or control is inherently binary.</p>
+</section>
+
+<section id="propositional"><div class="sectionnum">05</div><h2>Propositional logic: facts as true-or-false sentences</h2>
+<p>A <strong>proposition</strong> is a statement that can be assigned one of two truth values: <strong>true</strong> or <strong>false</strong>. A propositional symbol such as <code>P<sub>12</sub></code> can stand for a specific statement, for example, “there is poison in cell (1,2).” The symbol is only useful when its intended meaning is defined.</p>
+<p>Propositions let us represent a simplified world as a set of variables. A particular assignment of truth values to those variables describes one possible state of that world. Logical connectives combine simpler propositions into more complex sentences.</p>
+<div class="formula">P<sub>12</sub> = “poison is in cell (1,2)”<br>¬P<sub>12</sub> = “poison is not in cell (1,2)”</div>
+<p>The lecturer calls the step of pairing a symbolic notation with its defined meaning the introduction of <strong>semantics</strong>. Without that mapping, symbols are just marks on a page; with it, a formula can say something about the environment.</p>
+<h3>What this representation can and cannot express</h3>
+<p>Propositional logic is a good fit for a small, finite environment where relevant statements can be enumerated. It can express whether a named fact holds and combine such facts using logical connectives. By itself, it does not express the internal structure of objects or general relationships with variables such as “every cell has a property.” Those richer descriptions require first-order logic, which is a later topic.</p>
+</section>
+
+<section id="models"><div class="sectionnum">06</div><h2>Worlds, models and meaning</h2>
+<p>The lecture uses <strong>world</strong> for a formally described version of the physical environment. A <strong>model</strong> is one possible assignment of truth values to the propositional variables used to describe that world. For example, if the possible poison locations are represented by three variables, each variable can be true or false. There are therefore 2<sup>3</sup> = 8 possible assignments before any rules or observations rule some out.</p>
+<p>A sentence is true in some models and false in others. The set of models in which a sentence is true is its model set. This gives us a precise way to talk about what a sentence means and whether the knowledge base supports a conclusion.</p>
+<table><thead><tr><th>Term</th><th>Meaning in this lecture</th></tr></thead><tbody>
+<tr><td>Propositional variable</td><td>A named true-or-false fact, such as P<sub>12</sub>.</td></tr>
+<tr><td>Model</td><td>One complete assignment of true or false to the variables in the description.</td></tr>
+<tr><td>Satisfies</td><td>A model satisfies a sentence when evaluating the sentence under that assignment gives true.</td></tr>
+<tr><td>Knowledge base</td><td>The collection of sentences representing observed facts and rules available to the agent.</td></tr>
+</tbody></table>
+<p>With <em>n</em> independent Boolean variables, there are 2<sup>n</sup> possible assignments. Some assignments may conflict with the rules or observations. The remaining assignments are the possible worlds consistent with the knowledge base.</p>
+</section>
+
+<section id="connectives"><div class="sectionnum">07</div><h2>Logical connectives</h2>
+<p>Connectives determine how the truth values of smaller sentences determine the truth of a larger sentence. The lecture later uses implication elimination and logical equivalences when checking entailment. These compact definitions are useful for reading and simplifying those formulas.</p>
+<table class="truth"><thead><tr><th>P</th><th>Q</th><th>¬P</th><th>P ∧ Q</th><th>P ∨ Q</th><th>P → Q</th><th>P ↔ Q</th></tr></thead><tbody>
+<tr><td>F</td><td>F</td><td>T</td><td>F</td><td>F</td><td>T</td><td>T</td></tr>
+<tr><td>F</td><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td><td>F</td></tr>
+<tr><td>T</td><td>F</td><td>F</td><td>F</td><td>T</td><td>F</td><td>F</td></tr>
+<tr><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr>
+</tbody></table>
+<ul><li><strong>Negation</strong> (¬P): true when P is false.</li><li><strong>Conjunction</strong> (P ∧ Q): true only when both P and Q are true.</li><li><strong>Disjunction</strong> (P ∨ Q): true when at least one of P or Q is true (including when both are true).</li><li><strong>Implication</strong> (P → Q): false only when P is true and Q is false. It can be rewritten as ¬P ∨ Q.</li><li><strong>Biconditional</strong> (P ↔ Q): true when P and Q have the same truth value; it expresses that each implies the other.</li></ul>
+<div class="inset"><p><strong>Reading implication carefully:</strong> “if P, then Q” rules out the case where P happens but Q does not. When P is false, the implication is true under the truth-table definition. It does not by itself claim that P is true.</p></div>
+</section>
+
+<section id="entailment"><div class="sectionnum">08</div><h2>Entailment and logical equivalence</h2>
+<p><strong>Entailment</strong> asks whether a knowledge base logically supports a sentence. We write <code>KB ⊨ α</code> (“KB entails alpha”) when every model that makes all sentences in KB true also makes α true.</p>
+<div class="formula">KB ⊨ α  exactly when  Models(KB) ⊆ Models(α)</div>
+<p>In plain language: take every possible world that agrees with the knowledge base. If the proposed conclusion is true in all of them, the conclusion follows. If even one compatible model makes the conclusion false, the knowledge base does not entail it.</p>
+<p>Entailment is a relation between sentences. It is stronger than saying that a conclusion seems likely, or that one example world happens to make it true. A conclusion must hold across <em>all</em> models consistent with the premises.</p>
+<h3>Worked example: going to a party and having money</h3>
+<p>Let <code>P</code> mean “I go to the party” and <code>M</code> mean “I have money.” The lecture compares <code>P ∧ M</code> with <code>P ↔ M</code>.</p>
+<table class="truth"><thead><tr><th>P</th><th>M</th><th>P ∧ M</th><th>P ↔ M</th></tr></thead><tbody>
+<tr><td>F</td><td>F</td><td>F</td><td>T</td></tr><tr><td>F</td><td>T</td><td>F</td><td>F</td></tr><tr><td>T</td><td>F</td><td>F</td><td>F</td></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td></tr>
+</tbody></table>
+<ul><li><code>P ∧ M ⊨ P ↔ M</code> is true: the only model where both P and M are true makes them equivalent.</li><li><code>P ↔ M ⊨ P ∧ M</code> is false: the model P = false and M = false makes the biconditional true while the conjunction is false.</li></ul>
+<p>That second row is a <strong>counterexample</strong> to the proposed entailment. One counterexample is enough to show that entailment does not hold.</p>
+<h3>Logical equivalence</h3>
+<p>Two sentences are <strong>logically equivalent</strong> when they have the same truth value in every model. The truth tables let us compare them row by row. For example, <code>P → Q</code> and <code>¬P ∨ Q</code> are equivalent because they are true and false in exactly the same cases.</p>
+<p>Logical equivalence can be used to replace a formula with a simpler or more convenient one without changing its meaning. In the lecture, implication is rewritten using disjunction and negation so the resulting expression can be checked systematically.</p>
+<div class="inset"><p><strong>Useful formula from the handwritten notes:</strong> a biconditional expands into two implications:</p><div class="formula">P ↔ M  ≡  (P → M) ∧ (M → P)<br>       ≡  (¬P ∨ M) ∧ (¬M ∨ P)</div><p>This is the same truth-functional meaning: P and M must have matching truth values.</p></div>
+</section>
+
+<section id="example"><div class="sectionnum">09</div><h2>The poison-world example</h2>
+<p>The lecture applies the definitions to a small grid environment. A poison can be located in one of a few candidate cells. The agent does not initially know which placement is the real one, so each possible placement is represented by a model. As observations arrive, some models are ruled out.</p>
+<h3>Representing observations</h3>
+<p>Use a proposition such as <code>P<sub>12</sub></code> for “poison is in cell (1,2).” A sensor at the agent’s current cell reports a smell when poison is in a neighbouring cell. In a simplified two-neighbour case, the rule can be written:</p>
+<div class="formula">S<sub>11</sub> ↔ (P<sub>12</sub> ∨ P<sub>21</sub>)</div>
+<p>Here, <code>S<sub>11</sub></code> means “the sensor at (1,1) reports a smell.” The biconditional records both directions of the assumed relationship: the smell is present when a neighbouring cell contains poison, and under this toy-world rule, it is present only in that case. The actual lecture’s grid supplies the relevant neighbouring cells; the formula above names a compact illustrative instance.</p>
+<p>At the start, the agent can add directly observed facts to its knowledge base. For example, it knows its starting cell is not poisoned. It also records the sensor reading and the rule connecting that reading to nearby poison locations.</p>
+<h3>From a sensor reading to a conclusion</h3>
+<p>Suppose the sensor reports no smell. The knowledge base contains <code>¬S<sub>11</sub></code> and the rule above. In every model where that rule and observation are true, both listed neighbouring poison propositions must be false. So <code>¬P<sub>12</sub></code> and <code>¬P<sub>21</sub></code> are supported by the knowledge base.</p>
+<p>The important step is not simply to guess that the next cell is safe. The agent states the proposed fact as a hypothesis and checks whether it is true in every model compatible with its rules and observations. When it is, the fact may be added to the knowledge base and used in later reasoning.</p>
+<div class="callout"><p><strong>Evidence versus absence of evidence:</strong> if the agent has not observed a cell and its rules do not determine what is there, the cell’s status remains unknown. The agent should not mark it safe merely because “poison” is not currently listed as a fact. It needs entailment from the knowledge base.</p></div>
+</section>
+
+<section id="model-checking"><div class="sectionnum">10</div><h2>Model checking: testing whether a conclusion follows</h2>
+<p>The lecture introduces <strong>model checking</strong> as a way to perform inference in propositional logic. It works by considering the models that satisfy the knowledge base and checking whether the proposed hypothesis is also true in each one.</p>
+<ol><li>List the propositional variables used to describe the small world.</li><li>Enumerate their possible true/false assignments, which are the candidate models.</li><li>Keep the models in which every sentence in the knowledge base is true.</li><li>Check the hypothesis in each remaining model.</li><li>If the hypothesis is true in all of them, KB entails it; if it is false in any one, KB does not entail it.</li></ol>
+<p>For the poison example, the hypothesis is that there is no poison in a particular cell. The agent checks every model that satisfies its observation and sensor rules. If there is no compatible model containing poison in that cell, the knowledge base entails that the cell is poison-free.</p>
+<h3>Why the number of models matters</h3>
+<p>Evaluating a formula in one already specified model is straightforward: substitute the truth values and calculate the result. Entailment is more demanding because it asks about every model consistent with the knowledge base. With <em>n</em> Boolean variables, the full set contains 2<sup>n</sup> assignments. That number doubles each time another variable is added, so exhaustive enumeration grows exponentially.</p>
+<p>Model checking is therefore a clear and valid method for small examples, but larger problems need more efficient ways to search or establish satisfiability. The lecturer names satisfiability checking as a family of methods to study next; the detailed SAT methods are outside the main development of this lesson.</p>
+<h3>Entailment as a satisfiability question</h3>
+<p>The handwritten notes connect model checking with a proof-by-contradiction test. To test whether <code>KB ⊨ α</code>, ask whether there is a model in which the knowledge base is true while the proposed conclusion is false. That is exactly the satisfiability question for <code>KB ∧ ¬α</code>.</p>
+<div class="formula">KB ⊨ α  exactly when  KB ∧ ¬α is unsatisfiable</div>
+<p>If <code>KB ∧ ¬α</code> is satisfiable, its satisfying model is a counterexample: it agrees with the knowledge base but makes α false. If it is unsatisfiable, no counterexample exists, so every model of KB must satisfy α. This is the logical bridge from exhaustive model checking to the SAT-solving methods introduced next.</p>
+</section>
+
+<section id="takeaways"><div class="sectionnum">11</div><h2>Key ideas and quiz focus</h2>
+<ul><li>An agent receives percepts from an environment and changes it through actions.</li><li>A useful task description identifies percepts, actions, the environment and a performance measure.</li><li>A logical agent stores observations and rules in a knowledge base, then applies inference.</li><li>Propositions are true-or-false sentences whose symbols need a defined meaning.</li><li>A model is one truth-value assignment; different models represent different possible worlds.</li><li><code>KB ⊨ α</code> means every model that satisfies KB also satisfies α.</li><li>To disprove entailment, find one counterexample model where KB is true but α is false.</li><li>Logical equivalence means two formulas agree in every model.</li><li>Model checking tests a hypothesis across all models that satisfy the knowledge base.</li></ul>
+<div class="inset"><p>The lecturer says to expect quiz exercises on simplifying logical formulas using equivalences and on understanding entailment. The party example is a useful pattern to practise: build the truth table, identify the rows where the premise is true, then check the conclusion in those rows.</p></div>
+</section>
+
+<section id="next"><div class="sectionnum">12</div><h2>Where the lecture goes next</h2>
+<p>The lecture ends by pointing ahead to the next class: problem-solving methods connected to the toy environment, satisfiability checking and higher-order logic topics. These are a boundary marker for the course sequence; their details are not expanded here because they belong to the following lecture material.</p>
+</section>
+<footer class="footer"><a class="backtop" href="#top">Back to top ↑</a></footer>
+        </article>
+        <aside id="lesson-reading" data-reading="theory-1"></aside>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="site-footer site-footer--compact">
+    <div class="container">
+      <p>Personal learning hub for the LTU Master Programme in Applied AI. Not an official website of Luleå University of Technology.</p>
+      <p class="site-footer__links">
+        <a href="../../../index.html"><i class="fa-solid fa-sitemap" aria-hidden="true"></i> Programme explorer</a>
+        <a href="../../course.html?code=D0034E"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Course hub</a>
+        <a href="../index.html"><i class="fa-solid fa-list" aria-hidden="true"></i> Notes home</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../../../assets/js/theme.js" defer></script>
+  <script src="../../../assets/js/course-notes-nav.js" defer></script>
+  <script src="../../../assets/js/course-notes-reading.js" defer></script>
+</body>
+</html>
+
+

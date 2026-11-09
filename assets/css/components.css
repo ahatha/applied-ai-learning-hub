@@ -1522,6 +1522,47 @@
   color: var(--text);
 }
 
+details.explorer-block > .explorer-block__heading {
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 0;
+  border-radius: var(--radius-sm);
+}
+
+details.explorer-block > .explorer-block__heading::-webkit-details-marker {
+  display: none;
+}
+
+details.explorer-block > .explorer-block__heading::marker {
+  content: "";
+}
+
+details.explorer-block > .explorer-block__heading:hover {
+  background: color-mix(in srgb, var(--accent-soft) 40%, transparent);
+}
+
+.explorer-block__chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  font-size: 0.7rem;
+  transition: transform var(--transition);
+}
+
+details.explorer-block[open] > .explorer-block__heading .explorer-block__chevron {
+  transform: rotate(180deg);
+}
+
 .explorer-block--year > .explorer-block__heading {
   font-family: var(--font-serif);
   font-size: 1.3rem;
@@ -2138,11 +2179,58 @@
 
 .programme-explorer .explorer-block__heading {
   align-items: center;
+  gap: var(--space-3);
   min-height: 2.25rem;
-  padding-top: 2.75rem;
+  padding-top: 2.85rem;
   padding-right: 0;
   padding-bottom: var(--space-4);
   border-bottom: 2px solid color-mix(in srgb, var(--border) 55%, transparent);
+}
+
+/* Collapsible semester/period: keep ribbons clear of meta row + chevron */
+.programme-explorer details.explorer-block > summary.explorer-block__heading {
+  align-items: flex-start;
+  min-height: 5.5rem;
+  padding-top: 3rem;
+  padding-right: 2.85rem;
+  padding-bottom: var(--space-4);
+  margin: 0;
+}
+
+.programme-explorer details.explorer-block:not([open]) > summary.explorer-block__heading {
+  border-bottom-color: transparent;
+  padding-bottom: var(--space-3);
+  margin-bottom: 0;
+}
+
+.programme-explorer details.explorer-block[open] > summary.explorer-block__heading {
+  margin-bottom: 0;
+}
+
+.programme-explorer details.explorer-block > summary .explorer-block__chevron {
+  position: absolute;
+  top: 3rem;
+  right: 0.1rem;
+  margin: 0;
+  z-index: 3;
+}
+
+.programme-explorer details.explorer-block > summary .meta-badge-group,
+.programme-explorer details.explorer-block > summary .explorer-period-badges {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+}
+
+.programme-explorer details.explorer-block > summary .meta-badge-group--schedule {
+  width: 100%;
+  max-width: 100%;
+  row-gap: var(--space-2);
+}
+
+.programme-explorer details.explorer-block > .explorer-block__panel {
+  margin-top: var(--space-4);
+  padding-top: var(--space-1);
 }
 
 .programme-explorer .explorer-heading-badge {
@@ -2217,6 +2305,11 @@
   font-size: 0.85rem;
   font-weight: 750;
   box-shadow: -2px 2px 6px color-mix(in srgb, var(--text) 12%, transparent);
+}
+
+/* Keep the ECTS corner ribbon above the collapse control */
+.programme-explorer details.explorer-block > summary .badge--period-ects {
+  z-index: 4;
 }
 
 .programme-explorer .explorer-block--period > .explorer-block__heading > .meta-badge-group > .badge--period-ects {

@@ -341,11 +341,10 @@
       .replace(/badge--level">Master's/g, 'badge--level badge--level-masters">Master\'s');
   }
 
-  function sectionHtml(node) {
+  function sectionHtml(node, options) {
+    options = options || {};
     var label = node.name;
     var extraClass = "";
-    var headingLevel =
-      node.type === "year" ? "2" : node.type === "semester" ? "3" : "4";
 
     if (node.type === "semester" && node.id === state.homepageSemesterId) {
       extraClass = " is-upcoming-semester";
@@ -354,6 +353,19 @@
     var body;
     if (node.type === "period") {
       body = periodCoursesHtml(node) + examCardHtml(node.exam);
+    } else if (node.type === "year") {
+      /* Both semesters open by default; study periods stay collapsed. */
+      body = (node.children || [])
+        .map(function (child) {
+          return sectionHtml(child, { open: true });
+        })
+        .join("");
+    } else if (node.type === "semester") {
+      body = (node.children || [])
+        .map(function (child) {
+          return sectionHtml(child, { open: false });
+        })
+        .join("");
     } else {
       body = (node.children || [])
         .map(function (child) {
@@ -394,19 +406,55 @@
             })
           : "";
 
+    var headingInner =
+      headingBadge +
+      headingMeta +
+      '<span class="explorer-block__chevron" aria-hidden="true"><i class="fa-solid fa-chevron-down"></i></span>';
+
+    /* Year stays a plain section (year tabs already limit what's shown). */
+    if (node.type === "year") {
+      return (
+        '<section class="explorer-block explorer-block--' +
+        D().escapeHtml(node.type) +
+        extraClass +
+        '">' +
+        '<h2 class="explorer-block__heading">' +
+        headingBadge +
+        headingMeta +
+        "</h2>" +
+        '<div class="explorer-block__panel">' +
+        body +
+        "</div></section>"
+      );
+    }
+
+    /* Semesters and study periods collapse so the explorer stays scannable. */
+    if (node.type === "semester" || node.type === "period") {
+      return (
+        '<details class="explorer-block explorer-block--' +
+        D().escapeHtml(node.type) +
+        extraClass +
+        '"' +
+        (options.open ? " open" : "") +
+        ">" +
+        '<summary class="explorer-block__heading">' +
+        headingInner +
+        "</summary>" +
+        '<div class="explorer-block__panel">' +
+        body +
+        "</div></details>"
+      );
+    }
+
     return (
       '<section class="explorer-block explorer-block--' +
       D().escapeHtml(node.type) +
       extraClass +
       '">' +
-      "<h" +
-      headingLevel +
-      ' class="explorer-block__heading">' +
+      '<h4 class="explorer-block__heading">' +
       headingBadge +
       headingMeta +
-      "</h" +
-      headingLevel +
-      ">" +
+      "</h4>" +
       '<div class="explorer-block__panel">' +
       body +
       "</div></section>"

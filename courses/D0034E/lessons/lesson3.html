@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-asset-base="../../../assets/" data-path-depth="3">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 3 — SAT Solving and First-Order Logic | D0034E | Applied AI Programme Hub</title>
+  <meta name="description" content="Lesson 3 study notes for D0034E Applied AI, Knowledge Management and Reasoning.">
+  <meta name="theme-color" content="#0f6b63">
+  <link rel="icon" href="../../../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("aailh-theme");
+        var theme = stored === "light" || stored === "dark"
+          ? stored
+          : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+        var font = localStorage.getItem("aailh-font");
+        if (font === "plex" || font === "literata" || font === "lora" || font === "newsreader") {
+          document.documentElement.setAttribute("data-font", font);
+        }
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/components.css">
+  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../../assets/css/course-notes.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container site-header__inner site-header__inner--simple">
+      <a class="brand" href="../../../index.html">
+        <span class="brand__mark" aria-hidden="true">AI</span>
+        <span class="brand__text">Applied AI Programme Hub<small>LTU Applied AI · 2026–2028</small></span>
+      </a>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">
+        <i class="fa-solid fa-sun theme-toggle__icon theme-toggle__icon--light" aria-hidden="true"></i>
+        <i class="fa-solid fa-moon theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <nav id="lesson-nav" data-active="lesson3" data-home-href="../index.html"></nav>
+
+  <main id="main" class="site-main">
+    <div class="course-notes" id="top">
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="brand">D0034E</div>
+          <div class="sub">Applied AI: Knowledge Management and Reasoning</div>
+          <nav>
+            <a href="#purpose">1. From entailment to SAT</a><a href="#cnf">2. CNF and clauses</a><a href="#resolution">3. Resolution</a><a href="#conditioning">4. Conditioning</a><a href="#example">5. Worked example</a><a href="#application">6. SAT for scheduling</a><a href="#fol">7. From PL to FOL</a><a href="#predicates">8. Predicates and quantifiers</a><a href="#transform">9. Negating quantified formulas</a><a href="#summary">10. Summary</a>
+          </nav>
+        </aside>
+        <article class="notes-article">
+<header><div class="eyebrow">Luleå University of Technology · D0034E</div><h1>Lesson 3: SAT Solving and First-Order Logic</h1><p class="lead">How satisfiability methods search for models of a propositional knowledge base, and how first-order logic describes objects and relations that propositional logic cannot express compactly.</p><div class="meta">Entailment · Satisfiability · CNF · Resolution · Conditioning · Scheduling · Predicates · Quantifiers</div></header>
+
+
+<section id="purpose"><div class="sectionnum">01</div><h2>From entailment to SAT solving</h2>
+<p>In the previous lesson, entailment was defined by checking all models that satisfy a knowledge base. That definition gives a direct way to test a conclusion, but the number of assignments grows exponentially: with <em>n</em> Boolean variables there are 2<sup>n</sup> possible assignments.</p>
+<p>A satisfiability (SAT) problem asks whether there is at least one truth assignment that makes a Boolean formula true. SAT gives a useful way to test entailment by contradiction:</p>
+<div class="formula">KB ⊨ α  iff  KB ∧ ¬α is UNSAT</div>
+<p>If <code>KB ∧ ¬α</code> has a satisfying assignment, that assignment is a counterexample to the entailment. If no such assignment exists, the knowledge base cannot be true while α is false, so it entails α.</p>
+<div class="callout"><p><strong>Keep the two questions distinct:</strong> “Is this formula satisfiable?” asks whether at least one model makes it true. “Does KB entail α?” asks whether every model of KB makes α true. Entailment can be reduced to a SAT test by looking for a counterexample.</p></div>
+</section>
+
+<section id="cnf"><div class="sectionnum">02</div><h2>Conjunctive normal form</h2>
+<p>The notes present conversion to <strong>conjunctive normal form</strong> (CNF) as the setup for SAT solving. CNF is a conjunction (AND) of clauses, where each clause is a disjunction (OR) of literals. A literal is a variable or its negation.</p>
+<div class="formula">(X₁ ∨ ¬X₂) ∧ (X₂ ∨ X₃) ∧ (¬X₁ ∨ X₃)</div>
+<p>This is CNF: three clauses are joined by AND; the literals inside each clause are joined by OR. A unit clause contains just one literal, such as <code>X₁</code> or <code>¬X₃</code>.</p>
+<p>CNF is useful because resolution and conditioning can operate clause by clause. The formulas in this lesson are already in CNF; the main focus here is how the two search methods use that representation.</p>
+<h3>Converting a formula by equivalence</h3>
+<p>The lecture connects this step with the equivalence rules from the previous lesson. For example, eliminate the biconditional, then rewrite each implication:</p>
+<div class="formula">P ↔ M<br>≡ (P → M) ∧ (M → P)<br>≡ (¬P ∨ M) ∧ (¬M ∨ P)</div>
+<p>The final expression is in CNF: it is an AND of two OR clauses. Each rewrite preserves the formula’s meaning.</p>
+</section>
+
+<section id="resolution"><div class="sectionnum">03</div><h2>SAT solving by resolution</h2>
+<p><strong>Resolution</strong> combines two clauses that contain opposite forms of the same variable. If one clause contains <code>Y</code> and another contains <code>¬Y</code>, resolve on <code>Y</code> and keep the remaining literals:</p>
+<div class="formula">(X ∨ Y) ∧ (Z ∨ ¬Y)  ⟹  (X ∨ Z)</div>
+<p>Why is the resolvent justified? If both parent clauses are true, then either <code>X</code> is true or <code>Y</code> must be true; and either <code>Z</code> is true or <code>Y</code> must be false. In either case, at least one of <code>X</code> or <code>Z</code> must be true. The resolvent is therefore a consequence of its parent clauses.</p>
+<h3>Refuting an inconsistent clause set</h3>
+<p>The handwritten example lists these clauses:</p>
+<div class="formula">C₁: (X₁ ∨ X₂)       C₂: (¬X₁ ∨ X₃)<br>C₃: ¬X₂             C₄: ¬X₃<br>C₅: X₁               C₆: X₃</div>
+<p>The handwritten resolution diagram shows these derived clauses:</p>
+<ol><li>Resolve <code>C₁</code>, <code>(X₁ ∨ X₂)</code>, with <code>C₃</code>, <code>¬X₂</code>, on <code>X₂</code>. The result is <code>X₁</code> (also listed as <code>C₅</code>).</li><li>Resolve <code>C₂</code>, <code>(¬X₁ ∨ X₃)</code>, with <code>C₅</code>, <code>X₁</code>, on <code>X₁</code>. The result is <code>X₃</code> (also listed as <code>C₆</code>).</li><li>Resolve <code>C₆</code>, <code>X₃</code>, with <code>C₄</code>, <code>¬X₃</code>. The result is the <strong>empty clause</strong>, written <code>□</code>.</li></ol>
+<div class="formula">(X₁ ∨ X₂), ¬X₂ ⟹ X₁<br>(¬X₁ ∨ X₃), X₁ ⟹ X₃<br>X₃, ¬X₃ ⟹ □</div>
+<p>Because the clauses lead to a contradiction, no assignment satisfies all of them. The clause set is UNSAT. In a proof by refutation for entailment, the set being refuted is <code>KB ∧ ¬α</code>.</p>
+<h3>Unit propagation</h3>
+<p>A <strong>unit clause</strong> contains one literal, such as <code>X₁</code>. It forces that literal to be true in any satisfying assignment. Substitute that value into the other clauses: clauses made true can be removed, and the opposite literal can be removed from clauses that remain. Repeating this process is called <strong>unit propagation</strong>. In the resolution example, the unit clauses let us simplify the clauses until a contradiction is reached.</p>
+</section>
+
+<section id="conditioning"><div class="sectionnum">04</div><h2>SAT solving by conditioning</h2>
+<p><strong>Conditioning</strong> chooses a variable, assigns it a truth value, and simplifies the formula using that assignment. A true clause is removed; within any remaining clause, a false literal is removed. The solver then checks whether the simplified formula is satisfiable.</p>
+<ol><li>Choose a variable, for example <code>X₁</code>.</li><li>Try <code>X₁ = TRUE</code> and simplify the formula.</li><li>Try <code>X₁ = FALSE</code> and simplify the formula.</li><li>Continue searching in the resulting branches until a satisfying assignment is found or every branch has failed.</li></ol>
+<p>A formula is SAT if at least one branch leads to a satisfying assignment. It is UNSAT only if both truth-value branches (and all later branches) fail.</p>
+<h3>Why SAT complexity matters</h3>
+<p>The lecture notes that the number of variables and the size of each clause affect how difficult the search can become. The special case <strong>2-SAT</strong>, where each clause has at most two literals, can be solved in polynomial time. General <strong>3-SAT</strong> is NP-complete. Despite the worst-case difficulty, practical SAT solvers can handle large real-world instances; the lecturer mentions examples with thousands of variables, while actual performance depends on the structure of the formula.</p>
+</section>
+
+<section id="example"><div class="sectionnum">05</div><h2>Conditioning example</h2>
+<p>Consider the CNF formula from the notes:</p>
+<div class="formula">F = (X₁ ∨ ¬X₂) ∧ (X₂ ∨ X₃)</div>
+<h3>Branch 1: set X₁ = TRUE</h3>
+<p>The first clause is true, so it can be removed. The second clause remains:</p>
+<div class="formula">(TRUE ∨ ¬X₂) ∧ (X₂ ∨ X₃)<br>TRUE ∧ (X₂ ∨ X₃)</div>
+<p>Choose, for example, <code>X₂ = TRUE</code>. Then the remaining clause is true, so one satisfying assignment is <code>X₁ = TRUE, X₂ = TRUE</code> (with either value for <code>X₃</code>). This is enough to establish that F is SAT.</p>
+<h3>Branch 2: set X₁ = FALSE</h3>
+<p>The first clause simplifies to <code>¬X₂</code>; the second remains:</p>
+<div class="formula">¬X₂ ∧ (X₂ ∨ X₃)</div>
+<p>The unit clause forces <code>X₂ = FALSE</code>. Then the second clause requires <code>X₃ = TRUE</code>. So this branch is also SAT, with assignment <code>X₁ = FALSE, X₂ = FALSE, X₃ = TRUE</code>.</p>
+<p>The example shows how a truth assignment simplifies a larger formula into smaller constraints. A unit clause can immediately force a variable’s value.</p>
+</section>
+
+<section id="application"><div class="sectionnum">06</div><h2>Using SAT to represent a scheduling problem</h2>
+<p>SAT can encode planning and scheduling constraints. The lecture discusses assigning trucks to customers and scheduling university classes into time slots. For the truck example, let <code>X<sub>t,c</sub></code> mean “truck <em>t</em> is scheduled to serve customer <em>c</em>.” A proposed schedule is represented by assigning true or false to these variables.</p>
+<p>To express that two different trucks must not both serve the same customer, add a clause for each pair of trucks:</p>
+<div class="formula">For each customer c and distinct trucks t₁, t₂:<br>¬X<sub>t₁,c</sub> ∨ ¬X<sub>t₂,c</sub></div>
+<p>This clause rules out the assignment where both truck-to-customer variables are true. A complete scheduling model would also need clauses for the other requirements—for example, whether each customer must be served, truck capacity, availability and time conflicts. Each valid schedule then corresponds to a satisfying assignment of the encoded constraints.</p>
+<div class="inset"><p><strong>Modeling principle:</strong> first define what each Boolean variable means; then translate each requirement into a logical constraint. The SAT solver only checks the formula you give it, so missing or incorrect constraints produce misleading schedules.</p></div>
+</section>
+
+<section id="fol"><div class="sectionnum">07</div><h2>From propositional logic to first-order logic</h2>
+<p>Propositional logic represents complete statements as indivisible true-or-false symbols. This is enough for small, fixed worlds, but it becomes repetitive when the world contains many objects and relationships. First-order logic (FOL) adds <strong>objects, predicates and quantifiers</strong>, allowing one formula to describe patterns across many objects.</p>
+<table><thead><tr><th>Representation</th><th>Example</th><th>What it expresses</th></tr></thead><tbody>
+<tr><td>Propositional logic</td><td><code>OnVaseTable</code></td><td>A named fact: the vase is on the table.</td></tr>
+<tr><td>First-order logic</td><td><code>On(Vase, Table)</code></td><td>A relation between named objects.</td></tr>
+<tr><td>First-order logic with a variable</td><td><code>On(x, Table)</code></td><td>A relation involving an object selected by variable <code>x</code>.</td></tr>
+</tbody></table>
+<p>To connect a physical world with a logical description, decide which objects are in the domain and what each predicate means. For example, the domain might contain a table, a vase, a ball and the floor. The predicate <code>On(x, y)</code> is true when object <code>x</code> is on object <code>y</code>, under the chosen interpretation.</p>
+<p>A predicate is interpreted as a function from its object arguments to a truth value. This notation does not mean every physical property is automatically represented: the domain, predicates and their meanings must be specified so that formulas have a clear interpretation.</p>
+</section>
+
+<section id="predicates"><div class="sectionnum">08</div><h2>Predicates and quantifiers</h2>
+<p>A <strong>predicate</strong> describes a property or relation and evaluates to true or false for the objects supplied to it. For instance, <code>On(Object, Table)</code> is true when that object is on the table.</p>
+<table><thead><tr><th>Symbol</th><th>Name</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+<tr><td>∀</td><td>Universal quantifier</td><td>For every object in the specified domain.</td><td><code>∀x On(x, Table)</code>: every object in the domain is on the table.</td></tr>
+<tr><td>∃</td><td>Existential quantifier</td><td>There is at least one object in the specified domain.</td><td><code>∃x On(x, Table)</code>: at least one object is on the table.</td></tr>
+</tbody></table>
+<p>The variable’s domain matters. If <code>x</code> ranges over all objects, <code>∀x On(x, Table)</code> makes a claim about every one of them. If it ranges only over selected objects, the claim applies only to that subset.</p>
+<p>Negation can be moved across a quantifier by switching the quantifier and negating the formula inside:</p>
+<div class="formula">¬∀x φ(x)  ≡  ∃x ¬φ(x)<br>¬∃x φ(x)  ≡  ∀x ¬φ(x)</div>
+<p>“It is not true that every object has a property” means “there is at least one object that does not have the property.” “There does not exist an object with a property” means “every object lacks that property.”</p>
+</section>
+
+<section id="transform"><div class="sectionnum">09</div><h2>Worked transformation of a quantified formula</h2>
+<p>Use the predicate meanings <code>On(x, Table)</code>, <code>On(x, Floor)</code> and <code>Touch(x, y)</code>. Start with the formula from the notes:</p>
+<div class="formula">¬∀i [ On(i, Table) → ∃j (On(j, Floor) ∧ ¬Touch(i, j)) ]</div>
+<p>Read the outer negation first: it says that it is <em>not</em> the case that every object <code>i</code> on the table satisfies the bracketed condition. Apply <code>¬∀i φ ≡ ∃i ¬φ</code>:</p>
+<div class="formula">∃i ¬[ On(i, Table) → ∃j (On(j, Floor) ∧ ¬Touch(i, j)) ]</div>
+<p>For an implication, <code>¬(A → B) ≡ A ∧ ¬B</code>. Here <code>A</code> is <code>On(i, Table)</code> and <code>B</code> is the existential statement:</p>
+<div class="formula">∃i [ On(i, Table) ∧ ¬∃j (On(j, Floor) ∧ ¬Touch(i, j)) ]</div>
+<p>Now move the negation through the existential quantifier using <code>¬∃j ψ ≡ ∀j ¬ψ</code>, then apply De Morgan’s law:</p>
+<div class="formula">∃i [ On(i, Table) ∧ ∀j ¬(On(j, Floor) ∧ ¬Touch(i, j)) ]<br>≡ ∃i [ On(i, Table) ∧ ∀j (¬On(j, Floor) ∨ Touch(i, j)) ]</div>
+<p>The final formula means: <strong>there is an object on the table that touches every object on the floor.</strong> For each <code>j</code>, either <code>j</code> is not on the floor, or it touches the selected table object.</p>
+<div class="callout"><p><strong>Check the scope:</strong> <code>∃i</code> chooses one object on the table. The <code>∀j</code> then checks every object in the domain, while the disjunction restricts the touching requirement to objects that are on the floor.</p></div>
+</section>
+
+<section id="summary"><div class="sectionnum">10</div><h2>Key ideas</h2>
+<ul><li>SAT asks whether a formula has at least one satisfying truth assignment.</li><li>To test <code>KB ⊨ α</code>, test whether <code>KB ∧ ¬α</code> is unsatisfiable.</li><li>CNF is an AND of clauses; each clause is an OR of literals.</li><li>Resolution combines clauses with complementary literals; deriving the empty clause shows contradiction.</li><li>Conditioning assigns a variable and simplifies the remaining formula, exploring alternative branches.</li><li>SAT can encode real constraints such as assigning trucks to customers, once variables and requirements are defined precisely.</li><li>First-order logic describes objects and relations with predicates, variables and quantifiers.</li><li>Negating a universal quantifier produces an existential quantifier, and negating an existential produces a universal quantifier.</li></ul>
+<div class="inset"><p><strong>Good practice for formula transformations:</strong> name the formula parts, apply one equivalence at a time, preserve quantifier scope, and read the final expression back in ordinary language to check that it still matches the original meaning. The lecturer notes that the result is an unusual or nonsensical fact about the world; the point is practising the transformation.</p></div>
+<p><strong>Course connection:</strong> the lecturer says first-order logic is mainly theoretical in this part of the course, with a small amount appearing in the quiz. The next module moves toward ontologies and describing relations between objects; the propositional-logic agent ideas lead into Lab 1.</p>
+</section>
+<footer class="footer"><a href="#top">Back to top ↑</a></footer>
+        </article>
+        <aside id="lesson-reading" data-reading="theory-1"></aside>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="site-footer site-footer--compact">
+    <div class="container">
+      <p>Personal learning hub for the LTU Master Programme in Applied AI. Not an official website of Luleå University of Technology.</p>
+      <p class="site-footer__links">
+        <a href="../../../index.html"><i class="fa-solid fa-sitemap" aria-hidden="true"></i> Programme explorer</a>
+        <a href="../../course.html?code=D0034E"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Course hub</a>
+        <a href="../index.html"><i class="fa-solid fa-list" aria-hidden="true"></i> Notes home</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../../../assets/js/theme.js" defer></script>
+  <script src="../../../assets/js/course-notes-nav.js" defer></script>
+  <script src="../../../assets/js/course-notes-reading.js" defer></script>
+</body>
+</html>
+
+

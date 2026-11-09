@@ -1,0 +1,218 @@
+{
+  "checkedAt": "2026-11-09T21:49:21.892Z",
+  "base": "http://localhost:5500",
+  "results": [
+    {
+      "device": "iphone",
+      "page": "home",
+      "url": "http://localhost:5500/",
+      "ok": true,
+      "issues": [],
+      "screenshot": "E:\\Projects\\applied-ai-learning-hub\\assets\\temp\\mobile-check\\home-iphone.png",
+      "overflow": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390,
+        "hasHorizontalOverflow": false,
+        "overflowing": [
+          {
+            "tag": "div",
+            "className": "gantt",
+            "width": 864,
+            "viewport": 390
+          },
+          {
+            "tag": "div",
+            "className": "gantt__axis",
+            "width": 724,
+            "viewport": 390
+          },
+          {
+            "tag": "div",
+            "className": "gantt__body",
+            "width": 864,
+            "viewport": 390
+          },
+          {
+            "tag": "div",
+            "className": "gantt__grid",
+            "width": 724,
+            "viewport": 390
+          },
+          {
+            "tag": "div",
+            "className": "gantt__rows",
+            "width": 864,
+            "viewport": 390
+          },
+          {
+            "tag": "div",
+            "className": "gantt__row gantt__row--year",
+            "width": 864,
+            "viewport": 390
+          },
+          {
+            "tag": "div",
+            "className": "gantt__lane",
+            "width": 724,
+            "viewport": 390
+          },
+          {
+            "tag": "button",
+            "className": "gantt__bar gantt__bar--year is-current is-highlight",
+            "width": 555,
+            "viewport": 390
+          }
+        ]
+      },
+      "explorer": {
+        "openSemesters": 2,
+        "openPeriods": 0
+      }
+    },
+    {
+      "device": "iphone",
+      "page": "topics",
+      "url": "http://localhost:5500/courses/D0034E/",
+      "ok": true,
+      "issues": [],
+      "screenshot": "E:\\Projects\\applied-ai-learning-hub\\assets\\temp\\mobile-check\\topics-iphone.png",
+      "overflow": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390,
+        "hasHorizontalOverflow": false,
+        "overflowing": []
+      },
+      "topics": {
+        "cards": 8
+      }
+    },
+    {
+      "device": "iphone",
+      "page": "lesson1",
+      "url": "http://localhost:5500/courses/D0034E/lessons/lesson1.html",
+      "ok": true,
+      "issues": [],
+      "screenshot": "E:\\Projects\\applied-ai-learning-hub\\assets\\temp\\mobile-check\\lesson1-iphone.png",
+      "overflow": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390,
+        "hasHorizontalOverflow": false,
+        "overflowing": []
+      },
+      "lesson": {
+        "article": 1,
+        "reading": 1,
+        "nav": 1
+      }
+    },
+    {
+      "device": "pixel",
+      "page": "home",
+      "url": "http://localhost:5500/",
+      "ok": true,
+      "issues": [],
+      "screenshot": "E:\\Projects\\applied-ai-learning-hub\\assets\\temp\\mobile-check\\home-pixel.png",
+      "overflow": {
+        "scrollWidth": 393,
+        "clientWidth": 393,
+        "bodyScrollWidth": 393,
+        "hasHorizontalOverflow": false,
+        "overflowing": [
+          {
+            "tag": "div",
+            "className": "gantt",
+            "width": 864,
+            "viewport": 393
+          },
+          {
+            "tag": "div",
+            "className": "gantt__axis",
+            "width": 724,
+            "viewport": 393
+          },
+          {
+            "tag": "div",
+            "className": "gantt__body",
+            "width": 864,
+            "viewport": 393
+          },
+          {
+            "tag": "div",
+            "className": "gantt__grid",
+            "width": 724,
+            "viewport": 393
+          },
+          {
+            "tag": "div",
+            "className": "gantt__rows",
+            "width": 864,
+            "viewport": 393
+          },
+          {
+            "tag": "div",
+            "className": "gantt__row gantt__row--year",
+            "width": 864,
+            "viewport": 393
+          },
+          {
+            "tag": "div",
+            "className": "gantt__lane",
+            "width": 724,
+            "viewport": 393
+          },
+          {
+            "tag": "button",
+            "className": "gantt__bar gantt__bar--year is-current is-highlight",
+            "width": 555,
+            "viewport": 393
+          }
+        ]
+      },
+      "explorer": {
+        "openSemesters": 2,
+        "openPeriods": 0
+      }
+    },
+    {
+      "device": "pixel",
+      "page": "topics",
+      "url": "http://localhost:5500/courses/D0034E/",
+      "ok": true,
+      "issues": [],
+      "screenshot": "E:\\Projects\\applied-ai-learning-hub\\assets\\temp\\mobile-check\\topics-pixel.png",
+      "overflow": {
+        "scrollWidth": 393,
+        "clientWidth": 393,
+        "bodyScrollWidth": 393,
+        "hasHorizontalOverflow": false,
+        "overflowing": []
+      },
+      "topics": {
+        "cards": 8
+      }
+    },
+    {
+      "device": "pixel",
+      "page": "lesson1",
+      "url": "http://localhost:5500/courses/D0034E/lessons/lesson1.html",
+      "ok": true,
+      "issues": [],
+      "screenshot": "E:\\Projects\\applied-ai-learning-hub\\assets\\temp\\mobile-check\\lesson1-pixel.png",
+      "overflow": {
+        "scrollWidth": 393,
+        "clientWidth": 393,
+        "bodyScrollWidth": 393,
+        "hasHorizontalOverflow": false,
+        "overflowing": []
+      },
+      "lesson": {
+        "article": 1,
+        "reading": 1,
+        "nav": 1
+      }
+    }
+  ]
+}

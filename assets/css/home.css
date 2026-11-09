@@ -577,12 +577,232 @@
 }
 
 .journey-timeline {
+  --journey-rail: color-mix(in srgb, var(--bg-muted) 72%, var(--bg-elevated));
   box-sizing: border-box;
-  padding: clamp(0.85rem, 2vw, 1.25rem);
+  display: grid;
+  gap: var(--space-4);
+  padding: clamp(0.95rem, 2.2vw, 1.4rem);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--bg-elevated);
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--accent-soft) 55%, var(--bg-elevated)) 0%,
+      var(--bg-elevated) 42%,
+      color-mix(in srgb, var(--warm-soft) 35%, var(--bg-elevated)) 100%
+    );
   box-shadow: var(--shadow);
+}
+
+.journey-status {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--bg-elevated) 88%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.journey-status__icon {
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.journey-status--current .journey-status__icon {
+  background: color-mix(in srgb, var(--accent) 22%, var(--bg-elevated));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.journey-status--upcoming .journey-status__icon {
+  background: var(--warm-soft);
+  color: var(--warm);
+}
+
+.journey-status--complete .journey-status__icon {
+  background: color-mix(in srgb, var(--success) 18%, var(--bg-elevated));
+  color: var(--success);
+}
+
+.journey-status__title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.journey-status__detail {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.journey-detail {
+  padding: 0.9rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--bg-elevated) 92%, var(--accent-soft));
+  animation: journey-detail-in 180ms ease;
+}
+
+.journey-detail[hidden] {
+  display: none !important;
+}
+
+.journey-detail__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.journey-detail__kind {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.journey-detail__close {
+  display: grid;
+  place-items: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.journey-detail__close:hover {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+.journey-detail__title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.journey-detail__subtitle {
+  margin: 0.2rem 0 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.journey-detail__body {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 0.85rem;
+}
+
+.journey-detail__schedule {
+  overflow-x: auto;
+}
+
+.journey-detail__schedule .meta-badge-group--schedule {
+  width: 100%;
+}
+
+.journey-detail__focus {
+  margin: 0;
+  padding: 0.65rem 0.75rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: color-mix(in srgb, var(--accent-soft) 55%, var(--bg-elevated));
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.journey-detail__focus strong {
+  color: var(--accent);
+}
+
+.journey-detail__exam {
+  margin: 0;
+}
+
+.journey-detail__empty {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+@keyframes journey-detail-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.journey-panel {
+  animation: journey-panel-in 220ms ease;
+}
+
+@keyframes journey-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section--journey .explorer-tab {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem 0.4rem;
+  min-height: 2.85rem;
+  padding-block: 0.4rem;
+}
+
+.section--journey .explorer-tab__label {
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.section--journey .explorer-tab__meta {
+  flex: 1 0 100%;
+  margin-left: 1.15rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  line-height: 1.15;
+  text-align: center;
+}
+
+.section--journey .explorer-tab.is-active .explorer-tab__meta {
+  color: color-mix(in srgb, var(--accent) 70%, var(--text-muted));
 }
 
 .gantt-panel {
@@ -590,34 +810,121 @@
   gap: var(--space-3);
 }
 
+.gantt-panel__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+}
+
+.gantt-panel__titles {
+  display: grid;
+  gap: 0.15rem;
+}
+
 .gantt-panel__title {
   margin: 0;
   font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--text);
 }
 
-.gantt-panel .gantt {
+.gantt-panel__subtitle {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.journey-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.journey-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 650;
+  color: var(--text-muted);
+}
+
+.journey-legend__swatch {
+  width: 0.85rem;
+  height: 0.55rem;
+  border-radius: 0.2rem;
+  border: 1px solid transparent;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.journey-legend__swatch--year {
+  background: color-mix(in srgb, var(--accent) 28%, var(--bg-elevated));
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+}
+
+.journey-legend__swatch--autumn {
+  background: color-mix(in srgb, var(--warm) 34%, var(--bg-elevated));
+  border-color: color-mix(in srgb, var(--warm) 45%, var(--border));
+}
+
+.journey-legend__swatch--spring {
+  background: color-mix(in srgb, var(--success) 30%, var(--bg-elevated));
+  border-color: color-mix(in srgb, var(--success) 42%, var(--border));
+}
+
+.journey-legend__swatch--period {
+  background: color-mix(in srgb, var(--focus) 34%, var(--bg-elevated));
+  border-color: color-mix(in srgb, var(--focus) 45%, var(--border));
+}
+
+.journey-legend__swatch--exam {
+  background: color-mix(in srgb, var(--warm) 62%, var(--bg-elevated));
+  border-color: color-mix(in srgb, var(--warm) 50%, var(--border));
+}
+
+.gantt-scroll {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 0.15rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 35%, transparent);
 }
 
 .gantt {
-  --gantt-label-width: 10.5rem;
+  --gantt-label-width: 11rem;
+  --gantt-axis-h: 2.75rem;
   position: relative;
   display: grid;
-  grid-template-columns: var(--gantt-label-width) minmax(42rem, 1fr);
-  min-width: 52rem;
+  grid-template-columns: var(--gantt-label-width) minmax(44rem, 1fr);
+  grid-template-rows: var(--gantt-axis-h) auto;
+  min-width: 54rem;
   gap: 0;
 }
 
 .gantt__corner {
   grid-column: 1;
   grid-row: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 0.75rem 0.55rem;
   border-bottom: 1px solid var(--border);
-  background: color-mix(in srgb, var(--bg-muted) 55%, var(--bg-elevated));
+  border-right: 1px solid var(--border);
+  background: var(--journey-rail);
+}
+
+.gantt__corner-label {
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
 .gantt__axis {
@@ -626,12 +933,12 @@
   grid-row: 1;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  height: 2.6rem;
+  height: var(--gantt-axis-h);
   border-bottom: 1px solid var(--border);
   background:
     linear-gradient(
       180deg,
-      color-mix(in srgb, var(--bg-muted) 70%, var(--bg-elevated)),
+      color-mix(in srgb, var(--bg-muted) 78%, var(--bg-elevated)),
       var(--bg-elevated)
     );
 }
@@ -641,10 +948,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.1rem;
+  gap: 0.12rem;
   min-width: 0;
-  border-left: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
-  padding: 0.15rem 0.1rem 0;
+  border-left: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  padding: 0.2rem 0.1rem 0;
 }
 
 .gantt__col:first-child {
@@ -652,56 +959,102 @@
 }
 
 .gantt__tick-month {
-  font-size: 0.68rem;
-  font-weight: 700;
+  font-size: 0.7rem;
+  font-weight: 750;
   color: var(--text-muted);
   letter-spacing: 0.02em;
 }
 
 .gantt__tick-year {
   font-size: 0.62rem;
-  font-weight: 650;
+  font-weight: 700;
   color: var(--accent);
 }
 
-.gantt__rows {
+.gantt__body {
+  position: relative;
   grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+.gantt__grid {
+  position: absolute;
+  inset: 0 0 0 var(--gantt-label-width);
+  z-index: 0;
   display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  pointer-events: none;
+}
+
+.gantt__grid-col {
+  border-left: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
+}
+
+.gantt__grid-col:nth-child(odd) {
+  background: color-mix(in srgb, var(--bg-muted) 22%, transparent);
+}
+
+.gantt__grid-col:first-child {
+  border-left: none;
+}
+
+.gantt__rows {
+  position: relative;
+  z-index: 1;
+  display: grid;
+}
+
+.gantt__group {
+  display: grid;
+}
+
+.gantt__group--autumn {
+  background: color-mix(in srgb, var(--warm-soft) 28%, transparent);
+}
+
+.gantt__group--spring {
+  background: color-mix(in srgb, var(--success) 8%, transparent);
 }
 
 .gantt__row {
   display: grid;
   grid-template-columns: var(--gantt-label-width) minmax(0, 1fr);
-  min-height: 2.35rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  min-height: 2.45rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
 }
 
-.gantt__row--year .gantt__label,
+.gantt__row:last-child {
+  border-bottom: none;
+}
+
+.gantt__row--year {
+  min-height: 2.65rem;
+}
+
+.gantt__row--year .gantt__label {
+  background: color-mix(in srgb, var(--accent-soft) 45%, var(--journey-rail));
+}
+
 .gantt__row--semester .gantt__label {
-  background: color-mix(in srgb, var(--bg-muted) 55%, var(--bg-elevated));
+  background: color-mix(in srgb, var(--bg-muted) 70%, var(--bg-elevated));
 }
 
 .gantt__row--period {
-  min-height: 2.35rem;
-  background: transparent;
+  min-height: 2.55rem;
 }
 
 .gantt__row--period .gantt__label {
-  padding-left: 0.75rem;
-  background: color-mix(in srgb, var(--bg-muted) 40%, var(--bg-elevated));
-}
-
-.gantt__row--period .gantt__lane {
-  background: transparent;
+  padding-left: 1rem;
+  background: color-mix(in srgb, var(--bg-muted) 42%, var(--bg-elevated));
 }
 
 .gantt__label {
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.35rem 0.65rem;
+  padding: 0.4rem 0.7rem;
   border-right: 1px solid var(--border);
-  background: color-mix(in srgb, var(--bg-muted) 40%, var(--bg-elevated));
+  background: var(--journey-rail);
 }
 
 .gantt__label .badge {
@@ -715,6 +1068,7 @@
 .gantt__lane {
   position: relative;
   min-height: inherit;
+  isolation: isolate;
 }
 
 .gantt__bar {
@@ -723,19 +1077,70 @@
   transform: translateY(-50%);
   display: flex;
   align-items: center;
-  min-height: 1.35rem;
-  padding: 0 0.45rem;
+  min-height: 1.4rem;
+  padding: 0 0.5rem;
   border: 1px solid transparent;
-  border-radius: 0.4rem;
+  border-radius: 0.45rem;
   box-sizing: border-box;
   overflow: hidden;
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--text) 12%, transparent);
+  background: var(--bg-muted);
+  color: var(--text);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--text) 10%, transparent);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition:
+    transform 140ms ease,
+    box-shadow 140ms ease,
+    filter 140ms ease,
+    opacity 140ms ease;
   z-index: 2;
 }
 
+.gantt__bar:hover,
+.gantt__bar:focus-visible {
+  transform: translateY(-50%) translateY(-1px) scale(1.015);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--text) 14%, transparent);
+  z-index: 4;
+}
+
+.gantt__bar:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.gantt__bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background: currentColor;
+}
+
+.gantt__bar.is-past {
+  opacity: 0.62;
+  filter: saturate(0.85);
+}
+
+.gantt__bar.is-past .gantt__bar-fill {
+  width: 100%;
+}
+
+.gantt__bar.is-current .gantt__bar-fill {
+  width: 55%;
+  opacity: 0.22;
+}
+
+.gantt__bar.is-upcoming {
+  opacity: 0.95;
+}
+
 .gantt__bar-label {
-  font-size: 0.66rem;
-  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  font-size: 0.68rem;
+  font-weight: 750;
   line-height: 1;
   white-space: nowrap;
   overflow: hidden;
@@ -743,82 +1148,149 @@
 }
 
 .gantt__bar--year {
-  min-height: 1.4rem;
-  background: color-mix(in srgb, var(--accent) 20%, var(--bg-elevated));
-  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  min-height: 1.55rem;
+  background: color-mix(in srgb, var(--accent) 22%, var(--bg-elevated));
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
   color: var(--accent);
 }
 
 .gantt__bar--semester {
-  min-height: 1.35rem;
+  min-height: 1.45rem;
 }
 
 .gantt__bar--autumn {
-  background: color-mix(in srgb, var(--warm) 24%, var(--bg-elevated));
-  border-color: color-mix(in srgb, var(--warm) 45%, var(--border));
+  background: color-mix(in srgb, var(--warm) 28%, var(--bg-elevated));
+  border-color: color-mix(in srgb, var(--warm) 48%, var(--border));
   color: var(--warm);
 }
 
 .gantt__bar--spring {
-  background: color-mix(in srgb, var(--success) 22%, var(--bg-elevated));
-  border-color: color-mix(in srgb, var(--success) 42%, var(--border));
+  background: color-mix(in srgb, var(--success) 26%, var(--bg-elevated));
+  border-color: color-mix(in srgb, var(--success) 45%, var(--border));
   color: var(--success);
 }
 
 .gantt__bar--period {
-  min-height: 1.25rem;
-  background: color-mix(in srgb, var(--focus) 28%, var(--bg-elevated));
-  border-color: color-mix(in srgb, var(--focus) 45%, var(--border));
+  min-height: 1.3rem;
+  top: 34%;
+  background: color-mix(in srgb, var(--focus) 30%, var(--bg-elevated));
+  border-color: color-mix(in srgb, var(--focus) 48%, var(--border));
   color: var(--focus);
 }
 
 .gantt__bar--exam {
-  min-height: 1.1rem;
-  background: color-mix(in srgb, var(--warm) 55%, var(--bg-elevated));
-  border-color: color-mix(in srgb, var(--warm) 50%, var(--border));
+  min-height: 1.15rem;
+  top: 72%;
+  background: color-mix(in srgb, var(--warm) 58%, var(--bg-elevated));
+  border-color: color-mix(in srgb, var(--warm) 52%, var(--border));
   color: #5c3b12;
 }
 
+[data-theme="dark"] .gantt__bar--exam {
+  color: #3d2610;
+}
+
 .gantt__bar.is-highlight {
+  opacity: 1;
+  filter: none;
   box-shadow:
-    0 0 0 2px color-mix(in srgb, var(--accent) 55%, transparent),
-    0 2px 8px color-mix(in srgb, var(--text) 12%, transparent);
+    0 0 0 2px color-mix(in srgb, var(--accent) 60%, transparent),
+    0 4px 12px color-mix(in srgb, var(--text) 12%, transparent);
   z-index: 3;
+}
+
+.gantt__bar.is-selected {
+  opacity: 1;
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--focus) 70%, transparent),
+    0 6px 16px color-mix(in srgb, var(--text) 14%, transparent);
+  z-index: 5;
 }
 
 .gantt__today {
   position: absolute;
-  top: 2.6rem;
+  top: 0;
   bottom: 0;
   left: calc(
     var(--gantt-label-width) + (100% - var(--gantt-label-width)) * var(--today-pct) / 100
   );
   width: 0;
-  border-left: 2px dotted color-mix(in srgb, var(--accent) 88%, #000);
-  box-shadow: none;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 88%, #000);
   pointer-events: none;
   z-index: 3;
 }
 
-.gantt__today::before {
-  content: "Today";
+.gantt__today-dot {
   position: absolute;
-  top: 0.2rem;
-  left: 0.35rem;
-  padding: 0.1rem 0.35rem;
+  top: -0.15rem;
+  left: -0.35rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent);
+  animation: gantt-today-pulse 1.8s ease-out infinite;
+}
+
+.gantt__today-label {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.4rem;
+  padding: 0.12rem 0.4rem;
   border-radius: 0.25rem;
   background: var(--accent);
   color: #fff;
   font-size: 0.58rem;
   font-weight: 750;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   white-space: nowrap;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+@keyframes gantt-today-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--accent) 0%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-detail,
+  .journey-panel,
+  .gantt__bar,
+  .gantt__today-dot {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 @media (max-width: 700px) {
+  .journey-timeline {
+    padding: 0.85rem;
+    gap: var(--space-3);
+  }
+
+  .journey-status {
+    gap: 0.7rem;
+    padding: 0.75rem 0.8rem;
+  }
+
+  .journey-status__title {
+    font-size: 0.98rem;
+  }
+
+  .gantt-panel__head {
+    align-items: flex-start;
+  }
+
   .gantt {
-    --gantt-label-width: 8.5rem;
+    --gantt-label-width: 8.75rem;
   }
 
   .gantt__label .badge {
