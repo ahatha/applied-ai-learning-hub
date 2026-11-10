@@ -30,6 +30,7 @@ dist/
 .cache/
 .vercel/
 .netlify/
+assets/temp/
 
 # Python local environments (if notebooks are added later)
 .venv/
